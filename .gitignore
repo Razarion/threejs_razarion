@@ -2,5 +2,5 @@ dist/
 node_modules/
 
 .idea/*
-.idea/runConfigurations
+!.idea/runConfigurations
 threejs_razarion.iml
