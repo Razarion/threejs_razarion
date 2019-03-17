@@ -3,18 +3,18 @@ import * as OrbitControls from 'orbit-controls-es6';
 import slopeVertexShader from './shaders/slope-vertx.glsl';
 import slopeFragmentShader from './shaders/slope-fragment.glsl';
 
-function setupBeach() {
+function setupSlope() {
     var uniforms = {
-        colorA: {type: 'vec3', value: new THREE.Color(0x0000FF)},
-        colorB: {type: 'vec3', value: new THREE.Color(0xFF0000)}
+        overWaterColor: {type: 'vec3', value: new THREE.Color(0x446600)},
+        underWaterColor: {type: 'vec3', value: new THREE.Color(0x0000FF)}
     };
     var material = new THREE.ShaderMaterial({
         uniforms: uniforms,
         vertexShader: slopeVertexShader,
         fragmentShader: slopeFragmentShader
     });
-    var widthSegments = 20;
-    var geometry = new THREE.PlaneBufferGeometry(30, 60, widthSegments, 30);
+    var widthSegments = 10;
+    var geometry = new THREE.PlaneBufferGeometry(30, 60, widthSegments, 15);
     var vertices = geometry.attributes.position.array;
     for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
         var z = (1.0 - (i % (widthSegments + 1) / (widthSegments + 1))) - 0.5;
@@ -27,7 +27,7 @@ function setupBeach() {
     var wireframe = new THREE.WireframeGeometry( geometry );
     var line = new THREE.LineSegments( wireframe );
     line.material.depthTest = false;
-    line.material.opacity = 1;
+    line.material.opacity = 0.1;
     line.material.transparent = true;
     scene.add( line );
 }
@@ -48,7 +48,7 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-scene.add(setupBeach());
+scene.add(setupSlope());
 
 var animate = function () {
     requestAnimationFrame(animate);
