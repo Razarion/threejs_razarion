@@ -21,15 +21,15 @@ function setupSlope() {
         z += (Math.random() * 2.0 - 1.0) * 0.2;
         vertices[j + 2] = z;
     }
-    scene.add( new THREE.Mesh(geometry, material) );
+    scene.add(new THREE.Mesh(geometry, material));
 
     // Wireframe
-    var wireframe = new THREE.WireframeGeometry( geometry );
-    var line = new THREE.LineSegments( wireframe );
+    var wireframe = new THREE.WireframeGeometry(geometry);
+    var line = new THREE.LineSegments(wireframe);
     line.material.depthTest = false;
     line.material.opacity = 0.1;
     line.material.transparent = true;
-    scene.add( line );
+    scene.add(line);
 }
 
 var scene = new THREE.Scene();
