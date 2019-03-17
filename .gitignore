@@ -1,0 +1,6 @@
+dist/
+node_modules/
+
+.idea/*
+.idea/runConfigurations
+threejs_razarion.iml
