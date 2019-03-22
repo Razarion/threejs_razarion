@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import * as OrbitControls from 'orbit-controls-es6';
-import imageXXXX from './textures/sand01.png';
+import sandImage from './textures/sand01.png';
 
 function setupSlope() {
     // ---------- Setup Geometry ----------
@@ -19,7 +19,7 @@ function setupSlope() {
     // load a image resource
     loader.load(
         // resource URL
-        imageXXXX,
+        sandImage,
         // onLoad callback
         function (imageBitmap) {
             let texture = new THREE.CanvasTexture(imageBitmap);
