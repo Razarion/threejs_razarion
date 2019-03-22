@@ -22,6 +22,12 @@ module.exports = {
                 test: /\.glsl$/,
                 use: 'raw-loader',
             },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            }
         ],
     }
 };
