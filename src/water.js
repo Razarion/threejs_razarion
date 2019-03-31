@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import {Color} from "three";
-import waterSurfaceTexture from "./textures/WaterCloudReflection.png";
+import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import {Base} from "./base";
 
 class Water extends Base {
@@ -14,20 +14,16 @@ class Water extends Base {
 
     generateMesh(scene) {
         let geometry = this.setupGeometry(this.x, this.y, this.width, this.height);
-
-        let loader = new THREE.ImageBitmapLoader();
+        let loader = new THREE.TextureLoader();
         loader.load(
-            // resource URL
-            waterSurfaceTexture,
-            // onLoad callback
-            function (imageBitmap) {
-                let texture = new THREE.CanvasTexture(waterSurfaceTexture);
-                let material = new THREE.MeshBasicMaterial({map: texture});
+            waterSurfaceTextureUrl,
+            function (texture) {
+                let material = new THREE.MeshBasicMaterial({
+                    map: texture
+                });
                 scene.add(new THREE.Mesh(geometry, material));
             },
-            // onProgress callback currently not supported
-            undefined,
-            // onError callback
+            undefined, // onProgress callback currently not supported
             function (err) {
                 console.log('Water: An error happened:' + err);
             }
