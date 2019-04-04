@@ -2,6 +2,8 @@ import * as THREE from "three";
 import {Color} from "three";
 import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import {Base} from "./base";
+import waterVertexShader from './shaders/Water.vert';
+import waterFragmentShader from './shaders/Water.frag';
 
 class Water extends Base {
     constructor(x, y, width, height) {
@@ -18,8 +20,15 @@ class Water extends Base {
         loader.load(
             waterSurfaceTextureUrl,
             function (texture) {
-                let material = new THREE.MeshBasicMaterial({
-                    map: texture
+                texture.wrapS = THREE.RepeatWrapping;
+                texture.wrapT = THREE.RepeatWrapping;
+                let material = new THREE.ShaderMaterial({
+                    uniforms: {
+                        uReflectionScale: {value: 100},
+                        uReflection: {value: texture},
+                    },
+                    vertexShader: waterVertexShader,
+                    fragmentShader: waterFragmentShader
                 });
                 scene.add(new THREE.Mesh(geometry, material));
             },

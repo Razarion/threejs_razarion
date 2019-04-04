@@ -43,7 +43,12 @@ water.generateMesh(scene);
 let animate = function () {
     requestAnimationFrame(animate);
 
-    renderer.render(scene, camera);
+    try {
+        renderer.render(scene, camera);
+        // console.log(renderer.getContext().getError());
+    } catch (err) {
+        console.log('Render failure:' + err);
+    }
 };
 
 animate();
