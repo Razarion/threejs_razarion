@@ -3,6 +3,9 @@ import * as OrbitControls from 'orbit-controls-es6';
 import {Water} from "./water";
 import {Slope} from "./slope";
 import {js2Terrain} from "./utils";
+import * as dat from 'dat.gui';
+
+let datGui = new dat.GUI();
 
 let scene = new THREE.Scene();
 
@@ -37,7 +40,7 @@ let terrainHeights = js2Terrain([
 let slope = new Slope(0, 0, terrainHeights);
 slope.generateMesh(scene);
 
-let water = new Water(20, 0, 80, 80);
+let water = new Water(20, 0, 80, 80, datGui);
 water.generateMesh(scene);
 
 let animate = function () {

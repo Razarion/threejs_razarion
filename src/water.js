@@ -8,12 +8,17 @@ import waterFragmentShader from './shaders/Water.frag';
 import {sawtooth} from "./utils";
 
 class Water extends Base {
-    constructor(x, y, width, height) {
+    constructor(x, y, width, height, datGui) {
         super();
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.animationDuration = 20;
+
+        let gui = datGui.addFolder('Water');
+        gui.add(this, 'animationDuration');
+
     }
 
     generateMesh(scene) {
@@ -32,7 +37,7 @@ class Water extends Base {
                 uDistortionScale: {value: 100},
                 uDistortionMap: {value: distortionMap},
                 uDistortionStrength: {value: 1},
-                animation: {value: 1}
+                animation: {value: this.setupWaterAnimation()}
             },
             vertexShader: waterVertexShader,
             fragmentShader: waterFragmentShader
@@ -42,7 +47,11 @@ class Water extends Base {
     }
 
     updateAnimation() {
-        this.material.uniforms.animation.value = sawtooth(Date.now(), 20000, 0);
+        this.material.uniforms.animation.value = this.setupWaterAnimation();
+    }
+
+    setupWaterAnimation() {
+        return sawtooth(Date.now(), this.animationDuration * 1000, 0);
     }
 }
 
