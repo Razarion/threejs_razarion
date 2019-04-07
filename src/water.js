@@ -1,9 +1,11 @@
 import * as THREE from "three";
 import {Color} from "three";
 import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
+import distortionMapUrl from "./textures/WaterDistortion.png";
 import {Base} from "./base";
 import waterVertexShader from './shaders/Water.vert';
 import waterFragmentShader from './shaders/Water.frag';
+import {sawtooth} from "./utils";
 
 class Water extends Base {
     constructor(x, y, width, height) {
@@ -17,27 +19,30 @@ class Water extends Base {
     generateMesh(scene) {
         let geometry = this.setupGeometry(this.x, this.y, this.width, this.height);
         let loader = new THREE.TextureLoader();
-        loader.load(
-            waterSurfaceTextureUrl,
-            function (texture) {
-                texture.wrapS = THREE.RepeatWrapping;
-                texture.wrapT = THREE.RepeatWrapping;
-                let material = new THREE.ShaderMaterial({
-                    uniforms: {
-                        uReflectionScale: {value: 100},
-                        uReflection: {value: texture},
-                    },
-                    vertexShader: waterVertexShader,
-                    fragmentShader: waterFragmentShader
-                });
-                scene.add(new THREE.Mesh(geometry, material));
+        let reflection = loader.load(waterSurfaceTextureUrl);
+        reflection.wrapS = THREE.RepeatWrapping;
+        reflection.wrapT = THREE.RepeatWrapping;
+        let distortionMap = loader.load(distortionMapUrl);
+        distortionMap.wrapS = THREE.RepeatWrapping;
+        distortionMap.wrapT = THREE.RepeatWrapping;
+        this.material = new THREE.ShaderMaterial({
+            uniforms: {
+                uReflectionScale: {value: 100},
+                uReflection: {value: reflection},
+                uDistortionScale: {value: 100},
+                uDistortionMap: {value: distortionMap},
+                uDistortionStrength: {value: 1},
+                animation: {value: 1}
             },
-            undefined, // onProgress callback currently not supported
-            function (err) {
-                console.log('Water: An error happened:' + err);
-            }
-        );
+            vertexShader: waterVertexShader,
+            fragmentShader: waterFragmentShader
+        });
+        scene.add(new THREE.Mesh(geometry, this.material));
         super.generateWireframe(scene, geometry, new Color(0.0, 0.0, 1.0));
+    }
+
+    updateAnimation() {
+        this.material.uniforms.animation.value = sawtooth(Date.now(), 20000, 0);
     }
 }
 

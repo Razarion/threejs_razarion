@@ -11,6 +11,12 @@ function js2Terrain(jsField) {
     return webGlField;
 }
 
+function sawtooth(millis, durationMs, offsetMs) {
+    let totMillis = millis + offsetMs;
+    return (totMillis % durationMs) / durationMs; // Saegezahn
+}
+
 export {
     js2Terrain,
+    sawtooth,
 }
