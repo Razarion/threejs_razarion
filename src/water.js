@@ -17,12 +17,13 @@ class Water extends Base {
         this.animationDuration = 20;
         this.reflectionScale = 90;
         this.distortionStrength = 0.1;
+        this.distortionScale = 20;
 
-        let gui = datGui.addFolder('Water');
-        gui.add(this, 'animationDuration');
-        gui.add(this, 'reflectionScale');
-        gui.add(this, 'distortionStrength');
-
+        this.gui = datGui.addFolder('Water');
+        this.gui.add(this, 'animationDuration');
+        this.gui.add(this, 'reflectionScale');
+        this.gui.add(this, 'distortionStrength');
+        this.gui.add(this, 'distortionScale');
     }
 
     generateMesh(scene) {
@@ -36,16 +37,18 @@ class Water extends Base {
         distortionMap.wrapT = THREE.RepeatWrapping;
         this.material = new THREE.ShaderMaterial({
             uniforms: {
-                uReflectionScale: {value: 100},
+                uReflectionScale: {value: this.reflectionScale},
                 uReflection: {value: reflection},
                 uDistortionScale: {value: 100},
                 uDistortionMap: {value: distortionMap},
-                uDistortionStrength: {value: 1},
+                uDistortionStrength: {value: this.distortionStrength},
                 animation: {value: this.setupWaterAnimation()}
             },
             vertexShader: waterVertexShader,
             fragmentShader: waterFragmentShader
         });
+        this.gui.add(this.material, "wireframe", 0, 1);
+
         scene.add(new THREE.Mesh(geometry, this.material));
         super.generateWireframe(scene, geometry, new Color(0.0, 0.0, 1.0));
     }
@@ -53,6 +56,7 @@ class Water extends Base {
     update() {
         this.material.uniforms.animation.value = this.setupWaterAnimation();
         this.material.uniforms.uReflectionScale.value = this.reflectionScale;
+        this.material.uniforms.uDistortionScale.value = this.distortionScale;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
     }
 

@@ -3,7 +3,8 @@ import * as OrbitControls from 'orbit-controls-es6';
 import {Water} from "./water";
 import {Slope} from "./slope";
 import {js2Terrain} from "./utils";
-import * as dat from 'dat.gui';
+import dat from "dat.gui";
+import "three-dat.gui";
 
 let datGui = new dat.GUI();
 

@@ -6,13 +6,13 @@ class Base {
     }
 
     generateWireframe(scene, geometry, color) {
-        let wireframe = new THREE.WireframeGeometry(geometry);
-        let line = new THREE.LineSegments(wireframe);
-        line.material.depthTest = false;
-        line.material.opacity = 1;
-        line.material.transparent = true;
-        line.material.color = color;
-        scene.add(line);
+        // let wireframe = new THREE.WireframeGeometry(geometry);
+        // let line = new THREE.LineSegments(wireframe);
+        // line.material.depthTest = false;
+        // line.material.opacity = 1;
+        // line.material.transparent = true;
+        // line.material.color = color;
+        // scene.add(line);
     }
 
     setupGeometry(x, y, width, height) {
