@@ -1,24 +1,20 @@
 import * as THREE from 'three';
-import * as OrbitControls from 'orbit-controls-es6';
 import {Water} from "./water";
 import {Slope} from "./slope";
 import {js2Terrain} from "./utils";
 import dat from "dat.gui";
-import "three-dat.gui";
 
 let datGui = new dat.GUI();
 
 let scene = new THREE.Scene();
 
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.x = 0;
+camera.position.y = 0;
 camera.position.z = 80;
+camera.rotation.x = THREE.Math.degToRad(35);
 
-let orbitControls = new OrbitControls(camera);
-orbitControls.minPolarAngle = THREE.Math.degToRad(180 - 35);
-orbitControls.maxPolarAngle = THREE.Math.degToRad(180 - 35);
-orbitControls.minAzimuthAngle = 0;
-orbitControls.maxAzimuthAngle = 0;
-orbitControls.update();
+setupCameraGui();
 
 let renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -45,6 +41,16 @@ let animate = function () {
         console.log('Render failure:' + err);
     }
 };
+
+function setupCameraGui() {
+    let gui = datGui.addFolder('Camera');
+    gui.add(camera.position, 'x', 0, 100, 0.1);
+    gui.add(camera.position, 'y', 0, 100, 0.1);
+    gui.add(camera.position, 'z', 0, 200, 0.1);
+    gui.add(camera.rotation, 'x', 0.0, Math.PI / 2, 0.01);
+    gui.open();
+
+}
 
 animate();
 
