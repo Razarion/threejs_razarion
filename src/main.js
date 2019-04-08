@@ -23,24 +23,14 @@ let renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-let terrainHeights = js2Terrain([
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
+let terrainShape = js2Terrain([
     [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2],
 ]);
 
-let slope = new Slope(0, 0, terrainHeights);
+let slope = new Slope(0, 0, 1000, terrainShape, datGui);
 slope.generateMesh(scene);
 
-let water = new Water(20, 0, 80, 80, datGui);
+let water = new Water(20, 0, 1000, 1000, datGui);
 water.generateMesh(scene);
 
 let animate = function () {
