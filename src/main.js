@@ -47,7 +47,7 @@ let animate = function () {
     requestAnimationFrame(animate);
 
     try {
-        water.updateAnimation();
+        water.update();
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
     } catch (err) {

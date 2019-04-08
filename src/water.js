@@ -15,9 +15,13 @@ class Water extends Base {
         this.width = width;
         this.height = height;
         this.animationDuration = 20;
+        this.reflectionScale = 90;
+        this.distortionStrength = 0.1;
 
         let gui = datGui.addFolder('Water');
         gui.add(this, 'animationDuration');
+        gui.add(this, 'reflectionScale');
+        gui.add(this, 'distortionStrength');
 
     }
 
@@ -46,8 +50,10 @@ class Water extends Base {
         super.generateWireframe(scene, geometry, new Color(0.0, 0.0, 1.0));
     }
 
-    updateAnimation() {
+    update() {
         this.material.uniforms.animation.value = this.setupWaterAnimation();
+        this.material.uniforms.uReflectionScale.value = this.reflectionScale;
+        this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
     }
 
     setupWaterAnimation() {
