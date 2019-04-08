@@ -1,5 +1,8 @@
 precision mediump float;
 
+#include <common>
+#include <lights_pars_begin>
+
 varying vec3 vWorldVertexPosition;
 
 uniform sampler2D uDistortionMap;
@@ -25,4 +28,7 @@ void main(void) {
     vec3 specular;
     setupWater(ambient, specular);
     gl_FragColor = vec4(ambient + specular, 1.0);
+    // gl_FragColor = vec4(ambientLightColor, 1.0);
+    // gl_FragColor = vec4(directionalLights[0].color, 1.0);
+    // gl_FragColor = vec4(directionalLights[0].direction, 1.0);
 }

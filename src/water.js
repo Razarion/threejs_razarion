@@ -36,17 +36,21 @@ class Water extends Base {
         distortionMap.wrapS = THREE.RepeatWrapping;
         distortionMap.wrapT = THREE.RepeatWrapping;
         this.material = new THREE.ShaderMaterial({
-            uniforms: {
-                uReflectionScale: {value: this.reflectionScale},
-                uReflection: {value: reflection},
-                uDistortionScale: {value: 100},
-                uDistortionMap: {value: distortionMap},
-                uDistortionStrength: {value: this.distortionStrength},
-                animation: {value: this.setupWaterAnimation()}
-            },
+            uniforms: THREE.UniformsUtils.merge([
+                THREE.UniformsLib["lights"],
+                {
+                    uReflectionScale: {value: this.reflectionScale},
+                    uReflection: {value: reflection},
+                    uDistortionScale: {value: 100},
+                    uDistortionMap: {value: distortionMap},
+                    uDistortionStrength: {value: this.distortionStrength},
+                    animation: {value: this.setupWaterAnimation()}
+                }
+            ]),
             vertexShader: waterVertexShader,
             fragmentShader: waterFragmentShader
         });
+        this.material.lights = true;
         this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
