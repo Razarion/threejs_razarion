@@ -40,9 +40,9 @@ class Water extends Base {
                 THREE.UniformsLib["lights"],
                 {
                     uReflectionScale: {value: this.reflectionScale},
-                    uReflection: {value: reflection},
+                    uReflection: {value: null},
                     uDistortionScale: {value: 100},
-                    uDistortionMap: {value: distortionMap},
+                    uDistortionMap: {value: null},
                     uDistortionStrength: {value: this.distortionStrength},
                     animation: {value: this.setupWaterAnimation()}
                 }
@@ -50,6 +50,8 @@ class Water extends Base {
             vertexShader: waterVertexShader,
             fragmentShader: waterFragmentShader
         });
+        this.material.uniforms.uReflection.value = reflection;
+        this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.lights = true;
         this.gui.add(this.material, "wireframe", 0, 1);
 
