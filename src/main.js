@@ -49,6 +49,7 @@ function setupLight() {
     scene.add(ambientLight);
 
     let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(-0.5, -0.5, -0.8);
     scene.add(directionalLight);
 
     let gui = datGui.addFolder('Light');
