@@ -1,7 +1,7 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import {Color} from "three";
-import sandTextureUrl from "./textures/Sand01.png";
+import waterVertexShaderUrl from './shaders/Slope.vert';
+import waterFragmentShaderUrl from './shaders/Slope.frag';
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui) {
@@ -10,7 +10,7 @@ class Slope extends Base {
         this.y = y;
         this.yLength = yLength;
         this.terrainShape = terrainShape;
-        let gui = datGui.addFolder('Slope');
+        this.gui = datGui.addFolder('Slope');
         // gui.add(this, 'animationDuration');
     }
 
@@ -28,23 +28,21 @@ class Slope extends Base {
                 index++;
             }
         }
+        this.material = new THREE.ShaderMaterial({
+            uniforms: THREE.UniformsUtils.merge([
+                THREE.UniformsLib["lights"],
+                {
+                    uWaterLevel: {value: 0},
+                    uWaterGround: {value: -2},
+                }
+            ]),
+            vertexShader: waterVertexShaderUrl,
+            fragmentShader: waterFragmentShaderUrl
+        });
+        this.material.lights = true;
+        this.gui.add(this.material, "wireframe", 0, 1);
 
-        let loader = new THREE.TextureLoader();
-        loader.load(
-            sandTextureUrl,
-            function (texture) {
-                let material = new THREE.MeshBasicMaterial({
-                    map: texture
-                });
-                scene.add(new THREE.Mesh(geometry, material));
-            },
-            undefined, // onProgress callback currently not supported
-            function (err) {
-                console.log('Slope: an error happened:' + err);
-            }
-        );
-
-        super.generateWireframe(scene, geometry, new Color(0.8, 0.8, 0));
+        scene.add(new THREE.Mesh(geometry, this.material));
     }
 
 }

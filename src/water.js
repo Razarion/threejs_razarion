@@ -1,11 +1,10 @@
 import * as THREE from "three";
-import {Color} from "three";
 import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import distortionMapUrl from "./textures/WaterDistortion.png";
 import normMapUrl from "./textures/WaterNorm.png";
 import {Base} from "./base";
-import waterVertexShader from './shaders/Water.vert';
-import waterFragmentShader from './shaders/Water.frag';
+import waterVertexShaderUrl from './shaders/Water.vert';
+import waterFragmentShaderUrl from './shaders/Water.frag';
 import {sawtooth} from "./utils";
 
 class Water extends Base {
@@ -65,8 +64,8 @@ class Water extends Base {
                     animation: {value: this.setupWaterAnimation()}
                 }
             ]),
-            vertexShader: waterVertexShader,
-            fragmentShader: waterFragmentShader
+            vertexShader: waterVertexShaderUrl,
+            fragmentShader: waterFragmentShaderUrl
         });
         this.material.uniforms.uReflection.value = reflection;
         this.material.uniforms.uDistortionMap.value = distortionMap;
@@ -76,7 +75,6 @@ class Water extends Base {
         this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
-        super.generateWireframe(scene, geometry, new Color(0.0, 0.0, 1.0));
     }
 
     update() {
