@@ -10,8 +10,17 @@ class Slope extends Base {
         this.y = y;
         this.yLength = yLength;
         this.terrainShape = terrainShape;
+        this.waterLevel = 0;
+        this.waterGround = -2;
+        this.underWaterTopColor = new THREE.Color('#f5d15c');
+        this.underWaterBottomColor = new THREE.Color('#2e758c');
         this.gui = datGui.addFolder('Slope');
-        // gui.add(this, 'animationDuration');
+        this.gui.add(this, 'waterLevel');
+        this.gui.add(this, 'waterGround');
+        let holder1 = {'underWaterTopColor': this.underWaterTopColor.getHex()};
+        this.gui.addColor(holder1, 'underWaterTopColor').onChange(() => this.underWaterTopColor.setHex(holder1.underWaterTopColor));
+        let holder2 = {'underWaterBottomColor': this.underWaterBottomColor.getHex()};
+        this.gui.addColor(holder2, 'underWaterBottomColor').onChange(() => this.underWaterBottomColor.setHex(holder2.underWaterBottomColor));
     }
 
     generateMesh(scene) {
@@ -32,8 +41,10 @@ class Slope extends Base {
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
                 {
-                    uWaterLevel: {value: 0},
-                    uWaterGround: {value: -2},
+                    uWaterLevel: {value: this.waterLevel},
+                    uWaterGround: {value: this.waterLevel},
+                    uUnderWaterTopColor: {type: "c", value: this.underWaterTopColor},
+                    uUnderWaterBottomColor: {type: "c", value: this.underWaterBottomColor},
                 }
             ]),
             vertexShader: waterVertexShaderUrl,
@@ -45,6 +56,12 @@ class Slope extends Base {
         scene.add(new THREE.Mesh(geometry, this.material));
     }
 
+    update() {
+        this.material.uniforms.uWaterLevel.value = this.waterLevel;
+        this.material.uniforms.uWaterGround.value = this.waterGround;
+        this.material.uniforms.uUnderWaterTopColor.value = this.underWaterTopColor;
+        this.material.uniforms.uUnderWaterBottomColor.value = this.underWaterBottomColor;
+    }
 }
 
 export {

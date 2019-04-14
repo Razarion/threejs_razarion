@@ -21,7 +21,7 @@ class Water extends Base {
         this.distortionStrength = 0.1;
         this.distortionScale = 20;
         this.normMapDepth = 1;
-        this.transparency = 0.5;
+        this.transparency = 0.3;
         this.animationDuration = 20;
 
         this.gui = datGui.addFolder('Water');

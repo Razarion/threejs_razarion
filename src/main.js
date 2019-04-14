@@ -38,6 +38,7 @@ let animate = function () {
 
     try {
         water.update();
+        slope.update();
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
     } catch (err) {

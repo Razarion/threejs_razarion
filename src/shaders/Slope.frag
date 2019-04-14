@@ -5,9 +5,8 @@ varying vec3 vWorldVertexPosition;
 // Water
 uniform float uWaterLevel;
 uniform float uWaterGround;
-
-const vec3 underWaterTopColor = vec3(0.0, 0.7, 0.8);
-const vec3 underWaterBottomColor = vec3(0.0, 0.1, 0.2);
+uniform vec3 uUnderWaterTopColor;
+uniform vec3 uUnderWaterBottomColor;
 
 vec4 setupColor(vec3 ambient, vec3 diffuse, vec3 specular, bool shadow, bool terrainMarker) {
     float shadowFactor = 1.0;
@@ -23,7 +22,7 @@ vec4 setupColor(vec3 ambient, vec3 diffuse, vec3 specular, bool shadow, bool ter
 
 
 void setupUnderWater(inout vec3 ambient, inout vec3 diffuse, float underWaterFactor) {
-    vec3 color = mix(underWaterBottomColor, underWaterTopColor, underWaterFactor);
+    vec3 color = mix(uUnderWaterBottomColor, uUnderWaterTopColor, underWaterFactor);
     ambient = color * ambientLightColor;
     diffuse = vec3(0.0, 0.0, 0.0);
 }
