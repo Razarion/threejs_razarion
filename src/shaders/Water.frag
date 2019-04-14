@@ -40,7 +40,7 @@ void setupWater(inout vec3 ambient, inout vec3 specular) {
     vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
     vec2 totalDistortion = distortion1 + distortion2;
     vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
-    ambient = texture2D(uReflection, reflectionCoord).rgb * ambientLightColor;
+    ambient = texture2D(uReflection, reflectionCoord).rgb/* * ambientLightColor*/;
     // Setup norm map and light
     vec3 correctedLightDirection = normalize(directionalLights[0].direction);
     vec3 normMap1 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).xyz;

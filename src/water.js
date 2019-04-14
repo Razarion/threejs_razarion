@@ -16,7 +16,7 @@ class Water extends Base {
         this.height = height;
         this.lightSpecularIntensity = 0.7;
         this.lightSpecularHardness = 100;
-        this.reflectionScale = 90;
+        this.reflectionScale = 200;
         this.distortionScale = 1000;
         this.distortionStrength = 0.1;
         this.distortionScale = 20;
