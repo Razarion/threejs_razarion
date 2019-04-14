@@ -8,8 +8,8 @@ varying vec3 vWorldVertexPosition;
 uniform float uLightSpecularIntensity;
 uniform float uLightSpecularHardness;
 
-
 uniform mat3 normalMatrix;
+uniform float uTransparency;
 uniform sampler2D uNormMap;
 uniform float uNormMapDepth;
 uniform sampler2D uDistortionMap;
@@ -57,7 +57,5 @@ void main(void) {
     vec3 ambient;
     vec3 specular;
     setupWater(ambient, specular);
-    gl_FragColor = vec4(ambient + specular, 1.0);
-    // gl_FragColor = vec4(ambientLightColor, 1.0);
-    // gl_FragColor = vec4(directionalLights[0].color, 1.0);
+    gl_FragColor = vec4(ambient + specular, uTransparency);
 }

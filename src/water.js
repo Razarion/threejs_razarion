@@ -22,6 +22,7 @@ class Water extends Base {
         this.distortionStrength = 0.1;
         this.distortionScale = 20;
         this.normMapDepth = 1;
+        this.transparency = 0.5;
         this.animationDuration = 20;
 
         this.gui = datGui.addFolder('Water');
@@ -31,6 +32,7 @@ class Water extends Base {
         this.gui.add(this, 'distortionStrength');
         this.gui.add(this, 'distortionScale');
         this.gui.add(this, 'normMapDepth', 0, 1);
+        this.gui.add(this, 'transparency', 0, 1);
         this.gui.add(this, 'animationDuration');
     }
 
@@ -59,6 +61,7 @@ class Water extends Base {
                     uDistortionStrength: {value: this.distortionStrength},
                     uNormMap: {value: null},
                     uNormMapDepth: {value: this.normMapDepth},
+                    uTransparency: {value: 0.9},
                     animation: {value: this.setupWaterAnimation()}
                 }
             ]),
@@ -69,6 +72,7 @@ class Water extends Base {
         this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.uniforms.uNormMap.value = normMap;
         this.material.lights = true;
+        this.material.transparent = true;
         this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
@@ -82,6 +86,7 @@ class Water extends Base {
         this.material.uniforms.uDistortionScale.value = this.distortionScale;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
         this.material.uniforms.uNormMapDepth.value = this.normMapDepth;
+        this.material.uniforms.uTransparency.value = this.transparency;
         this.material.uniforms.animation.value = this.setupWaterAnimation();
     }
 
