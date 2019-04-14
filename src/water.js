@@ -15,13 +15,13 @@ class Water extends Base {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.lightSpecularIntensity = 1;
-        this.lightSpecularHardness = 40;
+        this.lightSpecularIntensity = 0.7;
+        this.lightSpecularHardness = 100;
         this.reflectionScale = 90;
         this.distortionScale = 1000;
         this.distortionStrength = 0.1;
         this.distortionScale = 20;
-        this.normMapDepth = 0;
+        this.normMapDepth = 1;
         this.animationDuration = 20;
 
         this.gui = datGui.addFolder('Water');
@@ -30,7 +30,7 @@ class Water extends Base {
         this.gui.add(this, 'reflectionScale');
         this.gui.add(this, 'distortionStrength');
         this.gui.add(this, 'distortionScale');
-        this.gui.add(this, 'normMapDepth', 0.0, 10);
+        this.gui.add(this, 'normMapDepth', 0, 1);
         this.gui.add(this, 'animationDuration');
     }
 

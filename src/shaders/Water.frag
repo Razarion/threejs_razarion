@@ -21,6 +21,10 @@ uniform float animation;
 
 const vec3 SPECULAR_LIGHT_COLOR = vec3(1.0, 1.0, 1.0);
 
+vec3 vec3ToReg(vec3 normVec) {
+    return normVec * 0.5 + 0.5;
+}
+
 vec3 setupSpecularLight(vec3 correctedLightDirection, vec3 correctedNorm, float intensity, float hardness) {
     vec3 reflectionDirection = normalize(reflect(correctedLightDirection, normalize(correctedNorm)));
     vec3 eyeDirection = normalize(-vVertexPosition.xyz);
@@ -36,13 +40,13 @@ void setupWater(inout vec3 ambient, inout vec3 specular) {
     vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
     vec2 totalDistortion = distortion1 + distortion2;
     vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
-    ambient = texture2D(uReflection, reflectionCoord).rgb;
+    ambient = texture2D(uReflection, reflectionCoord).rgb * ambientLightColor;
     // Setup norm map and light
     vec3 correctedLightDirection = normalize(directionalLights[0].direction);
     vec3 normMap1 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).xyz;
     vec3 normMap2 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).xyz;
-    vec3 normMap = normMap1 + normMap2;
-    normMap = normalize(vec3(normMap.x * 2.0 - 1.0, normMap.y * 2.0 - 1.0, normMap.z * 2.0 - 1.0));
+    vec3 normMap = (normMap1 + normMap2) / 2.0;
+    normMap = vec3(normMap.x * 2.0 - 1.0, normMap.y * 2.0 - 1.0, normMap.z * 2.0 - 1.0);
     normMap = mix(vec3(0.0, 0.0, 1.0), normMap, uNormMapDepth);
     vec3 correctedNorm = normalize(normalMatrix * normMap);
     specular = setupSpecularLight(correctedLightDirection, correctedNorm, uLightSpecularIntensity, uLightSpecularHardness);
