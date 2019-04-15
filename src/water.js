@@ -36,7 +36,44 @@ class Water extends Base {
     }
 
     generateMesh(scene) {
-        let geometry = this.setupGeometry(this.x, this.y, this.width, this.height);
+        let geometry = new THREE.BufferGeometry();
+        let xShallow = 60;
+        let vertices = new Float32Array([
+            24, 0, 0,
+            xShallow, 0, 0,
+            xShallow, 1000, 0,
+
+            xShallow, 1000, 0,
+            24, 1000, 0,
+            24, 0, 0,
+
+            xShallow, 20, 0,
+            1000, 20, 0,
+            1000, 1000, 0,
+
+            1000, 1000, 0,
+            xShallow, 1000, 0,
+            xShallow, 20, 0
+        ]);
+        geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
+        let transparencies = new Float32Array([
+            0,
+            1,
+            1,
+
+            1,
+            0,
+            0,
+
+            1,
+            1,
+            1,
+
+            1,
+            1,
+            1
+        ]);
+        geometry.addAttribute('transparency', new THREE.BufferAttribute(transparencies, 1));
         let loader = new THREE.TextureLoader();
         let reflection = loader.load(waterSurfaceTextureUrl);
         reflection.wrapS = THREE.RepeatWrapping;

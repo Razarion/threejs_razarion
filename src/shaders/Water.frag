@@ -3,6 +3,7 @@
 
 varying vec3 vVertexPosition;
 varying vec3 vWorldVertexPosition;
+varying float vTransparency;
 
 // Light
 uniform float uLightSpecularIntensity;
@@ -57,5 +58,5 @@ void main(void) {
     vec3 ambient;
     vec3 specular;
     setupWater(ambient, specular);
-    gl_FragColor = vec4(ambient + specular, uTransparency);
+    gl_FragColor = vec4(ambient + specular, vTransparency * uTransparency);
 }
