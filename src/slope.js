@@ -1,6 +1,6 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import textureUrl from "./textures/Sand02.png";
+import textureUrl from "./textures/Sand03.png";
 import normalMapUrl from "./textures/SandNormMap01.png";
 
 class Slope extends Base {
@@ -39,7 +39,7 @@ class Slope extends Base {
         }
         geometry.computeVertexNormals();
 
-        let textureScale = 10;
+        let textureScale = 1;
         let texture = this.setupTexture(textureUrl, textureScale);
         let normalMap = this.setupTexture(normalMapUrl, textureScale);
         this.material = new THREE.MeshStandardMaterial({
@@ -56,7 +56,7 @@ class Slope extends Base {
         this.gui.add(this.material, "metalness", 0, 1);
         this.gui.add(this.material, "roughness", 0, 1);
         let normalScaleModel = {normalScale: 1.0};
-        this.gui.add(normalScaleModel, 'normalScale', -1, 1).onChange(() => this.material.normalScale.set(normalScaleModel.normalScale, normalScaleModel.normalScale));
+        this.gui.add(normalScaleModel, 'normalScale', -5, 5).onChange(() => this.material.normalScale.set(normalScaleModel.normalScale, normalScaleModel.normalScale));
 
         // this.gui.add(this.material, "wireframe", 0, 1);
 

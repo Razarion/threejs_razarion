@@ -37,7 +37,7 @@ class Water extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        let xShallow = 60;
+        let xShallow = 20;
         let vertices = new Float32Array([
             24, 0, 0,
             xShallow, 0, 0,
@@ -57,13 +57,13 @@ class Water extends Base {
         ]);
         geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
         let transparencies = new Float32Array([
-            0,
+            0.0,
             1,
             1,
 
             1,
-            0,
-            0,
+            0.0,
+            0.0,
 
             1,
             1,

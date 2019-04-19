@@ -23,7 +23,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 let terrainShape = js2Terrain([
-    [1, 0.5, 0.3, 0, -0.5, -1, -1.5, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+    [1, 0.5, 0.3, 0, -0.3, -1, -1.5],
 ]);
 let slope = new Slope(0, 0, 1000, terrainShape, datGui);
 slope.generateMesh(scene);
