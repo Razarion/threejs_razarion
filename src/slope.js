@@ -1,7 +1,6 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import waterVertexShaderUrl from './shaders/Slope.vert';
-import waterFragmentShaderUrl from './shaders/Slope.frag';
+import sandTextureUrl from "./textures/Sand.jpg";
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui) {
@@ -38,31 +37,29 @@ class Slope extends Base {
             }
         }
         geometry.computeVertexNormals();
-        this.material = new THREE.ShaderMaterial({
-            uniforms: THREE.UniformsUtils.merge([
-                THREE.UniformsLib["lights"],
-                {
-                    uWaterLevel: {value: this.waterLevel},
-                    uWaterGround: {value: this.waterLevel},
-                    uUnderWaterTopColor: {type: "c", value: this.underWaterTopColor},
-                    uUnderWaterBottomColor: {type: "c", value: this.underWaterBottomColor},
-                }
-            ]),
-            vertexShader: waterVertexShaderUrl,
-            fragmentShader: waterFragmentShaderUrl
-        });
-        this.material.lights = true;
-        this.gui.add(this.material, "wireframe", 0, 1);
 
-        scene.add(new THREE.Mesh(geometry, new THREE.MeshNormalMaterial()));
-        // scene.add(new THREE.Mesh(geometry, this.material));
+        let texture = new THREE.TextureLoader().load(sandTextureUrl);
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        let textureScale = 10;
+        texture.repeat = new THREE.Vector2(textureScale, textureScale * this.yLength / xLength);
+        this.material = new THREE.MeshStandardMaterial({
+            metalness: 1.0,
+            map: texture,
+            }
+        );
+        this.gui.add(this.material, "metalness", 0, 1);
+        this.gui.add(this.material, "roughness", 0, 1);
+        // this.gui.add(this.material, "wireframe", 0, 1);
+
+        scene.add(new THREE.Mesh(geometry, this.material));
     }
 
     update() {
-        this.material.uniforms.uWaterLevel.value = this.waterLevel;
-        this.material.uniforms.uWaterGround.value = this.waterGround;
-        this.material.uniforms.uUnderWaterTopColor.value = this.underWaterTopColor;
-        this.material.uniforms.uUnderWaterBottomColor.value = this.underWaterBottomColor;
+        // this.material.uniforms.uWaterLevel.value = this.waterLevel;
+        // this.material.uniforms.uWaterGround.value = this.waterGround;
+        // this.material.uniforms.uUnderWaterTopColor.value = this.underWaterTopColor;
+        // this.material.uniforms.uUnderWaterBottomColor.value = this.underWaterBottomColor;
     }
 }
 
