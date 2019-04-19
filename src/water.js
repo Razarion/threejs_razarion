@@ -48,12 +48,12 @@ class Water extends Base {
             24, 0, 0,
 
             xShallow, 20, 0,
-            1000, 20, 0,
+            1000, 0, 0,
             1000, 1000, 0,
 
             1000, 1000, 0,
             xShallow, 1000, 0,
-            xShallow, 20, 0
+            xShallow, 0, 0
         ]);
         geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
         let transparencies = new Float32Array([
