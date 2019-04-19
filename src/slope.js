@@ -48,6 +48,8 @@ class Slope extends Base {
             map: texture,
             }
         );
+        this.material.metalness = 0;
+        this.material.roughness = 0.5;
         this.gui.add(this.material, "metalness", 0, 1);
         this.gui.add(this.material, "roughness", 0, 1);
         // this.gui.add(this.material, "wireframe", 0, 1);
