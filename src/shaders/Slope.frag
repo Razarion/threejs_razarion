@@ -46,5 +46,5 @@ void main(void) {
         gl_FragColor = setupColor(ambient, diffuse, vec3(0.0, 0.0, 0.0), false, false);
     }
 
-    // gl_FragColor = vec4(vec3ToReg(vNormal), 10);
+    // gl_FragColor = vec4(vec3ToReg(vNormal), 1.0);
 }

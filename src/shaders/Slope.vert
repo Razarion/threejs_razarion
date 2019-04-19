@@ -3,7 +3,7 @@ varying vec3 vWorldVertexPosition;
 varying vec3 vNormal;
 
 void main(void) {
-   #include <beginnormal_vertex>
+    #include <beginnormal_vertex>
 
     vVertexPosition = (viewMatrix * vec4(position, 1.0)).xyz;
     vWorldVertexPosition = position.xyz;
