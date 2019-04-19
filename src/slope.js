@@ -1,6 +1,7 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import sandTextureUrl from "./textures/Sand.jpg";
+import textureUrl from "./textures/Sand02.png";
+import normalMapUrl from "./textures/SandNormMap01.png";
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui) {
@@ -25,10 +26,10 @@ class Slope extends Base {
     generateMesh(scene) {
         let xSegments = this.terrainShape.length - 1;
         let ySegments = Math.floor(this.yLength / Base.EDGE_LENGTH);
-        let xLength = xSegments * Base.EDGE_LENGTH;
+        this.xLength = xSegments * Base.EDGE_LENGTH;
         this.yLength = ySegments * Base.EDGE_LENGTH;
-        let geometry = new THREE.PlaneBufferGeometry(xLength, this.yLength, xSegments, ySegments);
-        geometry.translate(this.x + xLength / 2, this.y + this.yLength / 2, 0);
+        let geometry = new THREE.PlaneBufferGeometry(this.xLength, this.yLength, xSegments, ySegments);
+        geometry.translate(this.x + this.xLength / 2, this.y + this.yLength / 2, 0);
         let index = 0;
         for (let y = 0; y <= ySegments; y++) {
             for (let x = 0; x <= xSegments; x++) {
@@ -38,23 +39,36 @@ class Slope extends Base {
         }
         geometry.computeVertexNormals();
 
-        let texture = new THREE.TextureLoader().load(sandTextureUrl);
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
         let textureScale = 10;
-        texture.repeat = new THREE.Vector2(textureScale, textureScale * this.yLength / xLength);
+        let texture = this.setupTexture(textureUrl, textureScale);
+        let normalMap = this.setupTexture(normalMapUrl, textureScale);
         this.material = new THREE.MeshStandardMaterial({
-            metalness: 1.0,
-            map: texture,
+                metalness: 1.0,
+                map: texture,
+                normalMap: normalMap,
+                // normalMapType: TangentSpaceNormalMap,
             }
         );
+
         this.material.metalness = 0;
         this.material.roughness = 0.5;
+
         this.gui.add(this.material, "metalness", 0, 1);
         this.gui.add(this.material, "roughness", 0, 1);
+        let normalScaleModel = {normalScale: 1.0};
+        this.gui.add(normalScaleModel, 'normalScale', -1, 1).onChange(() => this.material.normalScale.set(normalScaleModel.normalScale, normalScaleModel.normalScale));
+
         // this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
+    }
+
+    setupTexture(textureUrl, textureScale) {
+        let texture = new THREE.TextureLoader().load(textureUrl);
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat = new THREE.Vector2(textureScale, textureScale * this.yLength / this.xLength);
+        return texture;
     }
 
     update() {
