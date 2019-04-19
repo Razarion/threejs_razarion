@@ -1,12 +1,17 @@
 #include <common>
 #include <lights_pars_begin>
 
+varying vec3 vNormal;
 varying vec3 vWorldVertexPosition;
 // Water
 uniform float uWaterLevel;
 uniform float uWaterGround;
 uniform vec3 uUnderWaterTopColor;
 uniform vec3 uUnderWaterBottomColor;
+
+vec3 vec3ToReg(vec3 normVec) {
+    return normVec * 0.5 + 0.5;
+}
 
 vec4 setupColor(vec3 ambient, vec3 diffuse, vec3 specular, bool shadow, bool terrainMarker) {
     float shadowFactor = 1.0;
@@ -40,4 +45,6 @@ void main(void) {
         setupUnderWater(ambient, diffuse, underWaterFactor);
         gl_FragColor = setupColor(ambient, diffuse, vec3(0.0, 0.0, 0.0), false, false);
     }
+
+    // gl_FragColor = vec4(vec3ToReg(vNormal), 10);
 }

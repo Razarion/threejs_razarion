@@ -37,6 +37,7 @@ class Slope extends Base {
                 index++;
             }
         }
+        geometry.computeVertexNormals();
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
@@ -53,7 +54,8 @@ class Slope extends Base {
         this.material.lights = true;
         this.gui.add(this.material, "wireframe", 0, 1);
 
-        scene.add(new THREE.Mesh(geometry, this.material));
+        scene.add(new THREE.Mesh(geometry, new THREE.MeshNormalMaterial()));
+        // scene.add(new THREE.Mesh(geometry, this.material));
     }
 
     update() {
