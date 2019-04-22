@@ -10,14 +10,7 @@ let datGui = new dat.GUI();
 
 let scene = new THREE.Scene();
 
-let slopeDepthScene = new THREE.Scene();
-let slopeDepthTarget = new THREE.WebGLRenderTarget(512, 512, {minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter, wrapS: THREE.RepeatWrapping, wrapT: THREE.RepeatWrapping});
-slopeDepthTarget.depthBuffer = true;
-slopeDepthTarget.depthTexture = new THREE.DepthTexture();
-slopeDepthTarget.depthTexture.type = THREE.UnsignedShortType;
-
-
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 70, 250);
+let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.x = 100;
 camera.position.y = 600;
 camera.position.z = 80;
@@ -30,12 +23,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 let terrainShape = js2Terrain([
-    [1, 0.5, 0.3, 0, -0.3, -1, -1.5],
+    [0.9, 0.6, 0.3, 0, -0.3, -0.6, -0.9],
 ]);
 let slope = new Slope(0, 0, 1000, terrainShape, datGui);
-slope.generateMesh(scene, slopeDepthScene);
+slope.generateMesh(scene);
 
-let water = new Water(20, 0, 1000, 1000, datGui);
+let water = new Water(0, 0, 1000, 1000, datGui);
 water.generateMesh(scene);
 
 setupLight();
@@ -46,10 +39,6 @@ let animate = function () {
     try {
         water.update();
         slope.update();
-        renderer.setRenderTarget(slopeDepthTarget);
-        renderer.render(slopeDepthScene, camera);
-        renderer.setRenderTarget(null);
-        water.updateRgbDepthTexture(slopeDepthTarget);
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
     } catch (err) {

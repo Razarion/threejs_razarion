@@ -3,7 +3,7 @@
 
 varying vec3 vVertexPosition;
 varying vec3 vWorldVertexPosition;
-varying float vTransparency;
+varying float vDepth;
 varying vec4 vNdcPosition;
 
 // Light
@@ -61,16 +61,17 @@ void main(void) {
     vec3 specular;
     setupWater(ambient, specular);
 
-    vec3 ndcPosition = vNdcPosition.xyz / vNdcPosition.w;
-    vec2 texCoordinate = ndcPosition.xy * 0.5 + 0.5;
-    float depthTestureZ = texture2D(uRgbDepthTexture, texCoordinate).r;
-    float actualZ = ndcPosition.z * 0.5 + 0.5;
 
-    float near = 70.0;
-    float far = 250.0;
-    float xxx = 2.0 * near * far / (far + near - (2.0 * depthTestureZ - 1.0) * (far - near));
-
-
-    gl_FragColor = vec4(ambient + specular, (depthTestureZ - actualZ)  * 100.0);
-    gl_FragColor = vec4(xxx, 0.0, 0.0, 1.0);
+    /////
+    float z = vWorldVertexPosition.x * (-0.0375) + 0.9;
+    float transitionTransparency;
+    if(z > 0.0) {
+        transitionTransparency = 0.0;
+        return;
+    } else if (z < -1.0){
+        transitionTransparency = 1.0;
+    } else {
+        transitionTransparency = -z;
+    }
+    gl_FragColor = vec4(ambient + specular, uTransparency * transitionTransparency);
 }

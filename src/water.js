@@ -21,7 +21,7 @@ class Water extends Base {
         this.distortionStrength = 0.1;
         this.distortionScale = 20;
         this.normMapDepth = 1;
-        this.transparency = 0.0;
+        this.transparency = 0.5;
         this.animationDuration = 20;
 
         this.gui = datGui.addFolder('Water');
@@ -37,33 +37,24 @@ class Water extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        let xShallow = 20;
         let vertices = new Float32Array([
-            24, 0, 0,
-            xShallow, 0, 0,
-            xShallow, 1000, 0,
-
-            xShallow, 1000, 0,
-            24, 1000, 0,
-            24, 0, 0,
-
-            xShallow, 20, 0,
+            0, 0, 0,
             1000, 0, 0,
             1000, 1000, 0,
 
             1000, 1000, 0,
-            xShallow, 1000, 0,
-            xShallow, 0, 0
+            0, 1000, 0,
+            0, 0, 0
         ]);
         geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
         let transparencies = new Float32Array([
-            0,
+            1,
             1,
             1,
 
             1,
-            0,
-            0,
+            1,
+            1,
 
             1,
             1,
@@ -73,7 +64,7 @@ class Water extends Base {
             1,
             1
         ]);
-        geometry.addAttribute('transparency', new THREE.BufferAttribute(transparencies, 1));
+        geometry.addAttribute('depth', new THREE.BufferAttribute(transparencies, 1));
         let loader = new THREE.TextureLoader();
         let reflection = loader.load(waterSurfaceTextureUrl);
         reflection.wrapS = THREE.RepeatWrapping;
@@ -81,9 +72,9 @@ class Water extends Base {
         let distortionMap = loader.load(distortionMapUrl);
         distortionMap.wrapS = THREE.RepeatWrapping;
         distortionMap.wrapT = THREE.RepeatWrapping;
-        this.normMap = loader.load(normMapUrl);
-        this.normMap.wrapS = THREE.RepeatWrapping;
-        this.normMap.wrapT = THREE.RepeatWrapping;
+        let normMap = loader.load(normMapUrl);
+        normMap.wrapS = THREE.RepeatWrapping;
+        normMap.wrapT = THREE.RepeatWrapping;
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
@@ -98,7 +89,6 @@ class Water extends Base {
                     uNormMap: {value: null},
                     uNormMapDepth: {value: this.normMapDepth},
                     uTransparency: {value: 0.9},
-                    uRgbDepthTexture: {value: null},
                     animation: {value: this.setupWaterAnimation()}
                 }
             ]),
@@ -107,7 +97,7 @@ class Water extends Base {
         });
         this.material.uniforms.uReflection.value = reflection;
         this.material.uniforms.uDistortionMap.value = distortionMap;
-        this.material.uniforms.uNormMap.value = this.normMap;
+        this.material.uniforms.uNormMap.value = normMap;
         this.material.lights = true;
         this.material.transparent = true;
         this.gui.add(this.material, "wireframe", 0, 1);
@@ -124,10 +114,6 @@ class Water extends Base {
         this.material.uniforms.uNormMapDepth.value = this.normMapDepth;
         this.material.uniforms.uTransparency.value = this.transparency;
         this.material.uniforms.animation.value = this.setupWaterAnimation();
-    }
-
-    updateRgbDepthTexture(rbgDepthTexture) {
-        this.material.uniforms.uRgbDepthTexture.value = rbgDepthTexture.depthTexture;
     }
 
     setupWaterAnimation() {
