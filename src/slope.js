@@ -23,7 +23,7 @@ class Slope extends Base {
         this.gui.addColor(holder2, 'underWaterBottomColor').onChange(() => this.underWaterBottomColor.setHex(holder2.underWaterBottomColor));
     }
 
-    generateMesh(scene) {
+    generateMesh(scene, bufferScene) {
         let xSegments = this.terrainShape.length - 1;
         let ySegments = Math.floor(this.yLength / Base.EDGE_LENGTH);
         this.xLength = xSegments * Base.EDGE_LENGTH;
@@ -61,6 +61,7 @@ class Slope extends Base {
         // this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
+        bufferScene.add(new THREE.Mesh(geometry, this.material));
     }
 
     setupTexture(textureUrl, textureScale) {

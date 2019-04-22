@@ -4,6 +4,7 @@
 varying vec3 vVertexPosition;
 varying vec3 vWorldVertexPosition;
 varying float vTransparency;
+varying vec4 vNdcPosition;
 
 // Light
 uniform float uLightSpecularIntensity;
@@ -18,11 +19,12 @@ uniform float uReflectionScale;
 uniform sampler2D uReflection;
 uniform float uDistortionScale;
 uniform float uDistortionStrength;
+uniform sampler2D uRgbDepthTexture;
 uniform float animation;
 
 const vec3 SPECULAR_LIGHT_COLOR = vec3(1.0, 1.0, 1.0);
 
-vec3 vec3ToReg(vec3 normVec) {
+vec3 vec3ToRgb(vec3 normVec) {
     return normVec * 0.5 + 0.5;
 }
 
@@ -58,5 +60,17 @@ void main(void) {
     vec3 ambient;
     vec3 specular;
     setupWater(ambient, specular);
-    gl_FragColor = vec4(ambient + specular, vTransparency * uTransparency);
+
+    vec3 ndcPosition = vNdcPosition.xyz / vNdcPosition.w;
+    vec2 texCoordinate = ndcPosition.xy * 0.5 + 0.5;
+    float depthTestureZ = texture2D(uRgbDepthTexture, texCoordinate).r;
+    float actualZ = ndcPosition.z * 0.5 + 0.5;
+
+    float near = 70.0;
+    float far = 250.0;
+    float xxx = 2.0 * near * far / (far + near - (2.0 * depthTestureZ - 1.0) * (far - near));
+
+
+    gl_FragColor = vec4(ambient + specular, (depthTestureZ - actualZ)  * 100.0);
+    gl_FragColor = vec4(xxx, 0.0, 0.0, 1.0);
 }

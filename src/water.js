@@ -57,13 +57,13 @@ class Water extends Base {
         ]);
         geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
         let transparencies = new Float32Array([
-            0.0,
+            0,
             1,
             1,
 
             1,
-            0.0,
-            0.0,
+            0,
+            0,
 
             1,
             1,
@@ -81,9 +81,9 @@ class Water extends Base {
         let distortionMap = loader.load(distortionMapUrl);
         distortionMap.wrapS = THREE.RepeatWrapping;
         distortionMap.wrapT = THREE.RepeatWrapping;
-        let normMap = loader.load(normMapUrl);
-        normMap.wrapS = THREE.RepeatWrapping;
-        normMap.wrapT = THREE.RepeatWrapping;
+        this.normMap = loader.load(normMapUrl);
+        this.normMap.wrapS = THREE.RepeatWrapping;
+        this.normMap.wrapT = THREE.RepeatWrapping;
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
@@ -98,6 +98,7 @@ class Water extends Base {
                     uNormMap: {value: null},
                     uNormMapDepth: {value: this.normMapDepth},
                     uTransparency: {value: 0.9},
+                    uRgbDepthTexture: {value: null},
                     animation: {value: this.setupWaterAnimation()}
                 }
             ]),
@@ -106,7 +107,7 @@ class Water extends Base {
         });
         this.material.uniforms.uReflection.value = reflection;
         this.material.uniforms.uDistortionMap.value = distortionMap;
-        this.material.uniforms.uNormMap.value = normMap;
+        this.material.uniforms.uNormMap.value = this.normMap;
         this.material.lights = true;
         this.material.transparent = true;
         this.gui.add(this.material, "wireframe", 0, 1);
@@ -123,6 +124,10 @@ class Water extends Base {
         this.material.uniforms.uNormMapDepth.value = this.normMapDepth;
         this.material.uniforms.uTransparency.value = this.transparency;
         this.material.uniforms.animation.value = this.setupWaterAnimation();
+    }
+
+    updateRgbDepthTexture(rbgDepthTexture) {
+        this.material.uniforms.uRgbDepthTexture.value = rbgDepthTexture.depthTexture;
     }
 
     setupWaterAnimation() {

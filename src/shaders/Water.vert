@@ -2,6 +2,7 @@ attribute float transparency;
 
 varying vec3 vVertexPosition;
 varying vec3 vWorldVertexPosition;
+varying vec4 vNdcPosition;
 varying float vTransparency;
 
 void main(void) {
@@ -9,5 +10,6 @@ void main(void) {
     vWorldVertexPosition = position.xyz;
 
     vTransparency = transparency;
-    gl_Position = projectionMatrix * modelMatrix * vec4(vVertexPosition, 1.0);
+    vNdcPosition = projectionMatrix * modelMatrix * vec4(vVertexPosition, 1.0);
+    gl_Position =  vNdcPosition;
 }

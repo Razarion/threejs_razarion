@@ -10,7 +10,14 @@ let datGui = new dat.GUI();
 
 let scene = new THREE.Scene();
 
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+let slopeDepthScene = new THREE.Scene();
+let slopeDepthTarget = new THREE.WebGLRenderTarget(512, 512, {minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter, wrapS: THREE.RepeatWrapping, wrapT: THREE.RepeatWrapping});
+slopeDepthTarget.depthBuffer = true;
+slopeDepthTarget.depthTexture = new THREE.DepthTexture();
+slopeDepthTarget.depthTexture.type = THREE.UnsignedShortType;
+
+
+let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 70, 250);
 camera.position.x = 100;
 camera.position.y = 600;
 camera.position.z = 80;
@@ -26,7 +33,7 @@ let terrainShape = js2Terrain([
     [1, 0.5, 0.3, 0, -0.3, -1, -1.5],
 ]);
 let slope = new Slope(0, 0, 1000, terrainShape, datGui);
-slope.generateMesh(scene);
+slope.generateMesh(scene, slopeDepthScene);
 
 let water = new Water(20, 0, 1000, 1000, datGui);
 water.generateMesh(scene);
@@ -39,6 +46,10 @@ let animate = function () {
     try {
         water.update();
         slope.update();
+        renderer.setRenderTarget(slopeDepthTarget);
+        renderer.render(slopeDepthScene, camera);
+        renderer.setRenderTarget(null);
+        water.updateRgbDepthTexture(slopeDepthTarget);
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
     } catch (err) {
@@ -74,8 +85,8 @@ function setupLight() {
 
 function setupCameraGui() {
     let gui = datGui.addFolder('Camera');
-    gui.add(camera.position, 'x', 0, 100, 0.1);
-    gui.add(camera.position, 'y', 0, 100, 0.1);
+    gui.add(camera.position, 'x', 0, 200, 0.1);
+    gui.add(camera.position, 'y', 0, 1000, 0.1);
     gui.add(camera.position, 'z', 0, 200, 0.1);
     gui.add(camera.rotation, 'x', 0.0, Math.PI / 2, 0.01);
     gui.open();
