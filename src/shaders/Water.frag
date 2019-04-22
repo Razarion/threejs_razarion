@@ -61,13 +61,10 @@ void main(void) {
     vec3 specular;
     setupWater(ambient, specular);
 
-
-    /////
     float z = vWorldVertexPosition.x * (-0.0375) + 0.9;
     float transitionTransparency;
     if(z > 0.0) {
         transitionTransparency = 0.0;
-        return;
     } else if (z < -1.0){
         transitionTransparency = 1.0;
     } else {
