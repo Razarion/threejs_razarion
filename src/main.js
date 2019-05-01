@@ -34,7 +34,7 @@ document.body.appendChild(renderer.domElement);
 let groundLevel = -0.9;
 
 let terrainShape = js2Terrain([
-    [0.9, 0.6, 0.3, 0, -0.3, -0.6, groundLevel],
+    [0.9, 0.6, 0.3, 0, -0.3, -0.6, groundLevel, groundLevel],
 ]);
 let slope = new Slope(0, 0, 1000, terrainShape, datGui);
 slope.generateMesh(scene);
@@ -42,7 +42,7 @@ slope.generateMesh(scene);
 let water = new Water(0, 0, 1000, 1000, datGui);
 water.generateMesh(scene);
 
-let underWater = new UnderWater(48, 0, groundLevel, 1000, 1000, datGui);
+let underWater = new UnderWater(56, 0, groundLevel, 1000, 1000, datGui);
 underWater.generateMesh(scene);
 
 setupLight();

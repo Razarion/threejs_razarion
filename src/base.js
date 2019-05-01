@@ -7,7 +7,7 @@ class Base {
 
     setupTexture(textureUrl, textureScale, xLength, yLength) {
         let texture = new THREE.TextureLoader().load(textureUrl);
-        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapS = THREE.ClampToEdgeWrapping;
         texture.wrapT = THREE.RepeatWrapping;
         texture.repeat = new THREE.Vector2(textureScale, textureScale * yLength / xLength);
         return texture;

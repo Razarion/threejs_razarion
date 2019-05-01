@@ -1,6 +1,6 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import groundTextureUrl from "./textures/NormalMaps3.png";
+import groundTextureUrl from "./textures/UnderWater.png";
 
 class UnderWater extends Base {
     constructor(x, y, z, xLength, yLength, datGui) {
