@@ -40,13 +40,11 @@ class Slope extends Base {
         geometry.computeVertexNormals();
 
         let textureScale = 1;
-        let texture = this.setupTexture(textureUrl, textureScale);
-        let bumpMap = this.setupTexture(bumpMapUrl, textureScale);
+        let texture = this.setupTexture(textureUrl, textureScale, this.xLength, this.yLength);
+        let bumpMap = this.setupTexture(bumpMapUrl, textureScale, this.xLength, this.yLength);
         this.material = new THREE.MeshStandardMaterial({
-                metalness: 1.0,
                 map: texture,
                 bumpMap : bumpMap,
-                // normalMapType: TangentSpaceNormalMap,
             }
         );
 
@@ -57,17 +55,9 @@ class Slope extends Base {
         this.gui.add(this.material, "roughness", 0, 1);
         this.gui.add(this.material, "bumpScale", -5, 5);
 
-        // this.gui.add(this.material, "wireframe", 0, 1);
+        this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
-    }
-
-    setupTexture(textureUrl, textureScale) {
-        let texture = new THREE.TextureLoader().load(textureUrl);
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat = new THREE.Vector2(textureScale, textureScale * this.yLength / this.xLength);
-        return texture;
     }
 
     update() {

@@ -3,6 +3,7 @@ import {Water} from "./water";
 import {Slope} from "./slope";
 import {js2Terrain} from "./utils";
 import dat from "dat.gui";
+import {UnderWater} from "./under-water";
 
 document.addEventListener('mousemove', onDocumentMouseMove, false);
 
@@ -22,14 +23,19 @@ let renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+let groundLevel = -0.9;
+
 let terrainShape = js2Terrain([
-    [0.9, 0.6, 0.3, 0, -0.3, -0.6, -0.9],
+    [0.9, 0.6, 0.3, 0, -0.3, -0.6, groundLevel],
 ]);
 let slope = new Slope(0, 0, 1000, terrainShape, datGui);
 slope.generateMesh(scene);
 
 let water = new Water(0, 0, 1000, 1000, datGui);
 water.generateMesh(scene);
+
+let underWater = new UnderWater(48, 0, groundLevel, 1000, 1000, datGui);
+underWater.generateMesh(scene);
 
 setupLight();
 
@@ -74,9 +80,9 @@ function setupLight() {
 
 function setupCameraGui() {
     let gui = datGui.addFolder('Camera');
-    gui.add(camera.position, 'x', 0, 200, 0.1);
-    gui.add(camera.position, 'y', 0, 1000, 0.1);
-    gui.add(camera.position, 'z', 0, 200, 0.1);
+    gui.add(camera.position, 'x', -10, 200, 0.1);
+    gui.add(camera.position, 'y', -10, 1000, 0.1);
+    gui.add(camera.position, 'z', -10, 200, 0.1);
     gui.add(camera.rotation, 'x', 0.0, Math.PI / 2, 0.01);
     gui.open();
 
