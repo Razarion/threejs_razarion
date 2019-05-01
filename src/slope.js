@@ -1,7 +1,7 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import textureUrl from "./textures/Sand03.png";
-import bumpMapUrl from "./textures/SandBumpMap.png";
+import textureUrl from "./textures/Grey512.png";
+import bumpMapUrl from "./textures/NormalMaps3.png";
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui) {
@@ -44,7 +44,8 @@ class Slope extends Base {
         let bumpMap = this.setupTexture(bumpMapUrl, textureScale, this.xLength, this.yLength);
         this.material = new THREE.MeshStandardMaterial({
                 map: texture,
-                bumpMap : bumpMap,
+                // bumpMap: bumpMap,
+                normalMap: bumpMap,
             }
         );
 
@@ -53,11 +54,13 @@ class Slope extends Base {
 
         this.gui.add(this.material, "metalness", 0, 1);
         this.gui.add(this.material, "roughness", 0, 1);
-        this.gui.add(this.material, "bumpScale", -5, 5);
+        // this.gui.add(this.material, "bumpScale", -5, 5);
+        let normalScaleModel = {normalScale: 1.0};
+        this.gui.add(normalScaleModel, 'normalScale', -5, 5).onChange(() => this.material.normalScale.set(normalScaleModel.normalScale, normalScaleModel.normalScale));
 
         this.gui.add(this.material, "wireframe", 0, 1);
 
-        scene.add(new THREE.Mesh(geometry, this.material));
+        scene.add(new THREE.Mesh(geometry, new THREE.MeshNormalMaterial()));
     }
 
     update() {

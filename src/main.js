@@ -11,6 +11,8 @@ let datGui = new dat.GUI();
 
 let scene = new THREE.Scene();
 
+let directionalLightHelper;
+
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.x = 100;
 camera.position.y = 600;
@@ -40,6 +42,7 @@ underWater.generateMesh(scene);
 setupLight();
 
 let animate = function () {
+    directionalLightHelper.update();
     requestAnimationFrame(animate);
 
     try {
@@ -60,6 +63,8 @@ function setupLight() {
     let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(0.041237113402061855, -0.38144329896907214, 0.9234719866622141);
     scene.add(directionalLight);
+    directionalLightHelper = new THREE.DirectionalLightHelper( directionalLight, 5 );
+    scene.add(directionalLightHelper);
 
     let gui = datGui.addFolder('Light');
     let ambientLightGui = gui.addFolder('Ambient Light');
