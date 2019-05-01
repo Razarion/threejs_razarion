@@ -5,7 +5,7 @@ import {js2Terrain} from "./utils";
 import dat from "dat.gui";
 import {UnderWater} from "./under-water";
 
-document.addEventListener('mousemove', onDocumentMouseMove, false);
+document.addEventListener('mousedown', onDocumentMouseDown, false);
 
 let datGui = new dat.GUI();
 
@@ -18,6 +18,12 @@ camera.position.x = 100;
 camera.position.y = 600;
 camera.position.z = 80;
 camera.rotation.x = THREE.Math.degToRad(35);
+
+window.addEventListener( 'resize', function (){
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}, false );
 
 setupCameraGui();
 
@@ -63,7 +69,7 @@ function setupLight() {
     let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(0.041237113402061855, -0.38144329896907214, 0.9234719866622141);
     scene.add(directionalLight);
-    directionalLightHelper = new THREE.DirectionalLightHelper( directionalLight, 5 );
+    directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 5);
     scene.add(directionalLightHelper);
 
     let gui = datGui.addFolder('Light');
@@ -93,21 +99,16 @@ function setupCameraGui() {
 
 }
 
-function onDocumentMouseMove(event) {
-    // console.warn(event.clientX + ":" + event.clientY);
-    // let read = new Uint8Array(4);
-    // renderer.getContext().bindFramebuffer(renderer.getContext().FRAMEBUFFER, null);
-    // renderer.getContext().readPixels(event.clientX, event.clientY, 1, 1, renderer.context.RGBA, renderer.context.UNSIGNED_BYTE, read);
-    // console.warn('r:' + read[0] + ' g:' + read[1] + ' b:' + read[2] + ' a:' + read[3]);
-    //
-    //
-    // let windowHalfX = window.innerWidth / 2;
-    // let windowHalfY = window.innerHeight / 2;
-    // let mouseX = event.clientX - windowHalfX;
-    // let mouseY = event.clientY - windowHalfY;
-    //
-    // let read = new Float32Array(4);
-    // renderer.readRenderTargetPixels(renderer.getRenderTarget(), windowHalfX + mouseX, windowHalfY - mouseY, 1, 1, read);
-    // console.warn('r:' + read[0] + ' g:' + read[1] + ' b:' + read[2]);
+function onDocumentMouseDown(event) {
+    let pickingTexture = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
+    renderer.setRenderTarget(pickingTexture);
+    renderer.render(scene, camera);
+    let pixelBuffer = new Uint8Array(4);
+    renderer.readRenderTargetPixels(pickingTexture, event.clientX, window.innerHeight - event.clientY, 1, 1, pixelBuffer);
+    renderer.setRenderTarget(null);
 
+    let normX = (pixelBuffer[0] / 255 * 2) - 1;
+    let normY = (pixelBuffer[1] / 255 * 2) - 1;
+    let normZ = (pixelBuffer[2] / 255 * 2) - 1;
+    console.warn(event.clientX + ':' + event.clientY + '|r:' + pixelBuffer[0] + ' g:' + pixelBuffer[1] + ' b:' + pixelBuffer[2] + '|Norm x:' + normX + ' y:' + normY + ' z:' + normZ);
 }

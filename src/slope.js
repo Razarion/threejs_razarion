@@ -42,13 +42,13 @@ class Slope extends Base {
         let textureScale = 1;
         let texture = this.setupTexture(textureUrl, textureScale, this.xLength, this.yLength);
         let bumpMap = this.setupTexture(bumpMapUrl, textureScale, this.xLength, this.yLength);
+        // this.material = new THREE.MeshNormalMaterial()
         this.material = new THREE.MeshStandardMaterial({
                 map: texture,
                 // bumpMap: bumpMap,
                 normalMap: bumpMap,
             }
         );
-
         this.material.metalness = 0;
         this.material.roughness = 0.5;
 
@@ -60,7 +60,7 @@ class Slope extends Base {
 
         this.gui.add(this.material, "wireframe", 0, 1);
 
-        scene.add(new THREE.Mesh(geometry, new THREE.MeshNormalMaterial()));
+        scene.add(new THREE.Mesh(geometry, this.material));
     }
 
     update() {
