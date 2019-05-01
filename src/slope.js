@@ -1,7 +1,7 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import textureUrl from "./textures/Sand03.png";
-import bumpMapUrl from "./textures/SandBumpMap.png";
+import textureUrl from "./textures/Coast.png";
+import bumpMapUrl from "./textures/CoastBumpMap.png";
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui) {
