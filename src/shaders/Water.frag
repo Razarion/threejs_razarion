@@ -45,13 +45,13 @@ void setupWater(inout vec3 ambient, inout vec3 specular) {
     vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
     ambient = texture2D(uReflection, reflectionCoord).rgb/* * ambientLightColor*/;
     // Setup norm map and light
-    vec3 correctedLightDirection = normalize(directionalLights[0].direction);
-    vec3 normMap1 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).xyz;
-    vec3 normMap2 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).xyz;
+    vec3 correctedLightDirection = -normalize(directionalLights[0].direction);
+    vec3 normMap1 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rgb;
+    vec3 normMap2 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rgb;
     vec3 normMap = (normMap1 + normMap2) / 2.0;
-    normMap = vec3(normMap.x * 2.0 - 1.0, normMap.y * 2.0 - 1.0, normMap.z * 2.0 - 1.0);
-    normMap = mix(vec3(0.0, 0.0, 1.0), normMap, uNormMapDepth);
-    vec3 correctedNorm = normalize(normalMatrix * normMap);
+    normMap = vec3(normMap.r * 2.0 - 1.0, normMap.g * 2.0 - 1.0, normMap.b * 2.0 - 1.0);
+    vec3 correctedNorm = mix(vec3(0.0, 0.0, 1.0), normMap, uNormMapDepth);
+    // vec3 correctedNorm = normalize(normalMatrix * normMap);
     specular = setupSpecularLight(correctedLightDirection, correctedNorm, uLightSpecularIntensity, uLightSpecularHardness);
 }
 // +++ Also used in Slop.frag ends
