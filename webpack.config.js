@@ -24,10 +24,21 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif|dae)$/,
-                use: [
-                    'file-loader'
-                ]
+                use: 'file-loader',
+            },
+            {
+                test: /\.(png|tga)$/,
+                include: [
+                    path.resolve(__dirname, "src/models")
+                ],
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                    },
+                }
             }
+
         ],
     }
 };

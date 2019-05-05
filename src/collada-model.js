@@ -1,4 +1,4 @@
-import ColladaLoader from "three-collada-loader";
+import ColladaLoader from "three-collada-loader-2";
 
 class ColladaModel {
     constructor(x, y,z, modelUrl, datGui) {

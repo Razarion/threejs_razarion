@@ -7,6 +7,15 @@ import {UnderWater} from "./under-water";
 import modelUrl from "./models/HelperCube_8.dae";
 import {ColladaModel} from "./collada-model";
 
+import TMP1 from "./models/Palm_Log.tga";
+import TMP2 from "./models/Palm_Log_nm.tga";
+import TMP3 from "./models/Palm_Leaf.tga";
+import TMP4 from "./models/Palm_Leaf_ln.tga";
+import TMP5 from "./models/Palm_Leaf_hn.tga";
+import TMP6 from "./models/Palm_Leaf_hn.tga";
+import TMP7 from "./models/TextureHelpers512.png";
+
+
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
 let datGui = new dat.GUI();
@@ -17,7 +26,7 @@ let directionalLightHelper;
 
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.x = 100;
-camera.position.y = 600;
+camera.position.y = 0;
 camera.position.z = 80;
 camera.rotation.x = THREE.Math.degToRad(35);
 
