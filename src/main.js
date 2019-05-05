@@ -4,12 +4,12 @@ import {Slope} from "./slope";
 import {js2Terrain} from "./utils";
 import dat from "dat.gui";
 import {UnderWater} from "./under-water";
-import modelUrl from "./models/HelperCube_8.dae";
+import modelUrl from "./models/PalmTree2.dae";
 import {ColladaModel} from "./collada-model";
 
-import TMP1 from "./models/Palm_Log.tga";
+import TMP1 from "./models/Palm_Log.png";
 import TMP2 from "./models/Palm_Log_nm.tga";
-import TMP3 from "./models/Palm_Leaf.tga";
+import TMP3 from "./models/Palm_Leaf.png";
 import TMP4 from "./models/Palm_Leaf_ln.tga";
 import TMP5 from "./models/Palm_Leaf_hn.tga";
 import TMP6 from "./models/Palm_Leaf_hn.tga";

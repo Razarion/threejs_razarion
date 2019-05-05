@@ -5,20 +5,20 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2019-05-05T18:19:56</created>
-    <modified>2019-05-05T18:19:56</modified>
+    <created>2019-05-05T21:15:13</created>
+    <modified>2019-05-05T21:15:13</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_images>
-    <image id="Palm_Log_tga" name="Palm_Log_tga">
-      <init_from>Palm_Log.tga</init_from>
+    <image id="Palm_Log_png" name="Palm_Log_png">
+      <init_from>Palm_Log.png</init_from>
     </image>
     <image id="Palm_Log_nm_tga" name="Palm_Log_nm_tga">
       <init_from>Palm_Log_nm.tga</init_from>
     </image>
-    <image id="Palm_Leaf_tga" name="Palm_Leaf_tga">
-      <init_from>Palm_Leaf.tga</init_from>
+    <image id="Palm_Leaf_png" name="Palm_Leaf_png">
+      <init_from>Palm_Leaf.png</init_from>
     </image>
     <image id="Palm_Leaf_hn_tga" name="Palm_Leaf_hn_tga">
       <init_from>Palm_Leaf_hn.tga</init_from>
@@ -30,14 +30,14 @@
   <library_effects>
     <effect id="ENV_MP_Iraq_Palm_Tree_01-effect">
       <profile_COMMON>
-        <newparam sid="Palm_Log_tga-surface">
+        <newparam sid="Palm_Log_png-surface">
           <surface type="2D">
-            <init_from>Palm_Log_tga</init_from>
+            <init_from>Palm_Log_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="Palm_Log_tga-sampler">
+        <newparam sid="Palm_Log_png-sampler">
           <sampler2D>
-            <source>Palm_Log_tga-surface</source>
+            <source>Palm_Log_png-surface</source>
           </sampler2D>
         </newparam>
         <newparam sid="Palm_Log_nm_tga-surface">
@@ -59,7 +59,7 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <texture texture="Palm_Log_tga-sampler"/>
+              <texture texture="Palm_Log_png-sampler"/>
             </diffuse>
             <index_of_refraction>
               <float sid="index_of_refraction">1</float>
@@ -77,14 +77,14 @@
     </effect>
     <effect id="ENV_MP_Iraq_PlantsSansTrans-effect">
       <profile_COMMON>
-        <newparam sid="Palm_Leaf_tga-surface">
+        <newparam sid="Palm_Leaf_png-surface">
           <surface type="2D">
-            <init_from>Palm_Leaf_tga</init_from>
+            <init_from>Palm_Leaf_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="Palm_Leaf_tga-sampler">
+        <newparam sid="Palm_Leaf_png-sampler">
           <sampler2D>
-            <source>Palm_Leaf_tga-surface</source>
+            <source>Palm_Leaf_png-surface</source>
           </sampler2D>
         </newparam>
         <newparam sid="Palm_Leaf_hn_tga-surface">
@@ -116,7 +116,7 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <texture texture="Palm_Leaf_tga-sampler"/>
+              <texture texture="Palm_Leaf_png-sampler"/>
             </diffuse>
             <index_of_refraction>
               <float sid="index_of_refraction">1</float>
