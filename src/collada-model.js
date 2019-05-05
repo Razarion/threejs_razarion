@@ -15,6 +15,10 @@ class ColladaModel {
             collada.scene.position.x = self.x;
             collada.scene.position.y = self.y;
             collada.scene.position.z = self.z;
+            collada.scene.rotation.x = 0;
+            collada.scene.rotation.y = 0;
+            collada.scene.rotation.z = 0;
+
             scene.add(collada.scene);
         });
     }
