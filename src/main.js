@@ -4,7 +4,7 @@ import {Slope} from "./slope";
 import {js2Terrain} from "./utils";
 import dat from "dat.gui";
 import {UnderWater} from "./under-water";
-import modelUrl from "./models/Palme.dae";
+import modelUrl from "./models/HelperCube_8.dae";
 import {ColladaModel} from "./collada-model";
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
@@ -47,7 +47,7 @@ water.generateMesh(scene);
 let underWater = new UnderWater(56, 0, groundLevel, 1000, 1000, datGui);
 underWater.generateMesh(scene);
 
-let colladaModel = new ColladaModel(16, 24, 0.3, modelUrl, datGui);
+let colladaModel = new ColladaModel(20, 28, 0.0, modelUrl, datGui);
 colladaModel.generateScene(scene);
 
 setupLight();
