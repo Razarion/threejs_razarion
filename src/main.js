@@ -4,6 +4,8 @@ import {Slope} from "./slope";
 import {js2Terrain} from "./utils";
 import dat from "dat.gui";
 import {UnderWater} from "./under-water";
+import modelUrl from "./models/Palme.dae";
+import {ColladaModel} from "./collada-model";
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
@@ -19,11 +21,11 @@ camera.position.y = 600;
 camera.position.z = 80;
 camera.rotation.x = THREE.Math.degToRad(35);
 
-window.addEventListener( 'resize', function (){
+window.addEventListener('resize', function () {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-}, false );
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}, false);
 
 setupCameraGui();
 
@@ -44,6 +46,9 @@ water.generateMesh(scene);
 
 let underWater = new UnderWater(56, 0, groundLevel, 1000, 1000, datGui);
 underWater.generateMesh(scene);
+
+let colladaModel = new ColladaModel(0, 0, modelUrl, datGui);
+colladaModel.generateScene(scene);
 
 setupLight();
 
