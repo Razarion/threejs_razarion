@@ -47,7 +47,7 @@ water.generateMesh(scene);
 let underWater = new UnderWater(56, 0, groundLevel, 1000, 1000, datGui);
 underWater.generateMesh(scene);
 
-let colladaModel = new ColladaModel(0, 0, modelUrl, datGui);
+let colladaModel = new ColladaModel(16, 24, 0.3, modelUrl, datGui);
 colladaModel.generateScene(scene);
 
 setupLight();
