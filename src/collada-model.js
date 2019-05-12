@@ -19,6 +19,13 @@ class ColladaModel {
             collada.scene.rotation.y = 0;
             collada.scene.rotation.z = 0;
 
+            collada.scene.castShadow = true;
+
+
+            for (const child of collada.scene.children) {
+                child.castShadow = true;
+            }
+
             scene.add(collada.scene);
         });
     }

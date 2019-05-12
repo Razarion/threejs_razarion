@@ -1,20 +1,14 @@
 import * as THREE from 'three';
 import {Water} from "./water";
 import {Slope} from "./slope";
-import {js2Terrain} from "./utils";
+import {createSphereMesh, js2Terrain} from "./utils";
 import dat from "dat.gui";
 import {UnderWater} from "./under-water";
 import modelUrl from "./models/PalmTree2.dae";
 import {ColladaModel} from "./collada-model";
 
 import TMP1 from "./models/Palm_Log.png";
-import TMP2 from "./models/Palm_Log_nm.tga";
 import TMP3 from "./models/Palm_Leaf.png";
-import TMP4 from "./models/Palm_Leaf_ln.tga";
-import TMP5 from "./models/Palm_Leaf_hn.tga";
-import TMP6 from "./models/Palm_Leaf_hn.tga";
-import TMP7 from "./models/TextureHelpers512.png";
-
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
@@ -23,6 +17,7 @@ let datGui = new dat.GUI();
 let scene = new THREE.Scene();
 
 let directionalLightHelper;
+let shadowCameraHelper;
 
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.x = 100;
@@ -39,6 +34,7 @@ window.addEventListener('resize', function () {
 setupCameraGui();
 
 let renderer = new THREE.WebGLRenderer();
+renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -59,6 +55,8 @@ underWater.generateMesh(scene);
 let colladaModel = new ColladaModel(20, 28, 0.0, modelUrl, datGui);
 colladaModel.generateScene(scene);
 
+scene.add(createSphereMesh(24, 40, 10, 2))
+
 setupLight();
 
 let animate = function () {
@@ -77,14 +75,29 @@ let animate = function () {
 animate();
 
 function setupLight() {
-    let ambientLight = new THREE.AmbientLight(0x808080); // soft white light
+    let ambientLight = new THREE.AmbientLight(0x808080);
     scene.add(ambientLight);
 
     let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    directionalLight.position.set(0.041237113402061855, -0.38144329896907214, 0.9234719866622141);
+    directionalLight.position.set(70, 30, 50);
+    directionalLight.target.position.set(50, 50, 0);
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 1024;
+    directionalLight.shadow.mapSize.height = 1024;
+    directionalLight.shadow.camera.left = -50;
+    directionalLight.shadow.camera.bottom = -50;
+    directionalLight.shadow.camera.top = 50;
+    directionalLight.shadow.camera.right = 50;
+    directionalLight.shadow.camera.near = 0.5;
+    directionalLight.shadow.camera.far = 100;
+
     scene.add(directionalLight);
+    scene.add(directionalLight.target);
     directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 5);
     scene.add(directionalLightHelper);
+
+    shadowCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera);
+    scene.add(shadowCameraHelper);
 
     let gui = datGui.addFolder('Light');
     let ambientLightGui = gui.addFolder('Ambient Light');
@@ -96,9 +109,12 @@ function setupLight() {
     let directionalLightModel = {'color': directionalLight.color.getHex()};
     directionalLightGui.addColor(directionalLightModel, 'color').onChange(() => directionalLight.color.setHex(directionalLightModel.color));
     directionalLightGui.add(directionalLight, 'intensity', 0, 20, 0.1);
-    directionalLightGui.add(directionalLight.position, 'x', -1, 1, 0.1);
-    directionalLightGui.add(directionalLight.position, 'y', -1, 1, 0.1);
-    directionalLightGui.add(directionalLight.position, 'z', -1, 1, 0.1);
+    directionalLightGui.add(directionalLight.position, 'x');
+    directionalLightGui.add(directionalLight.position, 'y');
+    directionalLightGui.add(directionalLight.position, 'z');
+    directionalLightGui.add(directionalLight.target.position, 'x');
+    directionalLightGui.add(directionalLight.target.position, 'y');
+    directionalLightGui.add(directionalLight.target.position, 'z');
 
     // directionalLight.addEventListener('change', () => directionalLightGui.updateDisplay());
 }

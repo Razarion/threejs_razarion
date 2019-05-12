@@ -60,7 +60,9 @@ class Slope extends Base {
 
         this.gui.add(this.material, "wireframe", 0, 1);
 
-        scene.add(new THREE.Mesh(geometry, this.material));
+        let mesh = new THREE.Mesh(geometry, this.material);
+        mesh.receiveShadow = true;
+        scene.add(mesh);
     }
 
     update() {
