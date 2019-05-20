@@ -1,6 +1,7 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -11,6 +12,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
+        new CopyWebpackPlugin([
+            {from:'src/models',to:'.'}
+        ]),
     ],
     output: {
         filename: '[name].[contenthash].js',
@@ -25,20 +29,7 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|gif|dae)$/,
                 use: 'file-loader',
-            },
-            {
-                test: /\.(png|tga)$/,
-                include: [
-                    path.resolve(__dirname, "src/models")
-                ],
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                    },
-                }
             }
-
         ],
     }
 };
