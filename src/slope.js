@@ -59,6 +59,7 @@ class Slope extends Base {
             fragmentShader: slopeFragmentShaderUrl
         });
 
+        this.material.lights = true;
         this.material.metalness = 0;
         this.material.roughness = 0.5;
 

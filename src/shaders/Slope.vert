@@ -1,11 +1,13 @@
 precision highp float;
 precision highp int;
-#define SHADER_NAME MeshDepthMaterial
+#define SHADER_NAME MeshStandardMaterial
+#define STANDARD
 #define VERTEX_TEXTURES
 #define GAMMA_FACTOR 2
 #define MAX_BONES 0
+#define USE_MAP
+#define USE_BUMPMAP
 #define BONE_TEXTURE
-#define FLIP_SIDED
 #define USE_SHADOWMAP
 #define SHADOWMAP_TYPE_PCF
 uniform mat4 modelMatrix;
@@ -45,6 +47,15 @@ attribute vec2 uv;
 	attribute vec4 skinWeight;
 #endif
 
+#define PHYSICAL
+varying vec3 vViewPosition;
+#ifndef FLAT_SHADED
+	varying vec3 vNormal;
+	#ifdef USE_TANGENT
+		varying vec3 vTangent;
+		varying vec3 vBitangent;
+	#endif
+#endif
 #define PI 3.14159265359
 #define PI2 6.28318530718
 #define PI_HALF 1.5707963267949
@@ -110,10 +121,20 @@ float linearToRelativeLuminance( const in vec3 color ) {
 	varying vec2 vUv;
 	uniform mat3 uvTransform;
 #endif
+#if defined( USE_LIGHTMAP ) || defined( USE_AOMAP )
+	attribute vec2 uv2;
+	varying vec2 vUv2;
+#endif
 #ifdef USE_DISPLACEMENTMAP
 	uniform sampler2D displacementMap;
 	uniform float displacementScale;
 	uniform float displacementBias;
+#endif
+#ifdef USE_COLOR
+	varying vec3 vColor;
+#endif
+#ifdef USE_FOG
+	varying float fogDepth;
 #endif
 #ifdef USE_MORPHTARGETS
 	#ifndef USE_MORPHNORMALS
@@ -150,6 +171,20 @@ float linearToRelativeLuminance( const in vec3 color ) {
 		}
 	#endif
 #endif
+#ifdef USE_SHADOWMAP
+	#if 1 > 0
+		uniform mat4 directionalShadowMatrix[ 1 ];
+		varying vec4 vDirectionalShadowCoord[ 1 ];
+	#endif
+	#if 0 > 0
+		uniform mat4 spotShadowMatrix[ 0 ];
+		varying vec4 vSpotShadowCoord[ 0 ];
+	#endif
+	#if 0 > 0
+		uniform mat4 pointShadowMatrix[ 0 ];
+		varying vec4 vPointShadowCoord[ 0 ];
+	#endif
+#endif
 #ifdef USE_LOGDEPTHBUF
 	#ifdef USE_LOGDEPTHBUF_EXT
 		varying float vFragDepth;
@@ -164,13 +199,12 @@ void main() {
 #if defined( USE_MAP ) || defined( USE_BUMPMAP ) || defined( USE_NORMALMAP ) || defined( USE_SPECULARMAP ) || defined( USE_ALPHAMAP ) || defined( USE_EMISSIVEMAP ) || defined( USE_ROUGHNESSMAP ) || defined( USE_METALNESSMAP )
 	vUv = ( uvTransform * vec3( uv, 1 ) ).xy;
 #endif
-#ifdef USE_SKINNING
-	mat4 boneMatX = getBoneMatrix( skinIndex.x );
-	mat4 boneMatY = getBoneMatrix( skinIndex.y );
-	mat4 boneMatZ = getBoneMatrix( skinIndex.z );
-	mat4 boneMatW = getBoneMatrix( skinIndex.w );
+#if defined( USE_LIGHTMAP ) || defined( USE_AOMAP )
+	vUv2 = uv2;
 #endif
-	#ifdef USE_DISPLACEMENTMAP
+#ifdef USE_COLOR
+	vColor.xyz = color.xyz;
+#endif
 vec3 objectNormal = vec3( normal );
 #ifdef USE_TANGENT
 	vec3 objectTangent = vec3( tangent.xyz );
@@ -180,6 +214,12 @@ vec3 objectNormal = vec3( normal );
 	objectNormal += ( morphNormal1 - normal ) * morphTargetInfluences[ 1 ];
 	objectNormal += ( morphNormal2 - normal ) * morphTargetInfluences[ 2 ];
 	objectNormal += ( morphNormal3 - normal ) * morphTargetInfluences[ 3 ];
+#endif
+#ifdef USE_SKINNING
+	mat4 boneMatX = getBoneMatrix( skinIndex.x );
+	mat4 boneMatY = getBoneMatrix( skinIndex.y );
+	mat4 boneMatZ = getBoneMatrix( skinIndex.z );
+	mat4 boneMatW = getBoneMatrix( skinIndex.w );
 #endif
 #ifdef USE_SKINNING
 	mat4 skinMatrix = mat4( 0.0 );
@@ -193,7 +233,23 @@ vec3 objectNormal = vec3( normal );
 		objectTangent = vec4( skinMatrix * vec4( objectTangent, 0.0 ) ).xyz;
 	#endif
 #endif
+vec3 transformedNormal = normalMatrix * objectNormal;
+#ifdef FLIP_SIDED
+	transformedNormal = - transformedNormal;
+#endif
+#ifdef USE_TANGENT
+	vec3 transformedTangent = normalMatrix * objectTangent;
+	#ifdef FLIP_SIDED
+		transformedTangent = - transformedTangent;
 	#endif
+#endif
+#ifndef FLAT_SHADED
+	vNormal = normalize( transformedNormal );
+	#ifdef USE_TANGENT
+		vTangent = normalize( transformedTangent );
+		vBitangent = normalize( cross( vNormal, vTangent ) * tangent.w );
+	#endif
+#endif
 vec3 transformed = vec3( position );
 #ifdef USE_MORPHTARGETS
 	transformed += ( morphTarget0 - position ) * morphTargetInfluences[ 0 ];
@@ -231,5 +287,25 @@ gl_Position = projectionMatrix * mvPosition;
 #endif
 #if 0 > 0 && ! defined( PHYSICAL ) && ! defined( PHONG ) && ! defined( MATCAP )
 	vViewPosition = - mvPosition.xyz;
+#endif
+	vViewPosition = - mvPosition.xyz;
+#if defined( USE_ENVMAP ) || defined( DISTANCE ) || defined ( USE_SHADOWMAP )
+	vec4 worldPosition = modelMatrix * vec4( transformed, 1.0 );
+#endif
+#ifdef USE_SHADOWMAP
+	#if 1 > 0
+
+		vDirectionalShadowCoord[ 0 ] = directionalShadowMatrix[ 0 ] * worldPosition;
+
+	#endif
+	#if 0 > 0
+
+	#endif
+	#if 0 > 0
+
+	#endif
+#endif
+#ifdef USE_FOG
+	fogDepth = -mvPosition.z;
 #endif
 }
