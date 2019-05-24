@@ -4,11 +4,8 @@ import {Slope} from "./slope";
 import {createSphereMesh, js2Terrain} from "./utils";
 import dat from "dat.gui";
 import {UnderWater} from "./under-water";
-import modelUrl from "./models/PalmTree2.dae";
+import modelUrl from "./models/Tree1.dae";
 import {ColladaModel} from "./collada-model";
-
-import TMP1 from "./models/Palm_Log.png";
-import TMP3 from "./models/Palm_Leaf.png";
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
