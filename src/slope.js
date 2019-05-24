@@ -2,6 +2,8 @@ import {Base} from "./base";
 import * as THREE from "three";
 import textureUrl from "./textures/Coast.png";
 import bumpMapUrl from "./textures/CoastBumpMap.png";
+import slopeVertexShaderUrl from "./shaders/Slope.vert";
+import slopeFragmentShaderUrl from "./shaders/Slope.frag";
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui) {
@@ -42,21 +44,23 @@ class Slope extends Base {
         let textureScale = 1;
         let texture = this.setupTexture(textureUrl, textureScale, this.xLength, this.yLength);
         let bumpMap = this.setupTexture(bumpMapUrl, textureScale, this.xLength, this.yLength);
-        // this.material = new THREE.MeshNormalMaterial()
-        this.material = new THREE.MeshStandardMaterial({
-                map: texture,
-                bumpMap: bumpMap,
-                // normalMap: bumpMap,
-            }
-        );
+
+        this.material = new THREE.RawShaderMaterial({
+            uniforms: THREE.UniformsUtils.merge([
+                THREE.UniformsLib["lights"],
+                {
+                    uLightSpecularIntensity: {value: this.lightSpecularIntensity},
+                    uLightSpecularHardness: {value: this.lightSpecularHardness},
+                    map: texture,
+                    bumpMap: bumpMap,
+                }
+            ]),
+            vertexShader: slopeVertexShaderUrl,
+            fragmentShader: slopeFragmentShaderUrl
+        });
+
         this.material.metalness = 0;
         this.material.roughness = 0.5;
-
-        this.gui.add(this.material, "metalness", 0, 1);
-        this.gui.add(this.material, "roughness", 0, 1);
-        this.gui.add(this.material, "bumpScale", -5, 5);
-        // let normalScaleModel = {normalScale: 1.0};
-        // this.gui.add(normalScaleModel, 'normalScale', -5, 5).onChange(() => this.material.normalScale.set(normalScaleModel.normalScale, normalScaleModel.normalScale));
 
         this.gui.add(this.material, "wireframe", 0, 1);
 
