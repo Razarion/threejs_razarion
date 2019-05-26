@@ -36,7 +36,7 @@ class UnderWater extends Base {
         ]);
         geometry.addAttribute('uv', new THREE.BufferAttribute(uvs, 2));
 
-        let groundTexture = this.setupTexture(groundTextureUrl, 1, this.xLength, this.yLength);
+        let groundTexture = this.setupTextureScaled(groundTextureUrl, 1, this.xLength, this.yLength);
         this.material = new THREE.MeshBasicMaterial({
                 map: groundTexture,
             }

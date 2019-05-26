@@ -1,11 +1,13 @@
 import * as THREE from "three";
+import {sawtooth} from "./utils";
+import distortionMapUrl from "./textures/WaterDistortion.png";
 
 class Base {
     static get EDGE_LENGTH() {
         return 8;
     }
 
-    setupTexture(textureUrl, textureScale, xLength, yLength) {
+    setupTextureScaled(textureUrl, textureScale, xLength, yLength) {
         let texture = new THREE.TextureLoader().load(textureUrl);
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
@@ -13,6 +15,16 @@ class Base {
         return texture;
     }
 
+    setupTextureSimple(textureUrl) {
+        let texture = new THREE.TextureLoader().load(textureUrl);
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        return texture;
+    }
+
+    setupWaterAnimation() {
+        return sawtooth(Date.now(), this.animationDuration * 1000, 0);
+    }
 }
 
 export {

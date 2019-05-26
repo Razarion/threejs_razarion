@@ -4,6 +4,7 @@ import textureUrl from "./textures/Coast.png";
 import bumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
+import distortionMapUrl from "./textures/WaterDistortion.png";
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui) {
@@ -15,10 +16,16 @@ class Slope extends Base {
         this.waterLevel = 0;
         this.waterGround = -2;
         this.mapScale = 57;
+        this.distortionStrength = 0.1;
+        this.distortionScale = 20;
+        this.animationDuration = 20;
         this.underWaterTopColor = new THREE.Color('#f5d15c');
         this.underWaterBottomColor = new THREE.Color('#2e758c');
         this.gui = datGui.addFolder('Slope');
         this.gui.add(this, 'mapScale');
+        this.gui.add(this, 'distortionStrength');
+        this.gui.add(this, 'distortionScale');
+        this.gui.add(this, 'animationDuration');
         this.gui.add(this, 'waterLevel');
         this.gui.add(this, 'waterGround');
         let holder1 = {'underWaterTopColor': this.underWaterTopColor.getHex()};
@@ -44,8 +51,9 @@ class Slope extends Base {
         geometry.computeVertexNormals();
 
         let textureScale = 1;
-        let texture = this.setupTexture(textureUrl, textureScale, this.xLength, this.yLength);
-        let bumpMap = this.setupTexture(bumpMapUrl, textureScale, this.xLength, this.yLength);
+        let texture = this.setupTextureSimple(textureUrl, textureScale, this.xLength, this.yLength);
+        let bumpMap = this.setupTextureSimple(bumpMapUrl, textureScale, this.xLength, this.yLength);
+        let distortionMap = this.setupTextureSimple(distortionMapUrl, textureScale, this.xLength, this.yLength);
 
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
@@ -56,6 +64,10 @@ class Slope extends Base {
                     mapScale: {value: this.mapScale},
                     map: {value: null},
                     bumpMap: {value: null},
+                    uDistortionScale: {value: this.distortionScale},
+                    uDistortionMap: {value: null},
+                    uDistortionStrength: {value: this.distortionStrength},
+                    animation: {value: this.setupWaterAnimation()}
                 }
             ]),
             vertexShader: slopeVertexShaderUrl,
@@ -63,6 +75,7 @@ class Slope extends Base {
         });
 
         this.material.uniforms.map.value = texture;
+        this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.lights = true;
         this.material.metalness = 0;
         this.material.roughness = 0.5;
@@ -76,6 +89,9 @@ class Slope extends Base {
 
     update() {
         this.material.uniforms.mapScale.value = this.mapScale;
+        this.material.uniforms.uDistortionScale.value = this.distortionScale;
+        this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
+        this.material.uniforms.animation.value = this.setupWaterAnimation();
         // this.material.uniforms.uWaterLevel.value = this.waterLevel;
         // this.material.uniforms.uWaterGround.value = this.waterGround;
         // this.material.uniforms.uUnderWaterTopColor.value = this.underWaterTopColor;

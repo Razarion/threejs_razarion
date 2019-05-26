@@ -12,6 +12,11 @@ uniform float uWaterGround;
 uniform vec3 uUnderWaterTopColor;
 uniform vec3 uUnderWaterBottomColor;
 
+uniform sampler2D uDistortionMap;
+uniform float uDistortionScale;
+uniform float uDistortionStrength;
+uniform float animation;
+
 vec3 vec3ToReg(vec3 normVec) {
     return normVec * 0.5 + 0.5;
 }
@@ -49,7 +54,12 @@ void main(void) {
         gl_FragColor = setupColor(ambient, diffuse, vec3(0.0, 0.0, 0.0), false, false);
     }
 
-     gl_FragColor = texture2D(map, vWorldVertexPosition.xy / mapScale);
+
+    vec2 distortion1 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
+    vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
+    vec2 totalDistortion = distortion1 + distortion2;
+    vec2 textureCoord = (vWorldVertexPosition.xy) / mapScale + totalDistortion * uDistortionStrength;
+    gl_FragColor = texture2D(map, textureCoord);
 
     // gl_FragColor = vec4(vec3ToReg(vNormal), 1.0);
 }

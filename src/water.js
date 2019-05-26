@@ -115,10 +115,6 @@ class Water extends Base {
         this.material.uniforms.uTransparency.value = this.transparency;
         this.material.uniforms.animation.value = this.setupWaterAnimation();
     }
-
-    setupWaterAnimation() {
-        return sawtooth(Date.now(), this.animationDuration * 1000, 0);
-    }
 }
 
 export {
