@@ -14,9 +14,11 @@ class Slope extends Base {
         this.terrainShape = terrainShape;
         this.waterLevel = 0;
         this.waterGround = -2;
+        this.mapScale = 57;
         this.underWaterTopColor = new THREE.Color('#f5d15c');
         this.underWaterBottomColor = new THREE.Color('#2e758c');
         this.gui = datGui.addFolder('Slope');
+        this.gui.add(this, 'mapScale');
         this.gui.add(this, 'waterLevel');
         this.gui.add(this, 'waterGround');
         let holder1 = {'underWaterTopColor': this.underWaterTopColor.getHex()};
@@ -45,20 +47,22 @@ class Slope extends Base {
         let texture = this.setupTexture(textureUrl, textureScale, this.xLength, this.yLength);
         let bumpMap = this.setupTexture(bumpMapUrl, textureScale, this.xLength, this.yLength);
 
-        this.material = new THREE.RawShaderMaterial({
+        this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
                 {
                     uLightSpecularIntensity: {value: this.lightSpecularIntensity},
                     uLightSpecularHardness: {value: this.lightSpecularHardness},
-                    map: texture,
-                    bumpMap: bumpMap,
+                    mapScale: {value: this.mapScale},
+                    map: {value: null},
+                    bumpMap: {value: null},
                 }
             ]),
             vertexShader: slopeVertexShaderUrl,
             fragmentShader: slopeFragmentShaderUrl
         });
 
+        this.material.uniforms.map.value = texture;
         this.material.lights = true;
         this.material.metalness = 0;
         this.material.roughness = 0.5;
@@ -71,6 +75,7 @@ class Slope extends Base {
     }
 
     update() {
+        this.material.uniforms.mapScale.value = this.mapScale;
         // this.material.uniforms.uWaterLevel.value = this.waterLevel;
         // this.material.uniforms.uWaterGround.value = this.waterGround;
         // this.material.uniforms.uUnderWaterTopColor.value = this.underWaterTopColor;
