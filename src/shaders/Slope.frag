@@ -59,9 +59,7 @@ void main(void) {
 
 
 
-    vec2 distortion1 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
-    vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
-    vec2 totalDistortion = distortion1 + distortion2;
+    vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
     vec2 textureCoord = (vWorldVertexPosition.xy) / mapScale + totalDistortion * uDistortionStrength;
     vec4 foam = texture2D(map, textureCoord);
 
