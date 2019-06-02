@@ -5,7 +5,6 @@ import normMapUrl from "./textures/WaterNorm.png";
 import {Base} from "./base";
 import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
-import {sawtooth} from "./utils";
 
 class Water extends Base {
     constructor(x, y, width, height, datGui) {

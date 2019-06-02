@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import {sawtooth} from "./utils";
-import distortionMapUrl from "./textures/WaterDistortion.png";
 
 class Base {
     static get EDGE_LENGTH() {
