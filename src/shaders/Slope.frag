@@ -21,6 +21,8 @@ uniform float uDistortionScale;
 uniform float uDistortionStrength;
 uniform float animation;
 
+const float delta = 1.0;
+
 vec3 vec3ToReg(vec3 normVec) {
     return normVec * 0.5 + 0.5;
 }
@@ -49,23 +51,35 @@ void main(void) {
     vec3 diffuse;
 
     float z = vWorldVertexPosition.z;
-    vec3 slopBackground;
-    if(z >= uWaterLevel) {
-        slopBackground = vec3(0.9, 0.9, 0.7);
-    } else {
-        // Under water
-        slopBackground = texture2D(groundTexture, vWorldVertexPosition.xy / groundTextureScale).rgb;
-    }
-
 
 
     vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
     vec2 textureCoord = (vWorldVertexPosition.xy) / mapScale + totalDistortion * uDistortionStrength;
     vec4 foam = texture2D(map, textureCoord);
 
-    float waveAlpha = texture2D(wave, vWorldVertexPosition.xy / waveScale).a;
+    float xTexLookup = (uWaterLevel - z) / delta + 0.5;
+    if(xTexLookup < 0.0) {
+        // Over water
+        gl_FragColor = vec4(0.9, 0.9, 0.7, 1.0);
+    } else if(xTexLookup > 1.0) {
+        // Under water
+        gl_FragColor = texture2D(groundTexture, vWorldVertexPosition.xy / groundTextureScale);
+    } else {
+        vec3 slopBackground;
+        if(xTexLookup < 0.5) {
+            // Over water
+            slopBackground = vec3(0.9, 0.9, 0.7);
+        } else {
+            // Under water
+            slopBackground = texture2D(groundTexture, vWorldVertexPosition.xy / groundTextureScale).rgb;
+        }
 
-    gl_FragColor = vec4(foam.rgb * foam.a + slopBackground * (1.0 - foam.a), 1.0);
+        vec2 textureCoord = vec2(xTexLookup, vWorldVertexPosition.y / mapScale);
+        vec4 foam = texture2D(map, textureCoord);
+
+        gl_FragColor = vec4(foam.rgb * foam.a + slopBackground * (1.0 - foam.a), 1.0);
+        // gl_FragColor = vec4(slopBackground, 1.0);
+    }
 
     // gl_FragColor = vec4(vec3ToReg(vNormal), 1.0);
 }
