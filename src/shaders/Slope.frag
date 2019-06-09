@@ -12,6 +12,7 @@ varying vec3 vNormal;
 varying vec3 vWorldVertexPosition;
 // Water
 uniform float uWaterLevel;
+uniform float uWaterDelta;
 uniform float uWaterGround;
 uniform vec3 uUnderWaterTopColor;
 uniform vec3 uUnderWaterBottomColor;
@@ -20,8 +21,6 @@ uniform sampler2D uDistortionMap;
 uniform float uDistortionScale;
 uniform float uDistortionStrength;
 uniform float animation;
-
-const float delta = 1.0;
 
 vec3 vec3ToReg(vec3 normVec) {
     return normVec * 0.5 + 0.5;
@@ -57,7 +56,7 @@ void main(void) {
     vec2 textureCoord = (vWorldVertexPosition.xy) / mapScale + totalDistortion * uDistortionStrength;
     vec4 foam = texture2D(map, textureCoord);
 
-    float xTexLookup = (uWaterLevel - z) / delta + 0.5;
+    float xTexLookup = (uWaterLevel - z) / uWaterDelta + 0.5;
     if(xTexLookup < 0.0) {
         // Over water
         gl_FragColor = vec4(0.9, 0.9, 0.7, 1.0);

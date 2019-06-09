@@ -16,6 +16,7 @@ class Slope extends Base {
         this.yLength = yLength;
         this.terrainShape = terrainShape;
         this.waterLevel = -0.2;
+        this.waterDelta = 1;
         this.waterGround = -2;
         this.mapScale = 57;
         this.waveScale = 1;
@@ -33,6 +34,7 @@ class Slope extends Base {
         this.gui.add(this, 'distortionScale');
         this.gui.add(this, 'animationDuration');
         this.gui.add(this, 'waterLevel');
+        this.gui.add(this, 'waterDelta');
         this.gui.add(this, 'waterGround');
         let holder1 = {'underWaterTopColor': this.underWaterTopColor.getHex()};
         this.gui.addColor(holder1, 'underWaterTopColor').onChange(() => this.underWaterTopColor.setHex(holder1.underWaterTopColor));
@@ -80,6 +82,7 @@ class Slope extends Base {
                     uDistortionMap: {value: null},
                     uDistortionStrength: {value: this.distortionStrength},
                     uWaterLevel: {value: this.waterLevel},
+                    uWaterDelta: {value: this.waterDelta},
                     animation: {value: this.setupWaterAnimation()}
                 }
             ]),
@@ -110,6 +113,7 @@ class Slope extends Base {
         this.material.uniforms.groundTextureScale.value = this.groundTextureScale;
         this.material.uniforms.animation.value = this.setupWaterAnimation();
         this.material.uniforms.uWaterLevel.value = this.waterLevel;
+        this.material.uniforms.uWaterDelta.value = this.waterDelta;
         // this.material.uniforms.uWaterGround.value = this.waterGround;
         // this.material.uniforms.uUnderWaterTopColor.value = this.underWaterTopColor;
         // this.material.uniforms.uUnderWaterBottomColor.value = this.underWaterBottomColor;
