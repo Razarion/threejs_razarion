@@ -66,7 +66,7 @@ let animate = function () {
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
     } catch (err) {
-        console.error(err);
+        console.error(err.stack);
     }
 };
 animate();

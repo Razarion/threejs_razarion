@@ -1,8 +1,8 @@
 #include <common>
 #include <lights_pars_begin>
 
-uniform sampler2D map;
-uniform float mapScale;
+uniform sampler2D uWater;
+uniform float uWaterScale;
 uniform sampler2D wave;
 uniform float waveScale;
 uniform sampler2D groundTexture;
@@ -68,10 +68,10 @@ void main(void) {
         }
 
         vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
-        vec2 textureCoord = vec2(xTexLookup, vWorldVertexPosition.y / mapScale) + totalDistortion * uDistortionStrength;
-        vec4 foam = texture2D(map, textureCoord);
+        vec2 textureCoord = vec2(xTexLookup, vWorldVertexPosition.y / uWaterScale) + totalDistortion * uDistortionStrength;
+        vec4 water = texture2D(uWater, textureCoord);
 
-        gl_FragColor = vec4(foam.rgb * foam.a + slopBackground * (1.0 - foam.a), 1.0);
+        gl_FragColor = vec4(water.rgb * water.a + slopBackground * (1.0 - water.a), 1.0);
         // gl_FragColor = vec4(slopBackground, 1.0);
     }
 
