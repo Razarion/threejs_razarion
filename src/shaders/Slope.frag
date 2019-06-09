@@ -50,12 +50,6 @@ void main(void) {
     vec3 diffuse;
 
     float z = vWorldVertexPosition.z;
-
-
-    vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
-    vec2 textureCoord = (vWorldVertexPosition.xy) / mapScale + totalDistortion * uDistortionStrength;
-    vec4 foam = texture2D(map, textureCoord);
-
     float xTexLookup = (uWaterLevel - z) / uWaterDelta + 0.5;
     if(xTexLookup < 0.0) {
         // Over water
@@ -73,7 +67,8 @@ void main(void) {
             slopBackground = texture2D(groundTexture, vWorldVertexPosition.xy / groundTextureScale).rgb;
         }
 
-        vec2 textureCoord = vec2(xTexLookup, vWorldVertexPosition.y / mapScale);
+        vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
+        vec2 textureCoord = vec2(xTexLookup, vWorldVertexPosition.y / mapScale) + totalDistortion * uDistortionStrength;
         vec4 foam = texture2D(map, textureCoord);
 
         gl_FragColor = vec4(foam.rgb * foam.a + slopBackground * (1.0 - foam.a), 1.0);

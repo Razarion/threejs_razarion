@@ -21,8 +21,8 @@ class Slope extends Base {
         this.mapScale = 57;
         this.waveScale = 1;
         this.groundTextureScale = 90;
-        this.distortionStrength = 0.01;
-        this.distortionScale = 100;
+        this.distortionStrength = 0.1;
+        this.distortionScale = 300;
         this.animationDuration = 40;
         this.underWaterTopColor = new THREE.Color('#f5d15c');
         this.underWaterBottomColor = new THREE.Color('#2e758c');
