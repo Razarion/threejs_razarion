@@ -6,10 +6,9 @@ import bumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
 import distortionMapUrl from "./textures/WaterDistortion.png";
-import groundTextureUrl from "./textures/UnderWater.png";
 
 class Slope extends Base {
-    constructor(x, y, yLength, terrainShape, datGui) {
+    constructor(x, y, yLength, terrainShape, datGui, seabed) {
         super();
         this.x = x;
         this.y = y;
@@ -20,26 +19,19 @@ class Slope extends Base {
         this.waterGround = -2;
         this.waterScale = 57;
         this.coastScale = 57;
-        this.groundTextureScale = 90;
         this.distortionStrength = 0.1;
         this.distortionScale = 300;
         this.animationDuration = 40;
-        this.underWaterTopColor = new THREE.Color('#f5d15c');
-        this.underWaterBottomColor = new THREE.Color('#2e758c');
         this.gui = datGui.addFolder('Slope');
         this.gui.add(this, 'waterScale');
         this.gui.add(this, 'coastScale');
-        this.gui.add(this, 'groundTextureScale');
         this.gui.add(this, 'distortionStrength');
         this.gui.add(this, 'distortionScale');
         this.gui.add(this, 'animationDuration');
         this.gui.add(this, 'waterLevel');
         this.gui.add(this, 'waterDelta');
         this.gui.add(this, 'waterGround');
-        let holder1 = {'underWaterTopColor': this.underWaterTopColor.getHex()};
-        this.gui.addColor(holder1, 'underWaterTopColor').onChange(() => this.underWaterTopColor.setHex(holder1.underWaterTopColor));
-        let holder2 = {'underWaterBottomColor': this.underWaterBottomColor.getHex()};
-        this.gui.addColor(holder2, 'underWaterBottomColor').onChange(() => this.underWaterBottomColor.setHex(holder2.underWaterBottomColor));
+        this.seabed = seabed;
     }
 
     generateMesh(scene) {
@@ -63,7 +55,6 @@ class Slope extends Base {
         let coast = this.setupTextureSimple(coastUrl, this.coastScale, this.xLength, this.yLength);
         let bumpMap = this.setupTextureSimple(bumpMapUrl, textureScale, this.xLength, this.yLength);
         let distortionMap = this.setupTextureSimple(distortionMapUrl, textureScale, this.xLength, this.yLength);
-        let groundTexture = this.setupTextureScaled(groundTextureUrl, 1, this.xLength, this.yLength);
 
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
@@ -75,8 +66,8 @@ class Slope extends Base {
                     uWaterScale: {value: this.waterScale},
                     uCoast: {value: null},
                     uCoastScale: {value: this.coastScale},
-                    groundTextureScale: {value: this.groundTextureScale},
-                    groundTexture: {value: null},
+                    uSeabedTexture: {value: null},
+                    uSeabedTextureScale: {value: this.seabed.getTextureScale()},
                     bumpMap: {value: null},
                     uDistortionScale: {value: this.distortionScale},
                     uDistortionMap: {value: null},
@@ -92,7 +83,7 @@ class Slope extends Base {
 
         this.material.uniforms.uWater.value = water;
         this.material.uniforms.uCoast.value = coast;
-        this.material.uniforms.groundTexture.value = groundTexture;
+        this.material.uniforms.uSeabedTexture.value = this.seabed.setupTexture();
         this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.lights = true;
         this.material.metalness = 0;
@@ -110,13 +101,11 @@ class Slope extends Base {
         this.material.uniforms.uCoastScale.value = this.coastScale;
         this.material.uniforms.uDistortionScale.value = this.distortionScale;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
-        this.material.uniforms.groundTextureScale.value = this.groundTextureScale;
+        this.material.uniforms.uSeabedTextureScale.value = this.seabed.getTextureScale();
         this.material.uniforms.animation.value = this.setupWaterAnimation();
         this.material.uniforms.uWaterLevel.value = this.waterLevel;
         this.material.uniforms.uWaterDelta.value = this.waterDelta;
         // this.material.uniforms.uWaterGround.value = this.waterGround;
-        // this.material.uniforms.uUnderWaterTopColor.value = this.underWaterTopColor;
-        // this.material.uniforms.uUnderWaterBottomColor.value = this.underWaterBottomColor;
     }
 }
 

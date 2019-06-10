@@ -3,7 +3,7 @@ import {Water} from "./water";
 import {Slope} from "./slope";
 import {createSphereMesh, js2Terrain} from "./utils";
 import dat from "dat.gui";
-import {UnderWater} from "./under-water";
+import {Seabed} from "./seabed";
 import modelUrl from "./models/Tree1.dae";
 import {ColladaModel} from "./collada-model";
 
@@ -40,14 +40,15 @@ let groundLevel = -0.9;
 let terrainShape = js2Terrain([
     [0.9, 0.6, 0.3, 0, -0.3, -0.6, groundLevel, groundLevel],
 ]);
-let slope = new Slope(0, 0, 1000, terrainShape, datGui);
+let seabed = new Seabed(56, 0, groundLevel, 1000, 1000, datGui);
+seabed.generateMesh(scene);
+
+let slope = new Slope(0, 0, 1000, terrainShape, datGui, seabed);
 slope.generateMesh(scene);
 
 let water = new Water(0, 0, 1000, 1000, datGui);
 water.generateMesh(scene);
 
-let underWater = new UnderWater(56, 0, groundLevel, 1000, 1000, datGui);
-underWater.generateMesh(scene);
 
 let colladaModel = new ColladaModel(20, 28, 0.0, modelUrl, datGui);
 colladaModel.generateScene(scene);
@@ -63,7 +64,7 @@ let animate = function () {
     try {
         water.update();
         slope.update();
-        underWater.update();
+        seabed.update();
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
     } catch (err) {

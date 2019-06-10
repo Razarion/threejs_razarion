@@ -1,10 +1,10 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import groundTextureUrl from "./textures/UnderWater.png";
-import underWaterVertexShaderUrl from "./shaders/UnderWater.vert";
-import underWaterFragmentShaderUrl from "./shaders/UnderWater.frag";
+import textureUrl from "./textures/UnderWater.png";
+import vertexShaderUrl from "./shaders/Seabed.vert";
+import fragmentShaderUrl from "./shaders/Seabed.frag";
 
-class UnderWater extends Base {
+class Seabed extends Base {
     constructor(x, y, z, xLength, yLength, datGui) {
         super();
         this.x = x;
@@ -13,8 +13,16 @@ class UnderWater extends Base {
         this.xLength = xLength;
         this.yLength = yLength;
         this.textureScale = 1000;
-        this.gui = datGui.addFolder('Under water');
+        this.gui = datGui.addFolder('Seabed');
         this.gui.add(this, 'textureScale', 0);
+    }
+
+    getTextureScale() {
+        return this.textureScale;
+    }
+
+    setupTexture() {
+        return this.setupTextureSimple(textureUrl);
     }
 
     generateMesh(scene) {
@@ -40,7 +48,6 @@ class UnderWater extends Base {
         ]);
         geometry.addAttribute('uv', new THREE.BufferAttribute(uvs, 2));
 
-        let groundTexture = this.setupTextureScaled(groundTextureUrl, 1, this.xLength, this.yLength);
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
@@ -49,10 +56,10 @@ class UnderWater extends Base {
                     uTextureScale: {value: this.textureScale},
                 }
             ]),
-            vertexShader: underWaterVertexShaderUrl,
-            fragmentShader: underWaterFragmentShaderUrl
+            vertexShader: vertexShaderUrl,
+            fragmentShader: fragmentShaderUrl
         });
-        this.material.uniforms.uTexture.value = groundTexture;
+        this.material.uniforms.uTexture.value = this.setupTexture();
         this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
@@ -65,5 +72,5 @@ class UnderWater extends Base {
 }
 
 export {
-    UnderWater
+    Seabed
 }
