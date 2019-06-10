@@ -3,8 +3,8 @@
 
 uniform sampler2D uWater;
 uniform float uWaterScale;
-uniform sampler2D wave;
-uniform float waveScale;
+uniform sampler2D uCoast;
+uniform float uCoastScale;
 uniform sampler2D groundTexture;
 uniform float groundTextureScale;
 
@@ -53,18 +53,18 @@ void main(void) {
     float xTexLookup = (uWaterLevel - z) / uWaterDelta + 0.5;
     if(xTexLookup < 0.0) {
         // Over water
-        gl_FragColor = vec4(0.9, 0.9, 0.7, 1.0);
+        gl_FragColor = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale);
     } else if(xTexLookup > 1.0) {
         // Under water
-        gl_FragColor = texture2D(groundTexture, vWorldVertexPosition.xy / groundTextureScale);
+        gl_FragColor = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale);
     } else {
         vec3 slopBackground;
         if(xTexLookup < 0.5) {
             // Over water
-            slopBackground = vec3(0.9, 0.9, 0.7);
+            slopBackground = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale).rgb;
         } else {
             // Under water
-            slopBackground = texture2D(groundTexture, vWorldVertexPosition.xy / groundTextureScale).rgb;
+            slopBackground = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale).rgb;
         }
 
         vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
