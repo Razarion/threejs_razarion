@@ -63,6 +63,7 @@ let animate = function () {
     try {
         water.update();
         slope.update();
+        underWater.update();
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
     } catch (err) {

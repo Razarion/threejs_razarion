@@ -1,6 +1,8 @@
 import {Base} from "./base";
 import * as THREE from "three";
 import groundTextureUrl from "./textures/UnderWater.png";
+import underWaterVertexShaderUrl from "./shaders/UnderWater.vert";
+import underWaterFragmentShaderUrl from "./shaders/UnderWater.frag";
 
 class UnderWater extends Base {
     constructor(x, y, z, xLength, yLength, datGui) {
@@ -10,7 +12,9 @@ class UnderWater extends Base {
         this.z = z;
         this.xLength = xLength;
         this.yLength = yLength;
+        this.textureScale = 1000;
         this.gui = datGui.addFolder('Under water');
+        this.gui.add(this, 'textureScale', 0);
     }
 
     generateMesh(scene) {
@@ -37,14 +41,27 @@ class UnderWater extends Base {
         geometry.addAttribute('uv', new THREE.BufferAttribute(uvs, 2));
 
         let groundTexture = this.setupTextureScaled(groundTextureUrl, 1, this.xLength, this.yLength);
-        this.material = new THREE.MeshBasicMaterial({
-                map: groundTexture,
-            }
-        );
+        this.material = new THREE.ShaderMaterial({
+            uniforms: THREE.UniformsUtils.merge([
+                THREE.UniformsLib["lights"],
+                {
+                    uTexture: {value: null},
+                    uTextureScale: {value: this.textureScale},
+                }
+            ]),
+            vertexShader: underWaterVertexShaderUrl,
+            fragmentShader: underWaterFragmentShaderUrl
+        });
+        this.material.uniforms.uTexture.value = groundTexture;
         this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
     }
+
+    update() {
+        this.material.uniforms.uTextureScale.value = this.textureScale;
+    }
+
 }
 
 export {
