@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import bumpMapUrl from "./textures/CoastBumpMap.png";
 
 function js2Terrain(jsField) {
     let webGlField = [];
@@ -22,7 +23,15 @@ function createSphereMesh(x, y, z, sphereRadius) {
     const sphereWidthDivisions = 32;
     const sphereHeightDivisions = 16;
     const sphereGeo = new THREE.SphereBufferGeometry(sphereRadius, sphereWidthDivisions, sphereHeightDivisions);
-    const sphereMat = new THREE.MeshPhongMaterial({color: '#CA8'});
+    const bumpMap = new THREE.TextureLoader().load(bumpMapUrl);
+    const sphereMat = new THREE.MeshStandardMaterial({
+        bumpMap: bumpMap,
+        color: '#CA8'
+    });
+    sphereMat.metalness = 0.2;
+    sphereMat.roughness = 0.5;
+    sphereMat.bumpScale = 0.5;
+
     const mesh = new THREE.Mesh(sphereGeo, sphereMat);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
