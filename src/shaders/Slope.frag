@@ -10,6 +10,9 @@ uniform float uCoastBumpMapDepth;
 uniform sampler2D uSeabedTexture;
 uniform float uSeabedTextureScale;
 
+uniform float uMetalnessFactor;
+uniform float uRoughnessFactor;
+
 varying vec3 vNormal;
 varying vec3 vWorldVertexPosition;
 // Water
@@ -120,14 +123,12 @@ void main(void) {
 
     vec4 coast = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale);
     vec3 diffuseColor = coast.rgb;
-    float metalnessFactor = 0.5;
-    float roughnessFactor = 0.5;
     vec3 totalEmissiveRadiance = vec3(0.0, 0.0, 0.0);
 
     PhysicalMaterial material;
-    material.diffuseColor = diffuseColor.rgb * (1.0 - metalnessFactor);
-    material.specularRoughness = clamp(roughnessFactor, 0.04, 1.0);
-    material.specularColor = mix(vec3(DEFAULT_SPECULAR_COEFFICIENT), diffuseColor.rgb, metalnessFactor);
+    material.diffuseColor = diffuseColor.rgb * (1.0 - uMetalnessFactor);
+    material.specularRoughness = clamp(uRoughnessFactor, 0.04, 1.0);
+    material.specularColor = mix(vec3(DEFAULT_SPECULAR_COEFFICIENT), diffuseColor.rgb, uMetalnessFactor);
 
     ReflectedLight reflectedLight = ReflectedLight(vec3(0.0), vec3(0.0), ambientLightColor, vec3(0.0));
 
@@ -152,7 +153,7 @@ void main(void) {
         water = texture2D(uWater, textureCoord);
     }
 
-    vec3 coastSeabed = coast.rgb * coast.a + seabedTexture * (1.0 - coast.a);
+    vec3 coastSeabed = outgoingLight * coast.a + seabedTexture * (1.0 - coast.a);
 
-    // gl_FragColor = vec4(water.rgb * water.a + coastSeabed * (1.0 - water.a), 1.0);
+    gl_FragColor = vec4(water.rgb * water.a + coastSeabed * (1.0 - water.a), 1.0);
 }
