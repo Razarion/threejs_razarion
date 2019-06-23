@@ -5,7 +5,7 @@ import coastUrl from "./textures/Coast.png";
 import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
-import distortionMapUrl from "./textures/WaterDistortion.png";
+import distortionMapUrl from "./textures/FoamDistortion.png";
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui, seabed) {
