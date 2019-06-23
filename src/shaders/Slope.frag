@@ -129,8 +129,7 @@ void main(void) {
     material.specularRoughness = clamp(roughnessFactor, 0.04, 1.0);
     material.specularColor = mix(vec3(DEFAULT_SPECULAR_COEFFICIENT), diffuseColor.rgb, metalnessFactor);
 
-    ReflectedLight reflectedLight = ReflectedLight(vec3(0.0), vec3(0.0), vec3(0.0), vec3(0.0));
-    // TODO RE_IndirectDiffuse_Physical
+    ReflectedLight reflectedLight = ReflectedLight(vec3(0.0), vec3(0.0), ambientLightColor, vec3(0.0));
 
     DirectionalLight directionalLight;
     directionalLight = directionalLights[0];
