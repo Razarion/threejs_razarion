@@ -2,7 +2,7 @@ import {Base} from "./base";
 import * as THREE from "three";
 import waterUrl from "./textures/Foam.png";
 import coastUrl from "./textures/Coast.png";
-import bumpMapUrl from "./textures/CoastBumpMap.png";
+import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
 import distortionMapUrl from "./textures/WaterDistortion.png";
@@ -19,12 +19,14 @@ class Slope extends Base {
         this.waterGround = -2;
         this.waterScale = 57;
         this.coastScale = 57;
+        this.coastBumpMapDepth = 1;
         this.distortionStrength = 0.1;
         this.distortionScale = 300;
         this.animationDuration = 40;
         this.gui = datGui.addFolder('Slope');
         this.gui.add(this, 'waterScale');
-        this.gui.add(this, 'coastScale');
+        this.gui.add(this, 'coastScale', 0);
+        this.gui.add(this, 'coastBumpMapDepth');
         this.gui.add(this, 'distortionStrength');
         this.gui.add(this, 'distortionScale');
         this.gui.add(this, 'animationDuration');
@@ -53,7 +55,7 @@ class Slope extends Base {
         let textureScale = 1;
         let water = this.setupTextureSimple(waterUrl, this.waterScale, this.xLength, this.yLength);
         let coast = this.setupTextureSimple(coastUrl, this.coastScale, this.xLength, this.yLength);
-        let bumpMap = this.setupTextureSimple(bumpMapUrl, textureScale, this.xLength, this.yLength);
+        let coastBumpMap = this.setupTextureSimple(coastBumpMapUrl, textureScale, this.xLength, this.yLength);
         let distortionMap = this.setupTextureSimple(distortionMapUrl, textureScale, this.xLength, this.yLength);
 
         this.material = new THREE.ShaderMaterial({
@@ -68,7 +70,8 @@ class Slope extends Base {
                     uCoastScale: {value: this.coastScale},
                     uSeabedTexture: {value: null},
                     uSeabedTextureScale: {value: this.seabed.getTextureScale()},
-                    bumpMap: {value: null},
+                    uCoastBumpMap: {value: null},
+                    uCoastBumpMapDepth: {value: this.coastBumpMapDepth},
                     uDistortionScale: {value: this.distortionScale},
                     uDistortionMap: {value: null},
                     uDistortionStrength: {value: this.distortionStrength},
@@ -83,11 +86,13 @@ class Slope extends Base {
 
         this.material.uniforms.uWater.value = water;
         this.material.uniforms.uCoast.value = coast;
+        this.material.uniforms.uCoastBumpMap.value = coastBumpMap;
         this.material.uniforms.uSeabedTexture.value = this.seabed.setupTexture();
         this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.lights = true;
         this.material.metalness = 0;
         this.material.roughness = 0.5;
+        this.material.extensions.derivatives = true;
 
         this.gui.add(this.material, "wireframe", 0, 1);
 
@@ -99,6 +104,7 @@ class Slope extends Base {
     update() {
         this.material.uniforms.uWaterScale.value = this.waterScale;
         this.material.uniforms.uCoastScale.value = this.coastScale;
+        this.material.uniforms.uCoastBumpMapDepth.value = this.coastBumpMapDepth;
         this.material.uniforms.uDistortionScale.value = this.distortionScale;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
         this.material.uniforms.uSeabedTextureScale.value = this.seabed.getTextureScale();
