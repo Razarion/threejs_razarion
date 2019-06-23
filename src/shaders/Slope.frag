@@ -118,7 +118,8 @@ void main(void) {
     geometry.viewDir = normalize(vViewPosition);
     IncidentLight directLight;
 
-    vec3 diffuseColor = vec3(0.5, 0.5, 0.5);
+    vec4 coast = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale);
+    vec3 diffuseColor = coast.rgb;
     float metalnessFactor = 0.5;
     float roughnessFactor = 0.5;
     vec3 totalEmissiveRadiance = vec3(0.0, 0.0, 0.0);
@@ -129,6 +130,7 @@ void main(void) {
     material.specularColor = mix(vec3(DEFAULT_SPECULAR_COEFFICIENT), diffuseColor.rgb, metalnessFactor);
 
     ReflectedLight reflectedLight = ReflectedLight(vec3(0.0), vec3(0.0), vec3(0.0), vec3(0.0));
+    // TODO RE_IndirectDiffuse_Physical
 
     DirectionalLight directionalLight;
     directionalLight = directionalLights[0];
@@ -142,7 +144,6 @@ void main(void) {
     float z = vWorldVertexPosition.z;
     float xTexLookup = (uWaterLevel - z) / uWaterDelta + 0.5;
 
-    vec4 coas = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale);
     vec3 seabedTexture = texture2D(uSeabedTexture, vWorldVertexPosition.xy / uSeabedTextureScale).rgb;
 
     vec4 water = vec4(0, 0, 0, 0);
@@ -152,7 +153,7 @@ void main(void) {
         water = texture2D(uWater, textureCoord);
     }
 
-    vec3 coastSeabed = coas.rgb * coas.a + seabedTexture * (1.0 - coas.a);
+    vec3 coastSeabed = coast.rgb * coast.a + seabedTexture * (1.0 - coast.a);
 
     // gl_FragColor = vec4(water.rgb * water.a + coastSeabed * (1.0 - water.a), 1.0);
 }
