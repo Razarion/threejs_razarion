@@ -139,5 +139,6 @@ function onDocumentMouseDown(event) {
     let normX = (pixelBuffer[0] / 255 * 2) - 1;
     let normY = (pixelBuffer[1] / 255 * 2) - 1;
     let normZ = (pixelBuffer[2] / 255 * 2) - 1;
-    console.warn(event.clientX + ':' + event.clientY + '|r:' + pixelBuffer[0] + ' g:' + pixelBuffer[1] + ' b:' + pixelBuffer[2] + '|Norm x:' + normX + ' y:' + normY + ' z:' + normZ);
+    let magnitude = new THREE.Vector3(normX, normY, normZ).length();
+    console.warn(event.clientX + ':' + event.clientY + '|r:' + pixelBuffer[0] + ' g:' + pixelBuffer[1] + ' b:' + pixelBuffer[2] + '|Norm x:' + normX + ' y:' + normY + ' z:' + normZ + "|Magnitude:" + magnitude);
 }
