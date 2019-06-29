@@ -22,9 +22,8 @@ class Slope extends Base {
         this.coastBumpMapDepth = 1;
         this.metalnessFactor = 0.5;
         this.roughnessFactor = 0.5;
-        this.distortionStrength = 3;
-        this.distortionScale = 300;
-        this.animationDuration = 30;
+        this.distortionStrength = 1;
+        this.animationDuration = 20;
         this.gui = datGui.addFolder('Slope');
         this.gui.add(this, 'waterScale');
         this.gui.add(this, 'coastScale', 0);
@@ -32,7 +31,6 @@ class Slope extends Base {
         this.gui.add(this, 'metalnessFactor');
         this.gui.add(this, 'roughnessFactor');
         this.gui.add(this, 'distortionStrength');
-        this.gui.add(this, 'distortionScale');
         this.gui.add(this, 'animationDuration');
         this.gui.add(this, 'waterLevel');
         this.gui.add(this, 'waterDelta');
@@ -78,7 +76,6 @@ class Slope extends Base {
                     uCoastBumpMapDepth: {value: this.coastBumpMapDepth},
                     uMetalnessFactor: {value: this.metalnessFactor},
                     uRoughnessFactor: {value: this.roughnessFactor},
-                    uDistortionScale: {value: this.distortionScale},
                     uDistortionMap: {value: null},
                     uDistortionStrength: {value: this.distortionStrength},
                     uWaterLevel: {value: this.waterLevel},
@@ -113,7 +110,6 @@ class Slope extends Base {
         this.material.uniforms.uCoastBumpMapDepth.value = this.coastBumpMapDepth;
         this.material.uniforms.uMetalnessFactor.value = this.metalnessFactor;
         this.material.uniforms.uRoughnessFactor.value = this.roughnessFactor;
-        this.material.uniforms.uDistortionScale.value = this.distortionScale;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
         this.material.uniforms.uSeabedTextureScale.value = this.seabed.getTextureScale();
         this.material.uniforms.animation.value = this.setupWaterAnimation();

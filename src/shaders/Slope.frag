@@ -21,7 +21,6 @@ uniform float uWaterDelta;
 uniform float uWaterGround;
 
 uniform sampler2D uDistortionMap;
-uniform float uDistortionScale;
 uniform float uDistortionStrength;
 uniform float animation;
 
@@ -146,8 +145,8 @@ void main(void) {
 
     vec3 seabedTexture = texture2D(uSeabedTexture, vWorldVertexPosition.xy / uSeabedTextureScale).rgb;
 
-    vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
-    vec4 water = texture2D(uWater, (vWorldVertexPosition.xy + vec2(totalDistortion.x * uDistortionStrength, 0)) / uCoastScale);
+    vec2 totalDistortion = uDistortionStrength  * (texture2D(uDistortionMap, vWorldVertexPosition.xy / uCoastScale + vec2(animation, 0)).rg * 2.0 - 1.0);
+    vec4 water = texture2D(uWater, (vWorldVertexPosition.xy + totalDistortion) / uCoastScale);
 
     vec3 coastSeabed = outgoingLight * coast.a + seabedTexture * (1.0 - coast.a);
 
