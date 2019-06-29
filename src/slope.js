@@ -22,9 +22,9 @@ class Slope extends Base {
         this.coastBumpMapDepth = 1;
         this.metalnessFactor = 0.5;
         this.roughnessFactor = 0.5;
-        this.distortionStrength = 0.1;
+        this.distortionStrength = 3;
         this.distortionScale = 300;
-        this.animationDuration = 40;
+        this.animationDuration = 30;
         this.gui = datGui.addFolder('Slope');
         this.gui.add(this, 'waterScale');
         this.gui.add(this, 'coastScale', 0);

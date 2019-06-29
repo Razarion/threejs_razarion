@@ -146,12 +146,8 @@ void main(void) {
 
     vec3 seabedTexture = texture2D(uSeabedTexture, vWorldVertexPosition.xy / uSeabedTextureScale).rgb;
 
-    vec4 water = vec4(0, 0, 0, 0);
-    if (xTexLookup >= 0.0 && xTexLookup <= 1.0) {
-        vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
-        vec2 textureCoord = vec2(xTexLookup, vWorldVertexPosition.y / uWaterScale) + totalDistortion * uDistortionStrength;
-        water = texture2D(uWater, textureCoord);
-    }
+    vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0)).rg * 2.0 - 1.0;
+    vec4 water = texture2D(uWater, (vWorldVertexPosition.xy + vec2(totalDistortion.x * uDistortionStrength, 0)) / uCoastScale);
 
     vec3 coastSeabed = outgoingLight * coast.a + seabedTexture * (1.0 - coast.a);
 
