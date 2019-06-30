@@ -12,6 +12,8 @@ uniform float uSeabedTextureScale;
 
 uniform float uMetalnessFactor;
 uniform float uRoughnessFactor;
+uniform float uShininess;
+uniform float uSpecularStrength;
 
 varying vec3 vNormal;
 varying vec3 vWorldVertexPosition;
@@ -132,12 +134,19 @@ void main(void) {
 
     vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + reflectedLight.directSpecular + reflectedLight.indirectSpecular + totalEmissiveRadiance;
 
+    vec3 slopeDiffuse = max(dot(geometry.normal, directLight.direction), 0.0) * directLight.color;
+    vec3 reflectDir = reflect(-directLight.direction, geometry.normal);
+    float spec = pow(max(dot(geometry.viewDir, reflectDir), 0.0), uShininess);
+    vec3 slopeSpecular = uSpecularStrength * spec * directLight.color;
+    vec3 slope = (ambientLightColor + slopeDiffuse + slopeSpecular) * coast.rgb;
+
+
     vec3 seabedTexture = texture2D(uSeabedTexture, vWorldVertexPosition.xy / uSeabedTextureScale).rgb;
 
     vec2 totalDistortion = uDistortionStrength  * (texture2D(uDistortionMap, vWorldVertexPosition.xy / uCoastScale + vec2(animation, 0)).rg * 2.0 - 1.0);
     vec4 water = texture2D(uWater, (vWorldVertexPosition.xy + totalDistortion) / uCoastScale);
 
-    vec3 coastSeabed = outgoingLight * coast.a + seabedTexture * (1.0 - coast.a);
+    vec3 coastSeabed = slope * coast.a + seabedTexture * (1.0 - coast.a);
 
     gl_FragColor = vec4(water.rgb * water.a + coastSeabed * (1.0 - water.a), 1.0);
 }

@@ -1,7 +1,7 @@
 import {Base} from "./base";
 import * as THREE from "three";
 import waterUrl from "./textures/Foam.png";
-import coastUrl from "./textures/chess32.jpg";
+import coastUrl from "./textures/Coast.png";
 import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
@@ -17,16 +17,16 @@ class Slope extends Base {
         this.waterScale = 57;
         this.coastScale = 57;
         this.coastBumpMapDepth = 1;
-        this.metalnessFactor = 0.5;
-        this.roughnessFactor = 0.5;
+        this.shininess = 128;
+        this.specularStrength = 0.5;
         this.distortionStrength = 1;
         this.animationDuration = 20;
         this.gui = datGui.addFolder('Slope');
         this.gui.add(this, 'waterScale');
         this.gui.add(this, 'coastScale', 0);
         this.gui.add(this, 'coastBumpMapDepth');
-        this.gui.add(this, 'metalnessFactor');
-        this.gui.add(this, 'roughnessFactor');
+        this.gui.add(this, 'shininess');
+        this.gui.add(this, 'specularStrength');
         this.gui.add(this, 'distortionStrength');
         this.gui.add(this, 'animationDuration');
         this.seabed = seabed;
@@ -68,8 +68,8 @@ class Slope extends Base {
                     uSeabedTextureScale: {value: this.seabed.getTextureScale()},
                     uCoastBumpMap: {value: null},
                     uCoastBumpMapDepth: {value: this.coastBumpMapDepth},
-                    uMetalnessFactor: {value: this.metalnessFactor},
-                    uRoughnessFactor: {value: this.roughnessFactor},
+                    uShininess: {value: this.shininess},
+                    uSpecularStrength: {value: this.specularStrength},
                     uDistortionMap: {value: null},
                     uDistortionStrength: {value: this.distortionStrength},
                     animation: {value: this.setupWaterAnimation()}
@@ -100,8 +100,8 @@ class Slope extends Base {
         this.material.uniforms.uWaterScale.value = this.waterScale;
         this.material.uniforms.uCoastScale.value = this.coastScale;
         this.material.uniforms.uCoastBumpMapDepth.value = this.coastBumpMapDepth;
-        this.material.uniforms.uMetalnessFactor.value = this.metalnessFactor;
-        this.material.uniforms.uRoughnessFactor.value = this.roughnessFactor;
+        this.material.uniforms.uShininess.value = this.shininess;
+        this.material.uniforms.uSpecularStrength.value = this.specularStrength;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
         this.material.uniforms.uSeabedTextureScale.value = this.seabed.getTextureScale();
         this.material.uniforms.animation.value = this.setupWaterAnimation();

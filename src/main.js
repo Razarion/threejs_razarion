@@ -53,7 +53,7 @@ water.generateMesh(scene);
 let colladaModel = new ColladaModel(20, 28, 0.0, modelUrl, datGui);
 colladaModel.generateScene(scene);
 
-scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56))
+// scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56))
 
 setupLight();
 
@@ -74,7 +74,7 @@ let animate = function () {
 animate();
 
 function setupLight() {
-    let ambientLight = new THREE.AmbientLight(0x808080, 1.0);
+    let ambientLight = new THREE.AmbientLight(0x808080, 0.5);
     scene.add(ambientLight);
 
     let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
