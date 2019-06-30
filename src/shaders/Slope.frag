@@ -59,8 +59,8 @@ void main(void) {
     // Slope
     vec4 coast = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale);
     vec3 slopeDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
-    vec3 reflectDir = reflect(-directLightDirection, normal);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), uShininess);
+    vec3 halfwayDir = normalize(directLightDirection + viewDir);
+    float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
     vec3 slope = (ambientLightColor + slopeDiffuse + slopeSpecular) * coast.rgb;
 
