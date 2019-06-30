@@ -17,8 +17,8 @@ class Slope extends Base {
         this.waterScale = 57;
         this.coastScale = 57;
         this.coastBumpMapDepth = 1;
-        this.shininess = 128;
-        this.specularStrength = 0.5;
+        this.shininess = 1;
+        this.specularStrength = 0.1;
         this.distortionStrength = 1;
         this.animationDuration = 20;
         this.gui = datGui.addFolder('Slope');
