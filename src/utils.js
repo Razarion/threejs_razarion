@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import textureUrl from "./textures/chess32.jpg";
 import bumpMapUrl from "./textures/CoastBumpMap.png";
 
 function js2Terrain(jsField) {
@@ -39,9 +40,28 @@ function createSphereMesh(x, y, z, sphereRadius) {
     return mesh;
 }
 
+function createPlaneMesh(x, y, z, width, height) {
+    const sphereGeo = new THREE.PlaneBufferGeometry(width, height, 2, 2);
+    const bumpMap = new THREE.TextureLoader().load(bumpMapUrl);
+    let texture = new THREE.TextureLoader().load(textureUrl);
+
+    const sphereMat = new THREE.MeshStandardMaterial({
+        bumpMap: bumpMap,
+        map: texture
+    });
+    sphereMat.metalness = 0.5;
+    sphereMat.roughness = 0.5;
+    sphereMat.bumpScale = 1;
+
+    const mesh = new THREE.Mesh(sphereGeo, sphereMat);
+    mesh.position.set(x, y, z);
+    return mesh;
+}
+
 
 export {
     js2Terrain,
     sawtooth,
-    createSphereMesh
+    createSphereMesh,
+    createPlaneMesh
 }

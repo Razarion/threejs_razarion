@@ -1,7 +1,7 @@
 import {Base} from "./base";
 import * as THREE from "three";
 import waterUrl from "./textures/Foam.png";
-import coastUrl from "./textures/Coast.png";
+import coastUrl from "./textures/chess32.jpg";
 import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
@@ -14,9 +14,6 @@ class Slope extends Base {
         this.y = y;
         this.yLength = yLength;
         this.terrainShape = terrainShape;
-        this.waterLevel = -0.2;
-        this.waterDelta = 1;
-        this.waterGround = -2;
         this.waterScale = 57;
         this.coastScale = 57;
         this.coastBumpMapDepth = 1;
@@ -32,9 +29,6 @@ class Slope extends Base {
         this.gui.add(this, 'roughnessFactor');
         this.gui.add(this, 'distortionStrength');
         this.gui.add(this, 'animationDuration');
-        this.gui.add(this, 'waterLevel');
-        this.gui.add(this, 'waterDelta');
-        this.gui.add(this, 'waterGround');
         this.seabed = seabed;
     }
 
@@ -78,8 +72,6 @@ class Slope extends Base {
                     uRoughnessFactor: {value: this.roughnessFactor},
                     uDistortionMap: {value: null},
                     uDistortionStrength: {value: this.distortionStrength},
-                    uWaterLevel: {value: this.waterLevel},
-                    uWaterDelta: {value: this.waterDelta},
                     animation: {value: this.setupWaterAnimation()}
                 }
             ]),
@@ -113,9 +105,6 @@ class Slope extends Base {
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
         this.material.uniforms.uSeabedTextureScale.value = this.seabed.getTextureScale();
         this.material.uniforms.animation.value = this.setupWaterAnimation();
-        this.material.uniforms.uWaterLevel.value = this.waterLevel;
-        this.material.uniforms.uWaterDelta.value = this.waterDelta;
-        // this.material.uniforms.uWaterGround.value = this.waterGround;
     }
 }
 

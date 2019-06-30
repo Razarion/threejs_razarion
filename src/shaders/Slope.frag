@@ -15,16 +15,16 @@ uniform float uRoughnessFactor;
 
 varying vec3 vNormal;
 varying vec3 vWorldVertexPosition;
-// Water
-uniform float uWaterLevel;
-uniform float uWaterDelta;
-uniform float uWaterGround;
 
 uniform sampler2D uDistortionMap;
 uniform float uDistortionStrength;
 uniform float animation;
 
 varying vec3 vViewPosition;
+
+#define EPSILON 1e-6
+#define RECIPROCAL_PI 0.31830988618
+#define DEFAULT_SPECULAR_COEFFICIENT 0.04
 
 vec3 vec3ToReg(vec3 normVec) {
     return normVec * 0.5 + 0.5;
@@ -59,10 +59,6 @@ vec3 perturbNormalArb(vec3 surf_pos, vec3 surf_norm, vec2 dHdxy) {
     vec3 vGrad = sign(fDet) * (dHdxy.x * R1 + dHdxy.y * R2);
     return normalize(abs(fDet) * surf_norm - vGrad);
 }
-
-    #define EPSILON 1e-6
-    #define RECIPROCAL_PI 0.31830988618
-    #define DEFAULT_SPECULAR_COEFFICIENT 0.04
 
 vec3 F_Schlick(const in vec3 specularColor, const in float dotLH) {
     float fresnel = exp2((-5.55473 * dotLH - 6.98316) * dotLH);
@@ -103,9 +99,8 @@ void RE_Direct_Physical(const in IncidentLight directLight, const in GeometricCo
     float dotNL = saturate(dot(geometry.normal, directLight.direction));
     vec3 irradiance = dotNL * directLight.color;
     irradiance *= PI;
-    float clearCoatDHR = 0.0;
-    reflectedLight.directSpecular += (1.0 - clearCoatDHR) * irradiance * BRDF_Specular_GGX(directLight, geometry, material.specularColor, material.specularRoughness);
-    reflectedLight.directDiffuse += (1.0 - clearCoatDHR) * irradiance * BRDF_Diffuse_Lambert(material.diffuseColor);
+    reflectedLight.directSpecular +=  irradiance * BRDF_Specular_GGX(directLight, geometry, material.specularColor, material.specularRoughness);
+    reflectedLight.directDiffuse += irradiance * BRDF_Diffuse_Lambert(material.diffuseColor);
     reflectedLight.directSpecular += irradiance * material.clearCoat * BRDF_Specular_GGX(directLight, geometry, vec3(DEFAULT_SPECULAR_COEFFICIENT), material.clearCoatRoughness);
 }
 
@@ -113,12 +108,10 @@ void main(void) {
     vec3 ambient;
     vec3 diffuse;
 
-    vec3 normal = perturbNormalArb(-vViewPosition, normalize(vNormal), dHdxy_fwd());
     GeometricContext geometry;
     geometry.position = - vViewPosition;
-    geometry.normal = normal;
+    geometry.normal = perturbNormalArb(-vViewPosition, normalize(vNormal), dHdxy_fwd());
     geometry.viewDir = normalize(vViewPosition);
-    IncidentLight directLight;
 
     vec4 coast = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale);
     vec3 diffuseColor = coast.rgb;
@@ -129,19 +122,15 @@ void main(void) {
     material.specularRoughness = clamp(uRoughnessFactor, 0.04, 1.0);
     material.specularColor = mix(vec3(DEFAULT_SPECULAR_COEFFICIENT), diffuseColor.rgb, uMetalnessFactor);
 
-    ReflectedLight reflectedLight = ReflectedLight(vec3(0.0), vec3(0.0), ambientLightColor, vec3(0.0));
+    IncidentLight directLight;
+    directLight.color = directionalLights[0].color;
+    directLight.direction = directionalLights[0].direction;
+    directLight.visible = true;
 
-    DirectionalLight directionalLight;
-    directionalLight = directionalLights[0];
-    getDirectionalDirectLightIrradiance(directionalLight, geometry, directLight);
+    ReflectedLight reflectedLight = ReflectedLight(vec3(0.0), vec3(0.0), ambientLightColor, vec3(0.0));
     RE_Direct_Physical(directLight, geometry, material, reflectedLight);
 
     vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + reflectedLight.directSpecular + reflectedLight.indirectSpecular + totalEmissiveRadiance;
-    gl_FragColor = vec4(outgoingLight, 1.0);
-
-
-    float z = vWorldVertexPosition.z;
-    float xTexLookup = (uWaterLevel - z) / uWaterDelta + 0.5;
 
     vec3 seabedTexture = texture2D(uSeabedTexture, vWorldVertexPosition.xy / uSeabedTextureScale).rgb;
 

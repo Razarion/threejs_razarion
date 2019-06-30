@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {Water} from "./water";
 import {Slope} from "./slope";
-import {createSphereMesh, js2Terrain} from "./utils";
+import {createPlaneMesh, js2Terrain} from "./utils";
 import dat from "dat.gui";
 import {Seabed} from "./seabed";
 import modelUrl from "./models/Tree1.dae";
@@ -53,7 +53,7 @@ water.generateMesh(scene);
 let colladaModel = new ColladaModel(20, 28, 0.0, modelUrl, datGui);
 colladaModel.generateScene(scene);
 
-scene.add(createSphereMesh(24, 40, 10, 2))
+scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56))
 
 setupLight();
 
