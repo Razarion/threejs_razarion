@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import textureUrl from "./textures/chess32.jpg";
 import bumpMapUrl from "./textures/CoastBumpMap.png";
+import "three-dat.gui"
 
 function js2Terrain(jsField) {
     let webGlField = [];
@@ -40,18 +41,18 @@ function createSphereMesh(x, y, z, sphereRadius) {
     return mesh;
 }
 
-function createPlaneMesh(x, y, z, width, height) {
+function createPlaneMesh(x, y, z, width, height, datGui) {
     const sphereGeo = new THREE.PlaneBufferGeometry(width, height, 2, 2);
     const bumpMap = new THREE.TextureLoader().load(bumpMapUrl);
     let texture = new THREE.TextureLoader().load(textureUrl);
 
-    const sphereMat = new THREE.MeshStandardMaterial({
+    const sphereMat = new THREE.MeshPhongMaterial({
         bumpMap: bumpMap,
-        map: texture
+        map: texture,
+        specular: '#FFF',
+        shininess: 512
     });
-    sphereMat.metalness = 0.5;
-    sphereMat.roughness = 0.5;
-    sphereMat.bumpScale = 1;
+    datGui.addMaterial("MeshPhongMaterial", sphereMat);
 
     const mesh = new THREE.Mesh(sphereGeo, sphereMat);
     mesh.position.set(x, y, z);

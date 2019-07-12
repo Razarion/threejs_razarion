@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "dat.gui": "^0.7.6",
+    "three-dat.gui": "^1.0.2",
     "three": "^0.102.1",
     "three-collada-loader": "0.0.1",
     "three-collada-loader-2": "^1.0.1"
