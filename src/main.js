@@ -53,7 +53,7 @@ water.generateMesh(scene);
 let colladaModel = new ColladaModel(20, 28, 0.0, modelUrl, datGui);
 colladaModel.generateScene(scene);
 
-scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56, datGui));
+// scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56, datGui));
 
 setupLight();
 
