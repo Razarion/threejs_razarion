@@ -3,17 +3,18 @@
 
 varying vec3 vVertexPosition;
 varying vec3 vWorldVertexPosition;
+varying vec3 vNormal;
+varying vec3 vViewPosition;
 varying float vDepth;
 varying vec4 vNdcPosition;
 
 // Light
-uniform float uLightSpecularIntensity;
-uniform float uLightSpecularHardness;
+uniform float uShininess;
+uniform float uSpecularStrength;
 
-uniform mat3 normalMatrix;
 uniform float uTransparency;
-uniform sampler2D uNormMap;
-uniform float uNormMapDepth;
+uniform sampler2D uBumpMap;
+uniform float uBumpMapDepth;
 uniform sampler2D uDistortionMap;
 uniform float uReflectionScale;
 uniform sampler2D uReflection;
@@ -28,38 +29,49 @@ vec3 vec3ToRgb(vec3 normVec) {
     return normVec * 0.5 + 0.5;
 }
 
-vec3 setupSpecularLight(vec3 correctedLightDirection, vec3 correctedNorm, float intensity, float hardness) {
-    vec3 reflectionDirection = normalize(reflect(correctedLightDirection, normalize(correctedNorm)));
-    vec3 eyeDirection = normalize(-vVertexPosition.xyz);
-    float factor = pow(max(dot(reflectionDirection, eyeDirection), 0.0), hardness) * intensity;
-    return SPECULAR_LIGHT_COLOR * factor;
+vec2 dHdxy_fwd() {
+    vec2 vUv = vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5);
+    vec2 dSTdx = dFdx(vUv);
+    vec2 dSTdy = dFdy(vUv);
+    float Hll = uBumpMapDepth * texture2D(uBumpMap, vUv).x;
+    float dBx = uBumpMapDepth * texture2D(uBumpMap, vUv + dSTdx).x - Hll;
+    float dBy = uBumpMapDepth * texture2D(uBumpMap, vUv + dSTdy).x - Hll;
+    return vec2(dBx, dBy);
 }
 
-
-// +++ Also used in Slop.frag
-void setupWater(inout vec3 ambient, inout vec3 specular) {
-    // Setup ambient
-    vec2 distortion1 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
-    vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
-    vec2 totalDistortion = distortion1 + distortion2;
-    vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
-    ambient = texture2D(uReflection, reflectionCoord).rgb/* * ambientLightColor*/;
-    // Setup norm map and light
-    vec3 correctedLightDirection = -normalize(directionalLights[0].direction);
-    vec3 normMap1 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rgb;
-    vec3 normMap2 = texture2D(uNormMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rgb;
-    vec3 normMap = (normMap1 + normMap2) / 2.0;
-    normMap = vec3(normMap.r * 2.0 - 1.0, normMap.g * 2.0 - 1.0, normMap.b * 2.0 - 1.0);
-    vec3 correctedNorm = mix(vec3(0.0, 0.0, 1.0), normMap, uNormMapDepth);
-    // vec3 correctedNorm = normalize(normalMatrix * normMap);
-    specular = setupSpecularLight(correctedLightDirection, correctedNorm, uLightSpecularIntensity, uLightSpecularHardness);
+vec3 perturbNormalArb(vec3 surf_pos, vec3 surf_norm, vec2 dHdxy) {
+    vec3 vSigmaX = vec3(dFdx(surf_pos.x), dFdx(surf_pos.y), dFdx(surf_pos.z));
+    vec3 vSigmaY = vec3(dFdy(surf_pos.x), dFdy(surf_pos.y), dFdy(surf_pos.z));
+    vec3 vN = surf_norm;
+    vec3 R1 = cross(vSigmaY, vN);
+    vec3 R2 = cross(vN, vSigmaX);
+    float fDet = dot(vSigmaX, R1);
+    fDet *= (float(gl_FrontFacing) * 2.0 - 1.0);
+    vec3 vGrad = sign(fDet) * (dHdxy.x * R1 + dHdxy.y * R2);
+    return normalize(abs(fDet) * surf_norm - vGrad);
 }
-// +++ Also used in Slop.frag ends
 
 void main(void) {
-    vec3 ambient;
-    vec3 specular;
-    setupWater(ambient, specular);
+    // Reflection diffuse
+//    vec2 distortion1 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
+//    vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
+//    vec2 totalDistortion = distortion1 + distortion2;
+    vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
+    vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
+    vec3 reflection = texture2D(uReflection, reflectionCoord).rgb;
+
+    vec3 normal = perturbNormalArb(-vViewPosition, vNormal, dHdxy_fwd());
+    vec3 directLightColor = directionalLights[0].color;
+    vec3 directLightDirection = directionalLights[0].direction;
+    // Diffuse
+    vec3 slopeDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
+    // Specular
+    vec3 viewDir = normalize(vViewPosition);
+    vec3 halfwayDir = normalize(directLightDirection + viewDir);
+    float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
+    vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
+
+    vec3 waterSurface = (ambientLightColor + slopeDiffuse + slopeSpecular) * reflection.rgb;
 
     float z = vWorldVertexPosition.x * (-0.0375) + 0.9;
     float transitionTransparency;
@@ -70,5 +82,6 @@ void main(void) {
     } else {
         transitionTransparency = -z;
     }
-    gl_FragColor = vec4(ambient + specular, uTransparency * transitionTransparency);
+
+    gl_FragColor = vec4(waterSurface, uTransparency * transitionTransparency);
 }
