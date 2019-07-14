@@ -29,14 +29,19 @@ vec3 vec3ToRgb(vec3 normVec) {
     return normVec * 0.5 + 0.5;
 }
 
-vec2 dHdxy_fwd() {
-    vec2 vUv = vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5);
+vec2 dHdxy_fwd(vec2 vUv) {
     vec2 dSTdx = dFdx(vUv);
     vec2 dSTdy = dFdy(vUv);
     float Hll = uBumpMapDepth * texture2D(uBumpMap, vUv).x;
     float dBx = uBumpMapDepth * texture2D(uBumpMap, vUv + dSTdx).x - Hll;
     float dBy = uBumpMapDepth * texture2D(uBumpMap, vUv + dSTdy).x - Hll;
     return vec2(dBx, dBy);
+}
+
+vec2 dHdxy_fwd_animation() {
+    vec2 dHdxy1 = dHdxy_fwd(vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5));
+    vec2 dHdxy2 = dHdxy_fwd(vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation));
+    return (dHdxy1 + dHdxy2) / 2.0;
 }
 
 vec3 perturbNormalArb(vec3 surf_pos, vec3 surf_norm, vec2 dHdxy) {
@@ -60,7 +65,7 @@ void main(void) {
     vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
     vec3 reflection = texture2D(uReflection, reflectionCoord).rgb;
 
-    vec3 normal = perturbNormalArb(-vViewPosition, vNormal, dHdxy_fwd());
+    vec3 normal = perturbNormalArb(-vViewPosition, vNormal, dHdxy_fwd_animation());
     vec3 directLightColor = directionalLights[0].color;
     vec3 directLightDirection = directionalLights[0].direction;
     // Diffuse
