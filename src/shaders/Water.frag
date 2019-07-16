@@ -58,10 +58,9 @@ vec3 perturbNormalArb(vec3 surf_pos, vec3 surf_norm, vec2 dHdxy) {
 
 void main(void) {
     // Reflection diffuse
-//    vec2 distortion1 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
-//    vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
-//    vec2 totalDistortion = distortion1 + distortion2;
-    vec2 totalDistortion = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
+    vec2 distortion1 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
+    vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
+    vec2 totalDistortion = distortion1 + distortion2;
     vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
     vec3 reflection = texture2D(uReflection, reflectionCoord).rgb;
 
@@ -76,7 +75,7 @@ void main(void) {
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
 
-    vec3 waterSurface = (ambientLightColor + slopeDiffuse + slopeSpecular) * reflection.rgb;
+    vec3 waterSurface = (ambientLightColor + slopeSpecular + vec3(0.5, 0.5, 0.5)) * reflection.rgb;
 
     float z = vWorldVertexPosition.x * (-0.0375) + 0.9;
     float transitionTransparency;

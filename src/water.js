@@ -15,13 +15,13 @@ class Water extends Base {
         this.height = height;
         this.shininess = 30;
         this.specularStrength = 1;
-        this.reflectionScale = 100;
+        this.reflectionScale = 200;
         this.distortionScale = 1000;
-        this.distortionStrength = 0.01;
-        this.distortionScale = 50;
+        this.distortionStrength = 0.05;
+        this.distortionScale = 10;
         this.bumpMapDepth = 0.2;
         this.transparency = 0.5;
-        this.animationDuration = 80;
+        this.animationDuration = 30;
 
         this.gui = datGui.addFolder('Water');
         this.gui.add(this, 'shininess');

@@ -12,7 +12,7 @@ class Seabed extends Base {
         this.z = z;
         this.xLength = xLength;
         this.yLength = yLength;
-        this.textureScale = 1000;
+        this.textureScale = 3000;
         this.gui = datGui.addFolder('Seabed');
         this.gui.add(this, 'textureScale', 0);
     }
