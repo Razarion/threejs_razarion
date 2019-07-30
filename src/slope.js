@@ -6,6 +6,7 @@ import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
 import distortionMapUrl from "./textures/FoamDistortion.png";
+import ocean1Url from "./models/terrain/ocean1.json";
 
 class Slope extends Base {
     constructor(x, y, yLength, terrainShape, datGui, seabed) {
@@ -37,16 +38,12 @@ class Slope extends Base {
         let ySegments = Math.floor(this.yLength / Base.EDGE_LENGTH);
         this.xLength = xSegments * Base.EDGE_LENGTH;
         this.yLength = ySegments * Base.EDGE_LENGTH;
-        let geometry = new THREE.PlaneBufferGeometry(this.xLength, this.yLength, xSegments, ySegments);
-        geometry.translate(this.x + this.xLength / 2, this.y + this.yLength / 2, 0);
-        let index = 0;
-        for (let y = 0; y <= ySegments; y++) {
-            for (let x = 0; x <= xSegments; x++) {
-                geometry.attributes.position.array[index * 3 + 2] = this.terrainShape[x];
-                index++;
-            }
-        }
-        geometry.computeVertexNormals();
+
+        let geometry = new THREE.BufferGeometry();
+        let vertices = new Float32Array(ocean1Url.positions);
+        geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
+        let norms = new Float32Array(ocean1Url.norms);
+        geometry.addAttribute('normal', new THREE.BufferAttribute(norms, 3));
 
         let textureScale = 1;
         let water = this.setupTextureSimple(waterUrl, this.waterScale, this.xLength, this.yLength);

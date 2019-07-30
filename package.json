@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "webpack --watch",
-    "start": "http-server ./dist"
+    "start": "http-server ./dist -p 9090"
   },
   "dependencies": {
     "dat.gui": "^0.7.6",
