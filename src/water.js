@@ -5,14 +5,11 @@ import bumpMapUrl from "./textures/WaterBumpMap.png";
 import {Base} from "./base";
 import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
+import ocean1Url from "./models/terrain/ocean1";
 
 class Water extends Base {
-    constructor(x, y, width, height, datGui) {
+    constructor(datGui) {
         super();
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
         this.shininess = 30;
         this.specularStrength = 1;
         this.reflectionScale = 200;
@@ -36,34 +33,8 @@ class Water extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        let vertices = new Float32Array([
-            0, 0, 0,
-            1000, 0, 0,
-            1000, 1000, 0,
+        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(ocean1Url.waterPositions), 3));
 
-            1000, 1000, 0,
-            0, 1000, 0,
-            0, 0, 0
-        ]);
-        geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
-        let transparencies = new Float32Array([
-            1,
-            1,
-            1,
-
-            1,
-            1,
-            1,
-
-            1,
-            1,
-            1,
-
-            1,
-            1,
-            1
-        ]);
-        geometry.addAttribute('depth', new THREE.BufferAttribute(transparencies, 1));
         let loader = new THREE.TextureLoader();
         let reflection = loader.load(waterSurfaceTextureUrl);
         reflection.wrapS = THREE.RepeatWrapping;

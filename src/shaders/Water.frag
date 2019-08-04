@@ -5,7 +5,6 @@ varying vec3 vVertexPosition;
 varying vec3 vWorldVertexPosition;
 varying vec3 vNormal;
 varying vec3 vViewPosition;
-varying float vDepth;
 varying vec4 vNdcPosition;
 
 // Light
@@ -87,5 +86,5 @@ void main(void) {
         transitionTransparency = -z;
     }
 
-    gl_FragColor = vec4(waterSurface, uTransparency * transitionTransparency);
+    gl_FragColor = vec4(waterSurface, uTransparency);
 }

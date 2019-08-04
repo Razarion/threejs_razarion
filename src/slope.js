@@ -29,12 +29,9 @@ class Slope extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        let vertices = new Float32Array(ocean1Url.positions);
-        geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
-        let norms = new Float32Array(ocean1Url.norms);
-        geometry.addAttribute('normal', new THREE.BufferAttribute(norms, 3));
-        let uvs = new Float32Array(ocean1Url.uvs);
-        geometry.addAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(ocean1Url.positions), 3));
+        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(ocean1Url.norms), 3));
+        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(ocean1Url.uvs), 2));
 
         let water = this.setupTextureSimple(waterUrl);
         let coast = this.setupTextureSimple(coastUrl);

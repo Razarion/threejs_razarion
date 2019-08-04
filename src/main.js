@@ -42,7 +42,7 @@ seabed.generateMesh(scene);
 let slope = new Slope(datGui, seabed);
 slope.generateMesh(scene);
 
-let water = new Water(0, 0, 1000, 1000, datGui);
+let water = new Water(datGui);
 water.generateMesh(scene);
 
 
