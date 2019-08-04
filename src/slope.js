@@ -12,14 +12,14 @@ class Slope extends Base {
     constructor(datGui, seabed) {
         super();
         this.coastScale = 20;
-        this.coastBumpMapDepth = 1;
+        this.coastBumpMapDepth = 0.5;
         this.shininess = 3;
         this.specularStrength = 0.5;
         this.distortionStrength = 1;
         this.animationDuration = 10;
         this.gui = datGui.addFolder('Slope');
         this.gui.add(this, 'coastScale', 0);
-        this.gui.add(this, 'coastBumpMapDepth');
+        this.gui.add(this, 'coastBumpMapDepth', 0.0, 1.0);
         this.gui.add(this, 'shininess');
         this.gui.add(this, 'specularStrength');
         this.gui.add(this, 'distortionStrength');
