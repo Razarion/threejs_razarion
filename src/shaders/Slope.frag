@@ -2,7 +2,6 @@
 #include <lights_pars_begin>
 
 uniform sampler2D uWater;
-uniform float uWaterScale;
 uniform sampler2D uCoast;
 uniform float uCoastScale;
 uniform sampler2D uCoastBumpMap;
@@ -16,7 +15,7 @@ uniform float uShininess;
 uniform float uSpecularStrength;
 
 varying vec3 vNormal;
-varying vec3 vWorldVertexPosition;
+varying vec2 vUv;
 
 uniform sampler2D uDistortionMap;
 uniform float uDistortionStrength;
@@ -29,7 +28,7 @@ vec3 vec3ToReg(vec3 normVec) {
 }
 
 vec2 dHdxy_fwd() {
-    vec2 vUv = vWorldVertexPosition.xy / uCoastScale;
+    vec2 vUv = vUv.xy / uCoastScale;
     vec2 dSTdx = dFdx(vUv);
     vec2 dSTdy = dFdy(vUv);
     float Hll = uCoastBumpMapDepth * texture2D(uCoastBumpMap, vUv).x;
@@ -57,7 +56,7 @@ void main(void) {
     vec3 directLightDirection = directionalLights[0].direction;
 
     // Slope
-    vec4 coast = texture2D(uCoast, vWorldVertexPosition.xy / uCoastScale);
+    vec4 coast = texture2D(uCoast, vUv.xy / uCoastScale);
     vec3 slopeDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
@@ -65,11 +64,11 @@ void main(void) {
     vec3 slope = (ambientLightColor + slopeDiffuse + slopeSpecular) * coast.rgb;
 
     // Seabed
-    vec3 seabedTexture = texture2D(uSeabedTexture, vWorldVertexPosition.xy / uSeabedTextureScale).rgb;
+    vec3 seabedTexture = texture2D(uSeabedTexture, vUv.xy / uSeabedTextureScale).rgb;
 
     // Water
-    vec2 totalDistortion = uDistortionStrength  * (texture2D(uDistortionMap, vWorldVertexPosition.xy / uCoastScale + vec2(animation, 0)).rg * 2.0 - 1.0);
-    vec4 water = texture2D(uWater, (vWorldVertexPosition.xy + totalDistortion) / uCoastScale);
+    vec2 totalDistortion = uDistortionStrength  * (texture2D(uDistortionMap, vUv.xy / uCoastScale + vec2(animation, 0)).rg * 2.0 - 1.0);
+    vec4 water = texture2D(uWater, (vUv.xy + totalDistortion) / uCoastScale);
 
     vec3 coastSeabed = slope * coast.a + seabedTexture * (1.0 - coast.a);
 

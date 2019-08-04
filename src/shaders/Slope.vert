@@ -1,5 +1,5 @@
 varying vec3 vVertexPosition;
-varying vec3 vWorldVertexPosition;
+varying vec2 vUv;
 varying vec3 vNormal;
 varying vec3 vViewPosition;
 
@@ -7,7 +7,7 @@ void main(void) {
     #include <beginnormal_vertex>
 
     vVertexPosition = (viewMatrix * vec4(position, 1.0)).xyz;
-    vWorldVertexPosition = position.xyz;
+    vUv = uv;
 
     vec3 transformedNormal = normalMatrix * objectNormal;
     vNormal = normalize(transformedNormal);

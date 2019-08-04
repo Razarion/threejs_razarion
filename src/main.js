@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import {Water} from "./water";
 import {Slope} from "./slope";
-import {createPlaneMesh, js2Terrain} from "./utils";
 import dat from "dat.gui";
 import {Seabed} from "./seabed";
 import modelUrl from "./models/Tree1.dae";
@@ -37,13 +36,10 @@ document.body.appendChild(renderer.domElement);
 
 let groundLevel = -0.9;
 
-let terrainShape = js2Terrain([
-    [0.9, 0.6, 0.3, 0, -0.3, -0.6, groundLevel, groundLevel],
-]);
 let seabed = new Seabed(56, 0, groundLevel, 1000, 1000, datGui);
 seabed.generateMesh(scene);
 
-let slope = new Slope(0, 0, 1000, terrainShape, datGui, seabed);
+let slope = new Slope(datGui, seabed);
 slope.generateMesh(scene);
 
 let water = new Water(0, 0, 1000, 1000, datGui);

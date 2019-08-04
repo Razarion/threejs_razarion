@@ -9,21 +9,15 @@ import distortionMapUrl from "./textures/FoamDistortion.png";
 import ocean1Url from "./models/terrain/ocean1.json";
 
 class Slope extends Base {
-    constructor(x, y, yLength, terrainShape, datGui, seabed) {
+    constructor(datGui, seabed) {
         super();
-        this.x = x;
-        this.y = y;
-        this.yLength = yLength;
-        this.terrainShape = terrainShape;
-        this.waterScale = 57;
-        this.coastScale = 57;
+        this.coastScale = 20;
         this.coastBumpMapDepth = 1;
         this.shininess = 3;
         this.specularStrength = 0.5;
         this.distortionStrength = 1;
         this.animationDuration = 10;
         this.gui = datGui.addFolder('Slope');
-        this.gui.add(this, 'waterScale');
         this.gui.add(this, 'coastScale', 0);
         this.gui.add(this, 'coastBumpMapDepth');
         this.gui.add(this, 'shininess');
@@ -34,31 +28,24 @@ class Slope extends Base {
     }
 
     generateMesh(scene) {
-        let xSegments = this.terrainShape.length - 1;
-        let ySegments = Math.floor(this.yLength / Base.EDGE_LENGTH);
-        this.xLength = xSegments * Base.EDGE_LENGTH;
-        this.yLength = ySegments * Base.EDGE_LENGTH;
-
         let geometry = new THREE.BufferGeometry();
         let vertices = new Float32Array(ocean1Url.positions);
         geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
         let norms = new Float32Array(ocean1Url.norms);
         geometry.addAttribute('normal', new THREE.BufferAttribute(norms, 3));
+        let uvs = new Float32Array(ocean1Url.uvs);
+        geometry.addAttribute('uv', new THREE.BufferAttribute(uvs, 2));
 
-        let textureScale = 1;
-        let water = this.setupTextureSimple(waterUrl, this.waterScale, this.xLength, this.yLength);
-        let coast = this.setupTextureSimple(coastUrl, this.coastScale, this.xLength, this.yLength);
-        let coastBumpMap = this.setupTextureSimple(coastBumpMapUrl, textureScale, this.xLength, this.yLength);
-        let distortionMap = this.setupTextureSimple(distortionMapUrl, textureScale, this.xLength, this.yLength);
+        let water = this.setupTextureSimple(waterUrl);
+        let coast = this.setupTextureSimple(coastUrl);
+        let coastBumpMap = this.setupTextureSimple(coastBumpMapUrl);
+        let distortionMap = this.setupTextureSimple(distortionMapUrl);
 
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
                 {
-                    uLightSpecularIntensity: {value: this.lightSpecularIntensity},
-                    uLightSpecularHardness: {value: this.lightSpecularHardness},
                     uWater: {value: null},
-                    uWaterScale: {value: this.waterScale},
                     uCoast: {value: null},
                     uCoastScale: {value: this.coastScale},
                     uSeabedTexture: {value: null},
@@ -94,7 +81,6 @@ class Slope extends Base {
     }
 
     update() {
-        this.material.uniforms.uWaterScale.value = this.waterScale;
         this.material.uniforms.uCoastScale.value = this.coastScale;
         this.material.uniforms.uCoastBumpMapDepth.value = this.coastBumpMapDepth;
         this.material.uniforms.uShininess.value = this.shininess;
