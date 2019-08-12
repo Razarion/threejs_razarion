@@ -1,10 +1,15 @@
+attribute float aOffsetToOuter;
+
 varying vec3 vVertexPosition;
 varying vec3 vNormal;
 varying vec3 vWorldVertexPosition;
 varying vec4 vNdcPosition;
 varying vec3 vViewPosition;
+varying float vOffsetToOuter;
 
 void main(void) {
+    vOffsetToOuter = aOffsetToOuter;
+
     vVertexPosition = (viewMatrix * vec4(position, 1.0)).xyz;
     vWorldVertexPosition = position.xyz;
 

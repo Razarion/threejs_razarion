@@ -11,7 +11,7 @@ import ocean1Url from "./models/terrain/ocean1.json";
 class Slope extends Base {
     constructor(datGui, seabed) {
         super();
-        this.coastScale = 20;
+        this.coastScale = 21 ;
         this.coastBumpMapDepth = 0.5;
         this.shininess = 3;
         this.specularStrength = 0.5;

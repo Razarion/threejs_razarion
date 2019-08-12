@@ -18,6 +18,8 @@ class Water extends Base {
         this.distortionScale = 10;
         this.bumpMapDepth = 0.2;
         this.transparency = 0.5;
+        this.waterBeginsOffset = 10;
+        this.waterFadeoutDistance = 3;
         this.animationDuration = 30;
 
         this.gui = datGui.addFolder('Water');
@@ -28,12 +30,15 @@ class Water extends Base {
         this.gui.add(this, 'distortionScale');
         this.gui.add(this, 'bumpMapDepth', 0, 1);
         this.gui.add(this, 'transparency', 0, 1);
+        this.gui.add(this, 'waterBeginsOffset');
+        this.gui.add(this, 'waterFadeoutDistance');
         this.gui.add(this, 'animationDuration');
     }
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
         geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(ocean1Url.waterPositions), 3));
+        geometry.addAttribute('aOffsetToOuter', new THREE.BufferAttribute(new Float32Array(ocean1Url.offsetToOuters), 1));
 
         let loader = new THREE.TextureLoader();
         let reflection = loader.load(waterSurfaceTextureUrl);
@@ -58,7 +63,9 @@ class Water extends Base {
                     uDistortionStrength: {value: this.distortionStrength},
                     uBumpMap: {value: null},
                     uBumpMapDepth: {value: this.bumpMapDepth},
-                    uTransparency: {value: 0.9},
+                    uTransparency: {value: this.transparency},
+                    uWaterBeginsOffset: {value: this.waterFadeoutDistance},
+                    uWaterFadeoutDistance: {value: this.waterBeginsOffset},
                     animation: {value: this.setupWaterAnimation()}
                 }
             ]),
@@ -84,6 +91,8 @@ class Water extends Base {
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
         this.material.uniforms.uBumpMapDepth.value = this.bumpMapDepth;
         this.material.uniforms.uTransparency.value = this.transparency;
+        this.material.uniforms.uWaterBeginsOffset.value = this.waterBeginsOffset;
+        this.material.uniforms.uWaterFadeoutDistance.value = this.waterFadeoutDistance;
         this.material.uniforms.animation.value = this.setupWaterAnimation();
     }
 }
