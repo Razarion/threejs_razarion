@@ -6,32 +6,32 @@ import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
 import distortionMapUrl from "./textures/FoamDistortion.png";
-import ocean1Url from "./models/terrain/ocean1.json";
+import ocean1Url from "./models/terrain/terrain-tiles.json";
 
 class Slope extends Base {
-    constructor(datGui, seabed) {
+    constructor(datGui, terainSlopeTileJson) {
         super();
-        this.coastScale = 21 ;
+        this.terainSlopeTileJson = terainSlopeTileJson;
+        this.coastScale = 21;
         this.coastBumpMapDepth = 0.5;
         this.shininess = 3;
         this.specularStrength = 0.5;
         this.distortionStrength = 1;
         this.animationDuration = 10;
-        this.gui = datGui.addFolder('Slope');
+        this.gui = datGui.addFolder('Slope (' + terainSlopeTileJson.slopeSkeletonConfigId + ')');
         this.gui.add(this, 'coastScale', 0);
         this.gui.add(this, 'coastBumpMapDepth', 0.0, 1.0);
         this.gui.add(this, 'shininess');
         this.gui.add(this, 'specularStrength');
         this.gui.add(this, 'distortionStrength');
         this.gui.add(this, 'animationDuration');
-        this.seabed = seabed;
     }
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(ocean1Url.positions), 3));
-        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(ocean1Url.norms), 3));
-        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(ocean1Url.uvs), 2));
+        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terainSlopeTileJson.vertices), 3));
+        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.terainSlopeTileJson.norms), 3));
+        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.terainSlopeTileJson.uvs), 2));
 
         let water = this.setupTextureSimple(waterUrl);
         let coast = this.setupTextureSimple(coastUrl);
@@ -46,7 +46,7 @@ class Slope extends Base {
                     uCoast: {value: null},
                     uCoastScale: {value: this.coastScale},
                     uSeabedTexture: {value: null},
-                    uSeabedTextureScale: {value: this.seabed.getTextureScale()},
+                    uSeabedTextureScale: {value: 10}, // TODO
                     uCoastBumpMap: {value: null},
                     uCoastBumpMapDepth: {value: this.coastBumpMapDepth},
                     uShininess: {value: this.shininess},
@@ -63,7 +63,7 @@ class Slope extends Base {
         this.material.uniforms.uWater.value = water;
         this.material.uniforms.uCoast.value = coast;
         this.material.uniforms.uCoastBumpMap.value = coastBumpMap;
-        this.material.uniforms.uSeabedTexture.value = this.seabed.setupTexture();
+        this.material.uniforms.uSeabedTexture.value = distortionMap; // TODO
         this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.lights = true;
         this.material.metalness = 0;
@@ -83,7 +83,7 @@ class Slope extends Base {
         this.material.uniforms.uShininess.value = this.shininess;
         this.material.uniforms.uSpecularStrength.value = this.specularStrength;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
-        this.material.uniforms.uSeabedTextureScale.value = this.seabed.getTextureScale();
+        this.material.uniforms.uSeabedTextureScale.value = 20; // TODO
         this.material.uniforms.animation.value = this.setupWaterAnimation();
     }
 }

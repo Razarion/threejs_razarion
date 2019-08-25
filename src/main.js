@@ -1,10 +1,9 @@
 import * as THREE from 'three';
-import {Water} from "./water";
-import {Slope} from "./slope";
 import dat from "dat.gui";
-import {Seabed} from "./seabed";
+import terrainTileArray from "./models/terrain/terrain-tiles.json";
 import modelUrl from "./models/Tree1.dae";
 import {ColladaModel} from "./collada-model";
+import {TerrainTile} from "./terrain-tile";
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
@@ -34,17 +33,12 @@ renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-let groundLevel = -0.9;
 
-let seabed = new Seabed(56, 0, groundLevel, 1000, 1000, datGui);
-seabed.generateMesh(scene);
-
-let slope = new Slope(datGui, seabed);
-slope.generateMesh(scene);
-
-let water = new Water(datGui);
-water.generateMesh(scene);
-
+let terrainTiles = [];
+for (const terrainTileJson of terrainTileArray) {
+    let terrainTile = new TerrainTile(terrainTileJson, scene, datGui);
+    terrainTiles.push(terrainTile);
+}
 
 let colladaModel = new ColladaModel(20, 28, 0.0, modelUrl, datGui);
 colladaModel.generateScene(scene);
@@ -58,9 +52,7 @@ let animate = function () {
     requestAnimationFrame(animate);
 
     try {
-        water.update();
-        slope.update();
-        seabed.update();
+        terrainTiles.forEach(terrainTile => terrainTile.update());
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
     } catch (err) {

@@ -5,7 +5,7 @@ import bumpMapUrl from "./textures/WaterBumpMap.png";
 import {Base} from "./base";
 import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
-import ocean1Url from "./models/terrain/ocean1";
+import ocean1Url from "./models/terrain/terrain-tiles.json";
 
 class Water extends Base {
     constructor(datGui) {
