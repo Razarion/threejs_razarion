@@ -5,11 +5,11 @@ import bumpMapUrl from "./textures/WaterBumpMap.png";
 import {Base} from "./base";
 import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
-import ocean1Url from "./models/terrain/terrain-tiles.json";
 
 class Water extends Base {
-    constructor(datGui) {
+    constructor(datGui, terrainWaterTile) {
         super();
+        this.terrainWaterTile = terrainWaterTile;
         this.shininess = 30;
         this.specularStrength = 1;
         this.reflectionScale = 200;
@@ -22,7 +22,7 @@ class Water extends Base {
         this.waterFadeoutDistance = 3;
         this.animationDuration = 30;
 
-        this.gui = datGui.addFolder('Water');
+        this.gui = datGui.addFolder('Water (SlopeId:' + this.terrainWaterTile.slopeId + ')');
         this.gui.add(this, 'shininess');
         this.gui.add(this, 'specularStrength');
         this.gui.add(this, 'reflectionScale');
@@ -37,8 +37,8 @@ class Water extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(ocean1Url.waterPositions), 3));
-        geometry.addAttribute('aOffsetToOuter', new THREE.BufferAttribute(new Float32Array(ocean1Url.offsetToOuters), 1));
+        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terrainWaterTile.vertices), 3));
+        geometry.addAttribute('aOffsetToOuter', new THREE.BufferAttribute(new Float32Array(this.terrainWaterTile.offsetToOuters), 1));
 
         let loader = new THREE.TextureLoader();
         let reflection = loader.load(waterSurfaceTextureUrl);
