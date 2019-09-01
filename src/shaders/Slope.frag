@@ -6,8 +6,9 @@ uniform sampler2D uCoast;
 uniform float uCoastScale;
 uniform sampler2D uCoastBumpMap;
 uniform float uCoastBumpMapDepth;
-uniform sampler2D uSeabedTexture;
-uniform float uSeabedTextureScale;
+uniform sampler2D uGroundTexture;
+uniform float uGroundTextureScale;
+varying vec3 vWorldVertexPosition;
 
 uniform float uMetalnessFactor;
 uniform float uRoughnessFactor;
@@ -63,14 +64,14 @@ void main(void) {
     vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
     vec3 slope = (ambientLightColor + slopeDiffuse + slopeSpecular) * coast.rgb;
 
-    // Seabed
-    vec3 seabedTexture = texture2D(uSeabedTexture, vUv.xy / uSeabedTextureScale).rgb;
+    // Ground
+    vec3 groundTexture = texture2D(uGroundTexture, vWorldVertexPosition.xy / uGroundTextureScale).rgb;
 
-    // Water
+    // Water foam
     vec2 totalDistortion = uDistortionStrength  * (texture2D(uDistortionMap, vUv.xy / uCoastScale + vec2(animation, 0)).rg * 2.0 - 1.0);
     vec4 water = texture2D(uWater, (vUv.xy + totalDistortion) / uCoastScale);
 
-    vec3 coastSeabed = slope * coast.a + seabedTexture * (1.0 - coast.a);
+    vec3 coastGround = slope * coast.a + groundTexture * (1.0 - coast.a);
 
-    gl_FragColor = vec4(water.rgb * water.a + coastSeabed * (1.0 - water.a), 1.0);
+    gl_FragColor = vec4(water.rgb * water.a + coastGround * (1.0 - water.a), 1.0);
 }

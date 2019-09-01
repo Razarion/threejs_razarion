@@ -6,7 +6,7 @@ import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
 import distortionMapUrl from "./textures/FoamDistortion.png";
-import ocean1Url from "./models/terrain/terrain-tiles.json";
+import underWaterUrl from "./textures/UnderWater.png";
 
 class Slope extends Base {
     constructor(datGui, terainSlopeTileJson) {
@@ -37,6 +37,7 @@ class Slope extends Base {
         let coast = this.setupTextureSimple(coastUrl);
         let coastBumpMap = this.setupTextureSimple(coastBumpMapUrl);
         let distortionMap = this.setupTextureSimple(distortionMapUrl);
+        let underWater = this.setupTextureSimple(underWaterUrl);
 
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
@@ -45,8 +46,8 @@ class Slope extends Base {
                     uWater: {value: null},
                     uCoast: {value: null},
                     uCoastScale: {value: this.coastScale},
-                    uSeabedTexture: {value: null},
-                    uSeabedTextureScale: {value: 10}, // TODO
+                    uGroundTexture: {value: this.coastScale},
+                    uGroundTextureScale: {value: 3000}, // TODO
                     uCoastBumpMap: {value: null},
                     uCoastBumpMapDepth: {value: this.coastBumpMapDepth},
                     uShininess: {value: this.shininess},
@@ -63,7 +64,7 @@ class Slope extends Base {
         this.material.uniforms.uWater.value = water;
         this.material.uniforms.uCoast.value = coast;
         this.material.uniforms.uCoastBumpMap.value = coastBumpMap;
-        this.material.uniforms.uSeabedTexture.value = distortionMap; // TODO
+        this.material.uniforms.uGroundTexture.value = underWater;
         this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.lights = true;
         this.material.metalness = 0;
@@ -83,7 +84,7 @@ class Slope extends Base {
         this.material.uniforms.uShininess.value = this.shininess;
         this.material.uniforms.uSpecularStrength.value = this.specularStrength;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
-        this.material.uniforms.uSeabedTextureScale.value = 20; // TODO
+        this.material.uniforms.uGroundTextureScale.value = 3000; // TODO
         this.material.uniforms.animation.value = this.setupWaterAnimation();
     }
 }
