@@ -22,7 +22,7 @@ class TerrainTile {
         }
 
         this.waters = [];
-        for (const terrainWaterTile of terrainTileJson.terrainWaterTilea) {
+        for (const terrainWaterTile of terrainTileJson.terrainWaterTiles) {
             let water = new Water(this.datGuiFolder, terrainWaterTile);
             water.generateMesh(scene);
             this.waters.push(water);
