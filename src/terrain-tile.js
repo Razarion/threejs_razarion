@@ -35,8 +35,8 @@ class TerrainTile {
     }
 
     update() {
-        this.slopes.forEach(slope => slope.update())
-        this.waters.forEach(water => water.update())
+        this.slopes.forEach(slope => slope.update());
+        this.waters.forEach(water => water.update());
     }
 
 }
