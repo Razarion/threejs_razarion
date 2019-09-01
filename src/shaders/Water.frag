@@ -17,8 +17,8 @@ uniform sampler2D uBumpMap;
 uniform float uBumpMapDepth;
 uniform sampler2D uDistortionMap;
 uniform float uReflectionScale;
+uniform float uMapScale;
 uniform sampler2D uReflection;
-uniform float uDistortionScale;
 uniform float uDistortionStrength;
 uniform sampler2D uRgbDepthTexture;
 uniform float animation;
@@ -43,8 +43,8 @@ vec2 dHdxy_fwd(vec2 vUv) {
 }
 
 vec2 dHdxy_fwd_animation() {
-    vec2 dHdxy1 = dHdxy_fwd(vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5));
-    vec2 dHdxy2 = dHdxy_fwd(vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation));
+    vec2 dHdxy1 = dHdxy_fwd(vWorldVertexPosition.xy / uMapScale + vec2(animation, 0.5));
+    vec2 dHdxy2 = dHdxy_fwd(vWorldVertexPosition.xy / uMapScale + vec2(-animation, animation));
     return (dHdxy1 + dHdxy2) / 2.0;
 }
 
@@ -62,8 +62,8 @@ vec3 perturbNormalArb(vec3 surf_pos, vec3 surf_norm, vec2 dHdxy) {
 
 void main(void) {
     // Reflection diffuse
-    vec2 distortion1 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
-    vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uDistortionScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
+    vec2 distortion1 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uMapScale + vec2(animation, 0.5)).rg * 2.0 - 1.0;
+    vec2 distortion2 = texture2D(uDistortionMap, vWorldVertexPosition.xy / uMapScale + vec2(-animation, animation)).rg * 2.0 - 1.0;
     vec2 totalDistortion = distortion1 + distortion2;
     vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
     vec3 reflection = texture2D(uReflection, reflectionCoord).rgb;

@@ -7,32 +7,10 @@ import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
 
 class Water extends Base {
-    constructor(datGui, terrainWaterTile) {
+    constructor(terrainWaterTile, slopeSkeletonConfig) {
         super();
         this.terrainWaterTile = terrainWaterTile;
-        this.shininess = 30;
-        this.specularStrength = 1;
-        this.reflectionScale = 200;
-        this.distortionScale = 1000;
-        this.distortionStrength = 0.05;
-        this.distortionScale = 10;
-        this.bumpMapDepth = 0.2;
-        this.transparency = 0.5;
-        this.waterBeginsOffset = 10;
-        this.waterFadeoutDistance = 3;
-        this.animationDuration = 30;
-
-        this.gui = datGui.addFolder('Water (SlopeId:' + this.terrainWaterTile.slopeId + ')');
-        this.gui.add(this, 'shininess');
-        this.gui.add(this, 'specularStrength');
-        this.gui.add(this, 'reflectionScale');
-        this.gui.add(this, 'distortionStrength');
-        this.gui.add(this, 'distortionScale');
-        this.gui.add(this, 'bumpMapDepth', 0, 1);
-        this.gui.add(this, 'transparency', 0, 1);
-        this.gui.add(this, 'waterBeginsOffset');
-        this.gui.add(this, 'waterFadeoutDistance');
-        this.gui.add(this, 'animationDuration');
+        this.slopeSkeletonConfig = slopeSkeletonConfig;
     }
 
     generateMesh(scene) {
@@ -54,19 +32,19 @@ class Water extends Base {
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
                 {
-                    uShininess: {value: this.shininess},
-                    uSpecularStrength: {value: this.specularStrength},
-                    uReflectionScale: {value: this.reflectionScale},
+                    uShininess: {value: this.slopeSkeletonConfig.waterShininess},
+                    uSpecularStrength: {value: this.slopeSkeletonConfig.waterSpecularStrength},
+                    uReflectionScale: {value: this.slopeSkeletonConfig.waterReflectionScale},
+                    uMapScale: {value: this.slopeSkeletonConfig.waterMapScale},
                     uReflection: {value: null},
-                    uDistortionScale: {value: this.distortionScale},
                     uDistortionMap: {value: null},
-                    uDistortionStrength: {value: this.distortionStrength},
+                    uDistortionStrength: {value: this.slopeSkeletonConfig.waterDistortionStrength},
                     uBumpMap: {value: null},
-                    uBumpMapDepth: {value: this.bumpMapDepth},
-                    uTransparency: {value: this.transparency},
-                    uWaterBeginsOffset: {value: this.waterFadeoutDistance},
-                    uWaterFadeoutDistance: {value: this.waterBeginsOffset},
-                    animation: {value: this.setupWaterAnimation()}
+                    uBumpMapDepth: {value: this.slopeSkeletonConfig.waterBumpMapDepth},
+                    uTransparency: {value: this.slopeSkeletonConfig.waterTransparency},
+                    uWaterBeginsOffset: {value: this.slopeSkeletonConfig.waterBeginsOffset},
+                    uWaterFadeoutDistance: {value: this.slopeSkeletonConfig.waterFadeoutDistance},
+                    animation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.waterAnimationDuration)}
                 }
             ]),
             vertexShader: waterVertexShaderUrl,
@@ -78,22 +56,22 @@ class Water extends Base {
         this.material.lights = true;
         this.material.transparent = true;
         this.material.extensions.derivatives = true;
-        this.gui.add(this.material, "wireframe", 0, 1);
+        // this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
     }
 
     update() {
-        this.material.uniforms.uShininess.value = this.shininess;
-        this.material.uniforms.uSpecularStrength.value = this.specularStrength;
-        this.material.uniforms.uReflectionScale.value = this.reflectionScale;
-        this.material.uniforms.uDistortionScale.value = this.distortionScale;
-        this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
-        this.material.uniforms.uBumpMapDepth.value = this.bumpMapDepth;
-        this.material.uniforms.uTransparency.value = this.transparency;
-        this.material.uniforms.uWaterBeginsOffset.value = this.waterBeginsOffset;
-        this.material.uniforms.uWaterFadeoutDistance.value = this.waterFadeoutDistance;
-        this.material.uniforms.animation.value = this.setupWaterAnimation();
+        this.material.uniforms.uShininess.value = this.slopeSkeletonConfig.waterShininess;
+        this.material.uniforms.uSpecularStrength.value = this.slopeSkeletonConfig.waterSpecularStrength;
+        this.material.uniforms.uReflectionScale.value = this.slopeSkeletonConfig.waterReflectionScale;
+        this.material.uniforms.uMapScale.value = this.slopeSkeletonConfig.waterMapScale;
+        this.material.uniforms.uDistortionStrength.value = this.slopeSkeletonConfig.waterDistortionStrength;
+        this.material.uniforms.uBumpMapDepth.value = this.slopeSkeletonConfig.waterBumpMapDepth;
+        this.material.uniforms.uTransparency.value = this.slopeSkeletonConfig.waterTransparency;
+        this.material.uniforms.uWaterBeginsOffset.value = this.slopeSkeletonConfig.waterBeginsOffset;
+        this.material.uniforms.uWaterFadeoutDistance.value = this.slopeSkeletonConfig.waterFadeoutDistance;
+        this.material.uniforms.animation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.waterAnimationDuration);
     }
 }
 

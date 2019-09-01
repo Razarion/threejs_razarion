@@ -5,7 +5,7 @@ import {Water} from "./water";
 class TerrainTile {
 
 
-    constructor(terrainTileJson, scene, datGui) {
+    constructor(terrainTileJson, scene, datGui, staticGameConfigService) {
         this.scene = scene;
         this.datGuiFolder = datGui.addFolder('Terrain Tile [' + terrainTileJson.indexX + ":" + terrainTileJson.indexY + "]");
 
@@ -23,7 +23,7 @@ class TerrainTile {
 
         this.waters = [];
         for (const terrainWaterTile of terrainTileJson.terrainWaterTiles) {
-            let water = new Water(this.datGuiFolder, terrainWaterTile);
+            let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
             water.generateMesh(scene);
             this.waters.push(water);
         }

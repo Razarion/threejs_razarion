@@ -1,9 +1,11 @@
 import * as THREE from 'three';
 import dat from "dat.gui";
 import terrainTileArray from "./models/terrain/terrain-tiles.json";
+import staticGameConfigJson from "./models/terrain/static-game-config.json";
 import modelUrl from "./models/Tree1.dae";
 import {ColladaModel} from "./collada-model";
 import {TerrainTile} from "./terrain-tile";
+import {StaticGameConfigService} from "./static-game-config-service";
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
@@ -34,9 +36,10 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 
+let staticGameConfigService = new StaticGameConfigService(staticGameConfigJson, datGui);
 let terrainTiles = [];
 for (const terrainTileJson of terrainTileArray) {
-    let terrainTile = new TerrainTile(terrainTileJson, scene, datGui);
+    let terrainTile = new TerrainTile(terrainTileJson, scene, datGui, staticGameConfigService);
     terrainTiles.push(terrainTile);
 }
 

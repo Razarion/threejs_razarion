@@ -21,8 +21,8 @@ class Base {
         return texture;
     }
 
-    setupWaterAnimation() {
-        return sawtooth(Date.now(), this.animationDuration * 1000, 0);
+    setupWaterAnimation(animationDuration) {
+        return sawtooth(Date.now(), animationDuration * 1000, 0);
     }
 }
 
