@@ -54,7 +54,7 @@ class Slope extends Base {
                     uSpecularStrength: {value: this.specularStrength},
                     uDistortionMap: {value: null},
                     uDistortionStrength: {value: this.distortionStrength},
-                    animation: {value: this.setupWaterAnimation()}
+                    animation: {value: this.setupWaterAnimation(this.animationDuration)}
                 }
             ]),
             vertexShader: slopeVertexShaderUrl,
@@ -85,7 +85,7 @@ class Slope extends Base {
         this.material.uniforms.uSpecularStrength.value = this.specularStrength;
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
         this.material.uniforms.uGroundTextureScale.value = 3000; // TODO
-        this.material.uniforms.animation.value = this.setupWaterAnimation();
+        this.material.uniforms.animation.value = this.setupWaterAnimation(this.animationDuration);
     }
 }
 
