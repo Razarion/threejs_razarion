@@ -74,4 +74,6 @@ void main(void) {
     vec3 coastGround = slope * coast.a + groundTexture * (1.0 - coast.a);
 
     gl_FragColor = vec4(water.rgb * water.a + coastGround * (1.0 - water.a), 1.0);
+    // gl_FragColor = vec4(slope * coast.a + groundTexture * (1.0 - coast.a), 1.0);
+    // gl_FragColor = vec4(vUv.x/ uCoastScale, mod(vUv.y/ uCoastScale, 1.0), 0.0, 1.0);
 }

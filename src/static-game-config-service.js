@@ -11,13 +11,13 @@ class StaticGameConfigService {
             gui.add(slopeSkeletonConfig, 'waterBumpMapDepth', 0, 1);
             gui.add(slopeSkeletonConfig, 'waterDistortionStrength');
             gui.add(slopeSkeletonConfig, 'waterTransparency', 0, 1);
-            gui.add(slopeSkeletonConfig, 'waterBeginsOffset');
-            gui.add(slopeSkeletonConfig, 'waterFadeoutDistance');
             gui.add(slopeSkeletonConfig, 'waterAnimationDuration');
+            gui.add(slopeSkeletonConfig, 'shallowWaterTextureScale');
+            slopeSkeletonConfig.wireframeSlope = false;
+            gui.add(slopeSkeletonConfig, "wireframeSlope", 0, 1);
             this.slopeSkeletonConfigs.set(slopeSkeletonConfig.id, slopeSkeletonConfig);
         }
     }
-
 
     getSlopeSkeletonConfig(slopeSkeletonConfigId) {
         return this.slopeSkeletonConfigs.get(slopeSkeletonConfigId);

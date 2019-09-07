@@ -6,7 +6,7 @@ varying vec3 vWorldVertexPosition;
 varying vec3 vNormal;
 varying vec3 vViewPosition;
 varying vec4 vNdcPosition;
-varying float vOffsetToOuter;
+varying vec2 vUv;
 
 // Light
 uniform float uShininess;
@@ -20,11 +20,9 @@ uniform float uReflectionScale;
 uniform float uMapScale;
 uniform sampler2D uReflection;
 uniform float uDistortionStrength;
-uniform sampler2D uRgbDepthTexture;
 uniform float animation;
-
-uniform float uWaterBeginsOffset;
-uniform float uWaterFadeoutDistance;
+uniform sampler2D uShallowWater;
+uniform float uShallowWaterScale;
 
 
 const vec3 SPECULAR_LIGHT_COLOR = vec3(1.0, 1.0, 1.0);
@@ -91,13 +89,10 @@ void main(void) {
         transitionTransparency = -z;
     }
 
-    if (vOffsetToOuter < uWaterBeginsOffset) {
-        discard;
-    } else if (vOffsetToOuter > uWaterBeginsOffset + uWaterFadeoutDistance) {
-        gl_FragColor = vec4(waterSurface, uTransparency);
-    } else {
-        float fadeout = (vOffsetToOuter - uWaterBeginsOffset) / uWaterFadeoutDistance;
-        gl_FragColor = vec4(waterSurface, uTransparency * fadeout);
-    }
+    gl_FragColor = vec4(waterSurface, uTransparency);
 
+    // shallow water
+    vec4 shallowWater = texture2D(uShallowWater, vUv.xy / uShallowWaterScale);
+    gl_FragColor = vec4(shallowWater.rgb, shallowWater.a * uTransparency);
+    // gl_FragColor = vec4(vUv.x/ uShallowWaterScale, mod(vUv.y/ uShallowWaterScale, 1.0), 0.0, 1.0);
 }
