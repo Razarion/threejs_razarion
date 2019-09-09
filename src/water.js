@@ -5,7 +5,9 @@ import bumpMapUrl from "./textures/WaterBumpMap.png";
 import {Base} from "./base";
 import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
-import shallowWaterUrl from "./textures/Foam.png";
+import shallowWaterUrl from "./textures/ShallowWaterFoam.png";
+import shallowDistortionUrl from "./textures/FoamDistortion.png";
+import waterStencilUrl from "./textures/WaterStencil.png";
 
 class Water extends Base {
     constructor(terrainWaterTile, slopeSkeletonConfig) {
@@ -30,6 +32,8 @@ class Water extends Base {
         bumpMap.wrapS = THREE.RepeatWrapping;
         bumpMap.wrapT = THREE.RepeatWrapping;
         let shallowWater = this.setupTextureSimple(shallowWaterUrl);
+        let shallowDistortionMap = this.setupTextureSimple(shallowDistortionUrl);
+        let waterStenci = this.setupTextureSimple(waterStencilUrl);
 
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
@@ -49,7 +53,11 @@ class Water extends Base {
                     uWaterFadeoutDistance: {value: this.slopeSkeletonConfig.waterFadeoutDistance},
                     animation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.waterAnimationDuration)},
                     uShallowWater: {value: null},
-                    uShallowWaterScale: {value: this.slopeSkeletonConfig.shallowWaterTextureScale}
+                    uShallowWaterScale: {value: this.slopeSkeletonConfig.shallowWaterTextureScale},
+                    uShallowDistortionMap: {value: null},
+                    uShallowDistortionStrength: {value: this.slopeSkeletonConfig.shallowDistortionStrength},
+                    uShallowAnimation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.shallowAnimation)},
+                    uWaterStencil: {value: null},
                 }
             ]),
             vertexShader: waterVertexShaderUrl,
@@ -59,6 +67,8 @@ class Water extends Base {
         this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.uniforms.uBumpMap.value = bumpMap;
         this.material.uniforms.uShallowWater.value = shallowWater;
+        this.material.uniforms.uShallowDistortionMap.value = shallowDistortionMap;
+        this.material.uniforms.uWaterStencil.value = waterStenci;
         this.material.lights = true;
         this.material.transparent = true;
         this.material.extensions.derivatives = true;
@@ -77,6 +87,8 @@ class Water extends Base {
         this.material.uniforms.uTransparency.value = this.slopeSkeletonConfig.waterTransparency;
         this.material.uniforms.animation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.waterAnimationDuration);
         this.material.uniforms.uShallowWaterScale.value = this.slopeSkeletonConfig.shallowWaterTextureScale;
+        this.material.uniforms.uShallowDistortionStrength.value = this.slopeSkeletonConfig.shallowDistortionStrength;
+        this.material.uniforms.uShallowAnimation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.shallowAnimation);
         this.material.wireframe = this.slopeSkeletonConfig.wireframeSlope;
     }
 }

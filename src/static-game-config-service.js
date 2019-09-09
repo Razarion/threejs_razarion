@@ -13,6 +13,8 @@ class StaticGameConfigService {
             gui.add(slopeSkeletonConfig, 'waterTransparency', 0, 1);
             gui.add(slopeSkeletonConfig, 'waterAnimationDuration');
             gui.add(slopeSkeletonConfig, 'shallowWaterTextureScale');
+            gui.add(slopeSkeletonConfig, 'shallowDistortionStrength');
+            gui.add(slopeSkeletonConfig, 'shallowAnimation');
             slopeSkeletonConfig.wireframeSlope = false;
             gui.add(slopeSkeletonConfig, "wireframeSlope", 0, 1);
             this.slopeSkeletonConfigs.set(slopeSkeletonConfig.id, slopeSkeletonConfig);

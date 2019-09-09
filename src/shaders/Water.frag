@@ -23,7 +23,10 @@ uniform float uDistortionStrength;
 uniform float animation;
 uniform sampler2D uShallowWater;
 uniform float uShallowWaterScale;
-
+uniform sampler2D uShallowDistortionMap;
+uniform float uShallowDistortionStrength;
+uniform float uShallowAnimation;
+uniform sampler2D uWaterStencil;
 
 const vec3 SPECULAR_LIGHT_COLOR = vec3(1.0, 1.0, 1.0);
 
@@ -79,20 +82,13 @@ void main(void) {
 
     vec3 waterSurface = (ambientLightColor + slopeSpecular + vec3(0.5, 0.5, 0.5)) * reflection.rgb;
 
-    float z = vWorldVertexPosition.x * (-0.0375) + 0.9;
-    float transitionTransparency;
-    if (z > 0.0) {
-        transitionTransparency = 0.0;
-    } else if (z < -1.0){
-        transitionTransparency = 1.0;
-    } else {
-        transitionTransparency = -z;
-    }
-
-    gl_FragColor = vec4(waterSurface, uTransparency);
-
     // shallow water
-    vec4 shallowWater = texture2D(uShallowWater, vUv.xy / uShallowWaterScale);
-    gl_FragColor = vec4(shallowWater.rgb, shallowWater.a * uTransparency);
-    // gl_FragColor = vec4(vUv.x/ uShallowWaterScale, mod(vUv.y/ uShallowWaterScale, 1.0), 0.0, 1.0);
+    vec2 totalShallowDistortion = uShallowDistortionStrength  * (texture2D(uShallowDistortionMap, vUv.xy / uShallowWaterScale + vec2(uShallowAnimation, 0)).rg * 2.0 - 1.0);
+    vec4 shallowWater = texture2D(uShallowWater, (vUv.xy + totalShallowDistortion) / uShallowWaterScale);
+
+    float waterStencil = texture2D(uWaterStencil, (vUv.xy + totalShallowDistortion) / uShallowWaterScale).b;
+
+
+    gl_FragColor = vec4(shallowWater.rgb * shallowWater.a + waterSurface * waterStencil, uTransparency * ((shallowWater.a + waterStencil)/ 2.0));
+    // gl_FragColor = vec4(vUv.x / uShallowWaterScale, mod(vUv.y / uShallowWaterScale, 1.0), 0.0, 1.0);
 }
