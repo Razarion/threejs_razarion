@@ -3,6 +3,7 @@
 
 varying vec3 vWorldVertexPosition;
 varying vec3 vViewPosition;
+varying vec2 vUv;
 
 // Light
 uniform float uShininess;
@@ -17,6 +18,12 @@ uniform float uMapScale;
 uniform sampler2D uReflection;
 uniform float uDistortionStrength;
 uniform float animation;
+uniform sampler2D uShallowWater;
+uniform float uShallowWaterScale;
+uniform sampler2D uShallowDistortionMap;
+uniform float uShallowDistortionStrength;
+uniform float uShallowAnimation;
+uniform sampler2D uWaterStencil;
 
 const vec3 SPECULAR_LIGHT_COLOR = vec3(1.0, 1.0, 1.0);
 const vec3 NORM = vec3(0.0, 0.0, 1.0);
@@ -71,5 +78,14 @@ void main(void) {
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
 
-    gl_FragColor = vec4((ambientLightColor + slopeSpecular + vec3(0.5, 0.5, 0.5)) * reflection.rgb, uTransparency);
+    vec3 waterSurface = (ambientLightColor + slopeSpecular + vec3(0.5, 0.5, 0.5)) * reflection.rgb;
+
+    // shallow water
+    vec2 totalShallowDistortion = uShallowDistortionStrength  * (texture2D(uShallowDistortionMap, vUv.xy / uShallowWaterScale + vec2(uShallowAnimation, 0)).rg * 2.0 - 1.0);
+    vec4 shallowWater = texture2D(uShallowWater, (vUv.xy + totalShallowDistortion) / uShallowWaterScale);
+
+    float waterStencil = texture2D(uWaterStencil, (vUv.xy + totalShallowDistortion) / uShallowWaterScale).b;
+
+    gl_FragColor = vec4(shallowWater.rgb * shallowWater.a + waterSurface * waterStencil, uTransparency * ((shallowWater.a + waterStencil)/ 2.0));
+    // gl_FragColor = vec4(vUv.x / uShallowWaterScale, mod(vUv.y / uShallowWaterScale, 1.0), 0.0, 1.0);
 }

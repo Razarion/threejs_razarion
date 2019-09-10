@@ -1,6 +1,7 @@
 import {Ground} from "./ground";
 import {Slope} from "./slope";
 import {Water} from "./water";
+import {ShallowWater} from "./shallow-water";
 
 class TerrainTile {
 
@@ -22,10 +23,14 @@ class TerrainTile {
         }
 
         this.waters = [];
+        this.shallowWaters = [];
         for (const terrainWaterTile of terrainTileJson.terrainWaterTiles) {
             let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
             water.generateMesh(scene);
             this.waters.push(water);
+            let shallowWater = new ShallowWater(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
+            shallowWater.generateMesh(scene);
+            this.shallowWaters.push(shallowWater);
         }
     }
 
@@ -37,6 +42,7 @@ class TerrainTile {
     update() {
         this.slopes.forEach(slope => slope.update());
         this.waters.forEach(water => water.update());
+        this.shallowWaters.forEach(shallowWater => shallowWater.update());
     }
 
 }
