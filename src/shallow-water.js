@@ -31,9 +31,13 @@ class ShallowWater extends Base {
         let bumpMap = loader.load(bumpMapUrl);
         bumpMap.wrapS = THREE.RepeatWrapping;
         bumpMap.wrapT = THREE.RepeatWrapping;
-        let shallowWater = this.setupTextureSimple(shallowWaterUrl);
+        let shallowWater = new THREE.TextureLoader().load(shallowWaterUrl);
+        shallowWater.wrapS = THREE.ClampToEdgeWrapping;
+        shallowWater.wrapT = THREE.RepeatWrapping;
         let shallowDistortionMap = this.setupTextureSimple(shallowDistortionUrl);
-        let waterStenci = this.setupTextureSimple(waterStencilUrl);
+        let waterStencil = new THREE.TextureLoader().load(waterStencilUrl);
+        waterStencil.wrapS = THREE.ClampToEdgeWrapping;
+        waterStencil.wrapT = THREE.RepeatWrapping;
 
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
@@ -68,7 +72,7 @@ class ShallowWater extends Base {
         this.material.uniforms.uBumpMap.value = bumpMap;
         this.material.uniforms.uShallowWater.value = shallowWater;
         this.material.uniforms.uShallowDistortionMap.value = shallowDistortionMap;
-        this.material.uniforms.uWaterStencil.value = waterStenci;
+        this.material.uniforms.uWaterStencil.value = waterStencil;
         this.material.lights = true;
         this.material.transparent = true;
         this.material.extensions.derivatives = true;
