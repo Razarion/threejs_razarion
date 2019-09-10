@@ -1,11 +1,8 @@
 #include <common>
 #include <lights_pars_begin>
 
-varying vec3 vVertexPosition;
 varying vec3 vWorldVertexPosition;
-varying vec3 vNormal;
 varying vec3 vViewPosition;
-varying vec4 vNdcPosition;
 varying vec2 vUv;
 
 // Light
@@ -29,6 +26,7 @@ uniform float uShallowAnimation;
 uniform sampler2D uWaterStencil;
 
 const vec3 SPECULAR_LIGHT_COLOR = vec3(1.0, 1.0, 1.0);
+const vec3 NORM = vec3(0.0, 0.0, 1.0);
 
 vec3 vec3ToRgb(vec3 normVec) {
     return normVec * 0.5 + 0.5;
@@ -69,7 +67,7 @@ void main(void) {
     vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
     vec3 reflection = texture2D(uReflection, reflectionCoord).rgb;
 
-    vec3 normal = perturbNormalArb(-vViewPosition, vNormal, dHdxy_fwd_animation());
+    vec3 normal = perturbNormalArb(-vViewPosition, NORM, dHdxy_fwd_animation());
     vec3 directLightColor = directionalLights[0].color;
     vec3 directLightDirection = directionalLights[0].direction;
     // Diffuse
@@ -87,7 +85,6 @@ void main(void) {
     vec4 shallowWater = texture2D(uShallowWater, (vUv.xy + totalShallowDistortion) / uShallowWaterScale);
 
     float waterStencil = texture2D(uWaterStencil, (vUv.xy + totalShallowDistortion) / uShallowWaterScale).b;
-
 
     gl_FragColor = vec4(shallowWater.rgb * shallowWater.a + waterSurface * waterStencil, uTransparency * ((shallowWater.a + waterStencil)/ 2.0));
     // gl_FragColor = vec4(vUv.x / uShallowWaterScale, mod(vUv.y / uShallowWaterScale, 1.0), 0.0, 1.0);
