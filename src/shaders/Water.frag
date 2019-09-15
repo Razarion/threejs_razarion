@@ -2,6 +2,7 @@
 #include <lights_pars_begin>
 
 varying vec3 vWorldVertexPosition;
+varying vec3 vNormal;
 varying vec3 vViewPosition;
 
 // Light
@@ -9,6 +10,8 @@ uniform float uShininess;
 uniform float uSpecularStrength;
 
 uniform float uTransparency;
+uniform float uFresnelOffset;
+uniform float uFresnelDelta;
 uniform sampler2D uBumpMap;
 uniform float uBumpMapDepth;
 uniform sampler2D uDistortionMap;
@@ -19,7 +22,6 @@ uniform float uDistortionStrength;
 uniform float animation;
 
 const vec3 SPECULAR_LIGHT_COLOR = vec3(1.0, 1.0, 1.0);
-const vec3 NORM = vec3(0.0, 0.0, 1.0);
 
 vec3 vec3ToRgb(vec3 normVec) {
     return normVec * 0.5 + 0.5;
@@ -60,16 +62,19 @@ void main(void) {
     vec2 reflectionCoord = (vWorldVertexPosition.xy) / uReflectionScale + totalDistortion * uDistortionStrength;
     vec3 reflection = texture2D(uReflection, reflectionCoord).rgb;
 
-    vec3 normal = perturbNormalArb(-vViewPosition, NORM, dHdxy_fwd_animation());
+    // Specular
+    vec3 normal = perturbNormalArb(-vViewPosition, vNormal, dHdxy_fwd_animation());
     vec3 directLightColor = directionalLights[0].color;
     vec3 directLightDirection = directionalLights[0].direction;
-    // Diffuse
-    vec3 slopeDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
-    // Specular
     vec3 viewDir = normalize(vViewPosition);
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
 
-    gl_FragColor = vec4((ambientLightColor + slopeSpecular + vec3(0.5, 0.5, 0.5)) * reflection.rgb, uTransparency);
+    // Fresnel
+    float fresnel = dot(vNormal, viewDir);
+    float fresnelTransparency = (uFresnelOffset - fresnel) / uFresnelDelta + 0.5;
+    fresnelTransparency = clamp(fresnelTransparency, 0.0, 1.0);
+
+    gl_FragColor = vec4((ambientLightColor + slopeSpecular + vec3(0.5, 0.5, 0.5)) * reflection, fresnelTransparency * uTransparency);
 }

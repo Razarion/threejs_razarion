@@ -4,6 +4,8 @@ class StaticGameConfigService {
         this.slopeSkeletonConfigs = new Map();
         for (const slopeSkeletonConfig of this.staticGameConfigJson.slopeSkeletonConfigs) {
             const gui = datGui.addFolder('SlopeId: ' + slopeSkeletonConfig.internalName + ' (' + slopeSkeletonConfig.id + ')');
+            gui.add(slopeSkeletonConfig, 'fresnelOffset');
+            gui.add(slopeSkeletonConfig, 'fresnelDelta', 0.0);
             gui.add(slopeSkeletonConfig, 'waterShininess');
             gui.add(slopeSkeletonConfig, 'waterSpecularStrength');
             gui.add(slopeSkeletonConfig, 'waterReflectionScale');
