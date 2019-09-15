@@ -86,6 +86,7 @@ void main(void) {
 
     float waterStencil = texture2D(uWaterStencil, (vUv.xy + totalShallowDistortion) / uShallowWaterScale).b;
 
-    gl_FragColor = vec4(shallowWater.rgb * shallowWater.a * (1.0 - waterStencil)+ waterSurface * waterStencil, uTransparency * waterStencil);
+    gl_FragColor = vec4(shallowWater.rgb * shallowWater.a + waterSurface * waterStencil, uTransparency * (shallowWater.a + waterStencil));
+
     // gl_FragColor = vec4(vUv.x / uShallowWaterScale, mod(vUv.y / uShallowWaterScale, 1.0), 0.0, 1.0);
 }
