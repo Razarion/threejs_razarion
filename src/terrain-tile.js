@@ -16,21 +16,25 @@ class TerrainTile {
         }
 
         this.slopes = [];
-        for (const terrainSlopeTile of terrainTileJson.terrainSlopeTiles) {
-            let slope = new Slope(this.datGuiFolder, terrainSlopeTile);
-            slope.generateMesh(this.scene);
-            this.slopes.push(slope);
+        if (Array.isArray(terrainTileJson.terrainSlopeTiles)) {
+            for (const terrainSlopeTile of terrainTileJson.terrainSlopeTiles) {
+                let slope = new Slope(this.datGuiFolder, terrainSlopeTile);
+                slope.generateMesh(this.scene);
+                this.slopes.push(slope);
+            }
         }
 
         this.waters = [];
         this.shallowWaters = [];
-        for (const terrainWaterTile of terrainTileJson.terrainWaterTiles) {
-            let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
-            water.generateMesh(scene);
-            this.waters.push(water);
-            let shallowWater = new ShallowWater(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
-            shallowWater.generateMesh(scene);
-            this.shallowWaters.push(shallowWater);
+        if (Array.isArray(terrainTileJson.terrainWaterTiles)) {
+            for (const terrainWaterTile of terrainTileJson.terrainWaterTiles) {
+                let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
+                water.generateMesh(scene);
+                this.waters.push(water);
+                let shallowWater = new ShallowWater(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
+                shallowWater.generateMesh(scene);
+                this.shallowWaters.push(shallowWater);
+            }
         }
     }
 

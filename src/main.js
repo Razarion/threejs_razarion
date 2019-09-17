@@ -111,7 +111,7 @@ function setupLight() {
 
 function setupCameraGui() {
     let gui = datGui.addFolder('Camera');
-    gui.add(camera.position, 'x', -10, 200, 0.1);
+    gui.add(camera.position, 'x', -10, 400, 0.1);
     gui.add(camera.position, 'y', -10, 1000, 0.1);
     gui.add(camera.position, 'z', -10, 200, 0.1);
     gui.add(camera.rotation, 'x', 0.0, Math.PI / 2, 0.01);
