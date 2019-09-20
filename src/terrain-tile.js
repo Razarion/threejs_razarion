@@ -11,14 +11,14 @@ class TerrainTile {
         this.datGuiFolder = datGui.addFolder('Terrain Tile [' + terrainTileJson.indexX + ":" + terrainTileJson.indexY + "]");
 
         this.doGround(null, terrainTileJson.groundVertices, terrainTileJson.groundNorms);
-        for (let slopeId in terrainTileJson.groundSlopeVertices) {
-            this.doGround(slopeId, terrainTileJson.groundSlopeVertices[slopeId], terrainTileJson.groundSlopeNorms[slopeId]);
+        for (let slopeConfigId in terrainTileJson.groundSlopeVertices) {
+            this.doGround(slopeConfigId, terrainTileJson.groundSlopeVertices[slopeConfigId], terrainTileJson.groundSlopeNorms[slopeConfigId]);
         }
 
         this.slopes = [];
         if (Array.isArray(terrainTileJson.terrainSlopeTiles)) {
             for (const terrainSlopeTile of terrainTileJson.terrainSlopeTiles) {
-                let slope = new Slope(this.datGuiFolder, terrainSlopeTile);
+                let slope = new Slope(this.datGuiFolder, terrainSlopeTile, staticGameConfigService.getSlopeSkeletonConfig(terrainSlopeTile.slopeConfigId));
                 slope.generateMesh(this.scene);
                 this.slopes.push(slope);
             }
@@ -28,18 +28,18 @@ class TerrainTile {
         this.shallowWaters = [];
         if (Array.isArray(terrainTileJson.terrainWaterTiles)) {
             for (const terrainWaterTile of terrainTileJson.terrainWaterTiles) {
-                let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
+                let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeConfigId));
                 water.generateMesh(scene);
                 this.waters.push(water);
-                let shallowWater = new ShallowWater(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeId));
+                let shallowWater = new ShallowWater(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeConfigId));
                 shallowWater.generateMesh(scene);
                 this.shallowWaters.push(shallowWater);
             }
         }
     }
 
-    doGround(slopeId, groundVertices, groundNorms) {
-        let ground = new Ground(this.datGuiFolder, slopeId, groundVertices, groundNorms);
+    doGround(slopeConfigId, groundVertices, groundNorms) {
+        let ground = new Ground(this.datGuiFolder, slopeConfigId, groundVertices, groundNorms);
         ground.generateMesh(this.scene);
     }
 

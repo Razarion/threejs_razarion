@@ -43,8 +43,8 @@ class ShallowWater extends Base {
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
                 {
-                    uFresnelOffset: {value: this.slopeSkeletonConfig.fresnelOffset},
-                    uFresnelDelta: {value: this.slopeSkeletonConfig.fresnelDelta},
+                    uFresnelOffset: {value: this.slopeSkeletonConfig.waterFresnelOffset},
+                    uFresnelDelta: {value: this.slopeSkeletonConfig.waterFresnelDelta},
                     uShininess: {value: this.slopeSkeletonConfig.waterShininess},
                     uSpecularStrength: {value: this.slopeSkeletonConfig.waterSpecularStrength},
                     uReflectionScale: {value: this.slopeSkeletonConfig.waterReflectionScale},
@@ -61,8 +61,8 @@ class ShallowWater extends Base {
                     uShallowWater: {value: null},
                     uShallowWaterScale: {value: this.slopeSkeletonConfig.shallowWaterTextureScale},
                     uShallowDistortionMap: {value: null},
-                    uShallowDistortionStrength: {value: this.slopeSkeletonConfig.shallowDistortionStrength},
-                    uShallowAnimation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.shallowAnimation)},
+                    uShallowDistortionStrength: {value: this.slopeSkeletonConfig.shallowWaterDistortionStrength},
+                    uShallowAnimation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.shallowWaterAnimation)},
                     uWaterStencil: {value: null},
                 }
             ]),
@@ -78,14 +78,13 @@ class ShallowWater extends Base {
         this.material.lights = true;
         this.material.transparent = true;
         this.material.extensions.derivatives = true;
-        // this.gui.add(this.material, "wireframe", 0, 1);
 
         scene.add(new THREE.Mesh(geometry, this.material));
     }
 
     update() {
-        this.material.uniforms.uFresnelOffset.value = this.slopeSkeletonConfig.fresnelOffset;
-        this.material.uniforms.uFresnelDelta.value = this.slopeSkeletonConfig.fresnelDelta;
+        this.material.uniforms.uFresnelOffset.value = this.slopeSkeletonConfig.waterFresnelOffset;
+        this.material.uniforms.uFresnelDelta.value = this.slopeSkeletonConfig.waterFresnelDelta;
         this.material.uniforms.uShininess.value = this.slopeSkeletonConfig.waterShininess;
         this.material.uniforms.uSpecularStrength.value = this.slopeSkeletonConfig.waterSpecularStrength;
         this.material.uniforms.uReflectionScale.value = this.slopeSkeletonConfig.waterReflectionScale;
@@ -95,9 +94,9 @@ class ShallowWater extends Base {
         this.material.uniforms.uTransparency.value = this.slopeSkeletonConfig.waterTransparency;
         this.material.uniforms.animation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.waterAnimationDuration);
         this.material.uniforms.uShallowWaterScale.value = this.slopeSkeletonConfig.shallowWaterTextureScale;
-        this.material.uniforms.uShallowDistortionStrength.value = this.slopeSkeletonConfig.shallowDistortionStrength;
-        this.material.uniforms.uShallowAnimation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.shallowAnimation);
-        this.material.wireframe = this.slopeSkeletonConfig.wireframeSlope;
+        this.material.uniforms.uShallowDistortionStrength.value = this.slopeSkeletonConfig.shallowWaterDistortionStrength;
+        this.material.uniforms.uShallowAnimation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.shallowWaterAnimation);
+        this.material.wireframe = this.slopeSkeletonConfig.wireframeWater;
     }
 }
 

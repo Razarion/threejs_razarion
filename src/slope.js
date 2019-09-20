@@ -9,16 +9,17 @@ import distortionMapUrl from "./textures/FoamDistortion.png";
 import underWaterUrl from "./textures/UnderWater.png";
 
 class Slope extends Base {
-    constructor(datGui, terainSlopeTileJson) {
+    constructor(datGui, terrainSlopeTile, slopeSkeletonConfig) {
         super();
-        this.terainSlopeTileJson = terainSlopeTileJson;
+        this.terrainSlopeTile = terrainSlopeTile;
+        this.slopeSkeletonConfig = slopeSkeletonConfig;
         this.coastScale = 21;
         this.coastBumpMapDepth = 0.5;
         this.shininess = 3;
         this.specularStrength = 0.5;
         this.distortionStrength = 1;
         this.animationDuration = 10;
-        this.gui = datGui.addFolder('Slope (' + terainSlopeTileJson.slopeSkeletonConfigId + ')');
+        this.gui = datGui.addFolder('Slope (' + terrainSlopeTile.slopeSkeletonConfigId + ')');
         this.gui.add(this, 'coastScale', 0);
         this.gui.add(this, 'coastBumpMapDepth', 0.0, 1.0);
         this.gui.add(this, 'shininess');
@@ -29,9 +30,9 @@ class Slope extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terainSlopeTileJson.vertices), 3));
-        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.terainSlopeTileJson.norms), 3));
-        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.terainSlopeTileJson.uvs), 2));
+        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.vertices), 3));
+        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.norms), 3));
+        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.uvs), 2));
 
         let water = this.setupTextureSimple(waterUrl);
         let coast = this.setupTextureSimple(coastUrl);
@@ -71,8 +72,6 @@ class Slope extends Base {
         this.material.roughness = 0.5;
         this.material.extensions.derivatives = true;
 
-        this.gui.add(this.material, "wireframe", 0, 1);
-
         let mesh = new THREE.Mesh(geometry, this.material);
         mesh.receiveShadow = true;
         scene.add(mesh);
@@ -87,7 +86,8 @@ class Slope extends Base {
         this.material.uniforms.uDistortionStrength.value = this.distortionStrength;
         this.material.uniforms.uGroundTextureScale.value = 3000; // TODO
         this.material.uniforms.animation.value = this.setupWaterAnimation(this.animationDuration);
-    }
+        this.material.wireframe = this.slopeSkeletonConfig.wireframeSlope;
+   }
 }
 
 export {

@@ -32,8 +32,8 @@ class Water extends Base {
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
                 {
-                    uFresnelOffset: {value: this.slopeSkeletonConfig.fresnelOffset},
-                    uFresnelDelta: {value: this.slopeSkeletonConfig.fresnelDelta},
+                    uFresnelOffset: {value: this.slopeSkeletonConfig.waterFresnelOffset},
+                    uFresnelDelta: {value: this.slopeSkeletonConfig.waterFresnelDelta},
                     uShininess: {value: this.slopeSkeletonConfig.waterShininess},
                     uSpecularStrength: {value: this.slopeSkeletonConfig.waterSpecularStrength},
                     uReflectionScale: {value: this.slopeSkeletonConfig.waterReflectionScale},
@@ -63,8 +63,8 @@ class Water extends Base {
     }
 
     update() {
-        this.material.uniforms.uFresnelOffset.value = this.slopeSkeletonConfig.fresnelOffset;
-        this.material.uniforms.uFresnelDelta.value = this.slopeSkeletonConfig.fresnelDelta;
+        this.material.uniforms.uFresnelOffset.value = this.slopeSkeletonConfig.waterFresnelOffset;
+        this.material.uniforms.uFresnelDelta.value = this.slopeSkeletonConfig.waterFresnelDelta;
         this.material.uniforms.uShininess.value = this.slopeSkeletonConfig.waterShininess;
         this.material.uniforms.uSpecularStrength.value = this.slopeSkeletonConfig.waterSpecularStrength;
         this.material.uniforms.uReflectionScale.value = this.slopeSkeletonConfig.waterReflectionScale;
@@ -73,7 +73,7 @@ class Water extends Base {
         this.material.uniforms.uBumpMapDepth.value = this.slopeSkeletonConfig.waterBumpMapDepth;
         this.material.uniforms.uTransparency.value = this.slopeSkeletonConfig.waterTransparency;
         this.material.uniforms.animation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.waterAnimationDuration);
-        this.material.wireframe = this.slopeSkeletonConfig.wireframeSlope;
+        this.material.wireframe = this.slopeSkeletonConfig.wireframeWater;
     }
 }
 
