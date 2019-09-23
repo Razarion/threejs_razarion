@@ -78,7 +78,6 @@ class Slope extends Base {
     }
 
     update() {
-
         this.material.uniforms.uCoastScale.value = this.coastScale;
         this.material.uniforms.uCoastBumpMapDepth.value = this.coastBumpMapDepth;
         this.material.uniforms.uShininess.value = this.shininess;

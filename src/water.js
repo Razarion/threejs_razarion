@@ -1,7 +1,4 @@
 import * as THREE from "three";
-import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
-import distortionMapUrl from "./textures/WaterDistortion.png";
-import bumpMapUrl from "./textures/WaterBumpMap.png";
 import {Base} from "./base";
 import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
@@ -18,13 +15,13 @@ class Water extends Base {
         geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terrainWaterTile.vertices), 3));
 
         let loader = new THREE.TextureLoader();
-        let reflection = loader.load(waterSurfaceTextureUrl);
+        let reflection = loader.load(this.imageTable(this.slopeSkeletonConfig.waterReflectionId));
         reflection.wrapS = THREE.RepeatWrapping;
         reflection.wrapT = THREE.RepeatWrapping;
-        let distortionMap = loader.load(distortionMapUrl);
+        let distortionMap = loader.load(this.imageTable(this.slopeSkeletonConfig.waterDistortionId));
         distortionMap.wrapS = THREE.RepeatWrapping;
         distortionMap.wrapT = THREE.RepeatWrapping;
-        let bumpMap = loader.load(bumpMapUrl);
+        let bumpMap = loader.load(this.imageTable(this.slopeSkeletonConfig.waterBumpMapId));
         bumpMap.wrapS = THREE.RepeatWrapping;
         bumpMap.wrapT = THREE.RepeatWrapping;
 

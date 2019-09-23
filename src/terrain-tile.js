@@ -10,9 +10,15 @@ class TerrainTile {
         this.scene = scene;
         this.datGuiFolder = datGui.addFolder('Terrain Tile [' + terrainTileJson.indexX + ":" + terrainTileJson.indexY + "]");
 
-        this.doGround(null, terrainTileJson.groundVertices, terrainTileJson.groundNorms);
+        this.grounds = [];
         for (let slopeConfigId in terrainTileJson.groundSlopeVertices) {
-            this.doGround(slopeConfigId, terrainTileJson.groundSlopeVertices[slopeConfigId], terrainTileJson.groundSlopeNorms[slopeConfigId]);
+            let slopeSkeletonConfig = null;
+            if (slopeConfigId != null) {
+                slopeSkeletonConfig = staticGameConfigService.getSlopeSkeletonConfig(slopeConfigId);
+            }
+            let ground = new Ground(terrainTileJson.groundSlopeVertices[slopeConfigId], terrainTileJson.groundSlopeNorms[slopeConfigId], slopeSkeletonConfig);
+            ground.generateMesh(this.scene);
+            this.grounds.push(ground);
         }
 
         this.slopes = [];
@@ -38,12 +44,8 @@ class TerrainTile {
         }
     }
 
-    doGround(slopeConfigId, groundVertices, groundNorms) {
-        let ground = new Ground(this.datGuiFolder, slopeConfigId, groundVertices, groundNorms);
-        ground.generateMesh(this.scene);
-    }
-
     update() {
+        this.grounds.forEach(ground => ground.update());
         this.slopes.forEach(slope => slope.update());
         this.waters.forEach(water => water.update());
         this.shallowWaters.forEach(shallowWater => shallowWater.update());

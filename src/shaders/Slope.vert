@@ -1,4 +1,3 @@
-varying vec3 vVertexPosition;
 varying vec2 vUv;
 varying vec3 vNormal;
 varying vec3 vViewPosition;
@@ -9,17 +8,13 @@ void main(void) {
 
     vWorldVertexPosition = position.xyz;
 
-    vVertexPosition = (viewMatrix * vec4(position, 1.0)).xyz;
     vUv = uv;
 
-    vec3 transformedNormal = normalMatrix * objectNormal;
-    vNormal = normalize(transformedNormal);
+    vNormal = normalize(normalMatrix * objectNormal);
 
-    vec3 transformed = vec3(position);
-    vec4 mvPosition = modelViewMatrix * vec4(transformed, 1.0);
-    vViewPosition = - mvPosition.xyz;
+    vViewPosition = - (modelViewMatrix * vec4(position, 1.0)).xyz;
 
-    gl_Position = projectionMatrix * modelMatrix * vec4(vVertexPosition, 1.0);
+    gl_Position = projectionMatrix * viewMatrix * vec4(position, 1.0);
 }
 
 
