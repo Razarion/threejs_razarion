@@ -40,15 +40,15 @@ class Base {
                 return riGroundUrl;
             case 2 : // Razar Industries BM
                 return riGroundBmUrl;
-            case 3 :
+            case 3 : // Water reflection
                 return waterSurfaceTextureUrl;
-            case 4 :
+            case 4 :  // Water distortion
                 return distortionMapUrl;
-            case 5 :
+            case 5 : // Water bump map
                 return bumpMapUrl;
-            case 6 :
+            case 6 : // Water ground
                 return underWaterUrl;
-            case 7 :
+            case 7 : // Water ground  bump map
                 return underWaterUrl; // TODO replace with bump map
         }
         console.error("Can nat find entry in image table for: " + imageId)
