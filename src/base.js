@@ -2,6 +2,8 @@ import * as THREE from "three";
 import {sawtooth} from "./utils";
 import riGroundUrl from "./textures/RiGround.png";
 import riGroundBmUrl from "./textures/RiGroundBm.png";
+import riSlopeUrl from "./textures/RiSlope.png";
+import riSlopeBmUrl from "./textures/RiSlopeBm.png";
 import grassTextureUrl from "./textures/GrassTexture.png";
 import coastUrl from "./textures/Coast.png";
 import coastBumpMapUrl from "./textures/CoastBumpMap.png";
@@ -57,10 +59,14 @@ class Base {
                 return coastUrl;
             case 9 : // Slope coast bump map
                 return coastBumpMapUrl;
-            case 10 : // Slope foam distortion
+            case 10 : // Slope distortion
                 return coastFoamDistortionUrl;
             case 11 : // Slope foam distortion
                 return coastFoamUrl;
+            case 12 : // Razar Industries Slope
+                return riSlopeUrl;
+            case 13 : // Razar Industries Slope bump map
+                return riSlopeBmUrl;
         }
         console.error("Can nat find entry in image table for: " + imageId)
         return noTextureUrl;
