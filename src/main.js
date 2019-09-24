@@ -17,7 +17,7 @@ let directionalLightHelper;
 let shadowCameraHelper;
 
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.x = 400;
+camera.position.x = 75;
 camera.position.y = 0;
 camera.position.z = 80;
 camera.rotation.x = THREE.Math.degToRad(35);
@@ -39,7 +39,7 @@ document.body.appendChild(renderer.domElement);
 let staticGameConfigService = new StaticGameConfigService(staticGameConfigJson, datGui);
 let terrainTiles = [];
 for (const terrainTileJson of terrainTileArray) {
-    let terrainTile = new TerrainTile(terrainTileJson, scene, datGui, staticGameConfigService);
+    let terrainTile = new TerrainTile(terrainTileJson, scene, staticGameConfigService);
     terrainTiles.push(terrainTile);
 }
 

@@ -6,9 +6,8 @@ import {ShallowWater} from "./shallow-water";
 class TerrainTile {
 
 
-    constructor(terrainTileJson, scene, datGui, staticGameConfigService) {
+    constructor(terrainTileJson, scene, staticGameConfigService) {
         this.scene = scene;
-        this.datGuiFolder = datGui.addFolder('Terrain Tile [' + terrainTileJson.indexX + ":" + terrainTileJson.indexY + "]");
 
         this.grounds = [];
         for (let slopeConfigId in terrainTileJson.groundSlopeVertices) {
@@ -24,7 +23,7 @@ class TerrainTile {
         this.slopes = [];
         if (Array.isArray(terrainTileJson.terrainSlopeTiles)) {
             for (const terrainSlopeTile of terrainTileJson.terrainSlopeTiles) {
-                let slope = new Slope(this.datGuiFolder, terrainSlopeTile, staticGameConfigService.getSlopeSkeletonConfig(terrainSlopeTile.slopeConfigId));
+                let slope = new Slope(terrainSlopeTile, staticGameConfigService.getSlopeSkeletonConfig(terrainSlopeTile.slopeConfigId));
                 slope.generateMesh(this.scene);
                 this.slopes.push(slope);
             }

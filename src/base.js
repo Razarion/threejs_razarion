@@ -3,12 +3,15 @@ import {sawtooth} from "./utils";
 import riGroundUrl from "./textures/RiGround.png";
 import riGroundBmUrl from "./textures/RiGroundBm.png";
 import grassTextureUrl from "./textures/GrassTexture.png";
-import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import coastUrl from "./textures/Coast.png";
+import coastBumpMapUrl from "./textures/CoastBumpMap.png";
+import coastFoamUrl from "./textures/Foam.png";
+import coastFoamDistortionUrl from "./textures/FoamDistortion.png";
 import underWaterUrl from "./textures/UnderWater.png";
 import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import distortionMapUrl from "./textures/WaterDistortion.png";
 import bumpMapUrl from "./textures/WaterBumpMap.png";
+import noTextureUrl from "./models/textures/TextureHelpers512.png";
 
 class Base {
     static get EDGE_LENGTH() {
@@ -50,8 +53,17 @@ class Base {
                 return underWaterUrl;
             case 7 : // Water ground  bump map
                 return underWaterUrl; // TODO replace with bump map
+            case 8 : // Slope coast texture
+                return coastUrl;
+            case 9 : // Slope coast bump map
+                return coastBumpMapUrl;
+            case 10 : // Slope foam distortion
+                return coastFoamDistortionUrl;
+            case 11 : // Slope foam distortion
+                return coastFoamUrl;
         }
         console.error("Can nat find entry in image table for: " + imageId)
+        return noTextureUrl;
     }
 }
 

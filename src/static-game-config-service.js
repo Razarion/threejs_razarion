@@ -4,6 +4,15 @@ class StaticGameConfigService {
         this.slopeSkeletonConfigs = new Map();
         for (const slopeSkeletonConfig of this.staticGameConfigJson.slopeSkeletonConfigs) {
             const gui = datGui.addFolder('SlopeId: ' + slopeSkeletonConfig.internalName + ' (' + slopeSkeletonConfig.id + ')');
+
+            gui.add(slopeSkeletonConfig, 'slopeTextureScale', 0);
+            gui.add(slopeSkeletonConfig, 'slopeBumpMapDepth', 0.0, 1.0);
+            gui.add(slopeSkeletonConfig, 'slopeShininess');
+            gui.add(slopeSkeletonConfig, 'slopeSpecularStrength');
+            if (slopeSkeletonConfig.hasOwnProperty('slopeFoamTextureId')) {
+                gui.add(slopeSkeletonConfig, 'slopeFoamDistortionStrength');
+                gui.add(slopeSkeletonConfig, 'slopeFoamAnimationDuration');
+            }
             if (slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
                 const groundrGui = gui.addFolder('Ground');
                 groundrGui.add(slopeSkeletonConfig, 'groundTextureScale', 0);

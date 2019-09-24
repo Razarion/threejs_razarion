@@ -1,40 +1,38 @@
 #include <common>
 #include <lights_pars_begin>
 
-uniform sampler2D uWater;
-uniform sampler2D uCoast;
-uniform float uCoastScale;
-uniform sampler2D uCoastBumpMap;
-uniform float uCoastBumpMapDepth;
-uniform sampler2D uGroundTexture;
-uniform float uGroundTextureScale;
-varying vec3 vWorldVertexPosition;
-
-uniform float uMetalnessFactor;
-uniform float uRoughnessFactor;
-uniform float uShininess;
-uniform float uSpecularStrength;
-
 varying vec3 vNormal;
 varying vec2 vUv;
-
-uniform sampler2D uDistortionMap;
-uniform float uDistortionStrength;
-uniform float animation;
-
+varying vec3 vWorldVertexPosition;
 varying vec3 vViewPosition;
+
+uniform sampler2D uSlope;
+uniform float uSlopeScale;
+uniform float uShininess;
+uniform float uSpecularStrength;
+uniform sampler2D uSlopeBumpMap;
+uniform float uSlopeBumpMapDepth;
+#ifdef  RENDER_FOAM
+uniform sampler2D uFoam;
+uniform float uFoamDistortionStrength;
+uniform sampler2D uFoamDistortion;
+uniform float uFoamAnimation;
+#endif
+uniform sampler2D uGroundTexture;
+uniform float uGroundTextureScale;
+
 
 vec3 vec3ToReg(vec3 normVec) {
     return normVec * 0.5 + 0.5;
 }
 
 vec2 dHdxy_fwd() {
-    vec2 vUv = vUv.xy / uCoastScale;
+    vec2 vUv = vUv.xy / uSlopeScale;
     vec2 dSTdx = dFdx(vUv);
     vec2 dSTdy = dFdy(vUv);
-    float Hll = uCoastBumpMapDepth * texture2D(uCoastBumpMap, vUv).x;
-    float dBx = uCoastBumpMapDepth * texture2D(uCoastBumpMap, vUv + dSTdx).x - Hll;
-    float dBy = uCoastBumpMapDepth * texture2D(uCoastBumpMap, vUv + dSTdy).x - Hll;
+    float Hll = uSlopeBumpMapDepth * texture2D(uSlopeBumpMap, vUv).x;
+    float dBx = uSlopeBumpMapDepth * texture2D(uSlopeBumpMap, vUv + dSTdx).x - Hll;
+    float dBy = uSlopeBumpMapDepth * texture2D(uSlopeBumpMap, vUv + dSTdy).x - Hll;
     return vec2(dBx, dBy);
 }
 
@@ -57,23 +55,29 @@ void main(void) {
     vec3 directLightDirection = directionalLights[0].direction;
 
     // Slope
-    vec4 coast = texture2D(uCoast, vUv.xy / uCoastScale);
+    vec4 slopeTexture = texture2D(uSlope, vUv.xy / uSlopeScale);
     vec3 slopeDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
-    vec3 slope = (ambientLightColor + slopeDiffuse + slopeSpecular) * coast.rgb;
+    vec3 slope = (ambientLightColor + slopeDiffuse + slopeSpecular) * slopeTexture.rgb;
 
     // Ground
     vec3 groundTexture = texture2D(uGroundTexture, vWorldVertexPosition.xy / uGroundTextureScale).rgb;
 
+    vec3 slopeGround = slope * slopeTexture.a + groundTexture * (1.0 - slopeTexture.a);
+
     // Water foam
-    vec2 totalDistortion = uDistortionStrength  * (texture2D(uDistortionMap, vUv.xy / uCoastScale + vec2(animation, 0)).rg * 2.0 - 1.0);
-    vec4 water = texture2D(uWater, (vUv.xy + totalDistortion) / uCoastScale);
+    #ifdef  RENDER_FOAM
+    vec2 totalDistortion = uFoamDistortionStrength  * (texture2D(uFoamDistortion, vUv.xy / uSlopeScale + vec2(uFoamAnimation, 0)).rg * 2.0 - 1.0);
+    vec4 foam = texture2D(uFoam, (vUv.xy + totalDistortion) / uSlopeScale);
+    gl_FragColor = vec4(foam.rgb * foam.a + slopeGround * (1.0 - foam.a), 1.0);
+    #endif
 
-    vec3 coastGround = slope * coast.a + groundTexture * (1.0 - coast.a);
+    #ifndef RENDER_FOAM
+    gl_FragColor = vec4(slopeGround, 1.0);
+    #endif
 
-    gl_FragColor = vec4(water.rgb * water.a + coastGround * (1.0 - water.a), 1.0);
     // gl_FragColor = vec4(slope * coast.a + groundTexture * (1.0 - coast.a), 1.0);
     // gl_FragColor = vec4(vUv.x/ uCoastScale, mod(vUv.y/ uCoastScale, 1.0), 0.0, 1.0);
 }
