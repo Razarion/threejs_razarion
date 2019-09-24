@@ -1,6 +1,10 @@
 import * as THREE from "three";
 import {sawtooth} from "./utils";
+import riGroundUrl from "./textures/RiGround.png";
+import riGroundBmUrl from "./textures/RiGroundBm.png";
 import grassTextureUrl from "./textures/GrassTexture.png";
+import coastBumpMapUrl from "./textures/CoastBumpMap.png";
+import coastUrl from "./textures/Coast.png";
 import underWaterUrl from "./textures/UnderWater.png";
 import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import distortionMapUrl from "./textures/WaterDistortion.png";
@@ -32,10 +36,10 @@ class Base {
 
     imageTable(imageId) {
         switch (imageId) {
-            case 1 :
-                return grassTextureUrl;
-            case 2 :
-                return grassTextureUrl; // TODO replace with bump map
+            case 1 : // Razar Industries Ground
+                return riGroundUrl;
+            case 2 : // Razar Industries BM
+                return riGroundBmUrl;
             case 3 :
                 return waterSurfaceTextureUrl;
             case 4 :

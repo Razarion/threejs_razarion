@@ -13,6 +13,10 @@ uniform float uBumpMapDepth;
 uniform float uShininess;
 uniform float uSpecularStrength;
 
+vec3 vec3ToReg(vec3 normVec) {
+    return normVec * 0.5 + 0.5;
+}
+
 vec2 dHdxy_fwd() {
     vec2 vUv = vWorldVertexPosition.xy / uTextureScale;
     vec2 dSTdx = dFdx(vUv);
