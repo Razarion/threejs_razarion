@@ -16,11 +16,11 @@ let scene = new THREE.Scene();
 let directionalLightHelper;
 let shadowCameraHelper;
 
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+let camera = new THREE.PerspectiveCamera(120 /* TODO Error 170*/, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.x = 400;
-camera.position.y = 0;
-camera.position.z = 80;
-camera.rotation.x = THREE.Math.degToRad(35);
+camera.position.y = 0; // TODO Error 8.6
+camera.position.z = 80; // TODO Error 17.2
+camera.rotation.x = THREE.Math.degToRad(0.1); // 0 TODO Error 35
 
 window.addEventListener('resize', function () {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -51,6 +51,8 @@ colladaModel.generateScene(scene);
 setupLight();
 
 let animate = function () {
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
     directionalLightHelper.update();
     requestAnimationFrame(animate);
 
@@ -115,6 +117,7 @@ function setupCameraGui() {
     gui.add(camera.position, 'y', -10, 1000, 0.1);
     gui.add(camera.position, 'z', -10, 200, 0.1);
     gui.add(camera.rotation, 'x', 0.0, Math.PI / 2, 0.01);
+    gui.add(camera, 'fov',);
     gui.open();
 
 }
