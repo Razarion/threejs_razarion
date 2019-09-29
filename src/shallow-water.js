@@ -21,6 +21,7 @@ class ShallowWater extends Base {
         geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terrainWaterTile.shallowVertices), 3));
         geometry.addAttribute('aUv', new THREE.BufferAttribute(new Float32Array(this.terrainWaterTile.shallowUvs), 2));
 
+        // TODO take image from imageTable -> merge water with this class
         let loader = new THREE.TextureLoader();
         let reflection = loader.load(waterSurfaceTextureUrl);
         reflection.wrapS = THREE.RepeatWrapping;
