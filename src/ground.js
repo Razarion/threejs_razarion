@@ -56,7 +56,7 @@ class Ground extends Base {
             this.material.uniforms.uBumpMap.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.groundBumpMapId));
         } else {
             this.material.uniforms.uTexture.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.textureScaleConfig.id));
-            this.material.uniforms.uBumpMap.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.textureScaleConfig.id));
+            this.material.uniforms.uBumpMap.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.bumpMapId));
         }
         this.material.lights = true;
         this.material.extensions.derivatives = true;
