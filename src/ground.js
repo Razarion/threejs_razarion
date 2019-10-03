@@ -4,10 +4,11 @@ import groundVertexShaderUrl from "./shaders/Ground.vert";
 import groundFragmentShaderUrl from "./shaders/Ground.frag";
 
 class Ground extends Base {
-    constructor(groundPositions, groundNormals, slopeSkeletonConfig) {
+    constructor(groundPositions, groundNormals, groundSkeletonConfig, slopeSkeletonConfig) {
         super();
         this.groundPositions = groundPositions;
         this.groundNormals = groundNormals;
+        this.groundSkeletonConfig = groundSkeletonConfig;
         this.slopeSkeletonConfig = slopeSkeletonConfig;
     }
 
@@ -25,6 +26,12 @@ class Ground extends Base {
             bumpMapDepth = this.slopeSkeletonConfig.groundBumpMapDepth;
             shininess = this.slopeSkeletonConfig.groundShininess;
             specularStrength = this.slopeSkeletonConfig.groundSpecularStrength;
+        } else {
+            textureScale = this.groundSkeletonConfig.topTexture.textureScaleConfig.scale;
+            bumpMapDepth = this.groundSkeletonConfig.topTexture.bumpMapDepth;
+            shininess = this.groundSkeletonConfig.topTexture.shininess;
+            specularStrength = this.groundSkeletonConfig.topTexture.specularStrength;
+
         }
 
         this.material = new THREE.ShaderMaterial({
@@ -48,8 +55,8 @@ class Ground extends Base {
             this.material.uniforms.uTexture.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.groundTextureId));
             this.material.uniforms.uBumpMap.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.groundBumpMapId));
         } else {
-            this.material.uniforms.uTexture.value = this.setupTextureSimple('GrassTexture.png'); // TODO
-            this.material.uniforms.uBumpMap.value = this.setupTextureSimple('GrassTexture.png'); // TODO
+            this.material.uniforms.uTexture.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.textureScaleConfig.id));
+            this.material.uniforms.uBumpMap.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.textureScaleConfig.id));
         }
         this.material.lights = true;
         this.material.extensions.derivatives = true;
@@ -64,6 +71,11 @@ class Ground extends Base {
             this.material.uniforms.uBumpMapDepth.value = this.slopeSkeletonConfig.groundBumpMapDepth;
             this.material.uniforms.uShininess.value = this.slopeSkeletonConfig.groundShininess;
             this.material.uniforms.uSpecularStrength.value = this.slopeSkeletonConfig.groundSpecularStrength;
+        } else {
+            this.material.uniforms.uTextureScale.value = this.groundSkeletonConfig.topTexture.textureScaleConfig.scale;
+            this.material.uniforms.uBumpMapDepth.value = this.groundSkeletonConfig.topTexture.bumpMapDepth;
+            this.material.uniforms.uShininess.value = this.groundSkeletonConfig.topTexture.shininess;
+            this.material.uniforms.uSpecularStrength.value = this.groundSkeletonConfig.topTexture.specularStrength;
         }
 
     }

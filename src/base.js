@@ -4,7 +4,8 @@ import riGroundUrl from "./textures/RiGround.png";
 import riGroundBmUrl from "./textures/RiGroundBm.png";
 import riSlopeUrl from "./textures/RiSlope.png";
 import riSlopeBmUrl from "./textures/RiSlopeBm.png";
-import grassTextureUrl from "./textures/GrassTexture.png";
+import groundBottomUrl from "./textures/GroundBottom.png";
+import groundBottomBmUrl from "./textures/GroundBottomBm.png";
 import coastUrl from "./textures/Coast.png";
 import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import coastFoamUrl from "./textures/Foam.png";
@@ -67,6 +68,14 @@ class Base {
                 return riSlopeUrl;
             case 13 : // Razar Industries Slope bump map
                 return riSlopeBmUrl;
+            case 14 : // Ground Top
+                return groundBottomUrl;
+            case 15 : // Ground Top Slope bump map
+                return groundBottomBmUrl;
+            case 16 : // Ground Bottom
+                return groundBottomUrl;
+            case 17 : // Ground Bottom Slope bump map
+                return groundBottomBmUrl;
         }
         console.error("Can nat find entry in image table for: " + imageId)
         return noTextureUrl;

@@ -1,6 +1,19 @@
 class StaticGameConfigService {
     constructor(staticGameConfigJson, datGui) {
         this.staticGameConfigJson = staticGameConfigJson;
+        // Add ground menu
+        if (staticGameConfigJson.hasOwnProperty('groundSkeletonConfig')) {
+            const gui = datGui.addFolder('Ground (Id: ' + staticGameConfigJson.groundSkeletonConfig.id + ')');
+            this.addPhongMaterialConfig(gui, "Top Texture", staticGameConfigJson.groundSkeletonConfig.topTexture);
+            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingImageScale', 0);
+            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingFadeThreshold', 0);
+            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingOffset', 0);
+            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingGroundBmMultiplicator', 0);
+            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'shininess');
+            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'specularStrength');
+        }
+
+        // Add slope menu
         this.slopeSkeletonConfigs = new Map();
         for (const slopeSkeletonConfig of this.staticGameConfigJson.slopeSkeletonConfigs) {
             const gui = datGui.addFolder('SlopeId: ' + slopeSkeletonConfig.internalName + ' (' + slopeSkeletonConfig.id + ')');
@@ -44,8 +57,20 @@ class StaticGameConfigService {
         }
     }
 
+    addPhongMaterialConfig(gui, name, phongMaterialConfig) {
+        const phongGui = gui.addFolder(name);
+        phongGui.add(phongMaterialConfig.textureScaleConfig, 'scale', 0);
+        phongGui.add(phongMaterialConfig, 'bumpMapDepth', 0);
+        phongGui.add(phongMaterialConfig, 'shininess', 0);
+        phongGui.add(phongMaterialConfig, 'specularStrength', 0);
+    }
+
     getSlopeSkeletonConfig(slopeSkeletonConfigId) {
         return this.slopeSkeletonConfigs.get(parseInt(slopeSkeletonConfigId));
+    }
+
+    getGround() {
+        return this.staticGameConfigJson.groundSkeletonConfig;
     }
 }
 

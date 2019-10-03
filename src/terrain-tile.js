@@ -15,7 +15,18 @@ class TerrainTile {
             if (slopeConfigId != null) {
                 slopeSkeletonConfig = staticGameConfigService.getSlopeSkeletonConfig(slopeConfigId);
             }
-            let ground = new Ground(terrainTileJson.groundSlopeVertices[slopeConfigId], terrainTileJson.groundSlopeNorms[slopeConfigId], slopeSkeletonConfig);
+            let ground = new Ground(terrainTileJson.groundSlopeVertices[slopeConfigId],
+                terrainTileJson.groundSlopeNorms[slopeConfigId],
+                staticGameConfigService.getGround(),
+                slopeSkeletonConfig);
+            ground.generateMesh(this.scene);
+            this.grounds.push(ground);
+        }
+        if (terrainTileJson.hasOwnProperty('groundVertices')) {
+            let ground = new Ground(terrainTileJson.groundVertices,
+                terrainTileJson.groundNorms,
+                staticGameConfigService.getGround(),
+                null);
             ground.generateMesh(this.scene);
             this.grounds.push(ground);
         }
