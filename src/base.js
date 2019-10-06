@@ -8,6 +8,7 @@ import groundTopUrl from "./textures/GroundTop.png";
 import groundTopBmUrl from "./textures/GroundTopBm.png";
 import groundBottomUrl from "./textures/GroundBottom.png";
 import groundBottomBmUrl from "./textures/GroundBottomBm.png";
+import groundSplattingUrl from "./textures/GroundSplatting.png";
 import coastUrl from "./textures/Coast.png";
 import coastBumpMapUrl from "./textures/CoastBumpMap.png";
 import coastFoamUrl from "./textures/Foam.png";
@@ -78,6 +79,8 @@ class Base {
                 return groundBottomUrl;
             case 17 : // Ground Bottom Slope bump map
                 return groundBottomBmUrl;
+            case 18 : // Ground Splatting
+                return groundSplattingUrl;
         }
         console.error("Can nat find entry in image table for: " + imageId)
         return noTextureUrl;

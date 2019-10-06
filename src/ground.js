@@ -54,6 +54,10 @@ class Ground extends Base {
                     uBottomBumpMapDepth: {value: this.groundSkeletonConfig.bottomTexture.bumpMapDepth},
                     uBottomShininess: {value: this.groundSkeletonConfig.bottomTexture.shininess},
                     uBottomSpecularStrength: {value: this.groundSkeletonConfig.bottomTexture.specularStrength},
+                    uSplatting: {value: null},
+                    uSplattingScale: {value: this.groundSkeletonConfig.splatting.scale},
+                    uSplattingFadeThreshold: {value: this.groundSkeletonConfig.splattingFadeThreshold},
+                    uSplattingOffset: {value: this.groundSkeletonConfig.splattingOffset}
                 }]);
         }
 
@@ -72,6 +76,7 @@ class Ground extends Base {
             if (this.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
                 this.material.uniforms.uBottomTexture.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.bottomTexture.textureScaleConfig.id));
                 this.material.uniforms.uBottomBumpMap.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.bottomTexture.bumpMapId));
+                this.material.uniforms.uSplatting.value= this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.splatting.id));
                 this.material.defines = {
                     RENDER_GROUND_TEXTURE: true
                 };
@@ -100,6 +105,9 @@ class Ground extends Base {
                 this.material.uniforms.uBottomBumpMapDepth.value = this.groundSkeletonConfig.bottomTexture.bumpMapDepth;
                 this.material.uniforms.uBottomShininess.value = this.groundSkeletonConfig.bottomTexture.shininess;
                 this.material.uniforms.uBottomSpecularStrength.value = this.groundSkeletonConfig.bottomTexture.specularStrength;
+                this.material.uniforms.uSplattingScale.value = this.groundSkeletonConfig.splatting.scale;
+                this.material.uniforms.uSplattingFadeThreshold.value = this.groundSkeletonConfig.splattingFadeThreshold;
+                this.material.uniforms.uSplattingOffset.value = this.groundSkeletonConfig.splattingOffset;
             }
         }
 
