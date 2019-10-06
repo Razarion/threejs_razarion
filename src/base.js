@@ -4,6 +4,8 @@ import riGroundUrl from "./textures/RiGround.png";
 import riGroundBmUrl from "./textures/RiGroundBm.png";
 import riSlopeUrl from "./textures/RiSlope.png";
 import riSlopeBmUrl from "./textures/RiSlopeBm.png";
+import groundTopUrl from "./textures/GroundTop.png";
+import groundTopBmUrl from "./textures/GroundTopBm.png";
 import groundBottomUrl from "./textures/GroundBottom.png";
 import groundBottomBmUrl from "./textures/GroundBottomBm.png";
 import coastUrl from "./textures/Coast.png";
@@ -69,9 +71,9 @@ class Base {
             case 13 : // Razar Industries Slope bump map
                 return riSlopeBmUrl;
             case 14 : // Ground Top
-                return groundBottomUrl;
+                return groundTopUrl;
             case 15 : // Ground Top Slope bump map
-                return groundBottomBmUrl;
+                return groundTopBmUrl;
             case 16 : // Ground Bottom
                 return groundBottomUrl;
             case 17 : // Ground Bottom Slope bump map

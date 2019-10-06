@@ -3,21 +3,28 @@
 varying vec3 vWorldVertexPosition;
 varying vec3 vViewPosition;
 varying vec3 vNormal;
-
-uniform sampler2D uTexture;
-uniform float uTextureScale;
-
-uniform sampler2D uBumpMap;
-uniform float uBumpMapDepth;
-
-uniform float uShininess;
-uniform float uSpecularStrength;
+// Top
+uniform sampler2D uTopTexture;
+uniform float uTopTextureScale;
+uniform sampler2D uTopBumpMap;
+uniform float uTopBumpMapDepth;
+uniform float uTopShininess;
+uniform float uTopSpecularStrength;
+#ifdef  RENDER_GROUND_TEXTURE
+// Bottom
+uniform sampler2D uBottomTexture;
+uniform float uBottomTextureScale;
+uniform sampler2D uBottomBumpMap;
+uniform float uBottomBumpMapDepth;
+uniform float uBottomShininess;
+uniform float uBottomSpecularStrength;
+#endif
 
 vec3 vec3ToReg(vec3 normVec) {
     return normVec * 0.5 + 0.5;
 }
 
-vec2 dHdxy_fwd() {
+vec2 dHdxy_fwd(sampler2D uBumpMap, float uBumpMapDepth, float uTextureScale) {
     vec2 vUv = vWorldVertexPosition.xy / uTextureScale;
     vec2 dSTdx = dFdx(vUv);
     vec2 dSTdy = dFdy(vUv);
@@ -40,16 +47,30 @@ vec3 perturbNormalArb(vec3 surf_pos, vec3 surf_norm, vec2 dHdxy) {
 }
 
 
-void main(void) {
-    vec3 normal = perturbNormalArb(-vViewPosition, normalize(vNormal), dHdxy_fwd());
+vec3 phong(sampler2D uTexture, float uTextureScale, sampler2D uBumpMap, float uBumpMapDepth, float uShininess, float uSpecularStrength) {
+    vec3 normal = perturbNormalArb(-vViewPosition, normalize(vNormal), dHdxy_fwd(uBumpMap, uBumpMapDepth, uTextureScale));
     vec3 viewDir = normalize(vViewPosition);
     vec3 directLightColor = directionalLights[0].color;
     vec3 directLightDirection = directionalLights[0].direction;
 
-    vec4 ground = texture2D(uTexture, vWorldVertexPosition.xy / uTextureScale);
-    vec3 groundDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
+    vec4 texture = texture2D(uTexture, vWorldVertexPosition.xy / uTextureScale);
+    vec3 diffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
-    vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
-    gl_FragColor = vec4((ambientLightColor + groundDiffuse + slopeSpecular) * ground.rgb, 1.0);
+    vec3 specular = uSpecularStrength * spec * directLightColor;
+    return (ambientLightColor + diffuse + specular) * texture.rgb;
+}
+
+void main(void) {
+    vec3 top = phong(uTopTexture, uTopTextureScale, uTopBumpMap, uTopBumpMapDepth, uTopShininess, uTopSpecularStrength);
+
+#ifdef  RENDER_GROUND_TEXTURE
+    vec3 bottom = phong(uBottomTexture, uBottomTextureScale, uBottomBumpMap, uBottomBumpMapDepth, uBottomShininess, uBottomSpecularStrength);
+    gl_FragColor = vec4(bottom, 1.0);
+#endif
+
+    #ifndef RENDER_GROUND_TEXTURE
+    gl_FragColor = vec4(top, 1.0);
+    #endif
+
 }

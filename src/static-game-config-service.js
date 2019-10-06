@@ -5,6 +5,9 @@ class StaticGameConfigService {
         if (staticGameConfigJson.hasOwnProperty('groundSkeletonConfig')) {
             const gui = datGui.addFolder('Ground (Id: ' + staticGameConfigJson.groundSkeletonConfig.id + ')');
             this.addPhongMaterialConfig(gui, "Top Texture", staticGameConfigJson.groundSkeletonConfig.topTexture);
+            if(staticGameConfigJson.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
+                this.addPhongMaterialConfig(gui, "Bottom Texture", staticGameConfigJson.groundSkeletonConfig.bottomTexture);
+            }
             // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingImageScale', 0);
             // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingFadeThreshold', 0);
             // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingOffset', 0);
