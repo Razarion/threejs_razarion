@@ -11,8 +11,8 @@ class StaticGameConfigService {
             if(staticGameConfigJson.groundSkeletonConfig.hasOwnProperty('splatting')) {
                 const splattingGui = gui.addFolder('Splatting');
                 splattingGui.add(staticGameConfigJson.groundSkeletonConfig.splatting, 'scale', 0);
-                splattingGui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingFadeThreshold', 0);
-                splattingGui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingOffset', 0);
+                splattingGui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingOffset', 0, 1);
+                splattingGui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingFadeThreshold', 0, 1);
             }
             // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingImageScale', 0);
             // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingFadeThreshold', 0);

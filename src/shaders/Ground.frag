@@ -76,6 +76,20 @@ void main(void) {
     vec3 bottom = phong(uBottomTexture, uBottomTextureScale, uBottomBumpMap, uBottomBumpMapDepth, uBottomShininess, uBottomSpecularStrength);
 
     float splatting = texture2D(uSplatting, vWorldVertexPosition.xy / uSplattingScale).r;
+    // float bottomBm = 1.0 - texture2D(uBottomBumpMap, vWorldVertexPosition.xy / uBottomTextureScale).r;
+
+
+    // gl_FragColor = vec4(mix(bottom, top, (splatting + bottomBm * uSplattingOffset) / (2.0 + uSplattingOffset)), 1.0);
+
+    splatting = (splatting - uSplattingOffset) / (2.0 * uSplattingFadeThreshold) + 0.5;
+    splatting = clamp(splatting, 0.0, 1.0);
     gl_FragColor = vec4(mix(bottom, top, splatting), 1.0);
+
+
+    //    if((splatting + bottomBm) > uSplattingOffset) {
+    //        gl_FragColor = vec4(bottom, 1.0);
+    //    } else {
+    //        gl_FragColor = vec4(top, 1.0);
+    //    }
     #endif
 }
