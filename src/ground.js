@@ -70,6 +70,7 @@ class Ground extends Base {
         if (this.slopeSkeletonConfig != null && this.slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
             this.material.uniforms.uTopTexture.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.groundTextureId));
             this.material.uniforms.uTopBumpMap.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.groundBumpMapId));
+            this.material.wireframe = this.slopeSkeletonConfig.wireframeSlopeGround;
         } else {
             this.material.uniforms.uTopTexture.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.textureScaleConfig.id));
             this.material.uniforms.uTopBumpMap.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.bumpMapId));
@@ -81,6 +82,7 @@ class Ground extends Base {
                     RENDER_GROUND_TEXTURE: true
                 };
             }
+            this.material.wireframe = this.groundSkeletonConfig.wireframe;
         }
         this.material.lights = true;
         this.material.extensions.derivatives = true;
@@ -95,11 +97,13 @@ class Ground extends Base {
             this.material.uniforms.uTopBumpMapDepth.value = this.slopeSkeletonConfig.groundBumpMapDepth;
             this.material.uniforms.uTopShininess.value = this.slopeSkeletonConfig.groundShininess;
             this.material.uniforms.uTopSpecularStrength.value = this.slopeSkeletonConfig.groundSpecularStrength;
+            this.material.wireframe = this.slopeSkeletonConfig.wireframeSlopeGround;
         } else {
             this.material.uniforms.uTopTextureScale.value = this.groundSkeletonConfig.topTexture.textureScaleConfig.scale;
             this.material.uniforms.uTopBumpMapDepth.value = this.groundSkeletonConfig.topTexture.bumpMapDepth;
             this.material.uniforms.uTopShininess.value = this.groundSkeletonConfig.topTexture.shininess;
             this.material.uniforms.uTopSpecularStrength.value = this.groundSkeletonConfig.topTexture.specularStrength;
+            this.material.wireframe = this.groundSkeletonConfig.wireframe;
             if (this.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
                 this.material.uniforms.uBottomTextureScale.value = this.groundSkeletonConfig.bottomTexture.textureScaleConfig.scale;
                 this.material.uniforms.uBottomBumpMapDepth.value = this.groundSkeletonConfig.bottomTexture.bumpMapDepth;

@@ -14,12 +14,8 @@ class StaticGameConfigService {
                 splattingGui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingOffset', 0, 1);
                 splattingGui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingFadeThreshold', 0, 1);
             }
-            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingImageScale', 0);
-            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingFadeThreshold', 0);
-            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingOffset', 0);
-            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'splattingGroundBmMultiplicator', 0);
-            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'shininess');
-            // gui.add(staticGameConfigJson.groundSkeletonConfig, 'specularStrength');
+            staticGameConfigJson.groundSkeletonConfig.wireframe = false;
+            gui.add(staticGameConfigJson.groundSkeletonConfig, "wireframe", 0, 1);
         }
 
         // Add slope menu
@@ -35,15 +31,17 @@ class StaticGameConfigService {
                 gui.add(slopeSkeletonConfig, 'slopeFoamDistortionStrength');
                 gui.add(slopeSkeletonConfig, 'slopeFoamAnimationDuration');
             }
+            slopeSkeletonConfig.wireframeSlope = false;
+            gui.add(slopeSkeletonConfig, "wireframeSlope", 0, 1);
             if (slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
                 const groundrGui = gui.addFolder('Ground');
                 groundrGui.add(slopeSkeletonConfig, 'groundTextureScale', 0);
                 groundrGui.add(slopeSkeletonConfig, 'groundBumpMapDepth', 0.0, 1.0);
                 groundrGui.add(slopeSkeletonConfig, 'groundShininess');
                 groundrGui.add(slopeSkeletonConfig, 'groundSpecularStrength');
+                slopeSkeletonConfig.wireframeSlopeGround = false;
+                groundrGui.add(slopeSkeletonConfig, "wireframeSlopeGround", 0, 1);
             }
-            slopeSkeletonConfig.wireframeSlope = false;
-            gui.add(slopeSkeletonConfig, "wireframeSlope", 0, 1);
             if (slopeSkeletonConfig.hasOwnProperty('waterLevel')) {
                 const waterGui = gui.addFolder('Water');
                 waterGui.add(slopeSkeletonConfig, 'waterFresnelOffset');
