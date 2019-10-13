@@ -55,7 +55,8 @@ class Ground extends Base {
                     uBottomShininess: {value: this.groundSkeletonConfig.bottomTexture.shininess},
                     uBottomSpecularStrength: {value: this.groundSkeletonConfig.bottomTexture.specularStrength},
                     uSplatting: {value: null},
-                    uSplattingScale: {value: this.groundSkeletonConfig.splatting.scale},
+                    uSplattingScale1: {value: this.groundSkeletonConfig.splatting.scale},
+                    uSplattingScale2: {value: this.groundSkeletonConfig.splattingScale2},
                     uSplattingFadeThreshold: {value: this.groundSkeletonConfig.splattingFadeThreshold},
                     uSplattingOffset: {value: this.groundSkeletonConfig.splattingOffset}
                 }]);
@@ -109,7 +110,8 @@ class Ground extends Base {
                 this.material.uniforms.uBottomBumpMapDepth.value = this.groundSkeletonConfig.bottomTexture.bumpMapDepth;
                 this.material.uniforms.uBottomShininess.value = this.groundSkeletonConfig.bottomTexture.shininess;
                 this.material.uniforms.uBottomSpecularStrength.value = this.groundSkeletonConfig.bottomTexture.specularStrength;
-                this.material.uniforms.uSplattingScale.value = this.groundSkeletonConfig.splatting.scale;
+                this.material.uniforms.uSplattingScale1.value = this.groundSkeletonConfig.splatting.scale;
+                this.material.uniforms.uSplattingScale2.value = this.groundSkeletonConfig.splattingScale2;
                 this.material.uniforms.uSplattingFadeThreshold.value = this.groundSkeletonConfig.splattingFadeThreshold;
                 this.material.uniforms.uSplattingOffset.value = this.groundSkeletonConfig.splattingOffset;
             }

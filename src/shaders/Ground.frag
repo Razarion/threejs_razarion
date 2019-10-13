@@ -20,7 +20,8 @@ uniform float uBottomShininess;
 uniform float uBottomSpecularStrength;
 // Top-Bottom Splatting
 uniform sampler2D uSplatting;
-uniform float uSplattingScale;
+uniform float uSplattingScale1;
+uniform float uSplattingScale2;
 uniform float uSplattingFadeThreshold;
 uniform float uSplattingOffset;
 #endif
@@ -75,7 +76,9 @@ void main(void) {
     #ifdef  RENDER_GROUND_TEXTURE
     vec3 bottom = phong(uBottomTexture, uBottomTextureScale, uBottomBumpMap, uBottomBumpMapDepth, uBottomShininess, uBottomSpecularStrength);
 
-    float splatting = texture2D(uSplatting, vWorldVertexPosition.xy / uSplattingScale).r;
+    float splatting1 = texture2D(uSplatting, vWorldVertexPosition.xy / uSplattingScale1).r;
+    float splatting2 = texture2D(uSplatting, vWorldVertexPosition.xy / uSplattingScale2).r;
+    float splatting = (splatting1 + splatting2) / 2.0;
     splatting = (splatting - uSplattingOffset) / (2.0 * uSplattingFadeThreshold) + 0.5;
     splatting = clamp(splatting, 0.0, 1.0);
     gl_FragColor = vec4(mix(top, bottom, splatting), 1.0);
