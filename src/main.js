@@ -48,6 +48,12 @@ colladaModel.generateScene(scene);
 
 // scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56, datGui));
 
+// for (var x = 0; x < 20; x++) {
+//     for (var y = 0; y < 20; y++) {
+//         scene.add(createSphereMesh(150 + x * 10, 20 + y * 10, 5, 1, 56, datGui));
+//     }
+// }
+
 setupLight();
 
 let animate = function () {

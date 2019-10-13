@@ -21,7 +21,7 @@ function sawtooth(millis, durationMs, offsetMs) {
     return (totMillis % durationMs) / durationMs; // Saegezahn
 }
 
-function createSphereMesh(x, y, z, sphereRadius) {
+function createSphereMesh(x, y, z, sphereRadius, datGui) {
     const sphereWidthDivisions = 32;
     const sphereHeightDivisions = 16;
     const sphereGeo = new THREE.SphereBufferGeometry(sphereRadius, sphereWidthDivisions, sphereHeightDivisions);
@@ -33,6 +33,8 @@ function createSphereMesh(x, y, z, sphereRadius) {
     sphereMat.metalness = 0.2;
     sphereMat.roughness = 0.5;
     sphereMat.bumpScale = 0.5;
+
+    // datGui.addMaterial("MeshStandardMaterial", sphereMat);
 
     const mesh = new THREE.Mesh(sphereGeo, sphereMat);
     mesh.castShadow = true;
