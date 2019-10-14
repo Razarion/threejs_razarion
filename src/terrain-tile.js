@@ -34,7 +34,7 @@ class TerrainTile {
         this.slopes = [];
         if (Array.isArray(terrainTileJson.terrainSlopeTiles)) {
             for (const terrainSlopeTile of terrainTileJson.terrainSlopeTiles) {
-                let slope = new Slope(terrainSlopeTile, staticGameConfigService.getSlopeSkeletonConfig(terrainSlopeTile.slopeConfigId));
+                let slope = new Slope(terrainSlopeTile, staticGameConfigService.getSlopeSkeletonConfig(terrainSlopeTile.slopeConfigId), staticGameConfigService.getGround());
                 slope.generateMesh(this.scene);
                 this.slopes.push(slope);
             }

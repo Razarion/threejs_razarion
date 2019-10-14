@@ -17,24 +17,43 @@ class Ground extends Base {
         geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.groundPositions), 3));
         geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.groundNormals), 3));
 
+        let uniforms = THREE.UniformsLib["lights"];
+        uniforms = Ground.enrichUniform(this.slopeSkeletonConfig, this.groundSkeletonConfig, uniforms);
+
+        this.material = new THREE.ShaderMaterial({
+            vertexShader: groundVertexShaderUrl,
+            fragmentShader: groundFragmentShaderUrl,
+            uniforms: uniforms
+        });
+
+        Ground.enrichMaterial(this.slopeSkeletonConfig, this.groundSkeletonConfig, this.material, this);
+
+        this.material.lights = true;
+        this.material.extensions.derivatives = true;
+
+        let mesh = new THREE.Mesh(geometry, this.material);
+        scene.add(mesh);
+    }
+
+    static enrichUniform(slopeSkeletonConfig, groundSkeletonConfig, uniforms) {
         let topTextureScale;
         let topBumpMapDepth;
         let topShininess;
         let topSpecularStrength;
-        if (this.slopeSkeletonConfig != null && this.slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
-            topTextureScale = this.slopeSkeletonConfig.groundTextureScale;
-            topBumpMapDepth = this.slopeSkeletonConfig.groundBumpMapDepth;
-            topShininess = this.slopeSkeletonConfig.groundShininess;
-            topSpecularStrength = this.slopeSkeletonConfig.groundSpecularStrength;
+        if (slopeSkeletonConfig != null && slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
+            topTextureScale = slopeSkeletonConfig.groundTextureScale;
+            topBumpMapDepth = slopeSkeletonConfig.groundBumpMapDepth;
+            topShininess = slopeSkeletonConfig.groundShininess;
+            topSpecularStrength = slopeSkeletonConfig.groundSpecularStrength;
         } else {
-            topTextureScale = this.groundSkeletonConfig.topTexture.textureScaleConfig.scale;
-            topBumpMapDepth = this.groundSkeletonConfig.topTexture.bumpMapDepth;
-            topShininess = this.groundSkeletonConfig.topTexture.shininess;
-            topSpecularStrength = this.groundSkeletonConfig.topTexture.specularStrength;
+            topTextureScale = groundSkeletonConfig.topTexture.textureScaleConfig.scale;
+            topBumpMapDepth = groundSkeletonConfig.topTexture.bumpMapDepth;
+            topShininess = groundSkeletonConfig.topTexture.shininess;
+            topSpecularStrength = groundSkeletonConfig.topTexture.specularStrength;
         }
 
-        let uniforms = THREE.UniformsUtils.merge([
-            THREE.UniformsLib["lights"],
+        let newUniforms = THREE.UniformsUtils.merge([
+            uniforms,
             {
                 uTopTexture: {value: null},
                 uTopTextureScale: {value: topTextureScale},
@@ -45,75 +64,72 @@ class Ground extends Base {
             }
         ]);
 
-        if (this.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
-            uniforms = THREE.UniformsUtils.merge([uniforms,
+        if (groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
+            newUniforms = THREE.UniformsUtils.merge([newUniforms,
                 {
                     uBottomTexture: {value: null},
-                    uBottomTextureScale: {value: this.groundSkeletonConfig.bottomTexture.textureScaleConfig.scale},
+                    uBottomTextureScale: {value: groundSkeletonConfig.bottomTexture.textureScaleConfig.scale},
                     uBottomBumpMap: {value: null},
-                    uBottomBumpMapDepth: {value: this.groundSkeletonConfig.bottomTexture.bumpMapDepth},
-                    uBottomShininess: {value: this.groundSkeletonConfig.bottomTexture.shininess},
-                    uBottomSpecularStrength: {value: this.groundSkeletonConfig.bottomTexture.specularStrength},
+                    uBottomBumpMapDepth: {value: groundSkeletonConfig.bottomTexture.bumpMapDepth},
+                    uBottomShininess: {value: groundSkeletonConfig.bottomTexture.shininess},
+                    uBottomSpecularStrength: {value: groundSkeletonConfig.bottomTexture.specularStrength},
                     uSplatting: {value: null},
-                    uSplattingScale1: {value: this.groundSkeletonConfig.splatting.scale},
-                    uSplattingScale2: {value: this.groundSkeletonConfig.splattingScale2},
-                    uSplattingFadeThreshold: {value: this.groundSkeletonConfig.splattingFadeThreshold},
-                    uSplattingOffset: {value: this.groundSkeletonConfig.splattingOffset}
+                    uSplattingScale1: {value: groundSkeletonConfig.splatting.scale},
+                    uSplattingScale2: {value: groundSkeletonConfig.splattingScale2},
+                    uSplattingFadeThreshold: {value: groundSkeletonConfig.splattingFadeThreshold},
+                    uSplattingOffset: {value: groundSkeletonConfig.splattingOffset}
                 }]);
         }
 
-        this.material = new THREE.ShaderMaterial({
-            vertexShader: groundVertexShaderUrl,
-            fragmentShader: groundFragmentShaderUrl,
-            uniforms: uniforms
-        });
+        return newUniforms;
+    }
 
-        if (this.slopeSkeletonConfig != null && this.slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
-            this.material.uniforms.uTopTexture.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.groundTextureId));
-            this.material.uniforms.uTopBumpMap.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.groundBumpMapId));
-            this.material.wireframe = this.slopeSkeletonConfig.wireframeSlopeGround;
+    static enrichMaterial(slopeSkeletonConfig, groundSkeletonConfig, material, helperRef) {
+        if (slopeSkeletonConfig != null && slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
+            material.uniforms.uTopTexture.value = helperRef.setupTextureSimple(helperRef.imageTable(slopeSkeletonConfig.groundTextureId));
+            material.uniforms.uTopBumpMap.value = helperRef.setupTextureSimple(helperRef.imageTable(slopeSkeletonConfig.groundBumpMapId));
+            material.wireframe = slopeSkeletonConfig.wireframeSlopeGround;
         } else {
-            this.material.uniforms.uTopTexture.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.textureScaleConfig.id));
-            this.material.uniforms.uTopBumpMap.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.topTexture.bumpMapId));
-            if (this.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
-                this.material.uniforms.uBottomTexture.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.bottomTexture.textureScaleConfig.id));
-                this.material.uniforms.uBottomBumpMap.value = this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.bottomTexture.bumpMapId));
-                this.material.uniforms.uSplatting.value= this.setupTextureSimple(this.imageTable(this.groundSkeletonConfig.splatting.id));
-                this.material.defines = {
+            material.uniforms.uTopTexture.value = helperRef.setupTextureSimple(helperRef.imageTable(groundSkeletonConfig.topTexture.textureScaleConfig.id));
+            material.uniforms.uTopBumpMap.value = helperRef.setupTextureSimple(helperRef.imageTable(groundSkeletonConfig.topTexture.bumpMapId));
+            if (groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
+                material.uniforms.uBottomTexture.value = helperRef.setupTextureSimple(helperRef.imageTable(groundSkeletonConfig.bottomTexture.textureScaleConfig.id));
+                material.uniforms.uBottomBumpMap.value = helperRef.setupTextureSimple(helperRef.imageTable(groundSkeletonConfig.bottomTexture.bumpMapId));
+                material.uniforms.uSplatting.value = helperRef.setupTextureSimple(helperRef.imageTable(groundSkeletonConfig.splatting.id));
+                material.defines = {
                     RENDER_GROUND_TEXTURE: true
                 };
             }
-            this.material.wireframe = this.groundSkeletonConfig.wireframe;
+            material.wireframe = groundSkeletonConfig.wireframe;
         }
-        this.material.lights = true;
-        this.material.extensions.derivatives = true;
-
-        let mesh = new THREE.Mesh(geometry, this.material);
-        scene.add(mesh);
     }
 
     update() {
-        if (this.slopeSkeletonConfig != null && this.slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
-            this.material.uniforms.uTopTextureScale.value = this.slopeSkeletonConfig.groundTextureScale;
-            this.material.uniforms.uTopBumpMapDepth.value = this.slopeSkeletonConfig.groundBumpMapDepth;
-            this.material.uniforms.uTopShininess.value = this.slopeSkeletonConfig.groundShininess;
-            this.material.uniforms.uTopSpecularStrength.value = this.slopeSkeletonConfig.groundSpecularStrength;
-            this.material.wireframe = this.slopeSkeletonConfig.wireframeSlopeGround;
+        Ground.update(this.slopeSkeletonConfig, this.groundSkeletonConfig, this.material);
+    }
+
+    static update(slopeSkeletonConfig, groundSkeletonConfig, material) {
+        if (slopeSkeletonConfig != null && slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
+            material.uniforms.uTopTextureScale.value = slopeSkeletonConfig.groundTextureScale;
+            material.uniforms.uTopBumpMapDepth.value = slopeSkeletonConfig.groundBumpMapDepth;
+            material.uniforms.uTopShininess.value = slopeSkeletonConfig.groundShininess;
+            material.uniforms.uTopSpecularStrength.value = slopeSkeletonConfig.groundSpecularStrength;
+            material.wireframe = slopeSkeletonConfig.wireframeSlopeGround;
         } else {
-            this.material.uniforms.uTopTextureScale.value = this.groundSkeletonConfig.topTexture.textureScaleConfig.scale;
-            this.material.uniforms.uTopBumpMapDepth.value = this.groundSkeletonConfig.topTexture.bumpMapDepth;
-            this.material.uniforms.uTopShininess.value = this.groundSkeletonConfig.topTexture.shininess;
-            this.material.uniforms.uTopSpecularStrength.value = this.groundSkeletonConfig.topTexture.specularStrength;
-            this.material.wireframe = this.groundSkeletonConfig.wireframe;
-            if (this.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
-                this.material.uniforms.uBottomTextureScale.value = this.groundSkeletonConfig.bottomTexture.textureScaleConfig.scale;
-                this.material.uniforms.uBottomBumpMapDepth.value = this.groundSkeletonConfig.bottomTexture.bumpMapDepth;
-                this.material.uniforms.uBottomShininess.value = this.groundSkeletonConfig.bottomTexture.shininess;
-                this.material.uniforms.uBottomSpecularStrength.value = this.groundSkeletonConfig.bottomTexture.specularStrength;
-                this.material.uniforms.uSplattingScale1.value = this.groundSkeletonConfig.splatting.scale;
-                this.material.uniforms.uSplattingScale2.value = this.groundSkeletonConfig.splattingScale2;
-                this.material.uniforms.uSplattingFadeThreshold.value = this.groundSkeletonConfig.splattingFadeThreshold;
-                this.material.uniforms.uSplattingOffset.value = this.groundSkeletonConfig.splattingOffset;
+            material.uniforms.uTopTextureScale.value = groundSkeletonConfig.topTexture.textureScaleConfig.scale;
+            material.uniforms.uTopBumpMapDepth.value = groundSkeletonConfig.topTexture.bumpMapDepth;
+            material.uniforms.uTopShininess.value = groundSkeletonConfig.topTexture.shininess;
+            material.uniforms.uTopSpecularStrength.value = groundSkeletonConfig.topTexture.specularStrength;
+            material.wireframe = groundSkeletonConfig.wireframe;
+            if (groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
+                material.uniforms.uBottomTextureScale.value = groundSkeletonConfig.bottomTexture.textureScaleConfig.scale;
+                material.uniforms.uBottomBumpMapDepth.value = groundSkeletonConfig.bottomTexture.bumpMapDepth;
+                material.uniforms.uBottomShininess.value = groundSkeletonConfig.bottomTexture.shininess;
+                material.uniforms.uBottomSpecularStrength.value = groundSkeletonConfig.bottomTexture.specularStrength;
+                material.uniforms.uSplattingScale1.value = groundSkeletonConfig.splatting.scale;
+                material.uniforms.uSplattingScale2.value = groundSkeletonConfig.splattingScale2;
+                material.uniforms.uSplattingFadeThreshold.value = groundSkeletonConfig.splattingFadeThreshold;
+                material.uniforms.uSplattingOffset.value = groundSkeletonConfig.splattingOffset;
             }
         }
 

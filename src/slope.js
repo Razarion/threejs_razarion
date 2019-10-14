@@ -2,15 +2,14 @@ import {Base} from "./base";
 import * as THREE from "three";
 import slopeVertexShaderUrl from "./shaders/Slope.vert";
 import slopeFragmentShaderUrl from "./shaders/Slope.frag";
-import underWaterUrl from "./textures/UnderWater.png";
+import {Ground} from "./ground";
 
 class Slope extends Base {
-    constructor(terrainSlopeTile, slopeSkeletonConfig) {
+    constructor(terrainSlopeTile, slopeSkeletonConfig, groundSkeletonConfig) {
         super();
         this.terrainSlopeTile = terrainSlopeTile;
         this.slopeSkeletonConfig = slopeSkeletonConfig;
-        this.coastScale = 21;
-        this.distortionStrength = 1;
+        this.groundSkeletonConfig = groundSkeletonConfig;
     }
 
     generateMesh(scene) {
@@ -18,8 +17,7 @@ class Slope extends Base {
         geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.vertices), 3));
         geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.norms), 3));
         geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.uvs), 2));
-
-        let underWater = this.setupTextureSimple(underWaterUrl);
+        geometry.addAttribute('aSlopeFactor', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.slopeFactors), 1));
 
         let uniforms = THREE.UniformsUtils.merge([
             THREE.UniformsLib["lights"],
@@ -29,9 +27,7 @@ class Slope extends Base {
                 uSlopeBumpMap: {value: null},
                 uSlopeBumpMapDepth: {value: this.slopeSkeletonConfig.slopeBumpMapDepth},
                 uShininess: {value: this.slopeSkeletonConfig.slopeShininess},
-                uSpecularStrength: {value: this.slopeSkeletonConfig.slopeSpecularStrength},
-                uGroundTexture: {value: this.coastScale}, // TODO
-                uGroundTextureScale: {value: 3000}, // TODO
+                uSpecularStrength: {value: this.slopeSkeletonConfig.slopeSpecularStrength}
             }
         ]);
 
@@ -44,6 +40,8 @@ class Slope extends Base {
                     uFoamAnimation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.slopeFoamAnimationDuration)}
                 }]);
         }
+
+        uniforms = Ground.enrichUniform(/*TODO this.slopeSkeletonConfig*/ null, this.groundSkeletonConfig, uniforms);
 
         this.material = new THREE.ShaderMaterial({
             uniforms: uniforms,
@@ -60,7 +58,8 @@ class Slope extends Base {
                 RENDER_FOAM: true
             };
         }
-        this.material.uniforms.uGroundTexture.value = underWater;
+        Ground.enrichMaterial(/* TODO this.slopeSkeletonConfig*/ null, this.groundSkeletonConfig, this.material, this);
+
         this.material.lights = true;
         this.material.extensions.derivatives = true;
 
@@ -78,8 +77,9 @@ class Slope extends Base {
             this.material.uniforms.uFoamDistortionStrength.value = this.slopeSkeletonConfig.slopeFoamDistortionStrength;
             this.material.uniforms.uFoamAnimation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.slopeFoamAnimationDuration);
         }
-        this.material.uniforms.uGroundTextureScale.value = 3000; // TODO
         this.material.wireframe = this.slopeSkeletonConfig.wireframeSlope;
+
+        Ground.update(/* TODO this.slopeSkeletonConfig*/ null, this.groundSkeletonConfig, this.material);
     }
 }
 
