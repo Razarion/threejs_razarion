@@ -43,7 +43,7 @@ for (const terrainTileJson of terrainTileArray) {
     terrainTiles.push(terrainTile);
 }
 
-let colladaModel = new ColladaModel(20, 28, 0.0, modelUrl, datGui);
+let colladaModel = new ColladaModel(150, 40, 0.0, modelUrl);
 colladaModel.generateScene(scene);
 
 // scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56, datGui));

@@ -13,7 +13,7 @@ module.exports = {
             template: 'src/index.html'
         }),
         new CopyWebpackPlugin([
-            {from:'src/models',to:'.'}
+            {from:'src/models/TreeTexture.png',to:'TreeTexture.png'}
         ]),
     ],
     output: {

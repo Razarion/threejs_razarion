@@ -1,7 +1,7 @@
 import ColladaLoader from "three-collada-loader-2";
 
 class ColladaModel {
-    constructor(x, y,z, modelUrl, datGui) {
+    constructor(x, y,z, modelUrl) {
         this.x = x;
         this.y = y;
         this.z = z;
