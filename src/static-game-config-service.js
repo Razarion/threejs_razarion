@@ -36,6 +36,10 @@ class StaticGameConfigService {
             gui.add(slopeSkeletonConfig, "wireframeSlope", 0, 1);
             if (slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
                 const groundrGui = gui.addFolder('Ground');
+                groundrGui.add(slopeSkeletonConfig, 'slopeSplattingScale1', 0);
+                groundrGui.add(slopeSkeletonConfig, 'slopeSplattingScale2', 0);
+                groundrGui.add(slopeSkeletonConfig, 'slopeSplattingFadeThreshold', 0, 1);
+                groundrGui.add(slopeSkeletonConfig, 'slopeSplattingOffset', 0, 1);
                 groundrGui.add(slopeSkeletonConfig, 'groundTextureScale', 0);
                 groundrGui.add(slopeSkeletonConfig, 'groundBumpMapDepth', 0.0, 1.0);
                 groundrGui.add(slopeSkeletonConfig, 'groundShininess');

@@ -17,8 +17,8 @@ let directionalLightHelper;
 let shadowCameraHelper;
 
 let camera = new THREE.PerspectiveCamera(120 /* TODO Error 170*/, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.x = 290; // TODO Error 400
-camera.position.y = 40; // TODO Error 8.6
+camera.position.x = 200; // TODO Error 400
+camera.position.y = 100; // TODO Error 8.6
 camera.position.z = 40; // TODO Error 17.2
 camera.rotation.x = THREE.Math.degToRad(20); // 0 TODO Error 35
 
@@ -121,7 +121,7 @@ function setupCameraGui() {
     let gui = datGui.addFolder('Camera');
     gui.add(camera.position, 'x', -10, 400, 0.1);
     gui.add(camera.position, 'y', -10, 1000, 0.1);
-    gui.add(camera.position, 'z', -10, 200, 0.1);
+    gui.add(camera.position, 'z', -10, 500, 0.1);
     gui.add(camera.rotation, 'x', 0.0, Math.PI / 2, 0.01);
     gui.add(camera, 'fov',);
     gui.open();

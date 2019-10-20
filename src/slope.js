@@ -27,7 +27,12 @@ class Slope extends Base {
                 uSlopeBumpMap: {value: null},
                 uSlopeBumpMapDepth: {value: this.slopeSkeletonConfig.slopeBumpMapDepth},
                 uShininess: {value: this.slopeSkeletonConfig.slopeShininess},
-                uSpecularStrength: {value: this.slopeSkeletonConfig.slopeSpecularStrength}
+                uSpecularStrength: {value: this.slopeSkeletonConfig.slopeSpecularStrength},
+                uSlopeSplatting: {value: null},
+                uSlopeSplattingScale1: {value: this.slopeSkeletonConfig.slopeSplattingScale1},
+                uSlopeSplattingScale2: {value: this.slopeSkeletonConfig.slopeSplattingScale2},
+                uSlopeSplattingFadeThreshold: {value: this.slopeSkeletonConfig.slopeSplattingFadeThreshold},
+                uSlopeSplattingOffset: {value: this.slopeSkeletonConfig.slopeSplattingOffset}
             }
         ]);
 
@@ -51,12 +56,16 @@ class Slope extends Base {
 
         this.material.uniforms.uSlope.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeTextureId));
         this.material.uniforms.uSlopeBumpMap.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeBumpMapId));
+        this.material.uniforms.uSlopeSplatting.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeSplattingId));
         if (this.slopeSkeletonConfig.hasOwnProperty('slopeFoamTextureId')) {
             this.material.uniforms.uFoam.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeFoamTextureId));
             this.material.uniforms.uFoamDistortion.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeFoamDistortionId));
-            this.material.defines = {
-                RENDER_FOAM: true
-            };
+            // TODO Foam not rendered because DEFINES are overridden
+            // TODO Foam is replaced by WaterShader? What about foam on cliffs?
+            // TODO Problem with Fresnel in Water
+            // this.material.defines = {
+            //     RENDER_FOAM: true
+            // };
         }
         Ground.enrichMaterial(/* TODO this.slopeSkeletonConfig*/ null, this.groundSkeletonConfig, this.material, this);
 
@@ -73,6 +82,10 @@ class Slope extends Base {
         this.material.uniforms.uSlopeBumpMapDepth.value = this.slopeSkeletonConfig.slopeBumpMapDepth;
         this.material.uniforms.uShininess.value = this.slopeSkeletonConfig.slopeShininess;
         this.material.uniforms.uSpecularStrength.value = this.slopeSkeletonConfig.slopeSpecularStrength;
+        this.material.uniforms.uSlopeSplattingScale1.value = this.slopeSkeletonConfig.slopeSplattingScale1;
+        this.material.uniforms.uSlopeSplattingScale2.value = this.slopeSkeletonConfig.slopeSplattingScale2;
+        this.material.uniforms.uSlopeSplattingFadeThreshold.value = this.slopeSkeletonConfig.slopeSplattingFadeThreshold;
+        this.material.uniforms.uSlopeSplattingOffset.value = this.slopeSkeletonConfig.slopeSplattingOffset;
         if (this.slopeSkeletonConfig.hasOwnProperty('slopeFoamTextureId')) {
             this.material.uniforms.uFoamDistortionStrength.value = this.slopeSkeletonConfig.slopeFoamDistortionStrength;
             this.material.uniforms.uFoamAnimation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.slopeFoamAnimationDuration);

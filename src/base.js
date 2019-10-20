@@ -81,6 +81,8 @@ class Base {
                 return groundBottomBmUrl;
             case 18 : // Ground Splatting
                 return groundSplattingUrl;
+            case 19 : // Slope Splatting
+                return groundSplattingUrl; // TODO own image
         }
         console.error("Can nat find entry in image table for: " + imageId)
         return noTextureUrl;
