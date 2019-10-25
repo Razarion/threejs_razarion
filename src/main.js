@@ -1,11 +1,13 @@
 import * as THREE from 'three';
 import dat from "dat.gui";
-import terrainTileArray from "./models/terrain/terrain-tiles.json";
-import staticGameConfigJson from "./models/terrain/static-game-config.json";
+import terrainTileArray from "./razarion_generated/terrain-tiles.json";
+import staticGameConfigJson from "./razarion_generated/static-game-config.json";
+import shapes3dJson from "./razarion_generated/shapes-3d";
 import modelUrl from "./models/Tree1.dae";
 import {ColladaModel} from "./collada-model";
 import {TerrainTile} from "./terrain-tile";
 import {StaticGameConfigService} from "./static-game-config-service";
+import {Shapes3D} from "./shape-3d";
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
@@ -45,6 +47,8 @@ for (const terrainTileJson of terrainTileArray) {
 
 let colladaModel = new ColladaModel(150, 40, 0.0, modelUrl);
 colladaModel.generateScene(scene);
+
+let shape3D = new Shapes3D(shapes3dJson);
 
 // scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56, datGui));
 
