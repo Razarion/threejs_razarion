@@ -17,7 +17,7 @@ import underWaterUrl from "./textures/UnderWater.png";
 import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import distortionMapUrl from "./textures/WaterDistortion.png";
 import bumpMapUrl from "./textures/WaterBumpMap.png";
-import noTextureUrl from "./models/textures/TextureHelpers512.png";
+import noTextureUrl from "./models/TextureHelpers512.png";
 
 class Base {
     static get EDGE_LENGTH() {
