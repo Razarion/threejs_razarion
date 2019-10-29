@@ -17,6 +17,7 @@ import underWaterUrl from "./textures/UnderWater.png";
 import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import distortionMapUrl from "./textures/WaterDistortion.png";
 import bumpMapUrl from "./textures/WaterBumpMap.png";
+import bushTextureUrl from "./models/BushTexture.png";
 import noTextureUrl from "./models/TextureHelpers512.png";
 
 class Base {
@@ -83,6 +84,8 @@ class Base {
                 return groundSplattingUrl;
             case 19 : // Slope Splatting
                 return groundSplattingUrl; // TODO own image
+            case 20 : // Slope Splatting
+                return bushTextureUrl;
         }
         console.error("Can nat find entry in image table for: " + imageId)
         return noTextureUrl;

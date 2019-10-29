@@ -2,39 +2,41 @@ import {Base} from "./base";
 import * as THREE from "three";
 
 class Shapes3D extends Base {
-    constructor(threeJsShape, x, y, z, datGui) {
+    constructor(threeJsShape, datGui) {
         super();
         this.threeJsShape = threeJsShape;
-        this.x = x;
-        this.y = y;
-        this.z = z;
         this.datGui = datGui;
     }
 
-    generateMesh(scene) {
-        let geometry = new THREE.BufferGeometry();
+    prepare() {
+        this.geometry = new THREE.BufferGeometry();
 
-        let staticMatrics = this.threeJsShape.shape3D.element3Ds[0].vertexContainers[0].shapeTransform.staticMatrix.numbers;
-        let buffer = this.threeJsShape.vertexContainerBuffer[0];
-
+        let staticMatrix = this.threeJsShape.shape3D.element3Ds[0].vertexContainers[0].shapeTransform.staticMatrix.numbers;
         let m = new THREE.Matrix4();
-        m.set(staticMatrics[0][0], staticMatrics[0][1], staticMatrics[0][2], staticMatrics[0][3],
-            staticMatrics[1][0], staticMatrics[1][1], staticMatrics[1][2], staticMatrics[1][3],
-            staticMatrics[2][0], staticMatrics[2][1], staticMatrics[2][2], staticMatrics[2][3],
-            staticMatrics[3][0], staticMatrics[3][1], staticMatrics[3][2], staticMatrics[3][3]);
+        m.set(staticMatrix[0][0], staticMatrix[0][1], staticMatrix[0][2], staticMatrix[0][3],
+            staticMatrix[1][0], staticMatrix[1][1], staticMatrix[1][2], staticMatrix[1][3],
+            staticMatrix[2][0], staticMatrix[2][1], staticMatrix[2][2], staticMatrix[2][3],
+            staticMatrix[3][0], staticMatrix[3][1], staticMatrix[3][2], staticMatrix[3][3]);
 
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(buffer.vertexData), 3));
-        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(buffer.normData), 3));
-        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(buffer.testureCoordinate), 2));
-        geometry.applyMatrix(m);
+        let buffer = this.threeJsShape.vertexContainerBuffer[0];
+        this.geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(buffer.vertexData), 3));
+        this.geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(buffer.normData), 3));
+        this.geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(buffer.textureCoordinate), 2));
+        this.geometry.applyMatrix(m);
+        this.geometry.applyMatrix(new THREE.Matrix4().makeScale(5, 5, 5));
 
-        const material = new THREE.MeshPhongMaterial({
-            color: '#ff0017',
+        let texture = this.setupTextureSimple(this.imageTable(20));
+
+        this.material = new THREE.MeshPhongMaterial({
+            map: texture,
+            transparent: true
         });
         // this.datGui.addMaterial("MeshPhongMaterial", material);
+    }
 
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(this.x, this.y, this.z);
+    generateMesh(scene, x, y, z) {
+        const mesh = new THREE.Mesh(this.geometry, this.material);
+        mesh.position.set(x, y, z);
         scene.add(mesh);
     }
 }

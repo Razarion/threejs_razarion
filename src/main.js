@@ -135,6 +135,9 @@ function onDocumentMouseDown(event) {
 }
 
 function generateTerrainObject() {
+    let shape3D = new Shapes3D(threeJsShapeJson, datGui);
+    shape3D.prepare();
+
     let count = 1000;
     let width = 100;
     let height = 200;
@@ -143,10 +146,8 @@ function generateTerrainObject() {
     for(let i = 0; i < count ; i++) {
         let positionX = x + width * Math.random();
         let positionY = y + height * Math.random();
-        let shape3D = new Shapes3D(threeJsShapeJson, positionX, positionY, 0, datGui);
-        shape3D.generateMesh(scene);
-        console.log("TerrainObject placed: " + positionX + ":" + positionY)
-
+        // console.log("TerrainObject placed: " + positionX + ":" + positionY)
+        shape3D.generateMesh(scene, positionX, positionY, 0);
     }
 }
 
