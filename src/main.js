@@ -2,9 +2,7 @@ import * as THREE from 'three';
 import dat from "dat.gui";
 import terrainTileArray from "./razarion_generated/terrain-tiles.json";
 import staticGameConfigJson from "./razarion_generated/static-game-config.json";
-import shapes3dJson from "./razarion_generated/shapes-3d";
-import modelUrl from "./models/Tree1.dae";
-import {ColladaModel} from "./collada-model";
+import threeJsShapeJson from "./razarion_generated/shapes-3d";
 import {TerrainTile} from "./terrain-tile";
 import {StaticGameConfigService} from "./static-game-config-service";
 import {Shapes3D} from "./shape-3d";
@@ -19,7 +17,7 @@ let directionalLightHelper;
 let shadowCameraHelper;
 
 let camera = new THREE.PerspectiveCamera(120 /* TODO Error 170*/, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.x = 200; // TODO Error 400
+camera.position.x = 267; // TODO Error 400
 camera.position.y = 100; // TODO Error 8.6
 camera.position.z = 40; // TODO Error 17.2
 camera.rotation.x = THREE.Math.degToRad(20); // 0 TODO Error 35
@@ -45,18 +43,7 @@ for (const terrainTileJson of terrainTileArray) {
     terrainTiles.push(terrainTile);
 }
 
-let colladaModel = new ColladaModel(150, 40, 0.0, modelUrl);
-colladaModel.generateScene(scene);
-
-let shape3D = new Shapes3D(shapes3dJson);
-
-// scene.add(createPlaneMesh(56 / 2, 40, 2, 56, 56, datGui));
-
-// for (var x = 0; x < 20; x++) {
-//     for (var y = 0; y < 20; y++) {
-//         scene.add(createSphereMesh(150 + x * 10, 20 + y * 10, 5, 1, 56, datGui));
-//     }
-// }
+generateTerrainObject();
 
 setupLight();
 
@@ -146,3 +133,20 @@ function onDocumentMouseDown(event) {
     let magnitude = new THREE.Vector3(normX, normY, normZ).length();
     console.warn(event.clientX + ':' + event.clientY + '|r:' + pixelBuffer[0] + ' g:' + pixelBuffer[1] + ' b:' + pixelBuffer[2] + '|Norm x:' + normX + ' y:' + normY + ' z:' + normZ + "|Magnitude:" + magnitude);
 }
+
+function generateTerrainObject() {
+    let count = 1000;
+    let width = 100;
+    let height = 200;
+    let x = 230;
+    let y = 60;
+    for(let i = 0; i < count ; i++) {
+        let positionX = x + width * Math.random();
+        let positionY = y + height * Math.random();
+        let shape3D = new Shapes3D(threeJsShapeJson, positionX, positionY, 0, datGui);
+        shape3D.generateMesh(scene);
+        console.log("TerrainObject placed: " + positionX + ":" + positionY)
+
+    }
+}
+
