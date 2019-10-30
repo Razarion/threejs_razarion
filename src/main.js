@@ -54,6 +54,7 @@ let animate = function () {
     requestAnimationFrame(animate);
 
     try {
+        // renderer.sortObjects = true;
         terrainTiles.forEach(terrainTile => terrainTile.update());
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());
@@ -138,7 +139,7 @@ function generateTerrainObject() {
     let shape3D = new Shapes3D(threeJsShapeJson, datGui);
     shape3D.prepare();
 
-    let count = 1000;
+    let count = 100;
     let width = 100;
     let height = 200;
     let x = 230;

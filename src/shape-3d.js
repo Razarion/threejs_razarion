@@ -29,9 +29,15 @@ class Shapes3D extends Base {
 
         this.material = new THREE.MeshPhongMaterial({
             map: texture,
-            transparent: true
+            transparent: true,
+            alphaTest: 0.5
         });
-        // this.datGui.addMaterial("MeshPhongMaterial", material);
+
+        // GUI
+        const gui = this.datGui.addFolder('Bush');
+        gui.add(this.material, 'alphaTest', 0, 1).name('Alpha Test').onChange(() => {
+            this.material.needsUpdate = true
+        });
     }
 
     generateMesh(scene, x, y, z) {
