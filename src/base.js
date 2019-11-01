@@ -17,7 +17,7 @@ import underWaterUrl from "./textures/UnderWater.png";
 import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import distortionMapUrl from "./textures/WaterDistortion.png";
 import bumpMapUrl from "./textures/WaterBumpMap.png";
-import bushTextureUrl from "./models/BushTexture.png";
+import bushTextureUrl from "./models/Plant.png";
 import noTextureUrl from "./models/TextureHelpers512.png";
 
 class Base {

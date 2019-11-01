@@ -23,14 +23,15 @@ class Shapes3D extends Base {
         this.geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(buffer.normData), 3));
         this.geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(buffer.textureCoordinate), 2));
         this.geometry.applyMatrix(m);
-        this.geometry.applyMatrix(new THREE.Matrix4().makeScale(5, 5, 5));
+        // this.geometry.applyMatrix(new THREE.Matrix4().makeScale(5, 5, 5));
 
         let texture = this.setupTextureSimple(this.imageTable(20));
 
         this.material = new THREE.MeshPhongMaterial({
             map: texture,
             transparent: true,
-            alphaTest: 0.5
+            alphaTest: 0.5,
+            shininess: 20,
         });
 
         // GUI
@@ -38,6 +39,7 @@ class Shapes3D extends Base {
         gui.add(this.material, 'alphaTest', 0, 1).name('Alpha Test').onChange(() => {
             this.material.needsUpdate = true
         });
+        gui.addMaterial("MeshPhongMaterial", this.material);
     }
 
     generateMesh(scene, x, y, z) {
