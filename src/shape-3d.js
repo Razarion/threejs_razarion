@@ -35,9 +35,9 @@ class Shapes3D extends Base {
                 THREE.UniformsLib["lights"],
                 {
                     texture: {value: null},
-                    uShininess: {value: 30},
+                    uShininess: {value: 3},
                     uSpecularStrength: {value: 0.5},
-                    alphaTest: {value: 0.00001} // DatGui sees ist as double
+                    alphaTest: {value: 0.33} // DatGui sees ist as integer of not a decimal number
                 }
             ]),
             vertexShader: vertexShaderUrl,
