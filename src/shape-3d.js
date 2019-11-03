@@ -1,5 +1,7 @@
 import {Base} from "./base";
 import * as THREE from "three";
+import vertexShaderUrl from "./shaders/Shape.vert";
+import fragmentShaderUrl from "./shaders/Shape.frag";
 
 class Shapes3D extends Base {
     constructor(threeJsShape, datGui) {
@@ -27,19 +29,29 @@ class Shapes3D extends Base {
 
         let texture = this.setupTextureSimple(this.imageTable(20));
 
-        this.material = new THREE.MeshPhongMaterial({
-            map: texture,
-            transparent: true,
-            alphaTest: 0.5,
-            shininess: 20,
+
+        this.material = new THREE.ShaderMaterial({
+            uniforms: THREE.UniformsUtils.merge([
+                THREE.UniformsLib["lights"],
+                {
+                    texture: {value: null},
+                    uShininess: {value: 30},
+                    uSpecularStrength: {value: 0.5},
+                    alphaTest: {value: 0.00001} // DatGui sees ist as double
+                }
+            ]),
+            vertexShader: vertexShaderUrl,
+            fragmentShader: fragmentShaderUrl
         });
+        this.material.uniforms.texture.value = texture;
+        this.material.lights = true;
+       // this.material.transparent = true;
 
         // GUI
-        const gui = this.datGui.addFolder('Bush');
-        gui.add(this.material, 'alphaTest', 0, 1).name('Alpha Test').onChange(() => {
-            this.material.needsUpdate = true
-        });
-        gui.addMaterial("MeshPhongMaterial", this.material);
+        const gui = this.datGui.addFolder('Terrain Object');
+        gui.add(this.material.uniforms.uShininess, 'value', 0.0).name('Shininess');
+        gui.add(this.material.uniforms.uSpecularStrength, 'value', 0.0).name('SpecularStrength');
+        gui.add(this.material.uniforms.alphaTest, 'value', 0.0, 1.0).name('Alpha Test (0:Off)');
     }
 
     generateMesh(scene, x, y, z) {
