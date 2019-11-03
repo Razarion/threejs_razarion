@@ -37,7 +37,7 @@ class Shapes3D extends Base {
                     texture: {value: null},
                     uShininess: {value: 3},
                     uSpecularStrength: {value: 0.5},
-                    alphaTest: {value: 0.33} // DatGui sees ist as integer of not a decimal number
+                    alphaTest: {value: 0.37} // DatGui sees ist as integer of not a decimal number
                 }
             ]),
             vertexShader: vertexShaderUrl,
