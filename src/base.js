@@ -18,6 +18,8 @@ import waterSurfaceTextureUrl from "./textures/WaterCloudReflection.png";
 import distortionMapUrl from "./textures/WaterDistortion.png";
 import bumpMapUrl from "./textures/WaterBumpMap.png";
 import bushTextureUrl from "./models/Plant.png";
+import palmLeavesTextureUrl from "./models/PalmTree3.png";
+import palmTrunkTextureUrl from "./models/PalmTree3.png";
 import noTextureUrl from "./models/TextureHelpers512.png";
 
 class Base {
@@ -84,8 +86,12 @@ class Base {
                 return groundSplattingUrl;
             case 19 : // Slope Splatting
                 return groundSplattingUrl; // TODO own image
-            case 20 : // Terrain Object
+            case 20 : // Terrain Object bush
                 return bushTextureUrl;
+            case 21 : // Terrain Object palm trunk
+                return palmLeavesTextureUrl;
+            case 22 : // Terrain Object palm leaves
+                return palmTrunkTextureUrl;
         }
         console.error("Can nat find entry in image table for: " + imageId)
         return noTextureUrl;
