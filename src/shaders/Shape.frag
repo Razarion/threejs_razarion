@@ -8,7 +8,7 @@ varying vec3 vViewPosition;
 uniform sampler2D texture;
 uniform float uShininess;
 uniform float uSpecularStrength;
-uniform float alphaTest;
+uniform float uAlphaCutout;
 
 const float SPECULAR_FACTOR = 3.0;
 
@@ -20,7 +20,7 @@ void main(void) {
 
     // Phong Shading + AlphaTest
     vec4 shapeTexture = texture2D(texture, vUv);
-    if(alphaTest != 0.0 && alphaTest > shapeTexture.a) {
+    if(uAlphaCutout != 0.0 && uAlphaCutout > shapeTexture.a) {
         discard;
     }
     vec3 shapeDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;

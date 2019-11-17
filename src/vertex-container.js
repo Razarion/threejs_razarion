@@ -30,6 +30,9 @@ class VertexContainer extends Base {
 
         let texture = this.setupTextureSimple(this.imageTable(this.vertexContainer.textureId));
 
+        if (!this.vertexContainer.hasOwnProperty('alphaCutout')) {
+            this.vertexContainer.alphaCutout = 0.0;
+        }
 
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
@@ -38,7 +41,7 @@ class VertexContainer extends Base {
                     texture: {value: null},
                     uSpecularStrength: {value: this.vertexContainer.specular.r},
                     uShininess: {value: this.vertexContainer.shininess},
-                    alphaTest: {value: 0.37} // DatGui sees ist as integer of not a decimal number
+                    uAlphaCutout: {value: this.vertexContainer.alphaCutout}
                 }
             ]),
             vertexShader: vertexShaderUrl,
@@ -50,7 +53,7 @@ class VertexContainer extends Base {
         // GUI
         this.gui.add(this.material.uniforms.uShininess, 'value', 0.0).name('Shininess');
         this.gui.add(this.material.uniforms.uSpecularStrength, 'value', 0.0).name('SpecularStrength');
-        this.gui.add(this.material.uniforms.alphaTest, 'value', 0.0, 1.0).name('Alpha Test (0:Off)');
+        this.gui.add(this.material.uniforms.uAlphaCutout, 'value', 0.0, 1.0).name('Alpha Cutout (0:Off)');
     }
 
 }
