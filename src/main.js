@@ -137,14 +137,22 @@ function onDocumentMouseDown(event) {
 
 function generateTerrainObject() {
     let gui = datGui.addFolder("Terrain Objects");
-    threeJsShapeJson.forEach((threeJsShape)=> {
+    threeJsShapeJson.forEach((threeJsShape) => {
         let shape3D = new Shapes3D(threeJsShape, gui);
         let count = 100;
+        switch (threeJsShape.shape3D.dbId) {
+            case 1:
+                count = 100;
+                break;
+            case 2:
+                count = 20;
+                break;
+        }
         let width = 100;
         let height = 200;
         let x = 230;
         let y = 60;
-        for(let i = 0; i < count ; i++) {
+        for (let i = 0; i < count; i++) {
             let positionX = x + width * Math.random();
             let positionY = y + height * Math.random();
             //  console.log("TerrainObject placed: " + positionX + ":" + positionY)

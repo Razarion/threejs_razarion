@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2019-11-03T22:08:30</created>
-    <modified>2019-11-03T22:08:30</modified>
+    <created>2019-11-17T18:41:00</created>
+    <modified>2019-11-17T18:41:00</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -15,7 +15,7 @@
     <effect id="Material_001-effect">
       <profile_COMMON>
         <technique sid="common">
-          <phong>
+          <blinn>
             <emission>
               <color sid="emission">0 0 0 1</color>
             </emission>
@@ -26,15 +26,15 @@
               <color sid="diffuse">0.64 0.64 0.64 1</color>
             </diffuse>
             <specular>
-              <color sid="specular">0.5 0.5 0.5 1</color>
+              <color sid="specular">0.6 0.6 0.6 1</color>
             </specular>
             <shininess>
-              <float sid="shininess">50</float>
+              <float sid="shininess">100</float>
             </shininess>
             <index_of_refraction>
               <float sid="index_of_refraction">1</float>
             </index_of_refraction>
-          </phong>
+          </blinn>
         </technique>
       </profile_COMMON>
     </effect>
@@ -90,7 +90,7 @@
   </library_geometries>
   <library_controllers/>
   <library_visual_scenes>
-    <visual_scene id="Scene" name="Scene">
+    <visual_scene id="Plant" name="Plant">
       <node id="Grid" name="Grid" type="NODE">
         <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
         <instance_geometry url="#Grid-mesh" name="Grid">
@@ -104,6 +104,6 @@
     </visual_scene>
   </library_visual_scenes>
   <scene>
-    <instance_visual_scene url="#Scene"/>
+    <instance_visual_scene url="#Plant"/>
   </scene>
 </COLLADA>

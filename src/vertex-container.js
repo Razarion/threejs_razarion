@@ -36,8 +36,8 @@ class VertexContainer extends Base {
                 THREE.UniformsLib["lights"],
                 {
                     texture: {value: null},
-                    uShininess: {value: 3},
-                    uSpecularStrength: {value: 0.5},
+                    uSpecularStrength: {value: this.vertexContainer.specular.r},
+                    uShininess: {value: this.vertexContainer.shininess},
                     alphaTest: {value: 0.37} // DatGui sees ist as integer of not a decimal number
                 }
             ]),

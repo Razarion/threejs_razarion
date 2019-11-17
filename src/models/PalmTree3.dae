@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2019-11-12T22:42:00</created>
-    <modified>2019-11-12T22:42:00</modified>
+    <created>2019-11-17T18:35:07</created>
+    <modified>2019-11-17T18:35:07</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -19,7 +19,7 @@
     <effect id="Trunk-effect">
       <profile_COMMON>
         <technique sid="common">
-          <phong>
+          <blinn>
             <emission>
               <color sid="emission">0 0 0 1</color>
             </emission>
@@ -30,7 +30,7 @@
               <color sid="diffuse">0.2937836 0.208651 0.03799869 1</color>
             </diffuse>
             <specular>
-              <color sid="specular">0.2422811 0.1022417 0.02842604 1</color>
+              <color sid="specular">1 1 1 1</color>
             </specular>
             <shininess>
               <float sid="shininess">50</float>
@@ -38,7 +38,7 @@
             <index_of_refraction>
               <float sid="index_of_refraction">1</float>
             </index_of_refraction>
-          </phong>
+          </blinn>
         </technique>
         <extra>
           <technique profile="GOOGLEEARTH">
@@ -61,7 +61,7 @@
           </sampler2D>
         </newparam>
         <technique sid="common">
-          <lambert>
+          <blinn>
             <emission>
               <color sid="emission">0 0 0 1</color>
             </emission>
@@ -71,13 +71,19 @@
             <diffuse>
               <texture texture="palm_leaf_full_02_png-sampler"/>
             </diffuse>
+            <specular>
+              <color sid="specular">1 1 1 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">30</float>
+            </shininess>
             <transparent opaque="A_ONE">
               <texture texture="palm_leaf_full_02_png-sampler"/>
             </transparent>
             <index_of_refraction>
               <float sid="index_of_refraction">1</float>
             </index_of_refraction>
-          </lambert>
+          </blinn>
         </technique>
         <extra>
           <technique profile="GOOGLEEARTH">

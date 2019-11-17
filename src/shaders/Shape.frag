@@ -10,6 +10,7 @@ uniform float uShininess;
 uniform float uSpecularStrength;
 uniform float alphaTest;
 
+const float SPECULAR_FACTOR = 3.0;
 
 void main(void) {
     vec3 normal = vNormal;
@@ -25,7 +26,8 @@ void main(void) {
     vec3 shapeDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
-    vec3 shapeSpecular = uSpecularStrength * spec * directLightColor;
-    vec3 resultRgb = (ambientLightColor + shapeDiffuse + shapeSpecular) * shapeTexture.rgb;
+    vec3 shapeSpecular = uSpecularStrength * SPECULAR_FACTOR * spec * directLightColor;
+
+    vec3 resultRgb = (ambientLightColor + shapeDiffuse) * shapeTexture.rgb  + shapeSpecular;
     gl_FragColor = vec4(resultRgb, 1.0);
 }
