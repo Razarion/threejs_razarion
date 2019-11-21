@@ -21,6 +21,7 @@ import bushTextureUrl from "./models/Plant.png";
 import palmLeavesTextureUrl from "./models/PalmTree3.png";
 import palmTrunkTextureUrl from "./models/PalmTree3.png";
 import noTextureUrl from "./models/TextureHelpers512.png";
+import transparentHelperTextureUrl from "./models/TransparenceHelper.png";
 
 class Base {
     static get EDGE_LENGTH() {

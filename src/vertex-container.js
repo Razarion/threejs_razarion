@@ -48,6 +48,7 @@ class VertexContainer extends Base {
             fragmentShader: fragmentShaderUrl
         });
         this.material.uniforms.texture.value = texture;
+        this.material.extensions.derivatives = true;
         this.material.lights = true;
 
         // GUI

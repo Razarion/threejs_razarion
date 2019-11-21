@@ -30,7 +30,9 @@ window.addEventListener('resize', function () {
 
 setupCameraGui();
 
-let renderer = new THREE.WebGLRenderer();
+let renderer = new THREE.WebGLRenderer({
+    antialias: true
+});
 renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -54,7 +56,6 @@ let animate = function () {
     requestAnimationFrame(animate);
 
     try {
-        // renderer.sortObjects = true;
         terrainTiles.forEach(terrainTile => terrainTile.update());
         renderer.render(scene, camera);
         // console.log(renderer.getContext().getError());

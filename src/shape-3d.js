@@ -1,7 +1,5 @@
 import {Base} from "./base";
 import * as THREE from "three";
-import vertexShaderUrl from "./shaders/Shape.vert";
-import fragmentShaderUrl from "./shaders/Shape.frag";
 import {VertexContainer} from "./vertex-container";
 
 class Shapes3D extends Base {
@@ -31,6 +29,14 @@ class Shapes3D extends Base {
             const mesh = new THREE.Mesh(vertexContainer.geometry, vertexContainer.material);
             mesh.position.set(x, y, z);
             scene.add(mesh);
+
+            mesh.onBeforeRender = function (renderer, scene, camera, geometry, material, group) {
+                renderer.getContext().enable(renderer.getContext().SAMPLE_ALPHA_TO_COVERAGE);
+
+            };
+            mesh.onAfterRender = function (renderer, scene, camera, geometry, material, group) {
+                renderer.getContext().disable(renderer.getContext().SAMPLE_ALPHA_TO_COVERAGE);
+            };
         });
     }
 }
