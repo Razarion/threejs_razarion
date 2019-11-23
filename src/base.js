@@ -94,7 +94,7 @@ class Base {
             case 22 : // Terrain Object palm leaves
                 return palmTrunkTextureUrl;
         }
-        console.error("Can nat find entry in image table for: " + imageId)
+        console.error("Can not find entry in image table for: " + imageId)
         return noTextureUrl;
     }
 }
