@@ -55,6 +55,7 @@ class VertexContainer extends Base {
         this.gui.add(this.material.uniforms.uShininess, 'value', 0.0).name('Shininess');
         this.gui.add(this.material.uniforms.uSpecularStrength, 'value', 0.0).name('SpecularStrength');
         this.gui.add(this.material.uniforms.uAlphaCutout, 'value', 0.0, 1.0).name('Alpha Cutout (0:Off)');
+        this.gui.add(this.material, 'wireframe', 0.0, 1.0).name('Wireframe');
     }
 
 }
