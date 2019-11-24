@@ -156,8 +156,13 @@ function generateTerrainObject() {
         for (let i = 0; i < count; i++) {
             let positionX = x + width * Math.random();
             let positionY = y + height * Math.random();
+            let rotationZ = Math.PI * 2.0 * Math.random();
+
+            let scaleX = 1.0 + 0.5 * (Math.random() - 0.5);
+
+
             //  console.log("TerrainObject placed: " + positionX + ":" + positionY)
-            shape3D.generateMesh(scene, positionX, positionY, 0);
+            shape3D.generateMesh(scene, positionX, positionY, 0, scaleX, 1, 1, rotationZ);
         }
     });
 

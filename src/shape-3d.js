@@ -24,10 +24,12 @@ class Shapes3D extends Base {
         return allVertexContainer;
     }
 
-    generateMesh(scene, x, y, z) {
+    generateMesh(scene, x, y, z, scaleX, scaleY, scaleZ, rotationZ) {
         this.vertexContainers.forEach(vertexContainer => {
             const mesh = new THREE.Mesh(vertexContainer.geometry, vertexContainer.material);
             mesh.position.set(x, y, z);
+            mesh.scale.set(scaleX, scaleY, scaleZ);
+            mesh.rotateOnAxis(new THREE.Vector3(0, 0, 1), rotationZ)
             scene.add(mesh);
 
             mesh.onBeforeRender = function (renderer, scene, camera, geometry, material, group) {
