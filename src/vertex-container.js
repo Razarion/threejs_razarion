@@ -29,6 +29,7 @@ class VertexContainer extends Base {
         // this.geometry.applyMatrix(new THREE.Matrix4().makeScale(5, 5, 5));
 
         let texture = this.setupTextureSimple(this.imageTable(this.vertexContainer.textureId));
+        let bumpMap = this.setupTextureSimple(this.imageTable(this.vertexContainer.bumpMapId));
 
         if (!this.vertexContainer.hasOwnProperty('alphaCutout')) {
             this.vertexContainer.alphaCutout = 0.0;
@@ -38,7 +39,9 @@ class VertexContainer extends Base {
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
                 {
-                    texture: {value: null},
+                    uTexture: {value: null},
+                    uBumpMap: {value: null},
+                    uBumpMapDepth: {value: 1},
                     uSpecularStrength: {value: this.vertexContainer.specular.r},
                     uShininess: {value: this.vertexContainer.shininess},
                     uAlphaCutout: {value: this.vertexContainer.alphaCutout}
@@ -47,11 +50,13 @@ class VertexContainer extends Base {
             vertexShader: vertexShaderUrl,
             fragmentShader: fragmentShaderUrl
         });
-        this.material.uniforms.texture.value = texture;
+        this.material.uniforms.uTexture.value = texture;
+        this.material.uniforms.uBumpMap.value = bumpMap;
         this.material.extensions.derivatives = true;
         this.material.lights = true;
 
         // GUI
+        this.gui.add(this.material.uniforms.uBumpMapDepth, 'value', 0.0, 2.0).name('BumpMap Depth');
         this.gui.add(this.material.uniforms.uShininess, 'value', 0.0).name('Shininess');
         this.gui.add(this.material.uniforms.uSpecularStrength, 'value', 0.0).name('SpecularStrength');
         this.gui.add(this.material.uniforms.uAlphaCutout, 'value', 0.0, 1.0).name('Alpha Cutout (0:Off)');

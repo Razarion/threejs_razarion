@@ -20,6 +20,8 @@ import bumpMapUrl from "./textures/WaterBumpMap.png";
 import bushTextureUrl from "./models/Plant.png";
 import palmLeavesTextureUrl from "./models/PalmTree3.png";
 import palmTrunkTextureUrl from "./models/PalmTree3.png";
+import rock1TextureUrl from "./models/Rock1Texture.png";
+import rock1BmUrl from "./models/Rock1Bm.png";
 import noTextureUrl from "./models/TextureHelpers512.png";
 import transparentHelperTextureUrl from "./models/TransparenceHelper.png";
 
@@ -93,6 +95,10 @@ class Base {
                 return palmLeavesTextureUrl;
             case 22 : // Terrain Object palm leaves
                 return palmTrunkTextureUrl;
+            case 23 : // Rock 1 Texture
+                return rock1TextureUrl;
+            case 24 : // Rock 1 Bm
+                return rock1BmUrl;
         }
         console.error("Can not find entry in image table for: " + imageId)
         return noTextureUrl;
