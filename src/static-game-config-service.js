@@ -21,8 +21,9 @@ class StaticGameConfigService {
 
         // Add slope menu
         this.slopeSkeletonConfigs = new Map();
+        let slopeDatGui = datGui.addFolder("Slopes");
         for (const slopeSkeletonConfig of this.staticGameConfigJson.slopeSkeletonConfigs) {
-            const gui = datGui.addFolder('SlopeId: ' + slopeSkeletonConfig.internalName + ' (' + slopeSkeletonConfig.id + ')');
+            const gui = slopeDatGui.addFolder(slopeSkeletonConfig.internalName + ' (' + slopeSkeletonConfig.id + ')');
 
             gui.add(slopeSkeletonConfig, 'slopeTextureScale', 0);
             gui.add(slopeSkeletonConfig, 'slopeBumpMapDepth', 0.0, 1.0);
