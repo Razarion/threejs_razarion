@@ -100,7 +100,7 @@ class Base {
             case 24 : // Rock 1 Bm
                 return rock1BmUrl;
         }
-        console.error("Can not find entry in image table for: " + imageId)
+        console.error("Can not find entry in image table for: " + imageId);
         return noTextureUrl;
     }
 }

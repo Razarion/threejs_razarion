@@ -3,33 +3,21 @@ import * as THREE from "three";
 import {VertexContainer} from "./vertex-container";
 
 class Shapes3D extends Base {
-    constructor(threeJsShape, datGui) {
+    constructor(shape3D, staticGameConfigService) {
         super();
-        this.shape3D = threeJsShape.shape3D;
-        let gui = datGui.addFolder(this.shape3D.internalName + "(" + this.shape3D.dbId + ")");
-        let allVertexContainer = this.setupAllVertexContainer(threeJsShape.vertexContainerBuffer);
+        this.shape3D = shape3D;
         this.vertexContainers = [];
         this.shape3D.element3Ds.forEach(element3D => {
             element3D.vertexContainers.forEach(vertexContainer => {
-                this.vertexContainers.push(new VertexContainer(vertexContainer, allVertexContainer.get(vertexContainer.key), gui));
+                this.vertexContainers.push(new VertexContainer(vertexContainer, staticGameConfigService.getVertexConatinerBuffer(vertexContainer.key)));
             });
         });
     }
 
-    setupAllVertexContainer(vertexContainerBuffer) {
-        let allVertexContainer = new Map();
-        vertexContainerBuffer.forEach(vertexContainer => {
-            allVertexContainer.set(vertexContainer.key, vertexContainer);
-        });
-        return allVertexContainer;
-    }
-
-    generateMesh(scene, x, y, z, scaleX, scaleY, scaleZ, rotationZ) {
+    generateMesh(scene, matrix4) {
         this.vertexContainers.forEach(vertexContainer => {
             const mesh = new THREE.Mesh(vertexContainer.geometry, vertexContainer.material);
-            mesh.position.set(x, y, z);
-            mesh.scale.set(scaleX, scaleY, scaleZ);
-            mesh.rotateOnAxis(new THREE.Vector3(0, 0, 1), rotationZ)
+            mesh.applyMatrix(matrix4);
             scene.add(mesh);
 
             mesh.onBeforeRender = function (renderer, scene, camera, geometry, material, group) {
@@ -40,6 +28,10 @@ class Shapes3D extends Base {
                 renderer.getContext().disable(renderer.getContext().SAMPLE_ALPHA_TO_COVERAGE);
             };
         });
+    }
+
+    update() {
+        this.vertexContainers.forEach(vertexContainer => vertexContainer.update());
     }
 }
 

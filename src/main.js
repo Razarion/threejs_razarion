@@ -5,7 +5,6 @@ import staticGameConfigJson from "./razarion_generated/static-game-config.json";
 import threeJsShapeJson from "./razarion_generated/shapes-3d";
 import {TerrainTile} from "./terrain-tile";
 import {StaticGameConfigService} from "./static-game-config-service";
-import {Shapes3D} from "./shape-3d";
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
@@ -38,14 +37,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 
-let staticGameConfigService = new StaticGameConfigService(staticGameConfigJson, datGui);
+let staticGameConfigService = new StaticGameConfigService(staticGameConfigJson, threeJsShapeJson, datGui);
 let terrainTiles = [];
 for (const terrainTileJson of terrainTileArray) {
-    let terrainTile = new TerrainTile(terrainTileJson, scene, staticGameConfigService);
+    let terrainTile = new TerrainTile(terrainTileJson, scene, staticGameConfigService, threeJsShapeJson);
     terrainTiles.push(terrainTile);
 }
-
-generateTerrainObject();
 
 setupLight();
 
@@ -135,36 +132,3 @@ function onDocumentMouseDown(event) {
     let magnitude = new THREE.Vector3(normX, normY, normZ).length();
     console.warn(event.clientX + ':' + event.clientY + '|r:' + pixelBuffer[0] + ' g:' + pixelBuffer[1] + ' b:' + pixelBuffer[2] + '|Norm x:' + normX + ' y:' + normY + ' z:' + normZ + "|Magnitude:" + magnitude);
 }
-
-function generateTerrainObject() {
-    let gui = datGui.addFolder("Terrain Objects");
-    threeJsShapeJson.forEach((threeJsShape) => {
-        let shape3D = new Shapes3D(threeJsShape, gui);
-        let count = 100;
-        switch (threeJsShape.shape3D.dbId) {
-            case 1:
-                count = 100;
-                break;
-            case 2:
-                count = 20;
-                break;
-        }
-        let width = 100;
-        let height = 200;
-        let x = 230;
-        let y = 60;
-        for (let i = 0; i < count; i++) {
-            let positionX = x + width * Math.random();
-            let positionY = y + height * Math.random();
-            let positionZ = 3.0 * (Math.random() - 0.5) - 6.0;
-            let rotationZ = Math.PI * 2.0 * Math.random();
-            let scale = 1.0 + 0.5 * (Math.random() - 0.5);
-
-            //  console.log("TerrainObject placed: " + positionX + ":" + positionY)
-            shape3D.generateMesh(scene, positionX, positionY, positionZ, scale, scale, scale, rotationZ);
-        }
-    });
-
-
-}
-

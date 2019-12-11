@@ -4,9 +4,8 @@ import fragmentShaderUrl from "./shaders/Shape.frag";
 import {Base} from "./base";
 
 class VertexContainer extends Base {
-    constructor(vertexContainer, buffers, datGui) {
+    constructor(vertexContainer, buffers) {
         super();
-        this.gui = datGui.addFolder(vertexContainer.materialName + " (" + vertexContainer.materialId + ")");
         this.vertexContainer = vertexContainer;
         this.buffers = buffers;
         this.prepare();
@@ -31,10 +30,6 @@ class VertexContainer extends Base {
         let texture = this.setupTextureSimple(this.imageTable(this.vertexContainer.textureId));
         let bumpMap = this.setupTextureSimple(this.imageTable(this.vertexContainer.bumpMapId));
 
-        if (!this.vertexContainer.hasOwnProperty('alphaCutout')) {
-            this.vertexContainer.alphaCutout = 0.0;
-        }
-
         this.material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
@@ -54,15 +49,14 @@ class VertexContainer extends Base {
         this.material.uniforms.uBumpMap.value = bumpMap;
         this.material.extensions.derivatives = true;
         this.material.lights = true;
-
-        // GUI
-        this.gui.add(this.material.uniforms.uBumpMapDepth, 'value', 0.0, 2.0).name('BumpMap Depth');
-        this.gui.add(this.material.uniforms.uShininess, 'value', 0.0).name('Shininess');
-        this.gui.add(this.material.uniforms.uSpecularStrength, 'value', 0.0).name('SpecularStrength');
-        this.gui.add(this.material.uniforms.uAlphaCutout, 'value', 0.0, 1.0).name('Alpha Cutout (0:Off)');
-        this.gui.add(this.material, 'wireframe', 0.0, 1.0).name('Wireframe');
     }
 
+    update() {
+        this.material.wireframe = this.vertexContainer.wireframe;
+        this.material.uniforms.uSpecularStrength.value = this.vertexContainer.specular.r;
+        this.material.uniforms.uShininess.value = this.vertexContainer.shininess;
+        this.material.uniforms.uAlphaCutout.value = this.vertexContainer.alphaCutout;
+    }
 }
 
 export {
