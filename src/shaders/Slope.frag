@@ -42,7 +42,7 @@ uniform float uSplattingScale2;
 uniform float uSplattingFadeThreshold;
 uniform float uSplattingOffset;
 #endif
-// Top-Bottom Splatting
+// Slope-Ground Splatting
 uniform sampler2D uSlopeSplatting;
 uniform float uSlopeSplattingScale1;
 uniform float uSlopeSplattingScale2;

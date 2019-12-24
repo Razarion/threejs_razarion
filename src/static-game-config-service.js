@@ -37,19 +37,27 @@ class StaticGameConfigService {
             }
             slopeSkeletonConfig.wireframeSlope = false;
             gui.add(slopeSkeletonConfig, "wireframeSlope", 0, 1);
-            if (slopeSkeletonConfig.hasOwnProperty('groundTextureId')) {
-                const groundrGui = gui.addFolder('Ground');
-                groundrGui.add(slopeSkeletonConfig, 'slopeSplattingScale1', 0);
-                groundrGui.add(slopeSkeletonConfig, 'slopeSplattingScale2', 0);
-                groundrGui.add(slopeSkeletonConfig, 'slopeSplattingFadeThreshold', 0, 1);
-                groundrGui.add(slopeSkeletonConfig, 'slopeSplattingOffset', 0, 1);
-                groundrGui.add(slopeSkeletonConfig, 'groundTextureScale', 0);
-                groundrGui.add(slopeSkeletonConfig, 'groundBumpMapDepth', 0.0, 1.0);
-                groundrGui.add(slopeSkeletonConfig, 'groundShininess');
-                groundrGui.add(slopeSkeletonConfig, 'groundSpecularStrength');
+            if (slopeSkeletonConfig.hasOwnProperty('groundSkeletonConfig')) {
+                const groundGui = gui.addFolder('Ground');
+                this.addPhongMaterialConfig(groundGui, "Top Texture", slopeSkeletonConfig.groundSkeletonConfig.topTexture);
+                if (slopeSkeletonConfig.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
+                    this.addPhongMaterialConfig(groundGui, "Bottom Texture", slopeSkeletonConfig.groundSkeletonConfig.bottomTexture);
+                }
+                if (slopeSkeletonConfig.groundSkeletonConfig.hasOwnProperty('splatting')) {
+                    const splattingGui = groundGui.addFolder('Splatting');
+                    splattingGui.add(slopeSkeletonConfig.groundSkeletonConfig.bottomTexture.splatting, 'scale', 0);
+                    splattingGui.add(slopeSkeletonConfig.groundSkeletonConfig, 'splattingScale2', 0);
+                    splattingGui.add(slopeSkeletonConfig.groundSkeletonConfig, 'splattingOffset', 0, 1);
+                    splattingGui.add(slopeSkeletonConfig.groundSkeletonConfig, 'splattingFadeThreshold', 0, 1);
+                }
                 slopeSkeletonConfig.wireframeSlopeGround = false;
-                groundrGui.add(slopeSkeletonConfig, "wireframeSlopeGround", 0, 1);
+                groundGui.add(slopeSkeletonConfig, "wireframeSlopeGround", 0, 1);
             }
+            let outerSplatting = gui.addFolder('Outer Splatting');
+            outerSplatting.add(slopeSkeletonConfig, 'slopeSplattingScale1', 0);
+            outerSplatting.add(slopeSkeletonConfig, 'slopeSplattingScale2', 0);
+            outerSplatting.add(slopeSkeletonConfig, 'slopeSplattingFadeThreshold', 0, 1);
+            outerSplatting.add(slopeSkeletonConfig, 'slopeSplattingOffset', 0, 1);
             if (slopeSkeletonConfig.hasOwnProperty('waterLevel')) {
                 const waterGui = gui.addFolder('Water');
                 waterGui.add(slopeSkeletonConfig, 'waterFresnelOffset');

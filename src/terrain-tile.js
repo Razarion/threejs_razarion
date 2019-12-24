@@ -15,22 +15,24 @@ class TerrainTile extends Base {
 
         this.grounds = [];
         for (let slopeConfigId in terrainTileJson.groundSlopeVertices) {
-            let slopeSkeletonConfig = null;
-            if (slopeConfigId != null) {
-                slopeSkeletonConfig = staticGameConfigService.getSlopeSkeletonConfig(slopeConfigId);
+            if (slopeConfigId == null) {
+                continue
+            }
+            let slopeSkeletonConfig = staticGameConfigService.getSlopeSkeletonConfig(slopeConfigId);
+            let groundSkeletonConfig = staticGameConfigService.getGround();
+            if (slopeSkeletonConfig.hasOwnProperty('groundSkeletonConfig')) {
+                groundSkeletonConfig = slopeSkeletonConfig.groundSkeletonConfig;
             }
             let ground = new Ground(terrainTileJson.groundSlopeVertices[slopeConfigId],
                 terrainTileJson.groundSlopeNorms[slopeConfigId],
-                staticGameConfigService.getGround(),
-                slopeSkeletonConfig);
+                groundSkeletonConfig);
             ground.generateMesh(this.scene);
             this.grounds.push(ground);
         }
         if (terrainTileJson.hasOwnProperty('groundVertices')) {
             let ground = new Ground(terrainTileJson.groundVertices,
                 terrainTileJson.groundNorms,
-                staticGameConfigService.getGround(),
-                null);
+                staticGameConfigService.getGround());
             ground.generateMesh(this.scene);
             this.grounds.push(ground);
         }
@@ -38,9 +40,21 @@ class TerrainTile extends Base {
         this.slopes = [];
         if (Array.isArray(terrainTileJson.terrainSlopeTiles)) {
             for (const terrainSlopeTile of terrainTileJson.terrainSlopeTiles) {
-                let slope = new Slope(terrainSlopeTile, staticGameConfigService.getSlopeSkeletonConfig(terrainSlopeTile.slopeConfigId), staticGameConfigService.getGround());
-                slope.generateMesh(this.scene);
-                this.slopes.push(slope);
+                let slopeSkeletonConfig = staticGameConfigService.getSlopeSkeletonConfig(terrainSlopeTile.slopeSkeletonConfigId);
+                if (terrainSlopeTile.hasOwnProperty('outerSlopeGeometry')) {
+                    this.setupSlope(terrainSlopeTile.outerSlopeGeometry, slopeSkeletonConfig, staticGameConfigService.getGround());
+                }
+                if (terrainSlopeTile.hasOwnProperty('centerSlopeGeometry')) {
+                    this.setupSlope(terrainSlopeTile.centerSlopeGeometry, slopeSkeletonConfig, null);
+                }
+                if (terrainSlopeTile.hasOwnProperty('innerSlopeGeometry')) {
+                    let groundSkeletonConfig = staticGameConfigService.getGround();
+                    if (slopeSkeletonConfig.hasOwnProperty('groundSkeletonConfig')) {
+                        groundSkeletonConfig = slopeSkeletonConfig.groundSkeletonConfig;
+                    }
+                    this.setupSlope(terrainSlopeTile.innerSlopeGeometry, slopeSkeletonConfig, groundSkeletonConfig);
+                }
+
             }
         }
 
@@ -70,12 +84,18 @@ class TerrainTile extends Base {
                         m[1], m[5], m[9], m[13],
                         m[2], m[6], m[10], m[14],
                         m[3], m[7], m[11], m[15]
-                        );
+                    );
                     shape3D.generateMesh(scene, matrix4);
                 });
             }
         }
 
+    }
+
+    setupSlope(slopeGeometry, slopeSkeletonConfig, groundSkeletonConfig) {
+        let slope = new Slope(slopeGeometry, slopeSkeletonConfig, groundSkeletonConfig);
+        slope.generateMesh(this.scene);
+        this.slopes.push(slope);
     }
 
     update() {

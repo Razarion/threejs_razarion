@@ -5,19 +5,20 @@ import slopeFragmentShaderUrl from "./shaders/Slope.frag";
 import {Ground} from "./ground";
 
 class Slope extends Base {
-    constructor(terrainSlopeTile, slopeSkeletonConfig, groundSkeletonConfig) {
+
+    constructor(slopeGeometry, slopeSkeletonConfig, groundSkeletonConfig) {
         super();
-        this.terrainSlopeTile = terrainSlopeTile;
+        this.slopeGeometry = slopeGeometry;
         this.slopeSkeletonConfig = slopeSkeletonConfig;
         this.groundSkeletonConfig = groundSkeletonConfig;
     }
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.vertices), 3));
-        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.norms), 3));
-        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.uvs), 2));
-        geometry.addAttribute('aSlopeFactor', new THREE.BufferAttribute(new Float32Array(this.terrainSlopeTile.slopeFactors), 1));
+        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.positions), 3));
+        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.norms), 3));
+        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.uvs), 2));
+        geometry.addAttribute('aSlopeFactor', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.slopeFactors), 1));
 
         let uniforms = THREE.UniformsUtils.merge([
             THREE.UniformsLib["lights"],
@@ -45,8 +46,9 @@ class Slope extends Base {
                     uFoamAnimation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.slopeFoamAnimationDuration)}
                 }]);
         }
-
-        uniforms = Ground.enrichUniform(/*TODO this.slopeSkeletonConfig*/ null, this.groundSkeletonConfig, uniforms);
+        if (this.groundSkeletonConfig != null) {
+            uniforms = Ground.enrichUniform(this.groundSkeletonConfig, uniforms);
+        }
 
         this.material = new THREE.ShaderMaterial({
             uniforms: uniforms,
@@ -67,7 +69,9 @@ class Slope extends Base {
             //     RENDER_FOAM: true
             // };
         }
-        Ground.enrichMaterial(/* TODO this.slopeSkeletonConfig*/ null, this.groundSkeletonConfig, this.material, this);
+        if (this.groundSkeletonConfig != null) {
+            Ground.enrichMaterial(this.groundSkeletonConfig, this.material, this);
+        }
 
         this.material.lights = true;
         this.material.extensions.derivatives = true;
@@ -92,7 +96,9 @@ class Slope extends Base {
         }
         this.material.wireframe = this.slopeSkeletonConfig.wireframeSlope;
 
-        Ground.update(/* TODO this.slopeSkeletonConfig*/ null, this.groundSkeletonConfig, this.material);
+        if (this.groundSkeletonConfig != null) {
+            Ground.update(this.groundSkeletonConfig, this.material);
+        }
     }
 }
 
