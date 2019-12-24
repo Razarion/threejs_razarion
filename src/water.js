@@ -4,10 +4,10 @@ import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
 
 class Water extends Base {
-    constructor(terrainWaterTile, slopeSkeletonConfig) {
+    constructor(terrainWaterTile, slopeConfig) {
         super();
         this.terrainWaterTile = terrainWaterTile;
-        this.slopeSkeletonConfig = slopeSkeletonConfig;
+        this.slopeConfig = slopeConfig;
     }
 
     generateMesh(scene) {
@@ -15,13 +15,13 @@ class Water extends Base {
         geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terrainWaterTile.vertices), 3));
 
         let loader = new THREE.TextureLoader();
-        let reflection = loader.load(this.imageTable(this.slopeSkeletonConfig.waterReflectionId));
+        let reflection = loader.load(this.imageTable(this.slopeConfig.waterReflectionId));
         reflection.wrapS = THREE.RepeatWrapping;
         reflection.wrapT = THREE.RepeatWrapping;
-        let distortionMap = loader.load(this.imageTable(this.slopeSkeletonConfig.waterDistortionId));
+        let distortionMap = loader.load(this.imageTable(this.slopeConfig.waterDistortionId));
         distortionMap.wrapS = THREE.RepeatWrapping;
         distortionMap.wrapT = THREE.RepeatWrapping;
-        let bumpMap = loader.load(this.imageTable(this.slopeSkeletonConfig.waterBumpMapId));
+        let bumpMap = loader.load(this.imageTable(this.slopeConfig.waterBumpMapId));
         bumpMap.wrapS = THREE.RepeatWrapping;
         bumpMap.wrapT = THREE.RepeatWrapping;
 
@@ -29,21 +29,21 @@ class Water extends Base {
             uniforms: THREE.UniformsUtils.merge([
                 THREE.UniformsLib["lights"],
                 {
-                    uFresnelOffset: {value: this.slopeSkeletonConfig.waterFresnelOffset},
-                    uFresnelDelta: {value: this.slopeSkeletonConfig.waterFresnelDelta},
-                    uShininess: {value: this.slopeSkeletonConfig.waterShininess},
-                    uSpecularStrength: {value: this.slopeSkeletonConfig.waterSpecularStrength},
-                    uReflectionScale: {value: this.slopeSkeletonConfig.waterReflectionScale},
-                    uMapScale: {value: this.slopeSkeletonConfig.waterMapScale},
+                    uFresnelOffset: {value: this.slopeConfig.waterFresnelOffset},
+                    uFresnelDelta: {value: this.slopeConfig.waterFresnelDelta},
+                    uShininess: {value: this.slopeConfig.waterShininess},
+                    uSpecularStrength: {value: this.slopeConfig.waterSpecularStrength},
+                    uReflectionScale: {value: this.slopeConfig.waterReflectionScale},
+                    uMapScale: {value: this.slopeConfig.waterMapScale},
                     uReflection: {value: null},
                     uDistortionMap: {value: null},
-                    uDistortionStrength: {value: this.slopeSkeletonConfig.waterDistortionStrength},
+                    uDistortionStrength: {value: this.slopeConfig.waterDistortionStrength},
                     uBumpMap: {value: null},
-                    uBumpMapDepth: {value: this.slopeSkeletonConfig.waterBumpMapDepth},
-                    uTransparency: {value: this.slopeSkeletonConfig.waterTransparency},
-                    uWaterBeginsOffset: {value: this.slopeSkeletonConfig.waterBeginsOffset},
-                    uWaterFadeoutDistance: {value: this.slopeSkeletonConfig.waterFadeoutDistance},
-                    animation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.waterAnimationDuration)},
+                    uBumpMapDepth: {value: this.slopeConfig.waterBumpMapDepth},
+                    uTransparency: {value: this.slopeConfig.waterTransparency},
+                    uWaterBeginsOffset: {value: this.slopeConfig.waterBeginsOffset},
+                    uWaterFadeoutDistance: {value: this.slopeConfig.waterFadeoutDistance},
+                    animation: {value: this.setupWaterAnimation(this.slopeConfig.waterAnimationDuration)},
                 }
             ]),
             vertexShader: waterVertexShaderUrl,
@@ -60,17 +60,17 @@ class Water extends Base {
     }
 
     update() {
-        this.material.uniforms.uFresnelOffset.value = this.slopeSkeletonConfig.waterFresnelOffset;
-        this.material.uniforms.uFresnelDelta.value = this.slopeSkeletonConfig.waterFresnelDelta;
-        this.material.uniforms.uShininess.value = this.slopeSkeletonConfig.waterShininess;
-        this.material.uniforms.uSpecularStrength.value = this.slopeSkeletonConfig.waterSpecularStrength;
-        this.material.uniforms.uReflectionScale.value = this.slopeSkeletonConfig.waterReflectionScale;
-        this.material.uniforms.uMapScale.value = this.slopeSkeletonConfig.waterMapScale;
-        this.material.uniforms.uDistortionStrength.value = this.slopeSkeletonConfig.waterDistortionStrength;
-        this.material.uniforms.uBumpMapDepth.value = this.slopeSkeletonConfig.waterBumpMapDepth;
-        this.material.uniforms.uTransparency.value = this.slopeSkeletonConfig.waterTransparency;
-        this.material.uniforms.animation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.waterAnimationDuration);
-        this.material.wireframe = this.slopeSkeletonConfig.wireframeWater;
+        this.material.uniforms.uFresnelOffset.value = this.slopeConfig.waterFresnelOffset;
+        this.material.uniforms.uFresnelDelta.value = this.slopeConfig.waterFresnelDelta;
+        this.material.uniforms.uShininess.value = this.slopeConfig.waterShininess;
+        this.material.uniforms.uSpecularStrength.value = this.slopeConfig.waterSpecularStrength;
+        this.material.uniforms.uReflectionScale.value = this.slopeConfig.waterReflectionScale;
+        this.material.uniforms.uMapScale.value = this.slopeConfig.waterMapScale;
+        this.material.uniforms.uDistortionStrength.value = this.slopeConfig.waterDistortionStrength;
+        this.material.uniforms.uBumpMapDepth.value = this.slopeConfig.waterBumpMapDepth;
+        this.material.uniforms.uTransparency.value = this.slopeConfig.waterTransparency;
+        this.material.uniforms.animation.value = this.setupWaterAnimation(this.slopeConfig.waterAnimationDuration);
+        this.material.wireframe = this.slopeConfig.wireframeWater;
     }
 }
 

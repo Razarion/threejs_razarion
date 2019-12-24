@@ -18,10 +18,10 @@ class TerrainTile extends Base {
             if (slopeConfigId == null) {
                 continue
             }
-            let slopeSkeletonConfig = staticGameConfigService.getSlopeSkeletonConfig(slopeConfigId);
+            let slopeConfig = staticGameConfigService.getSlopeConfig(slopeConfigId);
             let groundSkeletonConfig = staticGameConfigService.getGround();
-            if (slopeSkeletonConfig.hasOwnProperty('groundSkeletonConfig')) {
-                groundSkeletonConfig = slopeSkeletonConfig.groundSkeletonConfig;
+            if (slopeConfig.hasOwnProperty('groundSkeletonConfig')) {
+                groundSkeletonConfig = slopeConfig.groundSkeletonConfig;
             }
             let ground = new Ground(terrainTileJson.groundSlopeVertices[slopeConfigId],
                 terrainTileJson.groundSlopeNorms[slopeConfigId],
@@ -40,19 +40,19 @@ class TerrainTile extends Base {
         this.slopes = [];
         if (Array.isArray(terrainTileJson.terrainSlopeTiles)) {
             for (const terrainSlopeTile of terrainTileJson.terrainSlopeTiles) {
-                let slopeSkeletonConfig = staticGameConfigService.getSlopeSkeletonConfig(terrainSlopeTile.slopeSkeletonConfigId);
+                let slopeConfig = staticGameConfigService.getSlopeConfig(terrainSlopeTile.slopeConfigId);
                 if (terrainSlopeTile.hasOwnProperty('outerSlopeGeometry')) {
-                    this.setupSlope(terrainSlopeTile.outerSlopeGeometry, slopeSkeletonConfig, staticGameConfigService.getGround());
+                    this.setupSlope(terrainSlopeTile.outerSlopeGeometry, slopeConfig, staticGameConfigService.getGround());
                 }
                 if (terrainSlopeTile.hasOwnProperty('centerSlopeGeometry')) {
-                    this.setupSlope(terrainSlopeTile.centerSlopeGeometry, slopeSkeletonConfig, null);
+                    this.setupSlope(terrainSlopeTile.centerSlopeGeometry, slopeConfig, null);
                 }
                 if (terrainSlopeTile.hasOwnProperty('innerSlopeGeometry')) {
                     let groundSkeletonConfig = staticGameConfigService.getGround();
-                    if (slopeSkeletonConfig.hasOwnProperty('groundSkeletonConfig')) {
-                        groundSkeletonConfig = slopeSkeletonConfig.groundSkeletonConfig;
+                    if (slopeConfig.hasOwnProperty('groundSkeletonConfig')) {
+                        groundSkeletonConfig = slopeConfig.groundSkeletonConfig;
                     }
-                    this.setupSlope(terrainSlopeTile.innerSlopeGeometry, slopeSkeletonConfig, groundSkeletonConfig);
+                    this.setupSlope(terrainSlopeTile.innerSlopeGeometry, slopeConfig, groundSkeletonConfig);
                 }
 
             }
@@ -62,10 +62,10 @@ class TerrainTile extends Base {
         this.shallowWaters = [];
         if (Array.isArray(terrainTileJson.terrainWaterTiles)) {
             for (const terrainWaterTile of terrainTileJson.terrainWaterTiles) {
-                let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeConfigId));
+                let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeConfig(terrainWaterTile.slopeConfigId));
                 water.generateMesh(scene);
                 this.waters.push(water);
-                let shallowWater = new ShallowWater(terrainWaterTile, staticGameConfigService.getSlopeSkeletonConfig(terrainWaterTile.slopeConfigId));
+                let shallowWater = new ShallowWater(terrainWaterTile, staticGameConfigService.getSlopeConfig(terrainWaterTile.slopeConfigId));
                 shallowWater.generateMesh(scene);
                 this.shallowWaters.push(shallowWater);
             }
@@ -92,8 +92,8 @@ class TerrainTile extends Base {
 
     }
 
-    setupSlope(slopeGeometry, slopeSkeletonConfig, groundSkeletonConfig) {
-        let slope = new Slope(slopeGeometry, slopeSkeletonConfig, groundSkeletonConfig);
+    setupSlope(slopeGeometry, slopeConfig, groundSkeletonConfig) {
+        let slope = new Slope(slopeGeometry, slopeConfig, groundSkeletonConfig);
         slope.generateMesh(this.scene);
         this.slopes.push(slope);
     }

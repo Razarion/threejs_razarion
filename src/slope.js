@@ -6,10 +6,10 @@ import {Ground} from "./ground";
 
 class Slope extends Base {
 
-    constructor(slopeGeometry, slopeSkeletonConfig, groundSkeletonConfig) {
+    constructor(slopeGeometry, slopeConfig, groundSkeletonConfig) {
         super();
         this.slopeGeometry = slopeGeometry;
-        this.slopeSkeletonConfig = slopeSkeletonConfig;
+        this.slopeConfig = slopeConfig;
         this.groundSkeletonConfig = groundSkeletonConfig;
     }
 
@@ -24,26 +24,26 @@ class Slope extends Base {
             THREE.UniformsLib["lights"],
             {
                 uSlope: {value: null},
-                uSlopeScale: {value: this.slopeSkeletonConfig.slopeTextureScale},
+                uSlopeScale: {value: this.slopeConfig.slopeTextureScale},
                 uSlopeBumpMap: {value: null},
-                uSlopeBumpMapDepth: {value: this.slopeSkeletonConfig.slopeBumpMapDepth},
-                uShininess: {value: this.slopeSkeletonConfig.slopeShininess},
-                uSpecularStrength: {value: this.slopeSkeletonConfig.slopeSpecularStrength},
+                uSlopeBumpMapDepth: {value: this.slopeConfig.slopeBumpMapDepth},
+                uShininess: {value: this.slopeConfig.slopeShininess},
+                uSpecularStrength: {value: this.slopeConfig.slopeSpecularStrength},
                 uSlopeSplatting: {value: null},
-                uSlopeSplattingScale1: {value: this.slopeSkeletonConfig.slopeSplattingScale1},
-                uSlopeSplattingScale2: {value: this.slopeSkeletonConfig.slopeSplattingScale2},
-                uSlopeSplattingFadeThreshold: {value: this.slopeSkeletonConfig.slopeSplattingFadeThreshold},
-                uSlopeSplattingOffset: {value: this.slopeSkeletonConfig.slopeSplattingOffset}
+                uSlopeSplattingScale1: {value: this.slopeConfig.slopeSplattingScale1},
+                uSlopeSplattingScale2: {value: this.slopeConfig.slopeSplattingScale2},
+                uSlopeSplattingFadeThreshold: {value: this.slopeConfig.slopeSplattingFadeThreshold},
+                uSlopeSplattingOffset: {value: this.slopeConfig.slopeSplattingOffset}
             }
         ]);
 
-        if (this.slopeSkeletonConfig.hasOwnProperty('slopeFoamTextureId')) {
+        if (this.slopeConfig.hasOwnProperty('slopeFoamTextureId')) {
             uniforms = THREE.UniformsUtils.merge([uniforms,
                 {
                     uFoam: {value: null},
                     uFoamDistortion: {value: null},
-                    uFoamDistortionStrength: {value: this.slopeSkeletonConfig.slopeFoamDistortionStrength},
-                    uFoamAnimation: {value: this.setupWaterAnimation(this.slopeSkeletonConfig.slopeFoamAnimationDuration)}
+                    uFoamDistortionStrength: {value: this.slopeConfig.slopeFoamDistortionStrength},
+                    uFoamAnimation: {value: this.setupWaterAnimation(this.slopeConfig.slopeFoamAnimationDuration)}
                 }]);
         }
         if (this.groundSkeletonConfig != null) {
@@ -56,12 +56,12 @@ class Slope extends Base {
             fragmentShader: slopeFragmentShaderUrl
         });
 
-        this.material.uniforms.uSlope.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeTextureId));
-        this.material.uniforms.uSlopeBumpMap.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeBumpMapId));
-        this.material.uniforms.uSlopeSplatting.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeSplattingId));
-        if (this.slopeSkeletonConfig.hasOwnProperty('slopeFoamTextureId')) {
-            this.material.uniforms.uFoam.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeFoamTextureId));
-            this.material.uniforms.uFoamDistortion.value = this.setupTextureSimple(this.imageTable(this.slopeSkeletonConfig.slopeFoamDistortionId));
+        this.material.uniforms.uSlope.value = this.setupTextureSimple(this.imageTable(this.slopeConfig.slopeTextureId));
+        this.material.uniforms.uSlopeBumpMap.value = this.setupTextureSimple(this.imageTable(this.slopeConfig.slopeBumpMapId));
+        this.material.uniforms.uSlopeSplatting.value = this.setupTextureSimple(this.imageTable(this.slopeConfig.slopeSplattingId));
+        if (this.slopeConfig.hasOwnProperty('slopeFoamTextureId')) {
+            this.material.uniforms.uFoam.value = this.setupTextureSimple(this.imageTable(this.slopeConfig.slopeFoamTextureId));
+            this.material.uniforms.uFoamDistortion.value = this.setupTextureSimple(this.imageTable(this.slopeConfig.slopeFoamDistortionId));
             // TODO Foam not rendered because DEFINES are overridden
             // TODO Foam is replaced by WaterShader? What about foam on cliffs?
             // TODO Problem with Fresnel in Water
@@ -82,19 +82,19 @@ class Slope extends Base {
     }
 
     update() {
-        this.material.uniforms.uSlopeScale.value = this.slopeSkeletonConfig.slopeTextureScale;
-        this.material.uniforms.uSlopeBumpMapDepth.value = this.slopeSkeletonConfig.slopeBumpMapDepth;
-        this.material.uniforms.uShininess.value = this.slopeSkeletonConfig.slopeShininess;
-        this.material.uniforms.uSpecularStrength.value = this.slopeSkeletonConfig.slopeSpecularStrength;
-        this.material.uniforms.uSlopeSplattingScale1.value = this.slopeSkeletonConfig.slopeSplattingScale1;
-        this.material.uniforms.uSlopeSplattingScale2.value = this.slopeSkeletonConfig.slopeSplattingScale2;
-        this.material.uniforms.uSlopeSplattingFadeThreshold.value = this.slopeSkeletonConfig.slopeSplattingFadeThreshold;
-        this.material.uniforms.uSlopeSplattingOffset.value = this.slopeSkeletonConfig.slopeSplattingOffset;
-        if (this.slopeSkeletonConfig.hasOwnProperty('slopeFoamTextureId')) {
-            this.material.uniforms.uFoamDistortionStrength.value = this.slopeSkeletonConfig.slopeFoamDistortionStrength;
-            this.material.uniforms.uFoamAnimation.value = this.setupWaterAnimation(this.slopeSkeletonConfig.slopeFoamAnimationDuration);
+        this.material.uniforms.uSlopeScale.value = this.slopeConfig.slopeTextureScale;
+        this.material.uniforms.uSlopeBumpMapDepth.value = this.slopeConfig.slopeBumpMapDepth;
+        this.material.uniforms.uShininess.value = this.slopeConfig.slopeShininess;
+        this.material.uniforms.uSpecularStrength.value = this.slopeConfig.slopeSpecularStrength;
+        this.material.uniforms.uSlopeSplattingScale1.value = this.slopeConfig.slopeSplattingScale1;
+        this.material.uniforms.uSlopeSplattingScale2.value = this.slopeConfig.slopeSplattingScale2;
+        this.material.uniforms.uSlopeSplattingFadeThreshold.value = this.slopeConfig.slopeSplattingFadeThreshold;
+        this.material.uniforms.uSlopeSplattingOffset.value = this.slopeConfig.slopeSplattingOffset;
+        if (this.slopeConfig.hasOwnProperty('slopeFoamTextureId')) {
+            this.material.uniforms.uFoamDistortionStrength.value = this.slopeConfig.slopeFoamDistortionStrength;
+            this.material.uniforms.uFoamAnimation.value = this.setupWaterAnimation(this.slopeConfig.slopeFoamAnimationDuration);
         }
-        this.material.wireframe = this.slopeSkeletonConfig.wireframeSlope;
+        this.material.wireframe = this.slopeConfig.wireframeSlope;
 
         if (this.groundSkeletonConfig != null) {
             Ground.update(this.groundSkeletonConfig, this.material);
