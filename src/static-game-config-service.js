@@ -6,9 +6,9 @@ class StaticGameConfigService {
         // Add ground menu
         if (staticGameConfigJson.hasOwnProperty('groundSkeletonConfig')) {
             const gui = datGui.addFolder('Ground (Id: ' + staticGameConfigJson.groundSkeletonConfig.id + ')');
-            this.addPhongMaterialConfig(gui, "Top Texture", staticGameConfigJson.groundSkeletonConfig.topTexture);
+            this.addPhongMaterialGui(gui, "Top Texture", staticGameConfigJson.groundSkeletonConfig.topTexture);
             if (staticGameConfigJson.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
-                this.addPhongMaterialConfig(gui, "Bottom Texture", staticGameConfigJson.groundSkeletonConfig.bottomTexture);
+                this.addPhongMaterialGui(gui, "Bottom Texture", staticGameConfigJson.groundSkeletonConfig.bottomTexture);
             }
             if (staticGameConfigJson.groundSkeletonConfig.hasOwnProperty('splatting')) {
                 const splattingGui = gui.addFolder('Splatting');
@@ -39,9 +39,9 @@ class StaticGameConfigService {
             gui.add(slopeConfig, "wireframeSlope", 0, 1);
             if (slopeConfig.hasOwnProperty('groundSkeletonConfig')) {
                 const groundGui = gui.addFolder('Ground');
-                this.addPhongMaterialConfig(groundGui, "Top Texture", slopeConfig.groundSkeletonConfig.topTexture);
+                this.addPhongMaterialGui(groundGui, "Top Texture", slopeConfig.groundSkeletonConfig.topTexture);
                 if (slopeConfig.groundSkeletonConfig.hasOwnProperty('bottomTexture')) {
-                    this.addPhongMaterialConfig(groundGui, "Bottom Texture", slopeConfig.groundSkeletonConfig.bottomTexture);
+                    this.addPhongMaterialGui(groundGui, "Bottom Texture", slopeConfig.groundSkeletonConfig.bottomTexture);
                 }
                 if (slopeConfig.groundSkeletonConfig.hasOwnProperty('splatting')) {
                     const splattingGui = groundGui.addFolder('Splatting');
@@ -53,11 +53,12 @@ class StaticGameConfigService {
                 slopeConfig.wireframeSlopeGround = false;
                 groundGui.add(slopeConfig, "wireframeSlopeGround", 0, 1);
             }
-            let outerSplatting = gui.addFolder('Outer Splatting');
-            outerSplatting.add(slopeConfig, 'slopeSplattingScale1', 0);
-            outerSplatting.add(slopeConfig, 'slopeSplattingScale2', 0);
-            outerSplatting.add(slopeConfig, 'slopeSplattingFadeThreshold', 0, 1);
-            outerSplatting.add(slopeConfig, 'slopeSplattingOffset', 0, 1);
+            if(slopeConfig.hasOwnProperty('outerSplatting')) {
+                this.addSplattingGui(gui, 'Outer Splatting', slopeConfig.outerSplatting);
+            }
+            if(slopeConfig.hasOwnProperty('innerSplatting')) {
+                this.addSplattingGui(gui, 'Inner Splatting', slopeConfig.innerSplatting);
+            }
             if (slopeConfig.hasOwnProperty('waterLevel')) {
                 const waterGui = gui.addFolder('Water');
                 waterGui.add(slopeConfig, 'waterFresnelOffset');
@@ -116,12 +117,20 @@ class StaticGameConfigService {
         }
     }
 
-    addPhongMaterialConfig(gui, name, phongMaterialConfig) {
+    addPhongMaterialGui(gui, name, phongMaterialConfig) {
         const phongGui = gui.addFolder(name);
         phongGui.add(phongMaterialConfig.textureScaleConfig, 'scale', 0);
         phongGui.add(phongMaterialConfig, 'bumpMapDepth', 0);
         phongGui.add(phongMaterialConfig, 'shininess', 0);
         phongGui.add(phongMaterialConfig, 'specularStrength', 0);
+    }
+
+    addSplattingGui(gui, name, slopeGroundSplattingConfig) {
+        let outerSplatting = gui.addFolder(name);
+        outerSplatting.add(slopeGroundSplattingConfig, 'scale1', 0);
+        outerSplatting.add(slopeGroundSplattingConfig, 'scale2', 0);
+        outerSplatting.add(slopeGroundSplattingConfig, 'fadeThreshold', 0, 1);
+        outerSplatting.add(slopeGroundSplattingConfig, 'offset', 0, 1);
     }
 
     getSlopeConfig(slopeConfigId) {

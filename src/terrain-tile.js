@@ -42,17 +42,26 @@ class TerrainTile extends Base {
             for (const terrainSlopeTile of terrainTileJson.terrainSlopeTiles) {
                 let slopeConfig = staticGameConfigService.getSlopeConfig(terrainSlopeTile.slopeConfigId);
                 if (terrainSlopeTile.hasOwnProperty('outerSlopeGeometry')) {
-                    this.setupSlope(terrainSlopeTile.outerSlopeGeometry, slopeConfig, staticGameConfigService.getGround());
+                    this.setupSlope(terrainSlopeTile.outerSlopeGeometry,
+                        slopeConfig,
+                        staticGameConfigService.getGround(),
+                        slopeConfig.outerSplatting);
                 }
                 if (terrainSlopeTile.hasOwnProperty('centerSlopeGeometry')) {
-                    this.setupSlope(terrainSlopeTile.centerSlopeGeometry, slopeConfig, null);
+                    this.setupSlope(terrainSlopeTile.centerSlopeGeometry,
+                        slopeConfig,
+                        null,
+                        null);
                 }
                 if (terrainSlopeTile.hasOwnProperty('innerSlopeGeometry')) {
                     let groundSkeletonConfig = staticGameConfigService.getGround();
                     if (slopeConfig.hasOwnProperty('groundSkeletonConfig')) {
                         groundSkeletonConfig = slopeConfig.groundSkeletonConfig;
                     }
-                    this.setupSlope(terrainSlopeTile.innerSlopeGeometry, slopeConfig, groundSkeletonConfig);
+                    this.setupSlope(terrainSlopeTile.innerSlopeGeometry,
+                        slopeConfig,
+                        groundSkeletonConfig,
+                        slopeConfig.innerSplatting);
                 }
 
             }
@@ -92,8 +101,11 @@ class TerrainTile extends Base {
 
     }
 
-    setupSlope(slopeGeometry, slopeConfig, groundSkeletonConfig) {
-        let slope = new Slope(slopeGeometry, slopeConfig, groundSkeletonConfig);
+    setupSlope(slopeGeometry, slopeConfig, groundSkeletonConfig, slopeGroundSplattingConfig) {
+        if (typeof slopeGroundSplattingConfig === 'undefined') {
+            slopeGroundSplattingConfig = null;
+        }
+        let slope = new Slope(slopeGeometry, slopeConfig, groundSkeletonConfig, slopeGroundSplattingConfig);
         slope.generateMesh(this.scene);
         this.slopes.push(slope);
     }
