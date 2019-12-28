@@ -42,12 +42,14 @@ uniform float uSplattingScale2;
 uniform float uSplattingFadeThreshold;
 uniform float uSplattingOffset;
 #endif
+#ifdef RENDER_SPLATTING
 // Slope-Ground Splatting
 uniform sampler2D uSlopeSplatting;
 uniform float uSlopeSplattingScale1;
 uniform float uSlopeSplattingScale2;
 uniform float uSlopeSplattingFadeThreshold;
 uniform float uSlopeSplattingOffset;
+#endif
 
 vec3 vec3ToReg(vec3 normVec) {
     return normVec * 0.5 + 0.5;
@@ -135,13 +137,16 @@ void main(void) {
     vec3 slope = (ambientLightColor + slopeDiffuse + slopeSpecular) * slopeTexture.rgb;
 
     // Ground
+    float slopeSplatting = vSlopeFactor;
+    #ifdef RENDER_SPLATTING
     float slopeSplatting1 = texture2D(uSlopeSplatting, vWorldVertexPosition.xy / uSlopeSplattingScale1).r;
     float slopeSplatting2 = texture2D(uSlopeSplatting, vWorldVertexPosition.xy / uSlopeSplattingScale2).r;
-    float slopeSplatting = (slopeSplatting1 + slopeSplatting2 + vSlopeFactor) / 3.0;
+    slopeSplatting = (slopeSplatting1 + slopeSplatting2 + vSlopeFactor) / 3.0;
     slopeSplatting = (slopeSplatting - uSlopeSplattingOffset) / (2.0 * uSlopeSplattingFadeThreshold) + 0.5;
     slopeSplatting = clamp(slopeSplatting, 0.0, 1.0);
+    #endif
     vec3 slopeGround = slope;
-    if(vSlopeFactor < 0.99) {
+    if (vSlopeFactor < 0.99) {
         slopeGround = mix(groundRgb(), slope, slopeSplatting);
     }
 

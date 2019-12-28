@@ -67,11 +67,15 @@ class Slope extends Base {
         this.material.uniforms.uSlopeBumpMap.value = this.setupTextureSimple(this.imageTable(this.slopeConfig.slopeBumpMapId));
         if (this.slopeGroundSplattingConfig != null) {
             this.material.uniforms.uSlopeSplatting.value = this.setupTextureSimple(this.imageTable(this.slopeGroundSplattingConfig.imageId));
+            this.material.defines = this.material.defines || {};
+            this.material.defines.RENDER_SPLATTING = true;
         }
         if (this.slopeConfig.hasOwnProperty('slopeFoamTextureId')) {
             this.material.uniforms.uFoam.value = this.setupTextureSimple(this.imageTable(this.slopeConfig.slopeFoamTextureId));
             this.material.uniforms.uFoamDistortion.value = this.setupTextureSimple(this.imageTable(this.slopeConfig.slopeFoamDistortionId));
             // TODO Foam not rendered because DEFINES are overridden
+            // TODO -> this.material.defines = this.material.defines || {};
+            // TODO -> this.material.defines.RENDER_FOAM = true;
             // TODO Foam is replaced by WaterShader? What about foam on cliffs?
             // TODO Problem with Fresnel in Water
             // this.material.defines = {
