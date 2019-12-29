@@ -76,5 +76,5 @@ void main(void) {
     float fresnelTransparency = (uFresnelOffset - fresnel) / uFresnelDelta + 0.5;
     fresnelTransparency = clamp(fresnelTransparency, 0.0, 1.0);
 
-    gl_FragColor = vec4((ambientLightColor + slopeSpecular + vec3(0.5, 0.5, 0.5)) * reflection, fresnelTransparency * uTransparency);
+    gl_FragColor = vec4((ambientLightColor + vec3(0.5, 0.5, 0.5)) * reflection + slopeSpecular, max(uSpecularStrength * spec, fresnelTransparency)  * uTransparency);
 }
