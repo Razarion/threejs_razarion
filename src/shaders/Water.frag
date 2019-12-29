@@ -21,6 +21,16 @@ uniform sampler2D uReflection;
 uniform float uDistortionStrength;
 uniform float animation;
 
+#ifdef  RENDER_SHALLOW_WATER
+varying vec2 vUv;
+uniform sampler2D uShallowWater;
+uniform float uShallowWaterScale;
+uniform sampler2D uShallowDistortionMap;
+uniform float uShallowDistortionStrength;
+uniform float uShallowAnimation;
+uniform sampler2D uWaterStencil;
+#endif
+
 const vec3 SPECULAR_LIGHT_COLOR = vec3(1.0, 1.0, 1.0);
 
 vec3 vec3ToRgb(vec3 normVec) {
@@ -71,10 +81,23 @@ void main(void) {
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
 
+    vec3 waterSurface = (ambientLightColor + vec3(0.5, 0.5, 0.5)) * reflection + slopeSpecular;
+
+    #ifdef  RENDER_SHALLOW_WATER
+    vec2 totalShallowDistortion = uShallowDistortionStrength  * (texture2D(uShallowDistortionMap, vUv.xy / uShallowWaterScale + vec2(uShallowAnimation, 0)).rg * 2.0 - 1.0);
+    vec4 shallowWater = texture2D(uShallowWater, (vUv.xy + totalShallowDistortion) / uShallowWaterScale);
+    float waterStencil = texture2D(uWaterStencil, (vUv.xy + totalShallowDistortion) / uShallowWaterScale).b;
+    #endif
+
     // Fresnel
     float fresnel = dot(vNormal, viewDir);
     float fresnelTransparency = (uFresnelOffset - fresnel) / uFresnelDelta + 0.5;
     fresnelTransparency = clamp(fresnelTransparency, 0.0, 1.0);
+    float waterSurfaceTransparebcy = max(uSpecularStrength * spec, fresnelTransparency)  * uTransparency;
 
-    gl_FragColor = vec4((ambientLightColor + vec3(0.5, 0.5, 0.5)) * reflection + slopeSpecular, max(uSpecularStrength * spec, fresnelTransparency)  * uTransparency);
+    #ifdef  RENDER_SHALLOW_WATER
+    gl_FragColor = vec4(shallowWater.rgb * shallowWater.a + waterSurface * waterStencil, waterSurfaceTransparebcy * (shallowWater.a + waterStencil));
+    #else
+    gl_FragColor = vec4(waterSurface, waterSurfaceTransparebcy);
+    #endif
 }

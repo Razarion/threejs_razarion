@@ -2,17 +2,24 @@ import * as THREE from "three";
 import {Base} from "./base";
 import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
+import shallowWaterUrl from "./textures/ShallowWaterFoam.png";
+import shallowDistortionUrl from "./textures/FoamDistortion.png";
+import waterStencilUrl from "./textures/WaterStencil.png";
 
 class Water extends Base {
-    constructor(terrainWaterTile, slopeConfig) {
+    constructor(slopeConfig, waterPositions, waterUvs) {
         super();
-        this.terrainWaterTile = terrainWaterTile;
         this.slopeConfig = slopeConfig;
+        this.waterPositions = waterPositions;
+        this.waterUvs = waterUvs;
     }
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.terrainWaterTile.vertices), 3));
+        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.waterPositions), 3));
+        if (this.waterUvs != null) {
+            geometry.addAttribute('aUv', new THREE.BufferAttribute(new Float32Array(this.waterUvs), 2));
+        }
 
         let loader = new THREE.TextureLoader();
         let reflection = loader.load(this.imageTable(this.slopeConfig.waterReflectionId));
@@ -25,36 +32,65 @@ class Water extends Base {
         bumpMap.wrapS = THREE.RepeatWrapping;
         bumpMap.wrapT = THREE.RepeatWrapping;
 
-        this.material = new THREE.ShaderMaterial({
-            uniforms: THREE.UniformsUtils.merge([
-                THREE.UniformsLib["lights"],
+        let uniforms = THREE.UniformsUtils.merge([
+            THREE.UniformsLib["lights"],
+            {
+                uFresnelOffset: {value: this.slopeConfig.waterFresnelOffset},
+                uFresnelDelta: {value: this.slopeConfig.waterFresnelDelta},
+                uShininess: {value: this.slopeConfig.waterShininess},
+                uSpecularStrength: {value: this.slopeConfig.waterSpecularStrength},
+                uReflectionScale: {value: this.slopeConfig.waterReflectionScale},
+                uMapScale: {value: this.slopeConfig.waterMapScale},
+                uReflection: {value: null},
+                uDistortionMap: {value: null},
+                uDistortionStrength: {value: this.slopeConfig.waterDistortionStrength},
+                uBumpMap: {value: null},
+                uBumpMapDepth: {value: this.slopeConfig.waterBumpMapDepth},
+                uTransparency: {value: this.slopeConfig.waterTransparency},
+                animation: {value: this.setupWaterAnimation(this.slopeConfig.waterAnimationDuration)},
+            }
+        ]);
+
+        if (this.waterUvs != null) {
+            uniforms = THREE.UniformsUtils.merge([uniforms,
                 {
-                    uFresnelOffset: {value: this.slopeConfig.waterFresnelOffset},
-                    uFresnelDelta: {value: this.slopeConfig.waterFresnelDelta},
-                    uShininess: {value: this.slopeConfig.waterShininess},
-                    uSpecularStrength: {value: this.slopeConfig.waterSpecularStrength},
-                    uReflectionScale: {value: this.slopeConfig.waterReflectionScale},
-                    uMapScale: {value: this.slopeConfig.waterMapScale},
-                    uReflection: {value: null},
-                    uDistortionMap: {value: null},
-                    uDistortionStrength: {value: this.slopeConfig.waterDistortionStrength},
-                    uBumpMap: {value: null},
-                    uBumpMapDepth: {value: this.slopeConfig.waterBumpMapDepth},
-                    uTransparency: {value: this.slopeConfig.waterTransparency},
-                    uWaterBeginsOffset: {value: this.slopeConfig.waterBeginsOffset},
-                    uWaterFadeoutDistance: {value: this.slopeConfig.waterFadeoutDistance},
-                    animation: {value: this.setupWaterAnimation(this.slopeConfig.waterAnimationDuration)},
-                }
-            ]),
+                    uShallowWater: {value: null},
+                    uShallowWaterScale: {value: this.slopeConfig.shallowWaterTextureScale},
+                    uShallowDistortionMap: {value: null},
+                    uShallowDistortionStrength: {value: this.slopeConfig.shallowWaterDistortionStrength},
+                    uShallowAnimation: {value: this.setupWaterAnimation(this.slopeConfig.shallowWaterAnimation)},
+                    uWaterStencil: {value: null},
+                }]);
+        }
+
+        this.material = new THREE.ShaderMaterial({
+            uniforms: uniforms,
             vertexShader: waterVertexShaderUrl,
             fragmentShader: waterFragmentShaderUrl
         });
+
+
         this.material.uniforms.uReflection.value = reflection;
         this.material.uniforms.uDistortionMap.value = distortionMap;
         this.material.uniforms.uBumpMap.value = bumpMap;
         this.material.lights = true;
         this.material.transparent = true;
         this.material.extensions.derivatives = true;
+        if (this.waterUvs != null) {
+            let shallowDistortionMap = this.setupTextureSimple(shallowDistortionUrl);
+            let shallowWater = new THREE.TextureLoader().load(shallowWaterUrl);
+            shallowWater.wrapS = THREE.ClampToEdgeWrapping;
+            shallowWater.wrapT = THREE.RepeatWrapping;
+            let waterStencil = new THREE.TextureLoader().load(waterStencilUrl);
+            waterStencil.wrapS = THREE.ClampToEdgeWrapping;
+            waterStencil.wrapT = THREE.RepeatWrapping;
+
+            this.material.uniforms.uShallowWater.value = shallowWater;
+            this.material.uniforms.uShallowDistortionMap.value = shallowDistortionMap;
+            this.material.uniforms.uWaterStencil.value = waterStencil;
+            this.material.defines = this.material.defines || {};
+            this.material.defines.RENDER_SHALLOW_WATER = true;
+        }
 
         scene.add(new THREE.Mesh(geometry, this.material));
     }
@@ -70,6 +106,11 @@ class Water extends Base {
         this.material.uniforms.uBumpMapDepth.value = this.slopeConfig.waterBumpMapDepth;
         this.material.uniforms.uTransparency.value = this.slopeConfig.waterTransparency;
         this.material.uniforms.animation.value = this.setupWaterAnimation(this.slopeConfig.waterAnimationDuration);
+        if (this.waterUvs != null) {
+            this.material.uniforms.uShallowWaterScale.value = this.slopeConfig.shallowWaterTextureScale;
+            this.material.uniforms.uShallowDistortionStrength.value = this.slopeConfig.shallowWaterDistortionStrength;
+            this.material.uniforms.uShallowAnimation.value = this.setupWaterAnimation(this.slopeConfig.shallowWaterAnimation);
+        }
         this.material.wireframe = this.slopeConfig.wireframeWater;
     }
 }

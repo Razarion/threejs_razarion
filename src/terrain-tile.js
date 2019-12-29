@@ -1,7 +1,6 @@
 import {Ground} from "./ground";
 import {Slope} from "./slope";
 import {Water} from "./water";
-import {ShallowWater} from "./shallow-water";
 import {Shapes3D} from "./shape-3d";
 import {Base} from "./base";
 import * as THREE from "three";
@@ -68,15 +67,18 @@ class TerrainTile extends Base {
         }
 
         this.waters = [];
-        this.shallowWaters = [];
         if (Array.isArray(terrainTileJson.terrainWaterTiles)) {
             for (const terrainWaterTile of terrainTileJson.terrainWaterTiles) {
-                let water = new Water(terrainWaterTile, staticGameConfigService.getSlopeConfig(terrainWaterTile.slopeConfigId));
+                let water = new Water(staticGameConfigService.getSlopeConfig(terrainWaterTile.slopeConfigId),
+                    terrainWaterTile.vertices,
+                    null);
                 water.generateMesh(scene);
                 this.waters.push(water);
-                let shallowWater = new ShallowWater(terrainWaterTile, staticGameConfigService.getSlopeConfig(terrainWaterTile.slopeConfigId));
+                let shallowWater = new Water(staticGameConfigService.getSlopeConfig(terrainWaterTile.slopeConfigId),
+                    terrainWaterTile.shallowVertices,
+                    terrainWaterTile.shallowUvs);
                 shallowWater.generateMesh(scene);
-                this.shallowWaters.push(shallowWater);
+                this.waters.push(shallowWater);
             }
         }
 
@@ -114,7 +116,6 @@ class TerrainTile extends Base {
         this.grounds.forEach(ground => ground.update());
         this.slopes.forEach(slope => slope.update());
         this.waters.forEach(water => water.update());
-        this.shallowWaters.forEach(shallowWater => shallowWater.update());
         this.shape3Ds.forEach(shape3D => shape3D.update());
     }
 
