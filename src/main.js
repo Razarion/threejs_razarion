@@ -15,11 +15,11 @@ let scene = new THREE.Scene();
 let directionalLightHelper;
 let shadowCameraHelper;
 
-let camera = new THREE.PerspectiveCamera(120 /* TODO Error 170*/, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.x = 150; // TODO Error 400
-camera.position.y = 100; // TODO Error 8.6
-camera.position.z = 40; // TODO Error 17.2
-camera.rotation.x = THREE.Math.degToRad(20); // 0 TODO Error 35
+let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.x = 150;
+camera.position.y = 40;
+camera.position.z = 80;
+camera.rotation.x = THREE.Math.degToRad(40);
 
 window.addEventListener('resize', function () {
     camera.aspect = window.innerWidth / window.innerHeight;
