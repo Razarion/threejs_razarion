@@ -37,8 +37,8 @@ class Slope extends Base {
             uniforms = THREE.UniformsUtils.merge([uniforms,
                 {
                     uSlopeSplatting: {value: null},
-                    uSlopeSplattingScale1: {value: this.slopeGroundSplattingConfig.scale1},
-                    uSlopeSplattingScale2: {value: this.slopeGroundSplattingConfig.scale2},
+                    uSlopeSplattingScale: {value: this.slopeGroundSplattingConfig.scale},
+                    uSlopeSplattingImpact: {value: this.slopeGroundSplattingConfig.impact},
                     uSlopeSplattingFadeThreshold: {value: this.slopeGroundSplattingConfig.fadeThreshold},
                     uSlopeSplattingOffset: {value: this.slopeGroundSplattingConfig.offset}
                 }]);
@@ -100,8 +100,8 @@ class Slope extends Base {
         this.material.uniforms.uShininess.value = this.slopeConfig.slopeShininess;
         this.material.uniforms.uSpecularStrength.value = this.slopeConfig.slopeSpecularStrength;
         if (this.groundSkeletonConfig != null) {
-            this.material.uniforms.uSlopeSplattingScale1.value = this.slopeGroundSplattingConfig.scale1;
-            this.material.uniforms.uSlopeSplattingScale2.value = this.slopeGroundSplattingConfig.scale2;
+            this.material.uniforms.uSlopeSplattingScale.value = this.slopeGroundSplattingConfig.scale;
+            this.material.uniforms.uSlopeSplattingImpact.value = this.slopeGroundSplattingConfig.impact;
             this.material.uniforms.uSlopeSplattingFadeThreshold.value = this.slopeGroundSplattingConfig.fadeThreshold;
             this.material.uniforms.uSlopeSplattingOffset.value = this.slopeGroundSplattingConfig.offset;
         }

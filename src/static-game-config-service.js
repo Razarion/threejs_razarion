@@ -127,10 +127,10 @@ class StaticGameConfigService {
 
     addSplattingGui(gui, name, slopeGroundSplattingConfig) {
         let outerSplatting = gui.addFolder(name);
-        outerSplatting.add(slopeGroundSplattingConfig, 'scale1', 0);
-        outerSplatting.add(slopeGroundSplattingConfig, 'scale2', 0);
+        outerSplatting.add(slopeGroundSplattingConfig, 'scale', 0);
         outerSplatting.add(slopeGroundSplattingConfig, 'fadeThreshold', 0, 1);
         outerSplatting.add(slopeGroundSplattingConfig, 'offset', 0, 1);
+        outerSplatting.add(slopeGroundSplattingConfig, 'impact', 0);
     }
 
     getSlopeConfig(slopeConfigId) {
