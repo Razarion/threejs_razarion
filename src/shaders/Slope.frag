@@ -101,7 +101,7 @@ vec3 phong(sampler2D uTexture, float uTextureScale, sampler2D uBumpMap, float uB
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 specular = uSpecularStrength * spec * directLightColor;
-    return (ambientLightColor + diffuse + specular) * texture.rgb;
+    return (ambientLightColor + diffuse) * texture.rgb + specular;
 }
 
 vec3 groundRgb(void) {
@@ -134,7 +134,7 @@ void main(void) {
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 slopeSpecular = uSpecularStrength * spec * directLightColor;
-    vec3 slope = (ambientLightColor + slopeDiffuse + slopeSpecular) * slopeTexture.rgb;
+    vec3 slope = (ambientLightColor + slopeDiffuse) * slopeTexture.rgb + slopeSpecular;
 
     // Ground
     float slopeSplatting = clamp(vSlopeFactor, 0.0, 1.0);

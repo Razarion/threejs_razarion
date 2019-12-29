@@ -64,7 +64,7 @@ vec3 phong(sampler2D uTexture, float uTextureScale, sampler2D uBumpMap, float uB
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
     vec3 specular = uSpecularStrength * spec * directLightColor;
-    return (ambientLightColor + diffuse + specular) * texture.rgb;
+    return (ambientLightColor + diffuse) * texture.rgb + specular;
 }
 
 void main(void) {
