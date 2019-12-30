@@ -45,7 +45,7 @@ class StaticGameConfigService {
                 }
                 if (slopeConfig.groundSkeletonConfig.hasOwnProperty('splatting')) {
                     const splattingGui = groundGui.addFolder('Splatting');
-                    splattingGui.add(slopeConfig.groundSkeletonConfig.bottomTexture.splatting, 'scale', 0);
+                    splattingGui.add(slopeConfig.groundSkeletonConfig.splatting, 'scale', 0);
                     splattingGui.add(slopeConfig.groundSkeletonConfig, 'splattingScale2', 0);
                     splattingGui.add(slopeConfig.groundSkeletonConfig, 'splattingOffset', 0, 1);
                     splattingGui.add(slopeConfig.groundSkeletonConfig, 'splattingFadeThreshold', 0, 1);
