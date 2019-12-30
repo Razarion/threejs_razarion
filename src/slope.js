@@ -109,11 +109,11 @@ class Slope extends Base {
             this.material.uniforms.uFoamDistortionStrength.value = this.slopeConfig.slopeFoamDistortionStrength;
             this.material.uniforms.uFoamAnimation.value = this.setupWaterAnimation(this.slopeConfig.slopeFoamAnimationDuration);
         }
-        this.material.wireframe = this.slopeConfig.wireframeSlope;
 
         if (this.groundSkeletonConfig != null) {
             Ground.update(this.groundSkeletonConfig, this.material);
         }
+        this.material.wireframe = this.slopeConfig.wireframeSlope;
     }
 }
 

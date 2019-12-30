@@ -50,8 +50,8 @@ class StaticGameConfigService {
                     splattingGui.add(slopeConfig.groundSkeletonConfig, 'splattingOffset', 0, 1);
                     splattingGui.add(slopeConfig.groundSkeletonConfig, 'splattingFadeThreshold', 0, 1);
                 }
-                slopeConfig.wireframeSlopeGround = false;
-                groundGui.add(slopeConfig, "wireframeSlopeGround", 0, 1);
+                slopeConfig.groundSkeletonConfig.wireframe = false;
+                groundGui.add(slopeConfig.groundSkeletonConfig, "wireframe", 0, 1);
             }
             if(slopeConfig.hasOwnProperty('outerSplatting')) {
                 this.addSplattingGui(gui, 'Outer Splatting', slopeConfig.outerSplatting);

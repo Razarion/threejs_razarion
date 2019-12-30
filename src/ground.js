@@ -24,6 +24,7 @@ class Ground extends Base {
             fragmentShader: groundFragmentShaderUrl,
             uniforms: uniforms
         });
+        this.material.wireframe = this.groundSkeletonConfig.wireframe;
 
         Ground.enrichMaterial(this.groundSkeletonConfig, this.material, this);
 
@@ -77,7 +78,6 @@ class Ground extends Base {
             material.defines = material.defines || {};
             material.defines.RENDER_GROUND_TEXTURE = true;
         }
-        material.wireframe = groundSkeletonConfig.wireframe;
     }
 
     update() {
