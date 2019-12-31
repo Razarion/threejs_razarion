@@ -96,7 +96,7 @@ void main(void) {
     float waterSurfaceTransparebcy = max(uSpecularStrength * spec, fresnelTransparency)  * uTransparency;
 
     #ifdef  RENDER_SHALLOW_WATER
-    gl_FragColor = vec4(shallowWater.rgb * shallowWater.a + waterSurface * waterStencil, waterSurfaceTransparebcy * (shallowWater.a + waterStencil));
+    gl_FragColor = vec4(shallowWater.rgb * shallowWater.a + waterSurface * waterStencil, max(waterSurfaceTransparebcy * waterStencil, shallowWater.a));
     #else
     gl_FragColor = vec4(waterSurface, waterSurfaceTransparebcy);
     #endif

@@ -2,9 +2,6 @@ import * as THREE from "three";
 import {Base} from "./base";
 import waterVertexShaderUrl from './shaders/Water.vert';
 import waterFragmentShaderUrl from './shaders/Water.frag';
-import shallowWaterUrl from "./textures/ShallowWaterFoam.png";
-import shallowDistortionUrl from "./textures/FoamDistortion.png";
-import waterStencilUrl from "./textures/WaterStencil.png";
 
 class Water extends Base {
     constructor(slopeConfig, waterPositions, waterUvs) {
@@ -77,11 +74,11 @@ class Water extends Base {
         this.material.transparent = true;
         this.material.extensions.derivatives = true;
         if (this.waterUvs != null) {
-            let shallowDistortionMap = this.setupTextureSimple(shallowDistortionUrl);
-            let shallowWater = new THREE.TextureLoader().load(shallowWaterUrl);
+            let shallowDistortionMap = this.setupTextureSimple(this.imageTable(this.slopeConfig.shallowWaterDistortionId));
+            let shallowWater = loader.load(this.imageTable(this.slopeConfig.shallowWaterTextureId));
             shallowWater.wrapS = THREE.ClampToEdgeWrapping;
             shallowWater.wrapT = THREE.RepeatWrapping;
-            let waterStencil = new THREE.TextureLoader().load(waterStencilUrl);
+            let waterStencil = loader.load(this.imageTable(this.slopeConfig.shallowWaterStencilId));
             waterStencil.wrapS = THREE.ClampToEdgeWrapping;
             waterStencil.wrapT = THREE.RepeatWrapping;
 
