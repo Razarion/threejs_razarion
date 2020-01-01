@@ -96,7 +96,11 @@ void main(void) {
     float waterSurfaceTransparebcy = max(uSpecularStrength * spec, fresnelTransparency)  * uTransparency;
 
     #ifdef  RENDER_SHALLOW_WATER
-    gl_FragColor = vec4(shallowWater.rgb * shallowWater.a + waterSurface * waterStencil, max(waterSurfaceTransparebcy * waterStencil, shallowWater.a));
+    // Porter-Duff Composition
+    // https://de.wikipedia.org/wiki/Alpha_Blending
+    float transparency = shallowWater.a + (1.0 - shallowWater.a) * waterStencil;
+    vec3 color = 1.0 / transparency * (shallowWater.a * shallowWater.rgb + (1.0 - shallowWater.a) * waterStencil * waterSurface);
+    gl_FragColor = vec4(color, max(shallowWater.a, min(transparency, waterSurfaceTransparebcy)));
     #else
     gl_FragColor = vec4(waterSurface, waterSurfaceTransparebcy);
     #endif
