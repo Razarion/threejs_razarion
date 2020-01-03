@@ -10,7 +10,7 @@ uniform sampler2D uTopBumpMap;
 uniform float uTopBumpMapDepth;
 uniform float uTopShininess;
 uniform float uTopSpecularStrength;
-#ifdef  RENDER_GROUND_TEXTURE
+#ifdef  RENDER_GROUND_BOTTOM_TEXTURE
 // Bottom
 uniform sampler2D uBottomTexture;
 uniform float uBottomTextureScale;
@@ -69,11 +69,11 @@ vec3 phong(sampler2D uTexture, float uTextureScale, sampler2D uBumpMap, float uB
 
 void main(void) {
     vec3 top = phong(uTopTexture, uTopTextureScale, uTopBumpMap, uTopBumpMapDepth, uTopShininess, uTopSpecularStrength);
-    #ifndef RENDER_GROUND_TEXTURE
+    #ifndef RENDER_GROUND_BOTTOM_TEXTURE
     gl_FragColor = vec4(top, 1.0);
     #endif
 
-    #ifdef  RENDER_GROUND_TEXTURE
+    #ifdef  RENDER_GROUND_BOTTOM_TEXTURE
     vec3 bottom = phong(uBottomTexture, uBottomTextureScale, uBottomBumpMap, uBottomBumpMapDepth, uBottomShininess, uBottomSpecularStrength);
 
     float splatting1 = texture2D(uSplatting, vWorldVertexPosition.xy / uSplattingScale1).r;

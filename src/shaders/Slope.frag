@@ -20,6 +20,7 @@ uniform sampler2D uFoamDistortion;
 uniform float uFoamAnimation;
 #endif
 // ----- Ground -----
+#ifdef  RENDER_GROUND_TEXTURE
 // Top
 uniform sampler2D uTopTexture;
 uniform float uTopTextureScale;
@@ -27,7 +28,7 @@ uniform sampler2D uTopBumpMap;
 uniform float uTopBumpMapDepth;
 uniform float uTopShininess;
 uniform float uTopSpecularStrength;
-#ifdef  RENDER_GROUND_TEXTURE
+#ifdef  RENDER_GROUND_BOTTOM_TEXTURE
 // Bottom
 uniform sampler2D uBottomTexture;
 uniform float uBottomTextureScale;
@@ -49,6 +50,7 @@ uniform float uSlopeSplattingScale;
 uniform float uSlopeSplattingImpact;
 uniform float uSlopeSplattingFadeThreshold;
 uniform float uSlopeSplattingOffset;
+#endif
 #endif
 
 vec3 vec3ToReg(vec3 normVec) {
@@ -104,13 +106,14 @@ vec3 phong(sampler2D uTexture, float uTextureScale, sampler2D uBumpMap, float uB
     return (ambientLightColor + diffuse) * texture.rgb + specular;
 }
 
+    #ifdef RENDER_GROUND_TEXTURE
 vec3 groundRgb(void) {
     vec3 top = phong(uTopTexture, uTopTextureScale, uTopBumpMap, uTopBumpMapDepth, uTopShininess, uTopSpecularStrength);
-    #ifndef RENDER_GROUND_TEXTURE
+    #ifndef RENDER_GROUND_BOTTOM_TEXTURE
     return top;
     #endif
 
-    #ifdef  RENDER_GROUND_TEXTURE
+    #ifdef  RENDER_GROUND_BOTTOM_TEXTURE
     vec3 bottom = phong(uBottomTexture, uBottomTextureScale, uBottomBumpMap, uBottomBumpMapDepth, uBottomShininess, uBottomSpecularStrength);
 
     float splatting1 = texture2D(uSplatting, vWorldVertexPosition.xy / uSplattingScale1).r;
@@ -121,6 +124,8 @@ vec3 groundRgb(void) {
     return mix(top, bottom, splatting);
     #endif
 }
+    #endif
+
 
 void main(void) {
     vec3 normal = perturbNormalArb(-vViewPosition, normalize(vNormal), dHdxy_fwd());
@@ -137,6 +142,7 @@ void main(void) {
     vec3 slope = (ambientLightColor + slopeDiffuse) * slopeTexture.rgb + slopeSpecular;
 
     // Ground
+    #ifdef RENDER_GROUND_TEXTURE
     float slopeSplatting = clamp(vSlopeFactor, 0.0, 1.0);
     #ifdef RENDER_SPLATTING
     float slopeSplatting1 = texture2D(uSlopeSplatting, vWorldVertexPosition.xy / uSlopeSplattingScale).r;
@@ -156,7 +162,7 @@ void main(void) {
     #ifndef RENDER_FOAM
     gl_FragColor = vec4(slopeGround, 1.0);
     #endif
-
-    // gl_FragColor = vec4(slope * coast.a + groundTexture * (1.0 - coast.a), 1.0);
-    // gl_FragColor = vec4(vUv.x/ uCoastScale, mod(vUv.y/ uCoastScale, 1.0), 0.0, 1.0);
+    #else
+    gl_FragColor = vec4(slope, 1.0);
+    #endif
 }

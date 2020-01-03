@@ -84,6 +84,8 @@ class Slope extends Base {
         }
         if (this.groundSkeletonConfig != null) {
             Ground.enrichMaterial(this.groundSkeletonConfig, this.material, this);
+            this.material.defines = this.material.defines || {};
+            this.material.defines.RENDER_GROUND_TEXTURE = true;
         }
 
         this.material.lights = true;

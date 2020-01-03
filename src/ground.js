@@ -76,7 +76,7 @@ class Ground extends Base {
             material.uniforms.uBottomBumpMap.value = helperRef.setupTextureSimple(helperRef.imageTable(groundSkeletonConfig.bottomTexture.bumpMapId));
             material.uniforms.uSplatting.value = helperRef.setupTextureSimple(helperRef.imageTable(groundSkeletonConfig.splatting.id));
             material.defines = material.defines || {};
-            material.defines.RENDER_GROUND_TEXTURE = true;
+            material.defines.RENDER_GROUND_BOTTOM_TEXTURE = true;
         }
     }
 
