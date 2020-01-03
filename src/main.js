@@ -16,7 +16,7 @@ let directionalLightHelper;
 let shadowCameraHelper;
 
 let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.x = 150;
+camera.position.x = 290;
 camera.position.y = 40;
 camera.position.z = 80;
 camera.rotation.x = THREE.Math.degToRad(40);
