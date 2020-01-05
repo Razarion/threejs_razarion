@@ -25,6 +25,8 @@ import palmLeavesTextureUrl from "./models/PalmTree3.png";
 import palmTrunkTextureUrl from "./models/PalmTree3.png";
 import rock1TextureUrl from "./models/Rock1Texture.png";
 import rock1BmUrl from "./models/Rock1Bm.png";
+import textureHelpers512Url from "./models/TextureHelpers512.png";
+import textureHelpers512BmUrl from "./models/TextureHelpersBm512.png";
 import noTextureUrl from "./models/TextureHelpers512.png";
 import transparentHelperTextureUrl from "./models/TransparenceHelper.png";
 
@@ -108,6 +110,10 @@ class Base {
                 return shallowWaterStencilUrl;
             case 27 : // shallow water distortion
                 return shallowWaterDistortionUrl;
+            case 28 : // Helper
+                return textureHelpers512Url;
+            case 29 : // Helper Bm
+                return textureHelpers512BmUrl;
         }
         console.error("Can not find entry in image table for: " + imageId);
         return noTextureUrl;

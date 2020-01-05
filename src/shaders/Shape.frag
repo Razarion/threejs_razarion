@@ -14,6 +14,10 @@ uniform float uAlphaCutout;
 
 const float SPECULAR_FACTOR = 3.0;
 
+vec3 vec3ToReg(vec3 normVec) {
+    return normVec * 0.5 + 0.5;
+}
+
 vec2 dHdxy_fwd() {
     vec2 dSTdx = dFdx(vUv);
     vec2 dSTdy = dFdy(vUv);
@@ -51,4 +55,5 @@ void main(void) {
     vec3 resultRgb = (ambientLightColor + shapeDiffuse) * shapeTexture.rgb  + shapeSpecular;
     float sharpenAlpha = (shapeTexture.a - uAlphaCutout) / max(fwidth(shapeTexture.a), 0.0001) + 0.5;
     gl_FragColor = vec4(resultRgb, sharpenAlpha);
+    // gl_FragColor = vec4(vec3ToReg(normal), sharpenAlpha);
 }
