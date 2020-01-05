@@ -53,10 +53,10 @@ class StaticGameConfigService {
                 slopeConfig.groundSkeletonConfig.wireframe = false;
                 groundGui.add(slopeConfig.groundSkeletonConfig, "wireframe", 0, 1);
             }
-            if(slopeConfig.hasOwnProperty('outerSplatting')) {
+            if (slopeConfig.hasOwnProperty('outerSplatting')) {
                 this.addSplattingGui(gui, 'Outer Splatting', slopeConfig.outerSplatting);
             }
-            if(slopeConfig.hasOwnProperty('innerSplatting')) {
+            if (slopeConfig.hasOwnProperty('innerSplatting')) {
                 this.addSplattingGui(gui, 'Inner Splatting', slopeConfig.innerSplatting);
             }
             if (slopeConfig.hasOwnProperty('waterLevel')) {
@@ -103,7 +103,10 @@ class StaticGameConfigService {
             shape3D.element3Ds.forEach(element3D => {
                 element3D.vertexContainers.forEach(vertexContainer => {
                     let matGui = shape3DGui.addFolder(vertexContainer.materialName + " (" + vertexContainer.materialId + ")");
-                    // matGui.add(this.material.uniforms.uBumpMapDepth, 'value', 0.0, 2.0).name('BumpMap Depth');
+                    if (!vertexContainer.hasOwnProperty('bumpMapDepth')) {
+                        vertexContainer.bumpMapDepth = 0.0;
+                    }
+                    matGui.add(vertexContainer, 'bumpMapDepth', 0.0).name('Bump Map Depth');
                     matGui.add(vertexContainer, 'shininess', 0.0).name('Shininess');
                     matGui.add(vertexContainer.specular, 'r', 0.0).name('SpecularStrength');
                     if (!vertexContainer.hasOwnProperty('alphaCutout')) {

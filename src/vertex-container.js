@@ -36,7 +36,7 @@ class VertexContainer extends Base {
                 {
                     uTexture: {value: null},
                     uBumpMap: {value: null},
-                    uBumpMapDepth: {value: 1},
+                    uBumpMapDepth: {value: this.vertexContainer.bumpMapDepth},
                     uSpecularStrength: {value: this.vertexContainer.specular.r},
                     uShininess: {value: this.vertexContainer.shininess},
                     uAlphaCutout: {value: this.vertexContainer.alphaCutout}
@@ -56,6 +56,7 @@ class VertexContainer extends Base {
         this.material.uniforms.uSpecularStrength.value = this.vertexContainer.specular.r;
         this.material.uniforms.uShininess.value = this.vertexContainer.shininess;
         this.material.uniforms.uAlphaCutout.value = this.vertexContainer.alphaCutout;
+        this.material.uniforms.uBumpMapDepth.value = this.vertexContainer.bumpMapDepth;
     }
 }
 
