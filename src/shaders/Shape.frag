@@ -12,8 +12,6 @@ uniform sampler2D uBumpMap;
 uniform float uBumpMapDepth;
 uniform float uAlphaCutout;
 
-const float SPECULAR_FACTOR = 3.0;
-
 vec3 vec3ToReg(vec3 normVec) {
     return normVec * 0.5 + 0.5;
 }
@@ -50,7 +48,7 @@ void main(void) {
     vec3 shapeDiffuse = max(dot(normal, directLightDirection), 0.0) * directLightColor;
     vec3 halfwayDir = normalize(directLightDirection + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), uShininess);
-    vec3 shapeSpecular = uSpecularStrength * SPECULAR_FACTOR * spec * directLightColor;
+    vec3 shapeSpecular = uSpecularStrength * spec * directLightColor;
 
     vec3 resultRgb = (ambientLightColor + shapeDiffuse) * shapeTexture.rgb  + shapeSpecular;
     float sharpenAlpha = (shapeTexture.a - uAlphaCutout) / max(fwidth(shapeTexture.a), 0.0001) + 0.5;

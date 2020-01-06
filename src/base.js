@@ -25,6 +25,8 @@ import palmLeavesTextureUrl from "./models/PalmTree3.png";
 import palmTrunkTextureUrl from "./models/PalmTree3.png";
 import rock1TextureUrl from "./models/Rock1Texture.png";
 import rock1BmUrl from "./models/Rock1Bm.png";
+import rock2Url from "./models/Rock2.png";
+import rock2BmUrl from "./models/Rock2Bm.png";
 import textureHelpers512Url from "./models/TextureHelpers512.png";
 import textureHelpers512BmUrl from "./models/TextureHelpersBm512.png";
 import noTextureUrl from "./models/TextureHelpers512.png";
@@ -114,6 +116,10 @@ class Base {
                 return textureHelpers512Url;
             case 29 : // Helper Bm
                 return textureHelpers512BmUrl;
+            case 30 : // Helper
+                return rock2Url;
+            case 31 : // Helper Bm
+                return rock2BmUrl;
         }
         console.error("Can not find entry in image table for: " + imageId);
         return noTextureUrl;
