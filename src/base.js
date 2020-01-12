@@ -23,6 +23,8 @@ import shallowWaterDistortionUrl from "./textures/FoamDistortion.png";
 import bushTextureUrl from "./models/Plant.png";
 import palmLeavesTextureUrl from "./models/PalmTree3.png";
 import palmTrunkTextureUrl from "./models/PalmTree3.png";
+import palm1LeavesTextureUrl from "./models/PalmTree01Leaf.png";
+import palm1TrunkTextureUrl from "./models/PalmTree01Trunk.png";
 import rock1TextureUrl from "./models/Rock1Texture.png";
 import rock1BmUrl from "./models/Rock1Bm.png";
 import rock2Url from "./models/Rock2.png";
@@ -98,9 +100,9 @@ class Base {
                 return groundSplattingUrl; // TODO own image
             case 20 : // Terrain Object bush
                 return bushTextureUrl;
-            case 21 : // Terrain Object palm trunk
+            case 21 : // Palm Tree trunk
                 return palmLeavesTextureUrl;
-            case 22 : // Terrain Object palm leaves
+            case 22 : // Palm Tree leaves
                 return palmTrunkTextureUrl;
             case 23 : // Rock 1 Texture
                 return rock1TextureUrl;
@@ -120,6 +122,18 @@ class Base {
                 return rock2Url;
             case 31 : // Helper Bm
                 return rock2BmUrl;
+            case 33 : // Palm Tree trunk bm
+                return groundTopBmUrl;
+            case 34 : // Palm Tree leaves bm
+                return groundTopBmUrl;
+            case 35 : // Palm Tree 1 trunk
+                return palm1TrunkTextureUrl;
+            case 36 : // Palm Tree 1 leaves
+                return palm1LeavesTextureUrl;
+            case 37 : // Palm Tree 1 trunk bm
+                return groundTopBmUrl;
+            case 38 : // Palm Tree 1 leaves bm
+                return groundTopBmUrl;
         }
         console.error("Can not find entry in image table for: " + imageId);
         return noTextureUrl;
