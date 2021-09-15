@@ -12,9 +12,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
-        new CopyWebpackPlugin([
-            {from:'src/models/TreeTexture.png',to:'TreeTexture.png'}
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: 'src/models/TreeTexture.png', to: 'TreeTexture.png'}
+            ]
+        }),
     ],
     output: {
         filename: '[name].[contenthash].js',

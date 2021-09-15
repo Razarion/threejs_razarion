@@ -63,10 +63,10 @@ let animate = function () {
 animate();
 
 function setupLight() {
-    let ambientLight = new THREE.AmbientLight(0x808080, 0.5);
+    let ambientLight = new THREE.AmbientLight(0x808080, 0.05);
     scene.add(ambientLight);
 
-    let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    let directionalLight = new THREE.DirectionalLight(0xffffff, 0.25);
     directionalLight.position.set(70, 30, 50);
     directionalLight.target.position.set(50, 50, 0);
     directionalLight.castShadow = true;
@@ -91,12 +91,12 @@ function setupLight() {
     let ambientLightGui = gui.addFolder('Ambient Light');
     let ambientLightModel = {'color': ambientLight.color.getHex()};
     ambientLightGui.addColor(ambientLightModel, 'color').onChange(() => ambientLight.color.setHex(ambientLightModel.color));
-    ambientLightGui.add(ambientLight, 'intensity', 0, 20, 0.1);
+    ambientLightGui.add(ambientLight, 'intensity');
 
     let directionalLightGui = gui.addFolder('DirectionalLight');
     let directionalLightModel = {'color': directionalLight.color.getHex()};
     directionalLightGui.addColor(directionalLightModel, 'color').onChange(() => directionalLight.color.setHex(directionalLightModel.color));
-    directionalLightGui.add(directionalLight, 'intensity', 0, 20, 0.1);
+    directionalLightGui.add(directionalLight, 'intensity');
     directionalLightGui.add(directionalLight.position, 'x');
     directionalLightGui.add(directionalLight.position, 'y');
     directionalLightGui.add(directionalLight.position, 'z');
