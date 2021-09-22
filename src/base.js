@@ -135,7 +135,7 @@ class Base {
             case 38 : // Palm Tree 1 leaves bm
                 return groundTopBmUrl;
         }
-        console.error("Can not find entry in image table for: " + imageId);
+        console.warn("Can not find entry in image table for: " + imageId);
         return noTextureUrl;
     }
 }

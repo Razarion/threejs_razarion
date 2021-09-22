@@ -21,11 +21,11 @@ class VertexContainer extends Base {
             staticMatrix[2][0], staticMatrix[2][1], staticMatrix[2][2], staticMatrix[2][3],
             staticMatrix[3][0], staticMatrix[3][1], staticMatrix[3][2], staticMatrix[3][3]);
 
-        this.geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.buffers.vertexData), 3));
-        this.geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.buffers.normData), 3));
-        this.geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.buffers.textureCoordinate), 2));
-        this.geometry.applyMatrix(m);
-        // this.geometry.applyMatrix(new THREE.Matrix4().makeScale(5, 5, 5));
+        this.geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(this.buffers.vertexData), 3));
+        this.geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.buffers.normData), 3));
+        this.geometry.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.buffers.textureCoordinate), 2));
+        this.geometry.applyMatrix4(m);
+        // this.geometry.applyMatrix4(new THREE.Matrix4().makeScale(5, 5, 5));
 
         let texture = this.setupTextureSimple(this.imageTable(this.vertexContainer.textureId));
         let bumpMap = this.setupTextureSimple(this.imageTable(this.vertexContainer.bumpMapId));
@@ -49,6 +49,7 @@ class VertexContainer extends Base {
         this.material.uniforms.uBumpMap.value = bumpMap;
         this.material.extensions.derivatives = true;
         this.material.lights = true;
+        this.material.postProcessing = this.vertexContainer.postProcessing;
     }
 
     update() {

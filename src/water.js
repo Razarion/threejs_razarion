@@ -13,9 +13,9 @@ class Water extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.waterPositions), 3));
+        geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(this.waterPositions), 3));
         if (this.waterUvs != null) {
-            geometry.addAttribute('aUv', new THREE.BufferAttribute(new Float32Array(this.waterUvs), 2));
+            geometry.setAttribute('aUv', new THREE.BufferAttribute(new Float32Array(this.waterUvs), 2));
         }
 
         let loader = new THREE.TextureLoader();

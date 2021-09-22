@@ -13,8 +13,8 @@ class Ground extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.groundPositions), 3));
-        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.groundNormals), 3));
+        geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(this.groundPositions), 3));
+        geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.groundNormals), 3));
 
         let uniforms = THREE.UniformsLib["lights"];
         uniforms = Ground.enrichUniform(this.groundSkeletonConfig, uniforms);

@@ -16,10 +16,10 @@ class Slope extends Base {
 
     generateMesh(scene) {
         let geometry = new THREE.BufferGeometry();
-        geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.positions), 3));
-        geometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.norms), 3));
-        geometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.uvs), 2));
-        geometry.addAttribute('aSlopeFactor', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.slopeFactors), 1));
+        geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.positions), 3));
+        geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.norms), 3));
+        geometry.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.uvs), 2));
+        geometry.setAttribute('aSlopeFactor', new THREE.BufferAttribute(new Float32Array(this.slopeGeometry.slopeFactors), 1));
 
         let uniforms = THREE.UniformsUtils.merge([
             THREE.UniformsLib["lights"],

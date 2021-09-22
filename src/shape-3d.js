@@ -17,7 +17,7 @@ class Shapes3D extends Base {
     generateMesh(scene, matrix4) {
         this.vertexContainers.forEach(vertexContainer => {
             const mesh = new THREE.Mesh(vertexContainer.geometry, vertexContainer.material);
-            mesh.applyMatrix(matrix4);
+            mesh.applyMatrix4(matrix4);
             scene.add(mesh);
 
             mesh.onBeforeRender = function (renderer, scene, camera, geometry, material, group) {
