@@ -8,6 +8,7 @@ import terrainTileArray from "./razarion_generated/terrain-tiles.json";
 import staticGameConfigJson from "./razarion_generated/static-game-config.json";
 import threeJsShapeJson from "./razarion_generated/shapes-3d";
 import {TerrainTile} from "./terrain-tile";
+import {MeshContainer} from "./mesh-container";
 import {StaticGameConfigService} from "./static-game-config-service";
 import mergeVertexShaderUrl from './shaders/Merge.vert';
 import mergeFragmentShaderUrl from './shaders/Merge.frag';
@@ -66,6 +67,8 @@ for (const terrainTileJson of terrainTileArray) {
     let terrainTile = new TerrainTile(terrainTileJson, scene, staticGameConfigService, threeJsShapeJson);
     terrainTiles.push(terrainTile);
 }
+
+new MeshContainer(scene);
 
 setupLight();
 
