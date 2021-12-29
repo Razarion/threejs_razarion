@@ -25,9 +25,9 @@ let shadowCameraHelper;
 let mixer, clock;
 
 let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.x = 303;
-camera.position.y = 40;
-camera.position.z = 80;
+camera.position.x = 274;
+camera.position.y = 92;
+camera.position.z = 10;
 camera.rotation.x = THREE.Math.degToRad(40);
 
 const darkMaterial = new THREE.MeshBasicMaterial({color: "black"});
