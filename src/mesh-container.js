@@ -14,7 +14,7 @@ class MeshContainer extends Base {
             this.vertexConatinerBuffers[vertexContainerBuffer.key] = vertexContainerBuffer;
         });
 
-        let meshContainer = this.findMeshContainer("Vehicle_11");
+        let meshContainer = this.findMeshContainer("Aaa");
         if (meshContainer != null) {
             this.setupMeshContainer(scene, meshContainer);
         }
@@ -87,15 +87,12 @@ class MeshContainer extends Base {
         mesh.scale.x = 0.01;
         mesh.scale.y = 0.01;
         mesh.scale.z = 0.01;
-        mesh.rotation.x = THREE.MathUtils.degToRad(90);
-        mesh.rotation.y = THREE.MathUtils.degToRad(90);
-        mesh.rotation.z = THREE.MathUtils.degToRad(0);
         if (shapeTransform != null) {
-            mesh.position.x += shapeTransform.translateZ;
-            mesh.position.y += -shapeTransform.translateX;
-            mesh.position.z += shapeTransform.translateY;
+            mesh.position.x += shapeTransform.translateX;
+            mesh.position.y += shapeTransform.translateY;
+            mesh.position.z += shapeTransform.translateZ;
             mesh.rotation.x += shapeTransform.rotateX;
-            mesh.rotation.y += -shapeTransform.rotateY;
+            mesh.rotation.y += shapeTransform.rotateY;
             mesh.rotation.z += shapeTransform.rotateZ;
             mesh.scale.x *= shapeTransform.scaleX;
             mesh.scale.y *= shapeTransform.scaleY;
