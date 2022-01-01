@@ -1,8 +1,8 @@
 import {Base} from "./base";
 import * as THREE from "three";
 import shape3DsJson from "./razarion_generated/mesh_container/shape3Ds.json";
+import vertexContainerKeyModelMatricesJson from "./razarion_generated/mesh_container/element3DId_modelMatrices.json";
 import vertexContainerBuffersJson from "./razarion_generated/mesh_container/vertexContainerBuffers.json";
-import assetConfigJson from "./razarion_generated/mesh_container/assetConfig.json";
 
 class MeshContainer extends Base {
 
@@ -14,30 +14,13 @@ class MeshContainer extends Base {
             this.vertexConatinerBuffers[vertexContainerBuffer.key] = vertexContainerBuffer;
         });
 
-        let meshContainer = this.findMeshContainer("Aaa");
-        if (meshContainer != null) {
-            this.setupMeshContainer(scene, meshContainer);
-        }
-    }
-
-    findMeshContainer(name) {
-        let resultMeshContainer = null;
-        assetConfigJson.meshContainers.forEach(meshContainer => {
-            if (name.localeCompare(meshContainer.internalName) === 0) {
-                resultMeshContainer = meshContainer;
-            }
-        });
-        return resultMeshContainer;
-    }
-
-    setupMeshContainer(scene, meshContainer) {
-        if (meshContainer.mesh != null) {
-            this.setupMeshes(scene, meshContainer.mesh);
-        }
-        if (meshContainer.children != null) {
-            meshContainer.children.forEach(child => {
-                this.setupMeshContainer(scene, child);
-            });
+        for (let vertexContainerKey in vertexContainerKeyModelMatricesJson) {
+            let buffers = this.findVertexContainerBuffer(vertexContainerKey);
+            let geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(buffers.vertexData), 3));
+            geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(buffers.normData), 3));
+            geometry.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(buffers.textureCoordinate), 2));
+            this.setupMeshes(scene, geometry, vertexContainerKeyModelMatricesJson[vertexContainerKey]);
         }
     }
 
@@ -56,49 +39,23 @@ class MeshContainer extends Base {
 
     }
 
-    setupMeshes(scene, mesh) {
-        shape3DsJson.forEach(shape3D => {
-            if (shape3D.id === mesh.shape3DId) {
-                shape3D.element3Ds.forEach(element3D => {
-                    if (element3D.id.localeCompare(mesh.element3DId) === 0) {
-                        element3D.vertexContainers.forEach(vertexContainer => {
-                            this.setupVertexContainer(scene, vertexContainer, mesh.shapeTransform);
-                        });
-                    }
-                });
-            }
+    setupMeshes(scene, geometry, modelMatrices) {
+        const material = new THREE.MeshStandardMaterial()
+        modelMatrices.forEach(modelMatrix => {
+            let staticMatrix = modelMatrix.numbers;
+            let m = new THREE.Matrix4();
+            m.set(staticMatrix[0][0], staticMatrix[0][1], staticMatrix[0][2], staticMatrix[0][3],
+                staticMatrix[1][0], staticMatrix[1][1], staticMatrix[1][2], staticMatrix[1][3],
+                staticMatrix[2][0], staticMatrix[2][1], staticMatrix[2][2], staticMatrix[2][3],
+                staticMatrix[3][0], staticMatrix[3][1], staticMatrix[3][2], staticMatrix[3][3]);
+
+            const mesh = new THREE.Mesh(geometry, material)
+            mesh.scale.x = 0.01;
+            mesh.scale.y = 0.01;
+            mesh.scale.z = 0.01;
+            mesh.applyMatrix4(m);
+            scene.add(mesh)
         });
-    }
-
-    setupVertexContainer(scene, vertexContainer, shapeTransform) {
-        let buffers = this.vertexConatinerBuffers[vertexContainer.key];
-
-        let geometry = new THREE.BufferGeometry();
-        geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(buffers.vertexData), 3));
-        geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(buffers.normData), 3));
-        geometry.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(buffers.textureCoordinate), 2));
-
-        const material = new THREE.MeshStandardMaterial();
-
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.x = 274;
-        mesh.position.y = 100;
-        mesh.position.z = 2;
-        mesh.scale.x = 0.01;
-        mesh.scale.y = 0.01;
-        mesh.scale.z = 0.01;
-        if (shapeTransform != null) {
-            mesh.position.x += shapeTransform.translateX;
-            mesh.position.y += shapeTransform.translateY;
-            mesh.position.z += shapeTransform.translateZ;
-            mesh.rotation.x += shapeTransform.rotateX;
-            mesh.rotation.y += shapeTransform.rotateY;
-            mesh.rotation.z += shapeTransform.rotateZ;
-            mesh.scale.x *= shapeTransform.scaleX;
-            mesh.scale.y *= shapeTransform.scaleY;
-            mesh.scale.z *= shapeTransform.scaleZ;
-        }
-        scene.add(mesh)
     }
 }
 
