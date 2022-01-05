@@ -78,10 +78,10 @@ class MeshContainer extends Base {
             mesh.position.y += shapeTransform.translateY;
             mesh.position.z += shapeTransform.translateZ;
             mesh.applyQuaternion(new THREE.Quaternion(
-                -shapeTransform.rotateX,
+                shapeTransform.rotateX,
                 shapeTransform.rotateY,
                 shapeTransform.rotateZ,
-                -shapeTransform.rotateW));
+                shapeTransform.rotateW));
             mesh.scale.x *= shapeTransform.scaleX;
             mesh.scale.y *= shapeTransform.scaleY;
             mesh.scale.z *= shapeTransform.scaleZ;

@@ -119,7 +119,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -141,7 +141,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -163,7 +163,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -203,7 +203,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -225,7 +225,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -247,7 +247,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -357,7 +357,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -379,7 +379,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -401,7 +401,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.4178,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -420,10 +420,10 @@
           "translateX" : -1.327,
           "translateY" : 0.418,
           "translateZ" : 1.016,
-          "rotateX" : -0.5,
+          "rotateX" : 0.5,
           "rotateY" : -0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -442,10 +442,10 @@
           "translateX" : -1.327,
           "translateY" : -0.418,
           "translateZ" : 1.016,
-          "rotateX" : -0.5,
+          "rotateX" : 0.5,
           "rotateY" : -0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -464,10 +464,10 @@
           "translateX" : 1.8629661,
           "translateY" : 2.2352003E-7,
           "translateZ" : 0.9711871,
-          "rotateX" : 7.7204616E-4,
+          "rotateX" : -7.7204616E-4,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.99999976,
+          "rotateW" : -0.99999976,
           "scaleX" : 1.25,
           "scaleY" : 1.0,
           "scaleZ" : 0.63976
@@ -489,7 +489,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6953488,
           "scaleY" : 1.0,
           "scaleZ" : 1.3552
@@ -511,7 +511,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -577,7 +577,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.25,
           "scaleY" : -1.0,
           "scaleZ" : 0.63976
@@ -599,7 +599,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -621,7 +621,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -643,7 +643,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -665,7 +665,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.63227,
           "scaleY" : 0.63227,
           "scaleZ" : 0.63227
@@ -684,10 +684,10 @@
           "translateX" : 1.338,
           "translateY" : 0.0,
           "translateZ" : 1.056,
-          "rotateX" : -0.27130857,
+          "rotateX" : 0.27130857,
           "rotateY" : -0.65298676,
           "rotateZ" : 0.27130857,
-          "rotateW" : 0.65298676,
+          "rotateW" : -0.65298676,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -892,7 +892,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.7,
             "scaleY" : 0.5,
             "scaleZ" : 0.5
@@ -914,7 +914,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.7,
             "scaleY" : 0.4900866,
             "scaleZ" : 0.4900866
@@ -936,7 +936,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.9,
             "scaleY" : 0.67699,
             "scaleZ" : 0.67699
@@ -958,7 +958,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -980,7 +980,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1002,7 +1002,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1024,7 +1024,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.7,
             "scaleY" : 0.4900866,
             "scaleZ" : 0.4900866
@@ -1046,7 +1046,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.7,
             "scaleY" : 0.4900866,
             "scaleZ" : 0.4900866
@@ -1068,7 +1068,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.9,
             "scaleY" : 0.67699,
             "scaleZ" : 0.67699
@@ -1090,7 +1090,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1112,7 +1112,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1134,7 +1134,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1156,7 +1156,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.682644,
             "scaleY" : 1.1813,
             "scaleZ" : 1.1813
@@ -1203,7 +1203,7 @@
             "translateX" : 0.124,
             "translateY" : 0.0,
             "translateZ" : 0.999,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.7071068,
             "rotateZ" : 0.0,
             "rotateW" : 0.0,
@@ -1228,7 +1228,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.87516,
             "scaleY" : 0.74303,
             "scaleZ" : 1.0
@@ -1272,7 +1272,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1294,7 +1294,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.6826438,
             "scaleY" : 1.1813,
             "scaleZ" : 1.1813
@@ -1316,7 +1316,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.88866,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1360,7 +1360,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.87516,
             "scaleY" : 0.74303,
             "scaleZ" : 1.0
@@ -1379,10 +1379,10 @@
             "translateX" : -1.073,
             "translateY" : 0.308,
             "translateZ" : 0.594,
-            "rotateX" : 0.41564885,
+            "rotateX" : -0.41564885,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.9095252,
+            "rotateW" : -0.9095252,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1401,10 +1401,10 @@
             "translateX" : -1.073,
             "translateY" : -0.308,
             "translateZ" : 0.594,
-            "rotateX" : 0.41564885,
+            "rotateX" : -0.41564885,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.9095252,
+            "rotateW" : -0.9095252,
             "scaleX" : -1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -1455,7 +1455,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -1477,7 +1477,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -1496,10 +1496,10 @@
           "translateX" : -1.327,
           "translateY" : -0.418,
           "translateZ" : 1.016,
-          "rotateX" : -0.5,
+          "rotateX" : 0.5,
           "rotateY" : -0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -1593,7 +1593,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : -1.2404
@@ -1615,7 +1615,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.7014925,
           "scaleY" : 0.67917037,
           "scaleZ" : 0.67917037
@@ -1637,7 +1637,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.5847039,
           "scaleY" : 0.5266604,
           "scaleZ" : 0.5266604
@@ -1659,7 +1659,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.5847039,
           "scaleY" : 0.5266604,
           "scaleZ" : 0.5266604
@@ -1681,7 +1681,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.7180259,
           "scaleY" : 0.86359,
           "scaleZ" : 0.86359
@@ -1703,7 +1703,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.7180259,
           "scaleY" : 0.86359,
           "scaleZ" : 0.86359
@@ -1725,7 +1725,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.0,
           "scaleY" : 1.0,
           "scaleZ" : -1.2404
@@ -1747,7 +1747,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.701493,
           "scaleY" : 0.67917037,
           "scaleZ" : 0.67917037
@@ -1769,7 +1769,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.584704,
           "scaleY" : 0.5266604,
           "scaleZ" : 0.5266604
@@ -1791,7 +1791,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.584704,
           "scaleY" : 0.5266604,
           "scaleZ" : 0.5266604
@@ -1813,7 +1813,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.718026,
           "scaleY" : 0.86359,
           "scaleZ" : 0.86359
@@ -1835,7 +1835,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.718026,
           "scaleY" : 0.86359,
           "scaleZ" : 0.86359
@@ -1854,10 +1854,10 @@
           "translateX" : 0.899,
           "translateY" : 0.78499,
           "translateZ" : 0.386,
-          "rotateX" : 0.17107685,
+          "rotateX" : -0.17107685,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9852577,
+          "rotateW" : -0.9852577,
           "scaleX" : 0.87415,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -1876,10 +1876,10 @@
           "translateX" : 0.899,
           "translateY" : -0.78499,
           "translateZ" : 0.386,
-          "rotateX" : 0.17107685,
+          "rotateX" : -0.17107685,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9852577,
+          "rotateW" : -0.9852577,
           "scaleX" : 0.87415,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -1898,10 +1898,10 @@
           "translateX" : -0.657,
           "translateY" : 0.798,
           "translateZ" : 0.789,
-          "rotateX" : -0.49659815,
+          "rotateX" : 0.49659815,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.86798066,
+          "rotateW" : -0.86798066,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -1920,10 +1920,10 @@
           "translateX" : -0.657,
           "translateY" : -0.798,
           "translateZ" : 0.789,
-          "rotateX" : -0.49659815,
+          "rotateX" : 0.49659815,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.86798066,
+          "rotateW" : -0.86798066,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -1945,7 +1945,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.5279,
           "scaleY" : 1.5279,
           "scaleZ" : 1.5279
@@ -1967,7 +1967,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -1989,7 +1989,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 0.60492,
           "scaleZ" : 1.0
@@ -2011,7 +2011,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.0,
           "scaleY" : 0.60492,
           "scaleZ" : 1.0
@@ -2033,7 +2033,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 0.71608,
           "scaleZ" : 1.0
@@ -2055,7 +2055,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.2752,
           "scaleZ" : 1.0
@@ -2077,7 +2077,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -2099,7 +2099,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 0.77227
@@ -2121,7 +2121,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.59043,
           "scaleY" : 0.59043,
           "scaleZ" : 0.59043
@@ -2140,10 +2140,10 @@
           "translateX" : 0.08,
           "translateY" : 0.788,
           "translateZ" : 0.789,
-          "rotateX" : 0.16869771,
+          "rotateX" : -0.16869771,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9856678,
+          "rotateW" : -0.9856678,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.2875
@@ -2162,10 +2162,10 @@
           "translateX" : 0.08,
           "translateY" : -0.788,
           "translateZ" : 0.789,
-          "rotateX" : 0.16869771,
+          "rotateX" : -0.16869771,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9856678,
+          "rotateW" : -0.9856678,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.2875
@@ -2187,7 +2187,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.4136,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -2209,7 +2209,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.4136,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -2365,7 +2365,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1559925,
           "scaleY" : 1.3934,
           "scaleZ" : 1.3934
@@ -2411,7 +2411,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.155993,
           "scaleY" : 1.3934,
           "scaleZ" : 1.3934
@@ -2501,7 +2501,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.95156246,
           "scaleY" : 1.275,
           "scaleZ" : 1.2625
@@ -2523,7 +2523,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : -0.7071068,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.4026309,
           "scaleY" : 1.2123,
           "scaleZ" : 1.2123
@@ -2545,7 +2545,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.7024
@@ -2567,7 +2567,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.85,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -2589,7 +2589,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.75773,
           "scaleY" : 0.75773,
           "scaleZ" : 0.90927607
@@ -2611,7 +2611,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.6318
@@ -2633,7 +2633,7 @@
           "rotateX" : 0.0,
           "rotateY" : -0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.86352724,
           "scaleY" : 0.7332319,
           "scaleZ" : 0.7332319
@@ -2655,7 +2655,7 @@
           "rotateX" : 0.0,
           "rotateY" : -0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.86352724,
           "scaleY" : 0.7332319,
           "scaleZ" : 0.7332319
@@ -2699,7 +2699,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.1825,
           "scaleZ" : 1.2948
@@ -3522,7 +3522,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.47894728,
             "scaleY" : 0.68515,
             "scaleZ" : 0.68515
@@ -3544,7 +3544,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.47894728,
             "scaleY" : 0.68515,
             "scaleZ" : 0.68515
@@ -3903,7 +3903,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.78521,
           "scaleY" : 0.6469895,
           "scaleZ" : 0.78521
@@ -3925,7 +3925,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.78521,
           "scaleY" : 0.6469895,
           "scaleZ" : 0.78521
@@ -3947,7 +3947,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.2975596,
           "scaleY" : 0.78521,
           "scaleZ" : 0.78521
@@ -3969,7 +3969,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.2975596,
           "scaleY" : 0.78521,
           "scaleZ" : 0.78521
@@ -3991,7 +3991,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.78521,
           "scaleY" : 0.78521,
           "scaleZ" : 1.0284681
@@ -4013,7 +4013,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.78521,
           "scaleY" : 0.78521,
           "scaleZ" : 0.69821656
@@ -4035,7 +4035,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.2699987,
           "scaleY" : 0.78521,
           "scaleZ" : -0.78521
@@ -4057,7 +4057,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.2699987,
           "scaleY" : 0.78521,
           "scaleZ" : -0.78521
@@ -4079,7 +4079,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.78521,
           "scaleY" : 0.78521,
           "scaleZ" : 0.78521
@@ -4101,7 +4101,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9603119,
           "scaleY" : 0.9603119,
           "scaleZ" : 0.9603119
@@ -4123,7 +4123,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9603119,
           "scaleY" : 0.9603119,
           "scaleZ" : 0.9603119
@@ -4167,7 +4167,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.45991036,
           "scaleY" : 0.45991036,
           "scaleZ" : 0.45991036
@@ -4189,7 +4189,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.4599104,
           "scaleY" : 0.45991036,
           "scaleZ" : 0.45991036
@@ -5533,7 +5533,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -5555,7 +5555,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -5577,7 +5577,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -5617,7 +5617,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -5639,7 +5639,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -5661,7 +5661,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.1741,
           "scaleY" : 1.1741,
           "scaleZ" : 1.1741
@@ -5771,7 +5771,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -5793,7 +5793,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -5815,7 +5815,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.4178,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -5834,10 +5834,10 @@
           "translateX" : -1.327,
           "translateY" : 0.418,
           "translateZ" : 1.016,
-          "rotateX" : -0.5,
+          "rotateX" : 0.5,
           "rotateY" : -0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -5856,10 +5856,10 @@
           "translateX" : -1.327,
           "translateY" : -0.418,
           "translateZ" : 1.016,
-          "rotateX" : -0.5,
+          "rotateX" : 0.5,
           "rotateY" : -0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -5878,10 +5878,10 @@
           "translateX" : 1.8629661,
           "translateY" : 2.2352003E-7,
           "translateZ" : 0.9711871,
-          "rotateX" : 7.7204616E-4,
+          "rotateX" : -7.7204616E-4,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.99999976,
+          "rotateW" : -0.99999976,
           "scaleX" : 1.25,
           "scaleY" : 1.0,
           "scaleZ" : 0.63976
@@ -5903,7 +5903,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6953488,
           "scaleY" : 1.0,
           "scaleZ" : 1.3552
@@ -5925,7 +5925,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -5991,7 +5991,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.25,
           "scaleY" : -1.0,
           "scaleZ" : 0.63976
@@ -6013,7 +6013,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -6035,7 +6035,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -6057,7 +6057,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -6079,7 +6079,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.63227,
           "scaleY" : 0.63227,
           "scaleZ" : 0.63227
@@ -6098,10 +6098,10 @@
           "translateX" : 1.338,
           "translateY" : 0.0,
           "translateZ" : 1.056,
-          "rotateX" : -0.27130857,
+          "rotateX" : 0.27130857,
           "rotateY" : -0.65298676,
           "rotateZ" : 0.27130857,
-          "rotateW" : 0.65298676,
+          "rotateW" : -0.65298676,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -6591,7 +6591,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9949522,
           "scaleY" : 1.3692127,
           "scaleZ" : 1.5500858
@@ -6613,7 +6613,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.88394004,
           "scaleY" : 1.0953702,
           "scaleZ" : 1.2494067
@@ -6635,7 +6635,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.99040633,
           "scaleY" : 0.99040633,
           "scaleZ" : 0.99040633
@@ -6657,7 +6657,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.9904063,
           "scaleY" : 0.99040633,
           "scaleZ" : -0.99040633
@@ -6727,7 +6727,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.9949522,
           "scaleY" : 1.3692127,
           "scaleZ" : 1.5500858
@@ -6749,7 +6749,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9904063,
           "scaleY" : 0.99040633,
           "scaleZ" : 0.99040633
@@ -6771,7 +6771,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.99040633,
           "scaleY" : 0.99040633,
           "scaleZ" : -0.99040633
@@ -6793,7 +6793,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : -0.8711072,
           "scaleY" : 0.54393655,
           "scaleZ" : 0.8711072
@@ -6815,7 +6815,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.8711072,
           "scaleY" : 0.54393655,
           "scaleZ" : 0.8711072
@@ -6837,7 +6837,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.81264,
           "scaleY" : 1.237,
           "scaleZ" : 1.0
@@ -6859,7 +6859,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9489,
           "scaleY" : 0.71952,
           "scaleZ" : 1.0
@@ -6881,7 +6881,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.65010333,
           "scaleY" : 0.65010333,
           "scaleZ" : 0.8462395
@@ -6903,7 +6903,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -6925,7 +6925,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 0.87216,
           "scaleZ" : 0.84185
@@ -6969,7 +6969,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 0.85059,
           "scaleZ" : 0.78091
@@ -6997,7 +6997,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.70073175,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -7038,10 +7038,10 @@
           "translateX" : -0.944,
           "translateY" : 0.0,
           "translateZ" : 0.735,
-          "rotateX" : 0.5,
+          "rotateX" : -0.5,
           "rotateY" : 0.5,
           "rotateZ" : 0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.3620412,
           "scaleY" : 1.2046,
           "scaleZ" : 1.2046
@@ -7085,7 +7085,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.3258,
           "scaleY" : 1.3258,
           "scaleZ" : 1.5933464
@@ -7113,7 +7113,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.85047,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -7135,7 +7135,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -7157,7 +7157,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -7209,7 +7209,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.64764,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -7231,7 +7231,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.64764,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -7253,7 +7253,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.4918
@@ -7275,7 +7275,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.7071068,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.89,
           "scaleY" : 0.89,
           "scaleZ" : 1.235142
@@ -7297,7 +7297,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.7071068,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.89,
           "scaleY" : -0.89,
           "scaleZ" : 1.235142
@@ -7511,7 +7511,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.83764,
           "scaleY" : 0.69019026,
           "scaleZ" : 0.83764
@@ -7533,7 +7533,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.83764,
           "scaleY" : 0.83764,
           "scaleZ" : 0.83764
@@ -7555,7 +7555,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.83764,
           "scaleY" : 0.69019026,
           "scaleZ" : 0.83764
@@ -7577,7 +7577,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.3842001,
           "scaleY" : 0.83764,
           "scaleZ" : 0.83764
@@ -7621,7 +7621,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.3842001,
           "scaleY" : 0.83764,
           "scaleZ" : 0.83764
@@ -7643,7 +7643,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0099112,
           "scaleY" : 0.94050217,
           "scaleZ" : 0.79749876
@@ -7684,10 +7684,10 @@
           "translateX" : -0.54787,
           "translateY" : 0.64666,
           "translateZ" : 0.48226,
-          "rotateX" : 0.045183215,
+          "rotateX" : -0.045183215,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9989788,
+          "rotateW" : -0.9989788,
           "scaleX" : 0.5646234,
           "scaleY" : 0.8878983,
           "scaleZ" : 0.8878983
@@ -7706,10 +7706,10 @@
           "translateX" : -0.54787,
           "translateY" : -0.64666,
           "translateZ" : 0.48226,
-          "rotateX" : 0.045183215,
+          "rotateX" : -0.045183215,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9989788,
+          "rotateW" : -0.9989788,
           "scaleX" : -0.5646234,
           "scaleY" : 0.8878983,
           "scaleZ" : 0.8878983
@@ -7766,7 +7766,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.1972,
             "scaleY" : 1.1972,
             "scaleZ" : 1.1972
@@ -7788,7 +7788,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.4212811,
             "scaleY" : 1.4212811,
             "scaleZ" : 1.4212811
@@ -7810,7 +7810,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.2401,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -7832,7 +7832,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.3252,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -7876,7 +7876,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.6309,
             "scaleY" : 1.6309,
             "scaleZ" : 1.6309
@@ -7898,7 +7898,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.159,
             "scaleY" : 1.025,
             "scaleZ" : 1.6375
@@ -7961,10 +7961,10 @@
             "translateX" : 0.1209998,
             "translateY" : -0.0012018997,
             "translateZ" : 1.159,
-            "rotateX" : 0.053940248,
+            "rotateX" : -0.053940248,
             "rotateY" : 0.053940248,
             "rotateZ" : -0.7050464,
-            "rotateW" : 0.7050464,
+            "rotateW" : -0.7050464,
             "scaleX" : 1.5476,
             "scaleY" : 1.5476,
             "scaleZ" : 1.5476
@@ -8030,7 +8030,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.81757,
             "scaleY" : 0.81757,
             "scaleZ" : 0.81757
@@ -8058,7 +8058,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.72586,
             "scaleY" : 0.72586,
             "scaleZ" : 0.4751044
@@ -8077,10 +8077,10 @@
             "translateX" : -0.5620002,
             "translateY" : 0.0,
             "translateZ" : 1.659,
-            "rotateX" : 0.7071068,
+            "rotateX" : -0.7071068,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -8335,7 +8335,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1960071,
           "scaleY" : 0.9116603,
           "scaleZ" : 0.9116603
@@ -8357,7 +8357,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0707022,
           "scaleY" : 0.9116603,
           "scaleZ" : 0.9116603
@@ -8403,7 +8403,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.55530995,
           "scaleY" : 0.7933,
           "scaleZ" : 0.7933
@@ -8425,7 +8425,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.1531413,
           "scaleY" : 0.7899717,
           "scaleZ" : 0.6410185
@@ -8469,7 +8469,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.55530995,
           "scaleY" : 0.7933,
           "scaleZ" : 0.7933
@@ -8491,7 +8491,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.6211867,
           "scaleY" : 0.54652023,
           "scaleZ" : 0.5465204
@@ -8513,7 +8513,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.7076791,
           "scaleY" : 0.7076791,
           "scaleZ" : 0.7076791
@@ -8535,7 +8535,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.6211867,
           "scaleY" : 0.54652023,
           "scaleZ" : 0.5465204
@@ -8579,7 +8579,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.91808605,
           "scaleY" : 0.7933,
           "scaleZ" : 0.6748229
@@ -8601,7 +8601,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.7076791,
           "scaleY" : 0.7076791,
           "scaleZ" : 0.7076791
@@ -8828,7 +8828,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.501831,
             "scaleY" : 0.441715,
             "scaleZ" : 0.441715
@@ -8850,7 +8850,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.501831,
             "scaleY" : 0.4329572,
             "scaleZ" : 0.4329572
@@ -8872,7 +8872,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -8894,7 +8894,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.89608,
             "scaleY" : 1.5584,
             "scaleZ" : 1.5584
@@ -8916,7 +8916,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -8938,7 +8938,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -8960,7 +8960,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -8982,7 +8982,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.501831,
             "scaleY" : 0.441715,
             "scaleZ" : 0.441715
@@ -9004,7 +9004,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.501831,
             "scaleY" : 0.4329572,
             "scaleZ" : 0.4329572
@@ -9023,10 +9023,10 @@
             "translateX" : -0.001,
             "translateY" : 0.974,
             "translateZ" : 0.71,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 0.81634134,
             "scaleY" : 1.258,
             "scaleZ" : 1.258
@@ -9048,7 +9048,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.79158,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9070,7 +9070,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.75923204,
             "scaleY" : 2.3706,
             "scaleZ" : 2.3706
@@ -9092,7 +9092,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9114,7 +9114,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.56193,
             "scaleY" : 0.56193,
             "scaleZ" : 0.56193
@@ -9136,7 +9136,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.501831,
             "scaleY" : 0.4329572,
             "scaleZ" : 0.4329572
@@ -9158,7 +9158,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9180,7 +9180,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.89608,
             "scaleY" : 1.5584,
             "scaleZ" : 1.5584
@@ -9202,7 +9202,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.501831,
             "scaleY" : 0.441715,
             "scaleZ" : 0.441715
@@ -9224,7 +9224,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9246,7 +9246,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9268,7 +9268,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9290,7 +9290,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.501831,
             "scaleY" : 0.441715,
             "scaleZ" : 0.441715
@@ -9312,7 +9312,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.501831,
             "scaleY" : 0.4329572,
             "scaleZ" : 0.4329572
@@ -9331,10 +9331,10 @@
             "translateX" : -0.001,
             "translateY" : -0.974,
             "translateZ" : 0.71,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : -0.8163413,
             "scaleY" : 1.258,
             "scaleZ" : 1.258
@@ -9356,7 +9356,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.759232,
             "scaleY" : 2.3706,
             "scaleZ" : 2.3706
@@ -9378,7 +9378,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.76129,
             "scaleY" : 1.0,
             "scaleZ" : 1.51
@@ -9406,7 +9406,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9556,7 +9556,7 @@
             "rotateX" : 0.0,
             "rotateY" : -0.7071068,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 1.300515,
             "scaleY" : 0.71935,
             "scaleZ" : 0.7193509
@@ -9578,7 +9578,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.7071068,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : -1.3005152,
             "scaleY" : 0.71935,
             "scaleZ" : 0.7193509
@@ -9597,10 +9597,10 @@
             "translateX" : 0.7792356,
             "translateY" : 0.106650874,
             "translateZ" : 0.0069639087,
-            "rotateX" : 0.15199433,
+            "rotateX" : -0.15199433,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.98838145,
+            "rotateW" : -0.98838145,
             "scaleX" : 0.4352427,
             "scaleY" : 0.8704854,
             "scaleZ" : -0.8704854
@@ -9619,10 +9619,10 @@
             "translateX" : 0.7792356,
             "translateY" : -0.10922606,
             "translateZ" : 0.0069639087,
-            "rotateX" : 0.15199433,
+            "rotateX" : -0.15199433,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.98838145,
+            "rotateW" : -0.98838145,
             "scaleX" : 0.4352427,
             "scaleY" : 0.8704854,
             "scaleZ" : -0.8704854
@@ -9641,10 +9641,10 @@
             "translateX" : 0.3561286,
             "translateY" : 0.10070905,
             "translateZ" : 0.12667209,
-            "rotateX" : 0.15199433,
+            "rotateX" : -0.15199433,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.98838145,
+            "rotateW" : -0.98838145,
             "scaleX" : 0.5348583,
             "scaleY" : 0.71934986,
             "scaleZ" : 0.71934986
@@ -9663,10 +9663,10 @@
             "translateX" : 0.35612866,
             "translateY" : -0.10070897,
             "translateZ" : 0.12667209,
-            "rotateX" : 0.15199433,
+            "rotateX" : -0.15199433,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.98838145,
+            "rotateW" : -0.98838145,
             "scaleX" : -0.5348583,
             "scaleY" : 0.71934986,
             "scaleZ" : 0.71934986
@@ -9685,10 +9685,10 @@
             "translateX" : 0.72240746,
             "translateY" : 0.0,
             "translateZ" : 0.26470047,
-            "rotateX" : -0.502344,
+            "rotateX" : 0.502344,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.8646679,
+            "rotateW" : -0.8646679,
             "scaleX" : 0.71935,
             "scaleY" : 0.7193502,
             "scaleZ" : -0.7193502
@@ -9734,7 +9734,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 0.81824
@@ -9756,7 +9756,7 @@
             "rotateX" : 0.0,
             "rotateY" : -0.7071068,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 1.0,
             "scaleY" : 1.544,
             "scaleZ" : 1.0
@@ -9784,7 +9784,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.95033324,
             "scaleY" : 1.2806,
             "scaleZ" : 1.2806
@@ -9812,7 +9812,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.9503332,
             "scaleY" : 1.2806,
             "scaleZ" : 1.2806
@@ -9834,7 +9834,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0341057,
             "scaleY" : 1.313,
             "scaleZ" : 1.313
@@ -9856,7 +9856,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.7071068,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9878,7 +9878,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.2502,
             "scaleY" : 1.0,
             "scaleZ" : 1.1047
@@ -9897,10 +9897,10 @@
             "translateX" : -0.566,
             "translateY" : 0.0,
             "translateZ" : 0.68315,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 0.8157619
@@ -9922,7 +9922,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.7071068,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -9944,7 +9944,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.7,
             "scaleY" : 0.7,
             "scaleZ" : 0.7
@@ -9966,7 +9966,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.7,
             "scaleY" : 0.7,
             "scaleZ" : 0.7
@@ -10010,7 +10010,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -10494,7 +10494,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.82187,
             "scaleY" : 0.62146527,
             "scaleZ" : 0.82187
@@ -10516,7 +10516,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.82187,
             "scaleY" : 0.82187,
             "scaleZ" : 0.82187
@@ -10538,7 +10538,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.57530904,
             "scaleY" : 0.57530904,
             "scaleZ" : 0.57530904
@@ -10557,10 +10557,10 @@
             "translateX" : 0.57358,
             "translateY" : 0.46272,
             "translateZ" : 0.35685,
-            "rotateX" : 0.9611433,
+            "rotateX" : -0.9611433,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : -0.27604985,
+            "rotateW" : 0.27604985,
             "scaleX" : -1.1966428,
             "scaleY" : 0.82187,
             "scaleZ" : 0.82187
@@ -10579,10 +10579,10 @@
             "translateX" : -0.6165,
             "translateY" : 1.3257E-7,
             "translateZ" : 0.93567,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 0.5994556,
             "scaleY" : 0.5994556,
             "scaleZ" : 0.5994556
@@ -10604,7 +10604,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.3936654,
             "scaleY" : 0.6361138,
             "scaleZ" : 0.6361138
@@ -10626,7 +10626,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.57530904,
             "scaleY" : 0.57530904,
             "scaleZ" : 0.57530904
@@ -10645,10 +10645,10 @@
             "translateX" : 0.57358,
             "translateY" : -0.46272,
             "translateZ" : 0.35685,
-            "rotateX" : 0.9611433,
+            "rotateX" : -0.9611433,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : -0.27604985,
+            "rotateW" : 0.27604985,
             "scaleX" : 1.1966428,
             "scaleY" : 0.82187,
             "scaleZ" : 0.82187
@@ -10670,7 +10670,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.39366537,
             "scaleY" : 0.6361138,
             "scaleZ" : 0.6361138
@@ -10692,7 +10692,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.57530904,
             "scaleY" : 0.57530904,
             "scaleZ" : 0.57530904
@@ -10711,10 +10711,10 @@
             "translateX" : -0.57869,
             "translateY" : 0.46272,
             "translateZ" : 0.35753,
-            "rotateX" : 0.30084947,
+            "rotateX" : -0.30084947,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : -0.95367163,
+            "rotateW" : 0.95367163,
             "scaleX" : -1.1966428,
             "scaleY" : 0.82187,
             "scaleZ" : 0.82187
@@ -10736,7 +10736,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.3936654,
             "scaleY" : 0.6361138,
             "scaleZ" : 0.6361138
@@ -10758,7 +10758,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.57530904,
             "scaleY" : 0.57530904,
             "scaleZ" : 0.57530904
@@ -10777,10 +10777,10 @@
             "translateX" : -0.57869,
             "translateY" : -0.46272,
             "translateZ" : 0.35753,
-            "rotateX" : 0.30084947,
+            "rotateX" : -0.30084947,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : -0.95367163,
+            "rotateW" : 0.95367163,
             "scaleX" : 1.1966428,
             "scaleY" : 0.82187,
             "scaleZ" : 0.82187
@@ -10802,7 +10802,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.39366537,
             "scaleY" : 0.6361138,
             "scaleZ" : 0.6361138
@@ -10821,10 +10821,10 @@
             "translateX" : 0.60316,
             "translateY" : 0.14465,
             "translateZ" : 0.47191003,
-            "rotateX" : 0.49999967,
+            "rotateX" : -0.49999967,
             "rotateY" : -0.49999973,
             "rotateZ" : 0.50000024,
-            "rotateW" : 0.5000005,
+            "rotateW" : -0.5000005,
             "scaleX" : 1.2640643,
             "scaleY" : 0.46168548,
             "scaleZ" : 0.82187
@@ -10843,10 +10843,10 @@
             "translateX" : 0.60316,
             "translateY" : -0.14465,
             "translateZ" : 0.47191003,
-            "rotateX" : 0.49999967,
+            "rotateX" : -0.49999967,
             "rotateY" : -0.49999973,
             "rotateZ" : 0.50000024,
-            "rotateW" : 0.5000005,
+            "rotateW" : -0.5000005,
             "scaleX" : 1.2640643,
             "scaleY" : -0.46168548,
             "scaleZ" : 0.82187
@@ -10868,7 +10868,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.7071068,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 0.43115303,
             "scaleY" : 0.43115303,
             "scaleZ" : 0.7760755
@@ -10890,7 +10890,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.7071068,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 0.40805024,
             "scaleY" : 0.40805024,
             "scaleZ" : 0.28226063
@@ -10912,7 +10912,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.7071068,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 0.40805024,
             "scaleY" : 0.40805024,
             "scaleZ" : -0.28226057
@@ -10934,7 +10934,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.7071068,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 0.43115303,
             "scaleY" : -0.43115303,
             "scaleZ" : 0.7760755
@@ -10953,10 +10953,10 @@
             "translateX" : -0.8721,
             "translateY" : 0.0,
             "translateZ" : 0.46698,
-            "rotateX" : 0.45641458,
+            "rotateX" : -0.45641458,
             "rotateY" : 0.5400795,
             "rotateZ" : 0.4564145,
-            "rotateW" : 0.5400795,
+            "rotateW" : -0.5400795,
             "scaleX" : 0.6164847,
             "scaleY" : 0.82187,
             "scaleZ" : 0.5108415
@@ -11263,7 +11263,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.4635118,
           "scaleY" : 0.705387,
           "scaleZ" : 0.705387
@@ -11285,7 +11285,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.7825205,
           "scaleY" : 1.010095,
           "scaleZ" : 1.010095
@@ -11307,7 +11307,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1424927,
           "scaleY" : 1.1424927,
           "scaleZ" : 1.1424927
@@ -11329,7 +11329,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.4635118,
           "scaleY" : 0.705387,
           "scaleZ" : 0.705387
@@ -11351,7 +11351,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.7825205,
           "scaleY" : 1.010095,
           "scaleZ" : 1.010095
@@ -11373,7 +11373,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1424927,
           "scaleY" : 1.1424927,
           "scaleZ" : -1.1424927
@@ -11392,10 +11392,10 @@
           "translateX" : -0.47806,
           "translateY" : 2.5993E-9,
           "translateZ" : 0.83520013,
-          "rotateX" : -0.7071068,
+          "rotateX" : 0.7071068,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.3098065,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11414,10 +11414,10 @@
           "translateX" : -0.57985,
           "translateY" : 0.42215,
           "translateZ" : 0.5727101,
-          "rotateX" : 0.7071062,
+          "rotateX" : -0.7071062,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071075,
+          "rotateW" : -0.7071075,
           "scaleX" : 1.2379487,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11436,10 +11436,10 @@
           "translateX" : -0.73853,
           "translateY" : 0.57484,
           "translateZ" : 0.3282001,
-          "rotateX" : -0.070401095,
+          "rotateX" : 0.070401095,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.99751884,
+          "rotateW" : -0.99751884,
           "scaleX" : 0.6479996,
           "scaleY" : 1.2246279,
           "scaleZ" : 1.2922274
@@ -11461,7 +11461,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.1424927,
           "scaleY" : 1.1424927,
           "scaleZ" : 1.1424927
@@ -11483,7 +11483,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.1424927,
           "scaleY" : 1.1424927,
           "scaleZ" : -1.1424927
@@ -11505,7 +11505,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.7825203,
           "scaleY" : 1.010095,
           "scaleZ" : 1.010095
@@ -11527,7 +11527,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.7825203,
           "scaleY" : 1.010095,
           "scaleZ" : 1.010095
@@ -11549,7 +11549,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.4635122,
           "scaleY" : 0.705387,
           "scaleZ" : 0.705387
@@ -11571,7 +11571,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.4635122,
           "scaleY" : 0.705387,
           "scaleZ" : 0.705387
@@ -11590,10 +11590,10 @@
           "translateX" : -0.57985,
           "translateY" : -0.42215,
           "translateZ" : 0.5727101,
-          "rotateX" : 0.7071062,
+          "rotateX" : -0.7071062,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071075,
+          "rotateW" : -0.7071075,
           "scaleX" : -1.2379487,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11612,10 +11612,10 @@
           "translateX" : -0.73853,
           "translateY" : -0.57484,
           "translateZ" : 0.3282001,
-          "rotateX" : -0.070401095,
+          "rotateX" : 0.070401095,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.99751884,
+          "rotateW" : -0.99751884,
           "scaleX" : -0.6479996,
           "scaleY" : 1.2246279,
           "scaleZ" : 1.2922274
@@ -11634,10 +11634,10 @@
           "translateX" : 0.74844,
           "translateY" : 0.57484,
           "translateZ" : 0.3212201,
-          "rotateX" : 0.088102974,
+          "rotateX" : -0.088102974,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9961114,
+          "rotateW" : -0.9961114,
           "scaleX" : 0.6479996,
           "scaleY" : 1.2246279,
           "scaleZ" : -1.2922273
@@ -11656,10 +11656,10 @@
           "translateX" : 0.74844,
           "translateY" : -0.57484,
           "translateZ" : 0.3212201,
-          "rotateX" : 0.088102974,
+          "rotateX" : -0.088102974,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9961114,
+          "rotateW" : -0.9961114,
           "scaleX" : -0.6479996,
           "scaleY" : 1.2246279,
           "scaleZ" : -1.2922273
@@ -11681,7 +11681,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.4689543,
           "scaleY" : 1.2475297,
           "scaleZ" : 0.56138843
@@ -11700,10 +11700,10 @@
           "translateX" : 0.020929985,
           "translateY" : 0.6906,
           "translateZ" : 0.5966601,
-          "rotateX" : 0.5,
+          "rotateX" : -0.5,
           "rotateY" : -0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.3775723,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11722,10 +11722,10 @@
           "translateX" : 0.020929985,
           "translateY" : -0.6906,
           "translateZ" : 0.5966601,
-          "rotateX" : 0.5,
+          "rotateX" : -0.5,
           "rotateY" : -0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.3775723,
           "scaleY" : 0.9980238,
           "scaleZ" : -0.9980238
@@ -11747,7 +11747,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.5987145,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11769,7 +11769,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9980238,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11791,7 +11791,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.77043444,
           "scaleY" : 0.77043444,
           "scaleZ" : 0.77043444
@@ -11813,7 +11813,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.5905388,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11835,7 +11835,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.5905388,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11854,10 +11854,10 @@
           "translateX" : -1.0049701,
           "translateY" : 0.08583,
           "translateZ" : 0.77230006,
-          "rotateX" : 0.7071068,
+          "rotateX" : -0.7071068,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.67979395,
           "scaleY" : 0.67979395,
           "scaleZ" : 0.67979395
@@ -11876,10 +11876,10 @@
           "translateX" : -1.0049701,
           "translateY" : -0.08583,
           "translateZ" : 0.77230006,
-          "rotateX" : 0.7071068,
+          "rotateX" : -0.7071068,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.67979395,
           "scaleY" : 0.67979395,
           "scaleZ" : 0.67979395
@@ -11901,7 +11901,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6844647,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -11920,10 +11920,10 @@
           "translateX" : -0.008000009,
           "translateY" : 0.4481,
           "translateZ" : 0.92,
-          "rotateX" : 0.7071068,
+          "rotateX" : -0.7071068,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.8995987,
           "scaleY" : 0.8995987,
           "scaleZ" : 0.8995987
@@ -11942,10 +11942,10 @@
           "translateX" : -0.008,
           "translateY" : -0.4481,
           "translateZ" : 0.92,
-          "rotateX" : 0.7071068,
+          "rotateX" : -0.7071068,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : -0.8995987,
           "scaleY" : 0.8995987,
           "scaleZ" : 0.8995987
@@ -11964,10 +11964,10 @@
           "translateX" : -0.57785004,
           "translateY" : 2.5993E-9,
           "translateZ" : 1.2444,
-          "rotateX" : 0.5,
+          "rotateX" : -0.5,
           "rotateY" : -0.5,
           "rotateZ" : 0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 0.5376953,
           "scaleY" : 0.82073814,
           "scaleZ" : 0.5376953
@@ -11986,10 +11986,10 @@
           "translateX" : 0.33130997,
           "translateY" : 0.42215,
           "translateZ" : 0.50785005,
-          "rotateX" : 0.9867097,
+          "rotateX" : -0.9867097,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : -0.16249289,
+          "rotateW" : 0.16249289,
           "scaleX" : 1.2379487,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -12008,10 +12008,10 @@
           "translateX" : 0.33130997,
           "translateY" : -0.42215,
           "translateZ" : 0.50785005,
-          "rotateX" : 0.9867097,
+          "rotateX" : -0.9867097,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : -0.16249289,
+          "rotateW" : 0.16249289,
           "scaleX" : -1.2379487,
           "scaleY" : 0.9980238,
           "scaleZ" : 0.9980238
@@ -12030,10 +12030,10 @@
           "translateX" : -0.5963,
           "translateY" : 2.5993E-9,
           "translateZ" : 1.5335,
-          "rotateX" : -0.35248536,
+          "rotateX" : 0.35248536,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.9358174,
+          "rotateW" : -0.9358174,
           "scaleX" : -1.3148963,
           "scaleY" : 1.3148963,
           "scaleZ" : -2.1088939
@@ -12061,7 +12061,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9949522,
           "scaleY" : 1.3692127,
           "scaleZ" : 1.5500858
@@ -12083,7 +12083,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.88394004,
           "scaleY" : 1.0953702,
           "scaleZ" : 1.2494067
@@ -12105,7 +12105,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.99040633,
           "scaleY" : 0.99040633,
           "scaleZ" : 0.99040633
@@ -12127,7 +12127,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.99040633,
           "scaleY" : 0.99040633,
           "scaleZ" : -0.99040633
@@ -12197,7 +12197,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.9949522,
           "scaleY" : 1.3692127,
           "scaleZ" : 1.5500858
@@ -12219,7 +12219,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.99040633,
           "scaleY" : 0.99040633,
           "scaleZ" : 0.99040633
@@ -12241,7 +12241,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.99040633,
           "scaleY" : 0.99040633,
           "scaleZ" : -0.99040633
@@ -12263,7 +12263,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : -0.8711072,
           "scaleY" : 0.54393655,
           "scaleZ" : 0.8711072
@@ -12285,7 +12285,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.8711072,
           "scaleY" : 0.54393655,
           "scaleZ" : 0.8711072
@@ -12307,7 +12307,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.3215195,
           "scaleY" : 0.83773,
           "scaleZ" : 0.83773047
@@ -12326,7 +12326,7 @@
           "translateX" : -0.479,
           "translateY" : 0.0,
           "translateZ" : 1.35,
-          "rotateX" : 0.7071068,
+          "rotateX" : -0.7071068,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
           "rotateW" : 0.0,
@@ -12351,7 +12351,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0309411,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -12373,7 +12373,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -12439,7 +12439,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.3215195,
           "scaleY" : 0.83773,
           "scaleZ" : 0.83773047
@@ -12461,7 +12461,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.8922573,
           "scaleY" : 0.6160868,
           "scaleZ" : 0.74423
@@ -12480,10 +12480,10 @@
           "translateX" : 0.39295,
           "translateY" : 2.574E-9,
           "translateZ" : 0.99951,
-          "rotateX" : -0.039537795,
+          "rotateX" : 0.039537795,
           "rotateY" : 0.70600057,
           "rotateZ" : -0.039537795,
-          "rotateW" : 0.70600057,
+          "rotateW" : -0.70600057,
           "scaleX" : 1.3513058,
           "scaleY" : 0.6526156,
           "scaleZ" : 0.6526157
@@ -12502,10 +12502,10 @@
           "translateX" : 0.118,
           "translateY" : -8.8439E-5,
           "translateZ" : 0.826,
-          "rotateX" : 0.5,
+          "rotateX" : -0.5,
           "rotateY" : -0.5,
           "rotateZ" : 0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 1.4851,
           "scaleY" : 1.4851,
           "scaleZ" : 1.4851
@@ -12557,10 +12557,10 @@
             "translateX" : -0.999,
             "translateY" : 0.5,
             "translateZ" : 0.504,
-            "rotateX" : -0.19645868,
+            "rotateX" : 0.19645868,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.98051214,
+            "rotateW" : -0.98051214,
             "scaleX" : 1.9243363,
             "scaleY" : 1.5874742,
             "scaleZ" : 1.5874742
@@ -12579,7 +12579,7 @@
             "translateX" : -0.52,
             "translateY" : 0.0,
             "translateZ" : 0.831,
-            "rotateX" : 1.0,
+            "rotateX" : -1.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
             "rotateW" : 0.0,
@@ -12604,7 +12604,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.4288402,
             "scaleY" : 1.7860501,
             "scaleZ" : 1.7860501
@@ -12626,7 +12626,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.7860501,
             "scaleY" : 1.0120951,
             "scaleZ" : 1.0120951
@@ -12648,7 +12648,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.7860501,
             "scaleY" : 1.0120951,
             "scaleZ" : 1.0120951
@@ -12670,7 +12670,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.43676,
             "scaleY" : 1.7959499,
             "scaleZ" : 1.7959499
@@ -12692,7 +12692,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.7959499,
             "scaleY" : 1.017705,
             "scaleZ" : 1.017705
@@ -12714,7 +12714,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.7959499,
             "scaleY" : 1.017705,
             "scaleZ" : 1.017705
@@ -12736,7 +12736,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.43676,
             "scaleY" : 1.7959499,
             "scaleZ" : 1.7959499
@@ -12758,7 +12758,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.79595,
             "scaleY" : 1.017705,
             "scaleZ" : 1.017705
@@ -12780,7 +12780,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.79595,
             "scaleY" : 1.017705,
             "scaleZ" : 1.017705
@@ -12799,7 +12799,7 @@
             "translateX" : -1.499,
             "translateY" : 0.691,
             "translateZ" : 0.37,
-            "rotateX" : 1.0,
+            "rotateX" : -1.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
             "rotateW" : 0.0,
@@ -12821,7 +12821,7 @@
             "translateX" : -1.499,
             "translateY" : -0.691,
             "translateZ" : 0.37,
-            "rotateX" : 1.0,
+            "rotateX" : -1.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
             "rotateW" : 0.0,
@@ -12843,10 +12843,10 @@
             "translateX" : -0.999,
             "translateY" : -0.5,
             "translateZ" : 0.504,
-            "rotateX" : -0.19645868,
+            "rotateX" : 0.19645868,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.98051214,
+            "rotateW" : -0.98051214,
             "scaleX" : -1.924336,
             "scaleY" : 1.5874742,
             "scaleZ" : 1.5874742
@@ -12868,7 +12868,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.7795129,
             "scaleY" : 1.2089,
             "scaleZ" : 1.9062687
@@ -12890,7 +12890,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.7,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -12912,7 +12912,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.8746381,
             "scaleY" : 1.1907,
             "scaleZ" : 1.1907
@@ -12934,7 +12934,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.81505775,
             "scaleY" : 0.81505775,
             "scaleZ" : 0.81505775
@@ -12953,7 +12953,7 @@
             "translateX" : 0.049,
             "translateY" : -4.7833E-7,
             "translateZ" : 0.463,
-            "rotateX" : 1.0,
+            "rotateX" : -1.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
             "rotateW" : 0.0,
@@ -12978,7 +12978,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.6503731,
             "scaleY" : 1.2142,
             "scaleZ" : -1.2142
@@ -13000,7 +13000,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.6503731,
             "scaleY" : 1.2142,
             "scaleZ" : -1.2142
@@ -13088,7 +13088,7 @@
             "rotateX" : 0.0,
             "rotateY" : -0.7071068,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 1.6650009,
             "scaleY" : 1.5657431,
             "scaleZ" : 1.6650009
@@ -13110,7 +13110,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -13132,7 +13132,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.0,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -13157,10 +13157,10 @@
             "translateX" : -0.209,
             "translateY" : 0.0,
             "translateZ" : 1.2397,
-            "rotateX" : 0.13988747,
+            "rotateX" : -0.13988747,
             "rotateY" : 0.6931317,
             "rotateZ" : 0.13988747,
-            "rotateW" : 0.6931317,
+            "rotateW" : -0.6931317,
             "scaleX" : 1.3401003,
             "scaleY" : 1.3401,
             "scaleZ" : 1.3401
@@ -13182,7 +13182,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.35,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -13204,7 +13204,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.1250064,
             "scaleY" : 1.298672,
             "scaleZ" : 1.1741
@@ -13223,7 +13223,7 @@
             "translateX" : -0.94994,
             "translateY" : 0.0,
             "translateZ" : 1.697,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.7071068,
             "rotateZ" : 0.0,
             "rotateW" : 0.0,
@@ -13248,7 +13248,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : -0.7071068,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 1.4314004,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -13267,7 +13267,7 @@
             "translateX" : -1.0055,
             "translateY" : 0.0,
             "translateZ" : 1.173,
-            "rotateX" : 1.0,
+            "rotateX" : -1.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
             "rotateW" : 0.0,
@@ -13292,7 +13292,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.7071068,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : -1.4314,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -13314,7 +13314,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.7,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -13336,7 +13336,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.2434047,
             "scaleY" : 0.92370903,
             "scaleZ" : 0.92370903
@@ -13358,7 +13358,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.35,
             "scaleY" : 1.0,
             "scaleZ" : 1.0
@@ -13380,7 +13380,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.125006,
             "scaleY" : 1.298672,
             "scaleZ" : 1.1741
@@ -13402,7 +13402,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.42884,
             "scaleY" : 1.7860501,
             "scaleZ" : 1.7860501
@@ -13424,7 +13424,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.78605,
             "scaleY" : 1.0120951,
             "scaleZ" : 1.0120951
@@ -13446,7 +13446,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.78605,
             "scaleY" : 1.0120951,
             "scaleZ" : 1.0120951
@@ -13468,7 +13468,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.874638,
             "scaleY" : 1.1907,
             "scaleZ" : 1.1907
@@ -13490,7 +13490,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.7795129,
             "scaleY" : 1.2089,
             "scaleZ" : 1.9062687
@@ -13587,7 +13587,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 0.82397,
           "scaleZ" : 1.0
@@ -13609,7 +13609,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.0,
           "scaleY" : 0.82397,
           "scaleZ" : 1.0
@@ -13628,10 +13628,10 @@
           "translateX" : -0.738,
           "translateY" : 0.589,
           "translateZ" : 0.442,
-          "rotateX" : -0.70710677,
+          "rotateX" : 0.70710677,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : -1.6525,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13650,10 +13650,10 @@
           "translateX" : -0.738,
           "translateY" : -0.589,
           "translateZ" : 0.442,
-          "rotateX" : -0.70710677,
+          "rotateX" : 0.70710677,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.6525,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13675,7 +13675,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.130186
@@ -13706,10 +13706,10 @@
           "translateX" : -1.411,
           "translateY" : 0.589,
           "translateZ" : 0.442,
-          "rotateX" : -0.70710677,
+          "rotateX" : 0.70710677,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : -1.6525,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13728,10 +13728,10 @@
           "translateX" : -1.411,
           "translateY" : -0.589,
           "translateZ" : 0.442,
-          "rotateX" : -0.70710677,
+          "rotateX" : 0.70710677,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.6525,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13775,7 +13775,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6688387,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13797,7 +13797,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6688387,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13819,7 +13819,7 @@
           "rotateX" : 0.0,
           "rotateY" : -0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13841,7 +13841,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13860,10 +13860,10 @@
           "translateX" : -0.555,
           "translateY" : 0.046236847,
           "translateZ" : 0.8440754,
-          "rotateX" : 0.47937977,
+          "rotateX" : -0.47937977,
           "rotateY" : 0.5198028,
           "rotateZ" : -0.4793799,
-          "rotateW" : 0.51980287,
+          "rotateW" : -0.51980287,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -13907,7 +13907,7 @@
           "rotateX" : 0.0,
           "rotateY" : -0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.72595,
           "scaleY" : 0.72595,
           "scaleZ" : 0.72595
@@ -13929,7 +13929,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.72595,
           "scaleY" : 0.72595,
           "scaleZ" : 0.72595
@@ -13948,7 +13948,7 @@
           "translateX" : 1.213,
           "translateY" : 0.323,
           "translateZ" : 0.499,
-          "rotateX" : 0.7071068,
+          "rotateX" : -0.7071068,
           "rotateY" : 0.0,
           "rotateZ" : 0.7071068,
           "rotateW" : 0.0,
@@ -13970,7 +13970,7 @@
           "translateX" : 1.213,
           "translateY" : -0.323,
           "translateZ" : 0.499,
-          "rotateX" : 0.7071068,
+          "rotateX" : -0.7071068,
           "rotateY" : 0.0,
           "rotateZ" : 0.7071068,
           "rotateW" : 0.0,
@@ -13995,7 +13995,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -14017,7 +14017,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -14045,7 +14045,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.714783,
           "scaleY" : 1.2538323,
           "scaleZ" : -1.253832
@@ -14067,7 +14067,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.513489,
           "scaleY" : 0.5029928,
           "scaleZ" : -0.5029928
@@ -14089,7 +14089,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.732863,
           "scaleY" : 0.8386385,
           "scaleZ" : -0.8386385
@@ -14111,7 +14111,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.714783,
           "scaleY" : 1.2538323,
           "scaleZ" : -1.253832
@@ -14133,7 +14133,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.513489,
           "scaleY" : 0.5029928,
           "scaleZ" : -0.5029928
@@ -14155,7 +14155,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.732863,
           "scaleY" : 0.8386385,
           "scaleZ" : -0.8386385
@@ -14177,7 +14177,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9550611,
           "scaleY" : 0.9550611,
           "scaleZ" : 0.9550611
@@ -14199,7 +14199,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.9550611,
           "scaleY" : 0.9550611,
           "scaleZ" : 0.9550611
@@ -14221,7 +14221,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9550611,
           "scaleY" : 0.9550611,
           "scaleZ" : -0.9550611
@@ -14243,7 +14243,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.9550611,
           "scaleY" : 0.9550611,
           "scaleZ" : -0.9550611
@@ -14265,7 +14265,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.1496327,
           "scaleY" : 0.7837363,
           "scaleZ" : 0.7837363
@@ -14331,7 +14331,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.3260034,
           "scaleY" : 0.7837363,
           "scaleZ" : 0.7837363
@@ -14353,7 +14353,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.3260034,
           "scaleY" : 0.7837363,
           "scaleZ" : 0.7837363
@@ -14375,7 +14375,7 @@
           "rotateX" : 0.0,
           "rotateY" : 1.0,
           "rotateZ" : 0.0,
-          "rotateW" : 2.9504295E-6,
+          "rotateW" : -2.9504295E-6,
           "scaleX" : 1.1496327,
           "scaleY" : 0.7837363,
           "scaleZ" : 0.7837363
@@ -14394,10 +14394,10 @@
           "translateX" : -1.3973,
           "translateY" : -0.56666,
           "translateZ" : 0.2721,
-          "rotateX" : 0.1263689,
+          "rotateX" : -0.1263689,
           "rotateY" : 2.7418137E-6,
           "rotateZ" : 3.3341348E-7,
-          "rotateW" : -0.99198335,
+          "rotateW" : 0.99198335,
           "scaleX" : 1.0608654,
           "scaleY" : 0.7837363,
           "scaleZ" : 0.7837363
@@ -14416,10 +14416,10 @@
           "translateX" : -1.3973,
           "translateY" : 0.56666,
           "translateZ" : 0.2721,
-          "rotateX" : 0.1263689,
+          "rotateX" : -0.1263689,
           "rotateY" : 2.7418137E-6,
           "rotateZ" : 3.3341348E-7,
-          "rotateW" : -0.99198335,
+          "rotateW" : 0.99198335,
           "scaleX" : 1.0608654,
           "scaleY" : 0.7837363,
           "scaleZ" : 0.7837363
@@ -14438,10 +14438,10 @@
           "translateX" : -1.2014,
           "translateY" : -8.7341E-8,
           "translateZ" : 0.4649,
-          "rotateX" : -0.6945641,
+          "rotateX" : 0.6945641,
           "rotateY" : 0.13259245,
           "rotateZ" : -0.6945641,
-          "rotateW" : 0.13259245,
+          "rotateW" : -0.13259245,
           "scaleX" : 0.7837363,
           "scaleY" : 0.7837363,
           "scaleZ" : 1.1012278
@@ -14482,7 +14482,7 @@
           "translateX" : -0.79136,
           "translateY" : -2.1704E-8,
           "translateZ" : 0.83496,
-          "rotateX" : 1.0,
+          "rotateX" : -1.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
           "rotateW" : 0.0,
@@ -14504,10 +14504,10 @@
           "translateX" : 0.81689,
           "translateY" : -8.9324E-8,
           "translateZ" : 0.57697,
-          "rotateX" : 0.30896014,
+          "rotateX" : -0.30896014,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.951075,
+          "rotateW" : -0.951075,
           "scaleX" : 0.61722374,
           "scaleY" : 0.61722374,
           "scaleZ" : 0.61722374
@@ -14526,10 +14526,10 @@
           "translateX" : -0.049155,
           "translateY" : 0.46947,
           "translateZ" : 0.5417,
-          "rotateX" : -0.5,
+          "rotateX" : 0.5,
           "rotateY" : -0.5,
           "rotateZ" : 0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 0.55277705,
           "scaleY" : 0.92590153,
           "scaleZ" : 0.55277705
@@ -14548,10 +14548,10 @@
           "translateX" : -0.049155,
           "translateY" : -0.46947,
           "translateZ" : 0.5417,
-          "rotateX" : -0.5,
+          "rotateX" : 0.5,
           "rotateY" : -0.5,
           "rotateZ" : 0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 0.55277705,
           "scaleY" : 0.92590135,
           "scaleZ" : -0.55277705
@@ -14573,7 +14573,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.7837363,
           "scaleY" : 0.7837363,
           "scaleZ" : 0.947302
@@ -14595,7 +14595,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.7837363,
           "scaleY" : 0.7837363,
           "scaleZ" : 0.7837363
@@ -14617,7 +14617,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.5152439,
           "scaleY" : 0.5152439,
           "scaleZ" : 0.27640775
@@ -14639,7 +14639,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.5152439,
           "scaleY" : 0.5152439,
           "scaleZ" : 0.27640775
@@ -14658,10 +14658,10 @@
           "translateX" : -1.3181,
           "translateY" : 0.22729,
           "translateZ" : 1.00096,
-          "rotateX" : -0.65549654,
+          "rotateX" : 0.65549654,
           "rotateY" : -0.26518738,
           "rotateZ" : 0.65549654,
-          "rotateW" : 0.26518738,
+          "rotateW" : -0.26518738,
           "scaleX" : 1.2771766,
           "scaleY" : 1.2771766,
           "scaleZ" : 1.6128187
@@ -14680,10 +14680,10 @@
           "translateX" : -1.3181,
           "translateY" : -0.22729,
           "translateZ" : 1.00096,
-          "rotateX" : -0.65549654,
+          "rotateX" : 0.65549654,
           "rotateY" : -0.26518738,
           "rotateZ" : 0.65549654,
-          "rotateW" : 0.26518738,
+          "rotateW" : -0.26518738,
           "scaleX" : 1.2771766,
           "scaleY" : 1.2771766,
           "scaleZ" : -1.6128187
@@ -14705,7 +14705,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0343543,
           "scaleY" : 1.3203738,
           "scaleZ" : 1.3203738
@@ -14727,7 +14727,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.034354,
           "scaleY" : 1.3203738,
           "scaleZ" : 1.3203738
@@ -14749,7 +14749,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.0343543,
           "scaleY" : 1.3203738,
           "scaleZ" : -1.3203739
@@ -14771,7 +14771,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -1.034354,
           "scaleY" : 1.3203738,
           "scaleZ" : -1.3203739
@@ -14799,7 +14799,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.805364,
           "scaleY" : 1.1083093,
           "scaleZ" : 1.2547169
@@ -14821,7 +14821,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.71550524,
           "scaleY" : 0.88664734,
           "scaleZ" : 1.0113322
@@ -14843,7 +14843,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.8016844,
           "scaleY" : 0.8016844,
           "scaleZ" : 0.8016844
@@ -14865,7 +14865,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.8016843,
           "scaleY" : 0.8016844,
           "scaleZ" : -0.8016844
@@ -14935,7 +14935,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.805364,
           "scaleY" : 1.1083093,
           "scaleZ" : 1.2547169
@@ -14957,7 +14957,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.8016843,
           "scaleY" : 0.8016844,
           "scaleZ" : 0.8016844
@@ -14979,7 +14979,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.8016844,
           "scaleY" : 0.8016844,
           "scaleZ" : -0.8016844
@@ -15001,7 +15001,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : -0.7051177,
           "scaleY" : 0.44028944,
           "scaleZ" : 0.7051177
@@ -15023,7 +15023,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.80945,
           "scaleY" : 0.80945,
           "scaleZ" : 1.025735
@@ -15042,7 +15042,7 @@
           "translateX" : 0.29316002,
           "translateY" : 0.0,
           "translateZ" : 0.78006,
-          "rotateX" : -0.7071068,
+          "rotateX" : 0.7071068,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
           "rotateW" : 0.0,
@@ -15067,7 +15067,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.5823386,
           "scaleY" : 0.35413435,
           "scaleZ" : 0.5079349
@@ -15089,7 +15089,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9218826,
           "scaleY" : 0.80945,
           "scaleZ" : 0.80945
@@ -15108,10 +15108,10 @@
           "translateX" : 0.06272603,
           "translateY" : 0.48243,
           "translateZ" : 0.52103996,
-          "rotateX" : -0.5,
+          "rotateX" : 0.5,
           "rotateY" : 0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 0.7620143,
           "scaleY" : 0.6011947,
           "scaleZ" : 0.6011947
@@ -15130,10 +15130,10 @@
           "translateX" : 0.06272603,
           "translateY" : -0.48243,
           "translateZ" : 0.52103996,
-          "rotateX" : 0.5,
+          "rotateX" : -0.5,
           "rotateY" : -0.5,
           "rotateZ" : -0.5,
-          "rotateW" : 0.5,
+          "rotateW" : -0.5,
           "scaleX" : 0.7620143,
           "scaleY" : 0.6011947,
           "scaleZ" : 0.6011947
@@ -15155,7 +15155,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.7071068,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.80945,
           "scaleY" : 0.80945,
           "scaleZ" : 1.0741401
@@ -15177,7 +15177,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.7071068,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.80945,
           "scaleY" : 0.80945,
           "scaleZ" : 1.0741401
@@ -15461,7 +15461,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.38268343,
-          "rotateW" : 0.92387956,
+          "rotateW" : -0.92387956,
           "scaleX" : 1.0,
           "scaleY" : 1.0,
           "scaleZ" : 1.0
@@ -15600,7 +15600,7 @@
           "translateX" : -0.87539,
           "translateY" : 3.3258E-8,
           "translateZ" : 0.34712,
-          "rotateX" : 1.0,
+          "rotateX" : -1.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
           "rotateW" : 0.0,
@@ -15625,7 +15625,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15647,7 +15647,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15669,7 +15669,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15691,7 +15691,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15713,7 +15713,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 1.1564835,
           "scaleZ" : 0.4421849
@@ -15757,7 +15757,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.90704596,
           "scaleY" : 1.1564835,
           "scaleZ" : 0.4421849
@@ -15801,7 +15801,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15820,10 +15820,10 @@
           "translateX" : 0.74724,
           "translateY" : 3.3258E-8,
           "translateZ" : 0.77160996,
-          "rotateX" : -0.7071068,
+          "rotateX" : 0.7071068,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.67759955,
           "scaleY" : 0.90704596,
           "scaleZ" : 1.0476385
@@ -15845,7 +15845,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15867,7 +15867,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15889,7 +15889,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.23387784,
-          "rotateW" : 0.972266,
+          "rotateW" : -0.972266,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15911,7 +15911,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : -0.2338781,
-          "rotateW" : 0.97226596,
+          "rotateW" : -0.97226596,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15933,7 +15933,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -15955,7 +15955,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.7071068,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.49413154,
           "scaleY" : 0.73009986,
           "scaleZ" : 0.73009944
@@ -15977,7 +15977,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 1.1999311,
           "scaleZ" : 0.642116
@@ -15996,7 +15996,7 @@
           "translateX" : 0.20666,
           "translateY" : -0.53422,
           "translateZ" : 0.80591,
-          "rotateX" : 0.7071068,
+          "rotateX" : -0.7071068,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
           "rotateW" : 0.0,
@@ -16018,10 +16018,10 @@
           "translateX" : 1.0765,
           "translateY" : 0.73105,
           "translateZ" : 0.6292,
-          "rotateX" : -0.38268343,
+          "rotateX" : 0.38268343,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.92387956,
+          "rotateW" : -0.92387956,
           "scaleX" : 0.65307313,
           "scaleY" : 0.90704596,
           "scaleZ" : -0.90704596
@@ -16043,7 +16043,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.8468544,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -16062,10 +16062,10 @@
           "translateX" : 1.6135,
           "translateY" : 0.73105,
           "translateZ" : 0.6292,
-          "rotateX" : 0.38268343,
+          "rotateX" : -0.38268343,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.92387956,
+          "rotateW" : -0.92387956,
           "scaleX" : 0.65307313,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -16084,10 +16084,10 @@
           "translateX" : 1.0765,
           "translateY" : -0.73105,
           "translateZ" : 0.6292,
-          "rotateX" : -0.38268343,
+          "rotateX" : 0.38268343,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.92387956,
+          "rotateW" : -0.92387956,
           "scaleX" : 0.65307313,
           "scaleY" : 0.90704596,
           "scaleZ" : -0.90704596
@@ -16106,10 +16106,10 @@
           "translateX" : 1.6135,
           "translateY" : -0.73105,
           "translateZ" : 0.6292,
-          "rotateX" : 0.38268343,
+          "rotateX" : -0.38268343,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.92387956,
+          "rotateW" : -0.92387956,
           "scaleX" : 0.65307313,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -16131,7 +16131,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -16153,7 +16153,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 0.90704596,
           "scaleZ" : 0.90704596
@@ -16175,7 +16175,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.90704596,
           "scaleY" : 1.1859626,
           "scaleZ" : 0.90704596
@@ -16420,7 +16420,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 1.3865035,
             "scaleY" : 1.1554195,
             "scaleZ" : 1.1554195
@@ -16442,7 +16442,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -1.386503,
             "scaleY" : 1.1554195,
             "scaleZ" : 1.1554195
@@ -16464,7 +16464,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.83333325,
             "scaleY" : 0.64653325,
             "scaleZ" : 0.83333325
@@ -16505,10 +16505,10 @@
             "translateX" : 0.0,
             "translateY" : 0.85,
             "translateZ" : 0.706,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 0.5602959,
             "scaleY" : 0.74797493,
             "scaleZ" : 0.74797493
@@ -16552,7 +16552,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.83333325,
             "scaleY" : 0.45984164,
             "scaleZ" : 0.83333325
@@ -16571,7 +16571,7 @@
             "translateX" : -0.112,
             "translateY" : 0.0,
             "translateZ" : 0.90599996,
-            "rotateX" : 1.0,
+            "rotateX" : -1.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
             "rotateW" : 0.0,
@@ -16659,10 +16659,10 @@
             "translateX" : 0.0,
             "translateY" : -0.85,
             "translateZ" : 0.706,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : -0.5602959,
             "scaleY" : 0.74797493,
             "scaleZ" : 0.74797493
@@ -16681,10 +16681,10 @@
             "translateX" : 0.013,
             "translateY" : 0.0,
             "translateZ" : 0.549,
-            "rotateX" : -0.7071068,
+            "rotateX" : 0.7071068,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 0.7071068,
+            "rotateW" : -0.7071068,
             "scaleX" : 0.99440706,
             "scaleY" : 0.83333325,
             "scaleZ" : 0.83333325
@@ -16706,7 +16706,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.7953986,
             "scaleY" : 0.64430827,
             "scaleZ" : 0.64430827
@@ -16728,7 +16728,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.62615204,
             "scaleY" : 0.43123418,
             "scaleZ" : 0.43123418
@@ -16750,7 +16750,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.8333333,
             "scaleY" : 0.83333325,
             "scaleZ" : 0.83333325
@@ -16772,7 +16772,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.61159164,
             "scaleY" : 0.83333325,
             "scaleZ" : 0.83333325
@@ -16794,7 +16794,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : 0.83333325,
             "scaleY" : 0.83333325,
             "scaleZ" : 0.83333325
@@ -16816,7 +16816,7 @@
             "rotateX" : 0.0,
             "rotateY" : 0.0,
             "rotateZ" : 0.0,
-            "rotateW" : 1.0,
+            "rotateW" : -1.0,
             "scaleX" : -0.626152,
             "scaleY" : 0.43123418,
             "scaleZ" : 0.43123418
@@ -16959,7 +16959,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.1146029,
           "scaleY" : 0.8940421,
           "scaleZ" : 0.8940424
@@ -16981,7 +16981,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.7368519,
           "scaleY" : 0.9635756,
           "scaleZ" : 0.9635756
@@ -17003,7 +17003,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.7368519,
           "scaleY" : 0.9635756,
           "scaleZ" : 0.9635756
@@ -17025,7 +17025,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9619512,
           "scaleY" : 0.8524913,
           "scaleZ" : 0.8524913
@@ -17047,7 +17047,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 1.002902,
           "scaleY" : 0.70187,
           "scaleZ" : 0.70187
@@ -17069,7 +17069,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.70187,
           "scaleY" : 0.70187,
           "scaleZ" : 0.8888482
@@ -17091,7 +17091,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.8999123,
           "scaleY" : 0.8924458,
           "scaleZ" : 0.97728384
@@ -17134,10 +17134,10 @@
           "translateX" : -0.803,
           "translateY" : -0.61976,
           "translateZ" : 0.45195,
-          "rotateX" : 0.94057894,
+          "rotateX" : -0.94057894,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.3395753,
+          "rotateW" : -0.3395753,
           "scaleX" : 1.3335531,
           "scaleY" : 1.0528051,
           "scaleZ" : 1.0528051
@@ -17156,10 +17156,10 @@
           "translateX" : -0.075857,
           "translateY" : -0.61976,
           "translateZ" : 0.45195,
-          "rotateX" : -0.9396926,
+          "rotateX" : 0.9396926,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.34202018,
+          "rotateW" : -0.34202018,
           "scaleX" : 1.3335531,
           "scaleY" : 1.0528051,
           "scaleZ" : -1.0528051
@@ -17178,10 +17178,10 @@
           "translateX" : -0.803,
           "translateY" : 0.61976,
           "translateZ" : 0.45195,
-          "rotateX" : 0.94057894,
+          "rotateX" : -0.94057894,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.3395753,
+          "rotateW" : -0.3395753,
           "scaleX" : -1.3335531,
           "scaleY" : 1.0528051,
           "scaleZ" : 1.0528051
@@ -17200,10 +17200,10 @@
           "translateX" : -0.075857,
           "translateY" : 0.61976,
           "translateZ" : 0.45195,
-          "rotateX" : -0.9396926,
+          "rotateX" : 0.9396926,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.34202018,
+          "rotateW" : -0.34202018,
           "scaleX" : -1.3335531,
           "scaleY" : 1.0528051,
           "scaleZ" : -1.0528051
@@ -17244,10 +17244,10 @@
           "translateX" : 0.6927,
           "translateY" : -0.64222,
           "translateZ" : 0.61057,
-          "rotateX" : 0.96593386,
+          "rotateX" : -0.96593386,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : -0.2587892,
+          "rotateW" : 0.2587892,
           "scaleX" : 1.8359234,
           "scaleY" : 1.2633668,
           "scaleZ" : 1.2633668
@@ -17266,10 +17266,10 @@
           "translateX" : 0.6927,
           "translateY" : 0.64222,
           "translateZ" : 0.61057,
-          "rotateX" : 0.96593386,
+          "rotateX" : -0.96593386,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : -0.2587892,
+          "rotateW" : 0.2587892,
           "scaleX" : -1.8359236,
           "scaleY" : 1.2633668,
           "scaleZ" : 1.2633668
@@ -17291,7 +17291,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.9619515,
           "scaleY" : 0.8524913,
           "scaleZ" : 0.8524913
@@ -17313,7 +17313,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.1146033,
           "scaleY" : 0.8940421,
           "scaleZ" : -0.8940421
@@ -17335,7 +17335,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.7071068,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 0.8779527,
           "scaleY" : 1.3277339,
           "scaleZ" : 0.79671323
@@ -17357,7 +17357,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6607248,
           "scaleY" : 0.9504724,
           "scaleZ" : 1.2369447
@@ -17401,7 +17401,7 @@
           "rotateX" : 0.0,
           "rotateY" : -0.7071068,
           "rotateZ" : 0.0,
-          "rotateW" : 0.7071068,
+          "rotateW" : -0.7071068,
           "scaleX" : 1.0307667,
           "scaleY" : 1.0307664,
           "scaleZ" : 1.0307667
@@ -17423,7 +17423,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.736852,
           "scaleY" : 0.9635756,
           "scaleZ" : 0.9635756
@@ -17445,7 +17445,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.736852,
           "scaleY" : 0.9635756,
           "scaleZ" : 0.9635756
@@ -17847,7 +17847,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.2609857,
           "scaleY" : 0.2609857,
           "scaleZ" : 0.317985
@@ -17869,7 +17869,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.7609307,
           "scaleY" : 0.9007898,
           "scaleZ" : 0.8489704
@@ -17925,7 +17925,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.5293322,
           "scaleY" : 0.5293322,
           "scaleZ" : 0.5293322
@@ -17947,7 +17947,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.9479864,
           "scaleY" : 0.9479864,
           "scaleZ" : 0.9479864
@@ -17981,7 +17981,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6599,
           "scaleY" : 0.9798855,
           "scaleZ" : 0.9798855
@@ -18003,7 +18003,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6599,
           "scaleY" : 0.6599,
           "scaleZ" : 0.6599
@@ -18025,7 +18025,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.6599,
           "scaleY" : 0.6599,
           "scaleZ" : 0.6599
@@ -18047,7 +18047,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.75656974,
           "scaleY" : 0.6599,
           "scaleZ" : 0.6599
@@ -18066,10 +18066,10 @@
           "translateX" : -0.55219996,
           "translateY" : 0.0,
           "translateZ" : 0.66563,
-          "rotateX" : 0.99995434,
+          "rotateX" : -0.99995434,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 0.009554671,
+          "rotateW" : -0.009554671,
           "scaleX" : 0.6599,
           "scaleY" : 0.6599,
           "scaleZ" : -0.6599
@@ -18091,7 +18091,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : -0.6599,
           "scaleY" : 0.9798855,
           "scaleZ" : 0.9798855
@@ -18113,7 +18113,7 @@
           "rotateX" : 0.0,
           "rotateY" : 0.0,
           "rotateZ" : 0.0,
-          "rotateW" : 1.0,
+          "rotateW" : -1.0,
           "scaleX" : 0.2609857,
           "scaleY" : 0.2609857,
           "scaleZ" : 0.317985
