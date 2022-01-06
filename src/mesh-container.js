@@ -15,9 +15,12 @@ class MeshContainer extends Base {
             this.vertexConatinerBuffers[vertexContainerBuffer.key] = vertexContainerBuffer;
         });
 
-        let meshContainer = this.findMeshContainer("Vehicle_11");
+        const meshContainerName = "Vehicle_11";
+        let meshContainer = this.findMeshContainer(meshContainerName);
         if (meshContainer != null) {
             this.setupMeshContainer(scene, meshContainer);
+        } else {
+            console.error("Mesh Container not found: " + meshContainerName);
         }
     }
 
@@ -86,13 +89,6 @@ class MeshContainer extends Base {
             mesh.scale.y *= shapeTransform.scaleY;
             mesh.scale.z *= shapeTransform.scaleZ;
         }
-        let quaternion = new THREE.Quaternion();
-        quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), Math.PI / 2);
-        mesh.applyQuaternion(quaternion);
-        quaternion = new THREE.Quaternion();
-        quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI / 2);
-        mesh.applyQuaternion(quaternion);
-
         scene.add(mesh)
     }
 }
