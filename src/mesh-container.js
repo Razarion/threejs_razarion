@@ -70,26 +70,21 @@ class MeshContainer extends Base {
         const material = new THREE.MeshStandardMaterial();
 
         const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.x = 274;
-        mesh.position.y = 100;
-        mesh.position.z = 2;
-        mesh.scale.x = 0.01;
-        mesh.scale.y = 0.01;
-        mesh.scale.z = 0.01;
-        if (shapeTransform != null) {
-            mesh.position.x += shapeTransform.translateX;
-            mesh.position.y += shapeTransform.translateY;
-            mesh.position.z += shapeTransform.translateZ;
-            mesh.applyQuaternion(new THREE.Quaternion(
+
+        const matrix = new THREE.Matrix4();
+        matrix.compose(
+            new THREE.Vector3(shapeTransform.translateX + 274, shapeTransform.translateY + 100, shapeTransform.translateZ + 2),
+            new THREE.Quaternion(
                 shapeTransform.rotateX,
                 shapeTransform.rotateY,
                 shapeTransform.rotateZ,
-                shapeTransform.rotateW));
-            mesh.scale.x *= shapeTransform.scaleX;
-            mesh.scale.y *= shapeTransform.scaleY;
-            mesh.scale.z *= shapeTransform.scaleZ;
-        }
+                shapeTransform.rotateW),
+            new THREE.Vector3(shapeTransform.scaleX * 0.01, shapeTransform.scaleY * 0.01, shapeTransform.scaleZ * 0.01),
+        );
+        mesh.applyMatrix4(matrix);
+
         scene.add(mesh)
+
     }
 }
 
