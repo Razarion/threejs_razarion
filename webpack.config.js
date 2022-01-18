@@ -14,7 +14,8 @@ module.exports = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                {from: 'src/models/TreeTexture.png', to: 'TreeTexture.png'}
+                {from: 'src/models/TreeTexture.png', to: 'TreeTexture.png'},
+                {from: 'src/gltf/Vehicle_11.bin', to: 'Vehicle_11.bin'}
             ]
         }),
     ],
@@ -29,7 +30,7 @@ module.exports = {
                 use: 'raw-loader',
             },
             {
-                test: /\.(glb|png|svg|jpg|gif|dae)$/,
+                test: /\.(glb|png|svg|jpg|gif|dae|gltf|bin)$/,
                 use: 'file-loader',
             }
         ],
