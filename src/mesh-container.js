@@ -70,23 +70,19 @@ class MeshContainer extends Base {
         const material = new THREE.MeshStandardMaterial();
 
         const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.x = 274;
-        mesh.position.y = 100;
-        mesh.position.z = 2;
         mesh.scale.x = 0.01;
         mesh.scale.y = 0.01;
         mesh.scale.z = 0.01;
-        if (shapeTransform != null) {
-            mesh.position.x += shapeTransform.translateX;
-            mesh.position.y += shapeTransform.translateY;
-            mesh.position.z += shapeTransform.translateZ;
-            mesh.rotateY(shapeTransform.rotateY);
-            mesh.rotateX(shapeTransform.rotateX);
-            mesh.rotateZ(shapeTransform.rotateZ);
-            mesh.scale.x *= shapeTransform.scaleX;
-            mesh.scale.y *= shapeTransform.scaleY;
-            mesh.scale.z *= shapeTransform.scaleZ;
-        }
+        let staticMatrix = shapeTransform.staticMatrix.numbers;
+        let m = new THREE.Matrix4();
+        m.set(staticMatrix[0][0], staticMatrix[0][1], staticMatrix[0][2], staticMatrix[0][3],
+            staticMatrix[1][0], staticMatrix[1][1], staticMatrix[1][2], staticMatrix[1][3],
+            staticMatrix[2][0], staticMatrix[2][1], staticMatrix[2][2], staticMatrix[2][3],
+            staticMatrix[3][0], staticMatrix[3][1], staticMatrix[3][2], staticMatrix[3][3]);
+        mesh.applyMatrix4(m);
+        // mesh.position.x = 274;
+        // mesh.position.y = 100;
+        // mesh.position.z = 2;
         scene.add(mesh)
 
     }

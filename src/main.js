@@ -8,13 +8,11 @@ import terrainTileArray from "./razarion_generated/terrain-tiles.json";
 import staticGameConfigJson from "./razarion_generated/static-game-config.json";
 import threeJsShapeJson from "./razarion_generated/shapes-3d";
 import {TerrainTile} from "./terrain-tile";
-import {MeshContainer} from "./mesh-container";
 import {StaticGameConfigService} from "./static-game-config-service";
 import mergeVertexShaderUrl from './shaders/Merge.vert';
 import mergeFragmentShaderUrl from './shaders/Merge.frag';
 
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
-import gltfUrl from "./gltf/Vehicle_11.gltf";
+import {MeshContainer} from "./mesh-container";
 
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
@@ -71,29 +69,7 @@ for (const terrainTileJson of terrainTileArray) {
     terrainTiles.push(terrainTile);
 }
 
-// new MeshContainer(scene);
-
-const loader = new GLTFLoader();
-loader.load(gltfUrl,
-    function (gltf) {
-        gltf.scene.rotateX(Math.PI / 2);
-        gltf.scene.rotateY(-Math.PI / 2);
-        gltf.scene.position.x = 274;
-        gltf.scene.position.y = 100;
-        gltf.scene.position.z = 2;
-        scene.add(gltf.scene);
-    },
-
-    function (xhr) {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-    },
-
-    function (error) {
-        console.error('An error happened');
-        console.error(error);
-
-    }
-);
+new MeshContainer(scene);
 
 setupLight();
 
