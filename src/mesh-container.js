@@ -50,13 +50,7 @@ class MeshContainer extends Base {
                 staticMatrix[3][0], staticMatrix[3][1], staticMatrix[3][2], staticMatrix[3][3]);
 
             const mesh = new THREE.Mesh(geometry, material)
-            mesh.scale.x = 0.01;
-            mesh.scale.y = 0.01;
-            mesh.scale.z = 0.01;
             mesh.applyMatrix4(m);
-            // mesh.position.x = 274;
-            // mesh.position.y = 100;
-            // mesh.position.z = 2;
             scene.add(mesh)
         });
     }
