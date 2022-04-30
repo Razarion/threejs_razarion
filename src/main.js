@@ -23,13 +23,12 @@ let scene = new THREE.Scene();
 
 let directionalLightHelper;
 let shadowCameraHelper;
-let mixer, clock;
 
 let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.x = 276;
-camera.position.y = 92;
-camera.position.z = 5.8;
-camera.rotation.x = THREE.Math.degToRad(65.9);
+camera.position.x = 270;
+camera.position.y = 70;
+camera.position.z = 35;
+camera.rotation.x = THREE.Math.degToRad(35);
 
 const darkMaterial = new THREE.MeshBasicMaterial({color: "black"});
 

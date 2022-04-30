@@ -14,9 +14,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                {from: 'src/models/TreeTexture.png', to: 'TreeTexture.png'},
-                {from: 'src/gltf/Vehicle_11.bin', to: 'Vehicle_11.bin'}
-            ]
+                {from: 'src/models/TreeTexture.png', to: 'TreeTexture.png'},            ]
         }),
     ],
     output: {
